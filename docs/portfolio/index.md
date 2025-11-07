@@ -44,4 +44,4 @@ Cada práctica incluye:
 
 ---
 
-📅 *Última actualización:* {{ 10/07/2025 }}
+📅 *Última actualización:* {{ 10-07-2025 }}
