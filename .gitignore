@@ -3,3 +3,7 @@ __pycache__/
 .env
 site/
 .DS_Store
+
+# Archivos grandes (>50MB)
+actividades/act_seis_ind/act_seis.ipynb
+actividades/act_seis_ind/ahousing_eda_report.html
