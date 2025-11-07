@@ -25,11 +25,15 @@ El portafolio se organiza por **unidades temáticas (UT1–UT5)**, siguiendo el 
 
 ---
 
-## 📁 Entradas publicadas
+## 📁 Tareas
 
-- [🌸 UT1 — Exploración del dataset *Iris*](./01-iris.md)  
-  *Análisis morfológico, correlaciones y visualizaciones reproducibles.*
+### **UT1: EDA & Fuentes**
 
+- 1. [Exploración del dataset *Iris* Análisis morfológico y correlaciones entre especies](./01-iris.md) 
+  *Análisis morfológico, correlaciones y visualizaciones reproducibles con Python y Seaborn.*
+- 2. [Publicar mi Portafolio con GitHub Pages con MkDocs](./02-portfolio.md)
+  *Guía completa de configuración y despliegue*
+  
 *(Las siguientes unidades se irán publicando progresivamente.)*
 
 ---
@@ -44,4 +48,4 @@ Cada práctica incluye:
 
 ---
 
-📅 *Última actualización:* {{ 10-07-2025 }}
+📅 *Última actualización:* {{ 7 de Noviembre de 2025 }}
