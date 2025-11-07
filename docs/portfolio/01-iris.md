@@ -13,10 +13,10 @@
 
 Para acceder al notebook completo con el código, gráficos y análisis reproducible:
 
-:material-download: [**Descargar notebook — dataset_iris.ipynb**](../../actividades/act_dos_iris/dataset_iris.ipynb){: .btn .btn-primary target="_blank" download="dataset_iris.ipynb"}
+:material-download: [**Descargar notebook — dataset_iris.ipynb**](./assets/iris/dataset_iris.ipynb){: .btn .btn-primary target="_blank" download="dataset_iris.ipynb"}
 
 > 📂 Archivo disponible dentro del repositorio:  
-> `actividades/act_dos_iris/dataset_iris.ipynb`
+> `docs/portfolio/assets/iris/dataset_iris.ipynb`
 ---
 
 ## 🎯 Objetivo
@@ -56,7 +56,7 @@ Está completamente limpio y balanceado, con 50 muestras por especie.
 
 Los **histogramas con curvas KDE** permiten observar cómo se distribuyen las variables dentro de cada especie:
 
-![Histograma KDE](../../actividades/act_dos_iris/results/visualizaciones/histogramas_kde_por_especie.png)
+![Histograma KDE](./assets/iris/histogramas_kde_por_especie.png)
 
 - En los **pétalos**, las tres especies se separan con claridad.  
   *Setosa* presenta pétalos cortos y angostos, *Versicolor* ocupa una posición intermedia, y *Virginica* concentra los valores más altos.  
@@ -69,7 +69,7 @@ Los **histogramas con curvas KDE** permiten observar cómo se distribuyen las va
 
 El siguiente gráfico de pares muestra cómo se relacionan las dimensiones:
 
-![Pairplot](../../actividades/act_dos_iris/results/visualizaciones/pairplot_por_especie.png)
+![Pairplot](./assets/iris/pairplot_por_especie.png)
 
 Cada punto representa una flor. A partir del gráfico se observa que:
 - *Setosa* forma un grupo totalmente aislado del resto.  
@@ -83,7 +83,7 @@ Esto confirma que **solo con las variables de pétalos podría construirse un mo
 
 Para verificar las observaciones visuales, analicé la matriz de correlaciones:
 
-![Matriz de correlaciones](../../actividades/act_dos_iris/results/visualizaciones/matriz_correlaciones.png)
+![Matriz de correlaciones](./assets/iris/matriz_correlaciones.png)
 
 | Variables | Correlación | Interpretación |
 |:-----------|:-------------|:----------------|
@@ -97,7 +97,7 @@ Las **variables de pétalos concentran la mayor información explicativa**, mien
 
 ## 🧩 Calidad de los datos
 
-![Missingness](../../actividades/act_dos_iris/results/visualizaciones/missing.png)
+![Missingness](./assets/iris/missing.png)
 
 El gráfico de valores faltantes confirma un resultado poco común: **no existe ningún valor nulo**.  
 También se validó que los rangos estén dentro de límites biológicos razonables (por ejemplo, sépalos entre 4 y 8 cm).  
@@ -141,4 +141,4 @@ Este ejercicio sienta las bases para las próximas unidades, donde se abordarán
 ---
 
 > 📁 **Ubicación:** `docs/portfolio/01-iris.md`  
-> 📂 **Resultados:** ver [`../../actividades/act_dos_iris/results/`](../../actividades/act_dos_iris/results/) para acceder a perfiles, reportes y visualizaciones.
+> 📂 **Resultados:** ver [`../../actividades/act_dos_iris/results/`](../../actividades/act_dos_iris/results/) para acceder a perfiles y reportes completos en el repositorio.
