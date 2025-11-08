@@ -105,9 +105,9 @@ Las **variables de pétalos concentran la mayor información explicativa**, mien
 | **Duplicados** | ❌ Ninguno | Todos los registros son únicos. |
 | **Distribución** | ✅ Aproximadamente normal | Variables de pétalos muestran distribuciones suaves. |
 
-### El gráfico de valores faltantes confirma un resultado poco común: **no existe ningún valor nulo**.  
-### También se validó que los rangos estén dentro de límites biológicos razonables (por ejemplo, sépalos entre 4 y 8 cm).  
-### No se detectaron duplicados, lo que refuerza la confiabilidad del dataset y su utilidad para prácticas de EDA.
+El gráfico de valores faltantes confirma un resultado poco común: **no existe ningún valor nulo**.  
+También se validó que los rangos estén dentro de límites biológicos razonables (por ejemplo, sépalos entre 4 y 8 cm).  
+No se detectaron duplicados, lo que refuerza la confiabilidad del dataset y su utilidad para prácticas de EDA.
 
 ---
 
@@ -151,15 +151,15 @@ results/
 ## 🗂️ Insights de Negocio
 
 ### 🔍 Variables críticas para la toma de decisiones
-#### Las variables `petal_length` y `petal_width` concentran casi toda la información útil.
-#### En contextos de clasificación real (por ejemplo, detección automática de especies), se puede reducir la cantidad de sensores o variables medidas sin perder precisión.
-#### En términos de negocio: menor costo de adquisición de datos, misma efectividad predictiva.
+Las variables `petal_length` y `petal_width` concentran casi toda la información útil.
+En contextos de clasificación real (por ejemplo, detección automática de especies), se puede reducir la cantidad de sensores o variables medidas sin perder precisión.
+En términos de negocio: menor costo de adquisición de datos, misma efectividad predictiva.
 ### 🌸 Separabilidad como métrica de eficiencia
-#### Setosa presenta una separación morfológica total respecto a las otras dos especies.
-#### Los sistemas pueden clasificarla sin ambigüedad, liberando capacidad de cómputo para las clases más difíciles (Versicolor y Virginica).
+Setosa presenta una separación morfológica total respecto a las otras dos especies.
+Los sistemas pueden clasificarla sin ambigüedad, liberando capacidad de cómputo para las clases más difíciles (Versicolor y Virginica).
 ### 📈 Estabilidad y calidad del dataset
-#### Esto lo convierte en un benchmark ideal para calibrar pipelines de validación de datos o probar frameworks de EDA automatizado sin sesgos introducidos por ruido o errores de captura.
-#### Es un ejemplo de “datos bien diseñados” que reflejan procesos de medición estandarizados.
+Esto lo convierte en un benchmark ideal para calibrar pipelines de validación de datos o probar frameworks de EDA automatizado sin sesgos introducidos por ruido o errores de captura.
+ Es un ejemplo de “datos bien diseñados” que reflejan procesos de medición estandarizados.
 
 ---
 ## ⚙️ Notas de Implementación
@@ -174,12 +174,12 @@ pip install pandas seaborn matplotlib ydata-profiling
 ---
 
 ## 💭 Reflexión Personal
-### Este proyecto fue, para mí, un ejercicio de aprendizaje técnico, pero también de observación.
-### Al principio pensaba que hacer un EDA era simplemente generar gráficos bonitos, pero terminé entendiendo que explorar datos es una forma de pensar: una búsqueda de sentido, paso a paso.
-### Cada figura que exporté no era solo un resultado, sino una confirmación de que los patrones existen incluso en datasets tan simples como este.
-### Aprendí a organizar mis ideas, a limpiar y documentar, y sobre todo, a no apurarme en sacar conclusiones sin mirar el contexto.
-### Lo más desafiante fue elegir cómo mostrar las visualizaciones sin que pierdan claridad.
-### Y lo más gratificante fue comprobar que, al final, los datos hablan solos, si uno sabe cómo escucharlos.
+Este proyecto fue, para mí, un ejercicio de aprendizaje técnico, pero también de observación.
+Al principio pensaba que hacer un EDA era simplemente generar gráficos bonitos, pero terminé entendiendo que explorar datos es una forma de pensar: una búsqueda de sentido, paso a paso.
+Cada figura que exporté no era solo un resultado, sino una confirmación de que los patrones existen incluso en datasets tan simples como este.
+Aprendí a organizar mis ideas, a limpiar y documentar, y sobre todo, a no apurarme en sacar conclusiones sin mirar el contexto.
+Lo más desafiante fue elegir cómo mostrar las visualizaciones sin que pierdan claridad.
+Y lo más gratificante fue comprobar que, al final, los datos hablan solos, si uno sabe cómo escucharlos.
 
 ---
 
