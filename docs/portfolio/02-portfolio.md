@@ -88,12 +88,12 @@ Mi sitio quedó disponible públicamente en la URL:
 ### 🧩 4. Troubleshooting y aprendizajes del despliegue
 
 Durante el despliegue encontré algunos errores que me ayudaron a comprender mejor cómo funciona el flujo entre el build local, la rama gh-pages y los workflows de GitHub Actions:
-❌ DNS check unsuccessful:
+- ❌ DNS check unsuccessful:
 Al intentar usar un dominio personalizado (portafolio.milagroscancela.com), GitHub no encontraba los registros CNAME.
 Lo solucioné eliminando temporalmente el dominio y volviendo a usar la URL por defecto de GitHub Pages.
-❌ 404 tras el deploy:
+- ❌ 404 tras el deploy:
 El sitio tardó unos minutos en procesar el workflow. El truco fue limpiar la caché y esperar la confirmación verde en Actions antes de recargar la página.
-💡 Tip técnico:
+- 💡 Tip técnico:
 Si MkDocs no refleja los últimos cambios, ejecutar:
 ```bash
 mkdocs build --clean
