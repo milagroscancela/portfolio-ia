@@ -57,7 +57,7 @@ En el dataset Ames Housing, las variables tienen **escalas dramáticamente difer
 
 ## 📘 Exploración Inicial: El Problema de las Escalas
 
-### �� Diagnóstico de Escalas Problemáticas
+### 🔍 Diagnóstico de Escalas Problemáticas
 
 ![Distribuciones Numéricas](./assets/feature-scaling/distribucion_numericas.png)
 
@@ -161,7 +161,7 @@ Outliers: Reducidos pero aún detectables
 
 ### PowerTransformer (Yeo-Johnson) — Hacia la Normalidad
 
-![PowerTransformer Investigation](./assets/feature-scaling/INVESTIGACIÓN%20DE%20[PowerTransformer%20(Yeo-Johnson)]%20sobre%20columna-%20'SalePrice'.png)
+![PowerTransformer Investigation](./assets/feature-scaling/INVESTIGACIÓN_DE__PowerTransformer__Yeo-Johnson___sobre_columna-__SalePrice_.png)
 
 *Figura 4: Transformación de SalePrice con PowerTransformer (Yeo-Johnson). Panel izquierdo: SalePrice original mostrando distribución log-normal con cola derecha pronunciada (skewness=4.68). Panel central: Después de PowerTransformer, la distribución se aproxima notablemente a una gaussiana con skewness reducido a 0.12 (-97.4% mejora). Panel derecho: Versión escalada final con StandardScaler aplicado sobre la transformación, resultando en una distribución casi perfectamente normal centrada en 0 con σ=1. La transformación exitosa de log-normal a normal es evidente visualmente.*
 
@@ -193,7 +193,7 @@ Si λ = 0: y^(λ) = log(y + 1)
 
 ### QuantileTransformer — Forzar Distribución
 
-![QuantileTransformer Investigation](./assets/feature-scaling/%20INVESTIGACI%C3%93N%20DE%20%5BQuantileTransformer%E2%86%92normal%5Dsobre%20columna-%20%27SalePrice%27.png)
+![QuantileTransformer Investigation](./assets/feature-scaling/_INVESTIGACIÓN_DE__QuantileTransformer_normal_sobre_columna-__SalePrice_.png)
 
 *Figura 5: Efecto de QuantileTransformer con output_distribution='normal' en SalePrice. Panel izquierdo: Distribución original asimétrica con skewness=4.68. Panel central: Después de QuantileTransformer, los datos son mapeados a una distribución normal casi perfecta mediante transformación de cuantiles - cada valor se mapea a su percentil correspondiente en una gaussiana. Panel derecho: Versión escalada final. Nota importante: Aunque visualmente es una campana perfecta (skewness≈0), esta transformación "fuerza" la normalidad perdiendo información sobre distancias relativas originales entre valores.*
 
@@ -235,7 +235,7 @@ Si λ = 0: y^(λ) = log(y + 1)
 
 ### FunctionTransformer (Log1p) — Transformación Logarítmica
 
-![Log Transform Investigation](./assets/feature-scaling/INVESTIGACIÓN%20DE%20[FunctionTransformer%20(log1p%20seguro)]%20sobre%20columna-%20'SalePrice'.png)
+![Log Transform Investigation](./assets/feature-scaling/INVESTIGACIÓN_DE__FunctionTransformer__log1p_seguro___sobre_columna-__SalePrice_.png)
 
 *Figura 6: Transformación logarítmica segura (log1p) aplicada a SalePrice. Panel izquierdo: Distribución original con cola derecha pronunciada y skewness=4.68. Panel central: Después de aplicar log(x+1), la distribución se comprime significativamente - los valores grandes se acercan a los medianos en escala logarítmica, reduciendo skewness a ~0.18 (-96.2%). Panel derecho: Versión final con StandardScaler sobre log-transform, resultando en distribución aproximadamente normal. Esta transformación preserva el orden relativo de valores (a diferencia de QuantileTransformer) y es invertible con expm1.*
 
@@ -284,7 +284,7 @@ transformer = PowerTransformer(method='yeo-johnson')
 
 ### MaxAbsScaler — Para Datos Sparse
 
-![MaxAbsScaler Investigation](./assets/feature-scaling/INVESTIGACIÓN%20DE%20[MaxAbsScaler]%20sobre%20columna-%20'SalePrice'.png)
+![MaxAbsScaler Investigation](./assets/feature-scaling/INVESTIGACIÓN_DE__MaxAbsScaler__sobre_columna-__SalePrice_.png)
 
 *Figura 8: Efecto de MaxAbsScaler en SalePrice. Panel izquierdo: Distribución original con rango $12k-$755k. Panel central: Después de MaxAbsScaler, los datos se escalan dividiendo por el valor absoluto máximo ($755k), resultando en rango [0.017, 1.000]. La forma de la distribución se preserva exactamente (skewness sin cambio), solo comprimida a [0,1]. Panel derecho: StandardScaler aplicado sobre MaxAbs muestra distribución centrada. MaxAbsScaler es útil principalmente para datos sparse (muchos ceros) donde necesitas preservar la estructura de ceros, pero para SalePrice (datos densos) no ofrece ventajas sobre MinMaxScaler.*
 

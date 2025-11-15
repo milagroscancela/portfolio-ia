@@ -41,7 +41,8 @@ El portafolio se organiza por **unidades temáticas (UT1–UT5)**, siguiendo el 
 ### **UT2: Calidad & Ética**
 - [05 - Análisis Forense de Datos Faltantes: Clasificando MCAR, MAR y MNAR en el Dataset Ames Housing](./05-missing.md)
   *Detección y tratamiento de datos faltantes con análisis ético*
-- [06 - ]
+- [06 - Feature Scaling & Anti-Leakage: Domando las Escalas en Datos Inmobiliarios](./06-pipeline.md)
+  *Feature Scaling & Anti-Leakage: Domando las Escalas en Datos Inmobiliarios*
 - [07 -]
 
 ### **UT3: Feature Engineering**
