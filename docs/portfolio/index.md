@@ -29,11 +29,12 @@ El portafolio se organiza por **unidades temáticas (UT1–UT5)**, siguiendo el 
 
 ### **UT1: EDA & Fuentes**
 
--  [01 - Exploración del dataset *Iris* Análisis morfológico y correlaciones entre especies](./01-iris.md) 
+-  [01 - Exploración del dataset *Iris* -  Análisis morfológico y correlaciones entre especies](./01-iris.md) 
   *Análisis morfológico, correlaciones y visualizaciones reproducibles con Python y Seaborn.*
--  [02 - Publicar mi Portafolio con GitHub Pages con MkDocs](./02-portfolio.md)
+-  [02 - Publicar mi *Portafolio* con GitHub Pages con MkDocs](./02-portfolio.md)
   *Guía completa de configuración y despliegue*
-  
+- [03 - Explorando los datos de *Netflix* - Ingeniería de datos y análisis exploratorio del catálogo global](03-netflix.md)
+  *EDA completo con insights visuales y profiling avanzado del contenido mundial*
 *(Las siguientes unidades se irán publicando progresivamente.)*
 
 ---
