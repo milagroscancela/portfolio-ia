@@ -1,9 +1,9 @@
 # 🎬 Exploración del Dataset *Netflix* — Análisis Visual y Estrategia de Contenido
 
 > 📚 **Tiempo estimado de lectura:** ~10 min  
-> - **Autora:** Milagros Cancela  
+> - **Autores [G1]:** Joaquín Batista, Milagros Cancela, Valentín Rodríguez, Alexia Aurrecoechea, Nahuel López  
 > - **Fecha:** 20/08/2025  
-> - **Entorno:** Google Colab + Python 3 + Seaborn + Matplotlib  
+> - **Entorno:** Python 3 + Seaborn + Matplotlib  
 > - **Referencia de la tarea:** [Tarea 3 — EDA Netflix con Visualizaciones](https://juanfkurucz.com/ucu-id/ut1/03-eda-netflix/)
 
 ---
@@ -133,3 +133,4 @@ profile = ProfileReport(
 
 # Generar reporte HTML
 profile.to_file("netflix_eda_report.html")
+```
