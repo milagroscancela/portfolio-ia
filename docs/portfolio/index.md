@@ -33,13 +33,14 @@ El portafolio se organiza por **unidades temáticas (UT1–UT5)**, siguiendo el 
   *Análisis morfológico, correlaciones y visualizaciones reproducibles con Python y Seaborn.*
 - [02 - Publicar mi *Portafolio* con GitHub Pages con MkDocs](./02-portfolio.md)
   *Guía completa de configuración y despliegue*
-- [03 - Explorando los datos de *Netflix* - Ingeniería de datos y análisis exploratorio del catálogo global](03-netflix.md)
+- [03 - Explorando los datos de *Netflix* - Ingeniería de datos y análisis exploratorio del catálogo global](./03-netflix.md)
   *EDA completo con insights visuales y profiling avanzado del contenido mundial*
 - [04 - Análisis Empresarial de Movilidad Urbana - Integrando 3M+ Viajes de *NYC Taxi* con Pipeline ETL Automatizado](./04-multifuentes.md) 
   *Pipeline automatizado, joins multi-fuente + métricas empresariales*
 
 ### **UT2: Calidad & Ética**
-- [05 - ]
+- [05 - Análisis Forense de Datos Faltantes: Clasificando MCAR, MAR y MNAR en el Dataset Ames Housing](./05-missing.md)
+  *Detección y tratamiento de datos faltantes con análisis ético*
 - [06 - ]
 - [07 -]
 

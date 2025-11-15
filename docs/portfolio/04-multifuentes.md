@@ -465,15 +465,3 @@ multi_level = trips.groupby(['borough', 'zone', 'pickup_hour']).agg({
 - Pipeline production-ready con Prefect
 
 ---
-
-<div align="center">
-
-**⭐ Desarrollado con** ❤️ **y** ☕ **usando Python, Pandas y Prefect**
-
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
-[![Pandas](https://img.shields.io/badge/Pandas-2.0+-green.svg)](https://pandas.pydata.org/)
-[![Prefect](https://img.shields.io/badge/Prefect-Orchestration-purple.svg)](https://www.prefect.io/)
-
-*Proyecto académico — Universidad Católica del Uruguay — 2025*
-
-</div>
