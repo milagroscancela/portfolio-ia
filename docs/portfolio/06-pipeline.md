@@ -386,11 +386,11 @@ scores = cross_val_score(pipeline, X_train, y_train, cv=5, scoring='r2')
 print(f"R² medio: {scores.mean():.3f} ± {scores.std():.3f}")
 ```
 
-**Ventajas del Pipeline:**
-- ✅ **Anti-leakage automático**: fit() y transform() manejados correctamente
-- ✅ **Reproducible**: Un solo objeto serializable
-- ✅ **Cross-validation honesta**: CV respeta el pipeline
-- ✅ **Deployment-ready**: Fácil de guardar con `joblib`
+#### **Ventajas del Pipeline:**
+-  ✅ **Anti-leakage automático**: fit() y transform() manejados correctamente
+-  ✅ **Reproducible**: Un solo objeto serializable
+-  ✅ **Cross-validation honesta**: CV respeta el pipeline
+-  ✅ **Deployment-ready**: Fácil de guardar con `joblib`
 
 ---
 
@@ -453,10 +453,10 @@ X_valid, X_test, y_valid, y_test = train_test_split(X_temp, y_temp, test_size=0.
 | **Random Forest** | Ninguno | No afecta performance, ahorra cómputo |
 | **Target (SalePrice)** | Log Transform + StandardScaler | Comprime cola, mejora residuos |
 
-**Sorpresas:**
-- ❌ RobustScaler NO superó a StandardScaler (esperaba lo contrario)
-- ✅ PowerTransformer fue el MVP para modelos lineales
-- ⚠️ QuantileTransformer funcionó pero perdió interpretabilidad
+### **Sorpresas:**
+-  ❌ RobustScaler NO superó a StandardScaler (esperaba lo contrario)
+-  ✅ PowerTransformer fue el MVP para modelos lineales
+-  ⚠️ QuantileTransformer funcionó pero perdió interpretabilidad
 
 ### 2. ¿El Orden Importó?
 
@@ -491,10 +491,10 @@ R² = 0.810
 | Lot Area | **12.82** | 0.76 | **-94.1%** ✅ |
 | Gr Liv Area | 1.27 | 0.08 | -93.7% |
 
-**Cuándo usar log:**
-- ✅ Variables con cola derecha extrema (skew > 2)
-- ✅ Precios, áreas, poblaciones (crecimiento exponencial)
-- ❌ NO para variables ya simétricas (Year Built, Overall Qual)
+### **Cuándo usar log:**
+-  ✅ Variables con cola derecha extrema (skew > 2)
+-  ✅ Precios, áreas, poblaciones (crecimiento exponencial)
+-  ❌ NO para variables ya simétricas (Year Built, Overall Qual)
 
 ---
 

@@ -43,12 +43,16 @@ El portafolio se organiza por **unidades temáticas (UT1–UT5)**, siguiendo el 
   *Detección y tratamiento de datos faltantes con análisis ético*
 - [06 - Feature Scaling & Anti-Leakage: Domando las Escalas en Datos Inmobiliarios](./06-pipeline.md)
   *Feature Scaling & Anti-Leakage: Domando las Escalas en Datos Inmobiliarios*
-- [07 -]
+- [07 - Detectar y Corregir Sesgo con Fairlearn: Análisis Ético en Tres Datasets](./07-fairlearn.md)
+  *Framework ético para detección y corrección de sesgo en modelos de ML*
 
 ### **UT3: Feature Engineering**
-- [08 - ]
-- [09 - ]
-- [10 - ]
+- [08 - De Variables Básicas a Insights Poderosos: Feature Engineering en el Sector Inmobiliario](./08-future.md)
+  *Comparación de metodologías (Mutual Information vs Random Forest) para selección de variables*
+- [09 - Del Caos Categórico al Orden Predictivo: Encoding Avanzado y Target Encoding - comparando técnicas para variables categóricas de alta cardinalidad](./09-encoding.md)
+  *Análisis comparativo de Label, One-Hot, Target Encoding y técnicas avanzadas con dataset Adult Income*
+- [10 - PCA y Feature Selection en el Mercado Inmobiliario - reducción dimensional y selección estratégica en Ames Housing](./10-pca.md)
+  *Implementación de PCA, Filter Methods (F-test, MI), Wrapper Methods (Forward, Backward, RFE) con dataset Ames Housing*
 - [11 - ]
 
 *(Las siguientes unidades se irán publicando progresivamente.)*
