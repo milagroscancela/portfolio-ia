@@ -6,6 +6,6 @@ nav:
 title: Inicio
 arrange:
   - index.md
+  - acerca.md
   - portfolio
   - recursos.md
-  - acerca.md
