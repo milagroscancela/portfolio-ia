@@ -51,9 +51,10 @@ El portafolio se organiza por **unidades temáticas (UT1–UT5)**, siguiendo el 
   *Comparación de metodologías (Mutual Information vs Random Forest) para selección de variables*
 - [09 - Del Caos Categórico al Orden Predictivo: Encoding Avanzado y Target Encoding - comparando técnicas para variables categóricas de alta cardinalidad](./09-encoding.md)
   *Análisis comparativo de Label, One-Hot, Target Encoding y técnicas avanzadas con dataset Adult Income*
-- [10 - PCA y Feature Selection en el Mercado Inmobiliario - reducción dimensional y selección estratégica en Ames Housing](./10-pca.md)
+- [10 - PCA y Feature Selection en el Mercado Inmobiliario - Reducción dimensional y selección estratégica en Ames Housing](./10-pca.md)
   *Implementación de PCA, Filter Methods (F-test, MI), Wrapper Methods (Forward, Backward, RFE) con dataset Ames Housing*
-- [11 - ]
+- [11 - Feature Engineering Temporal en E-Commerce - Técnicas avanzadas con datos transaccionales](./11-future_temp.md)
+  *Implementación de lag features, rolling/expanding windows, RFM analysis, time windows, encoding cíclico y validación temporal con dataset Online Retail*
 
 *(Las siguientes unidades se irán publicando progresivamente.)*
 
@@ -70,4 +71,5 @@ Cada práctica incluye:
 
 ---
 
-📅 *Última actualización:* {{ 7 de Noviembre de 2025 }}
+!!! info "Última actualización"
+    📅 16 de Noviembre de 2025
