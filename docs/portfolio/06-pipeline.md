@@ -193,7 +193,7 @@ Si λ = 0: y^(λ) = log(y + 1)
 
 ### QuantileTransformer — Forzar Distribución
 
-![QuantileTransformer Investigation](./assets/feature-scaling/ INVESTIGACIÓN DE [QuantileTransformer→normal]sobre columna- 'SalePrice'.png)
+![QuantileTransformer Investigation](./assets/feature-scaling/INVESTIGACIÓN DE [QuantileTransformer→normal]sobre columna- 'SalePrice'.png)
 
 *Figura 5: Efecto de QuantileTransformer con output_distribution='normal' en SalePrice. Panel izquierdo: Distribución original asimétrica con skewness=4.68. Panel central: Después de QuantileTransformer, los datos son mapeados a una distribución normal casi perfecta mediante transformación de cuantiles - cada valor se mapea a su percentil correspondiente en una gaussiana. Panel derecho: Versión escalada final. Nota importante: Aunque visualmente es una campana perfecta (skewness≈0), esta transformación "fuerza" la normalidad perdiendo información sobre distancias relativas originales entre valores.*
 
