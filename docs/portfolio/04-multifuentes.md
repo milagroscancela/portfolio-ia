@@ -290,7 +290,7 @@ Top 3 Boroughs:
   - Queens: 521,098 viajes (16.6%)
   - Brooklyn: 298,765 viajes (9.5%)
 ```
-![Resultados del pipeline](./assets/multifuentes/Captura de pantalla 2025-11-15 a la(s) 15.56.16.png)
+![Resultados del pipeline](./assets/multifuentes/Captura%20de%20pantalla%202025-11-15%20a%20la%28s%29%2015.56.16.png)
 *Dashboard de Prefect mostrando los flows ejecutados y tasks completados.*
 
 ### Ventajas del Pipeline con Prefect
