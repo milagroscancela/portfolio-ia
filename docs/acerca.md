@@ -1,7 +1,7 @@
 # 👋 Sobre Mí
 
 <div style="text-align: center; margin: 2rem 0;">
-  <img src="./assets/profile/milagros-cancela.jpg" alt="Milagros Cancela" style="border-radius: 50%; width: 200px; height: 200px; object-fit: cover; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+  <img src="assets/profile/milagros-cancela.jpg" alt="Milagros Cancela" style="border-radius: 50%; width: 200px; height: 200px; object-fit: cover; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
   <h2 style="margin-top: 1rem; color: #2c3e50;">Milagros Cancela</h2>
   <p style="font-size: 1.1rem; color: #7f8c8d;">Estudiante de Ciencia de Datos | UCU</p>
 </div>
