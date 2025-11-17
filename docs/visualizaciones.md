@@ -133,7 +133,7 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
-![Resultados del Pipeline](portfolio/assets/multifuentes/Captura%20de%20pantalla%202025-11-15%20a%20la%28s%29%2015.56.16.png)
+![Resultados del Pipeline](portfolio/assets/multifuentes/Captura de pantalla 2025-11-15 a la(s) 15.56.16.png)
 
 [Ver práctica completa →](portfolio/04-multifuentes.md)
 
@@ -217,15 +217,15 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 ![Histogramas de Escalas](portfolio/assets/feature-scaling/histograma_escalas.png)
 
-![PowerTransformer Investigation](portfolio/assets/feature-scaling/INVESTIGACIÓN%20DE%20%5BPowerTransformer%20%28Yeo-Johnson%29%5D%20sobre%20columna-%20%27SalePrice%27.png)
+![PowerTransformer Investigation](portfolio/assets/feature-scaling/INVESTIGACIÓN DE [PowerTransformer (Yeo-Johnson)] sobre columna- 'SalePrice'.png)
 
-![QuantileTransformer Investigation](portfolio/assets/feature-scaling/INVESTIGACIÓN%20DE%20%5BQuantileTransformer→normal%5Dsobre%20columna-%20%27SalePrice%27.png)
+![QuantileTransformer Investigation](portfolio/assets/feature-scaling/INVESTIGACIÓN DE [QuantileTransformer→normal]sobre columna- 'SalePrice'.png)
 
-![Log Transform Investigation](portfolio/assets/feature-scaling/INVESTIGACIÓN%20DE%20%5BFunctionTransformer%20%28log1p%20seguro%29%5D%20sobre%20columna-%20%27SalePrice%27.png)
+![Log Transform Investigation](portfolio/assets/feature-scaling/INVESTIGACIÓN DE [FunctionTransformer (log1p seguro)] sobre columna- 'SalePrice'.png)
 
 ![Histograma Log Transform](portfolio/assets/feature-scaling/histograma_log_transform.png)
 
-![MaxAbsScaler Investigation](portfolio/assets/feature-scaling/INVESTIGACIÓN%20DE%20%5BMaxAbsScaler%5D%20sobre%20columna-%20%27SalePrice%27.png)
+![MaxAbsScaler Investigation](portfolio/assets/feature-scaling/INVESTIGACIÓN DE [MaxAbsScaler] sobre columna- 'SalePrice'.png)
 
 [Ver práctica completa →](portfolio/06-pipeline.md)
 
