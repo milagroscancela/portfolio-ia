@@ -2,10 +2,10 @@
 
 <div style="text-align: center; margin: 3rem 0;">
   <h1 style="font-size: 3rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">
-    Milagros Cancela
+    Portfolio
   </h1>
   <p style="font-size: 1.3rem; color: #7f8c8d; margin-top: 0;">
-    Transformando datos en decisiones | Data Science @ UCU
+    Transformando datos en decisiones 
   </p>
 </div>
 
