@@ -8,25 +8,17 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 ## 📈 Estadísticas del Portfolio
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 3rem 0;">
 
-  <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
-    <div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.5rem;">39</div>
-    <div style="font-size: 1rem; opacity: 0.9;">Visualizaciones Creadas</div>
-  </div>
 
-  <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; color: white; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
-    <div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.5rem;">11</div>
+  
     <div style="font-size: 1rem; opacity: 0.9;">Prácticas Completadas</div>
   </div>
 
-  <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 12px; color: white; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
-    <div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.5rem;">11</div>
+  
     <div style="font-size: 1rem; opacity: 0.9;">Tipos de Gráficos</div>
   </div>
 
-  <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border-radius: 12px; color: white; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
-    <div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.5rem;">8</div>
+  
     <div style="font-size: 1rem; opacity: 0.9;">Datasets Analizados</div>
   </div>
 
@@ -40,29 +32,7 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 ### Principios que Aplico
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
 
-  <div style="border-left: 4px solid #667eea; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
-    <h4 style="color: #667eea; margin-top: 0;">🎯 Claridad</h4>
-    <p style="margin: 0; color: #666; font-size: 0.95rem;">Mensaje comprensible al primer vistazo, sin elementos innecesarios</p>
-  </div>
-
-  <div style="border-left: 4px solid #f093fb; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
-    <h4 style="color: #f093fb; margin-top: 0;">📐 Precisión</h4>
-    <p style="margin: 0; color: #666; font-size: 0.95rem;">Escalas apropiadas, ejes etiquetados, unidades claras</p>
-  </div>
-
-  <div style="border-left: 4px solid #4facfe; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
-    <h4 style="color: #4facfe; margin-top: 0;">🎨 Estética</h4>
-    <p style="margin: 0; color: #666; font-size: 0.95rem;">Paletas de colores semánticas, tipografía legible</p>
-  </div>
-
-  <div style="border-left: 4px solid #43e97b; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
-    <h4 style="color: #43e97b; margin-top: 0;">📖 Narrativa</h4>
-    <p style="margin: 0; color: #666; font-size: 0.95rem;">Cada gráfico apoya una historia más amplia basada en datos</p>
-  </div>
-
-</div>
 
 ---
 
@@ -84,25 +54,7 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
 
-<div>
-![Histograma KDE por Especie](././portfolio/assets/iris/histogramas_kde_por_especie.png)
-</div>
-
-<div>
-![Pairplot por Especie](./portfolio/assets/iris/pairplot_por_especie.png)
-</div>
-
-<div>
-![Matriz de Correlaciones](./portfolio/assets/iris/matriz_correlaciones.png)
-</div>
-
-<div>
-![Análisis de Missing Data](./portfolio/assets/iris/missing.png)
-</div>
-
-</div>
 
 [Ver práctica completa →](portfolio/01-iris.md)
 
@@ -223,41 +175,7 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
 
-<div>
-![Distribuciones Numéricas](./portfolio/assets/feature-scaling/distribucion_numericas.png)
-</div>
-
-<div>
-![Boxplots de Escalas](./portfolio/assets/feature-scaling/boxplot_escalas.png)
-</div>
-
-<div>
-![Histogramas de Escalas](./portfolio/assets/feature-scaling/histograma_escalas.png)
-</div>
-
-<div>
-![PowerTransformer Investigation](./portfolio/assets/feature-scaling/INVESTIGACIÓN DE [PowerTransformer (Yeo-Johnson)] sobre columna- 'SalePrice'.png)
-</div>
-
-<div>
-![QuantileTransformer Investigation](./portfolio/assets/feature-scaling/INVESTIGACIÓN DE [QuantileTransformer→normal]sobre columna- 'SalePrice'.png)
-</div>
-
-<div>
-![Log Transform Investigation](./portfolio/assets/feature-scaling/INVESTIGACIÓN DE [FunctionTransformer (log1p seguro)] sobre columna- 'SalePrice'.png)
-</div>
-
-<div>
-![Histograma Log Transform](./portfolio/assets/feature-scaling/histograma_log_transform.png)
-</div>
-
-<div>
-![MaxAbsScaler Investigation](./portfolio/assets/feature-scaling/INVESTIGACIÓN DE [MaxAbsScaler] sobre columna- 'SalePrice'.png)
-</div>
-
-</div>
 
 [Ver práctica completa →](portfolio/06-pipeline.md)
 
@@ -281,49 +199,7 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
 
-<div>
-![Feature Importance - Mutual Information](./portfolio/assets/feature-engineering/feature-importance-mutual-info.png)
-</div>
-
-<div>
-![Feature Importance - Random Forest](./portfolio/assets/feature-engineering/feature-importance-random-forest.png)
-</div>
-
-<div>
-![F-test Features](./portfolio/assets/feature-engineering/ames-f-test-features.png)
-</div>
-
-<div>
-![Derived Features Distributions](./portfolio/assets/feature-engineering/derived-features-distributions.png)
-</div>
-
-<div>
-![Feature Distributions Analysis](./portfolio/assets/feature-engineering/feature-distributions-analysis.png)
-</div>
-
-<div>
-![PCA Scree Plot](./portfolio/assets/feature-engineering/ames-pca-scree-plot.png)
-</div>
-
-<div>
-![PCA Incremental Variance](./portfolio/assets/feature-engineering/ames-incremental-pca-variance.png)
-</div>
-
-<div>
-![PCA Feature Importance](./portfolio/assets/feature-engineering/ames-pca-feature-importance.png)
-</div>
-
-<div>
-![PCA Projection](./portfolio/assets/feature-engineering/ames-pca-projection.png)
-</div>
-
-<div>
-![PCA Loadings Plot](./portfolio/assets/feature-engineering/ames-pca-loadings-plot.png)
-</div>
-
-</div>
 
 [Ver práctica completa →](portfolio/08-future.md)
 
@@ -347,29 +223,7 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
 
-<div>
-![Cardinalidad de Variables Categóricas](./portfolio/assets/encoding-avanzado/cardinalidad_variables_cat.png)
-</div>
-
-<div>
-![Experimento de Smoothing](./portfolio/assets/encoding-avanzado/smoothing_experiment.png)
-</div>
-
-<div>
-![Comparación de Métodos](./portfolio/assets/encoding-avanzado/comparacion_metodos_de_encoding.png)
-</div>
-
-<div>
-![Top Features Random Forest](./portfolio/assets/encoding-avanzado/Top_Features_mas_importantes.png)
-</div>
-
-<div>
-![Comparación Importancia por Método](./portfolio/assets/encoding-avanzado/comparacion_importancia_por_metodo.png)
-</div>
-
-</div>
 
 [Ver práctica completa →](portfolio/09-encoding.md)
 
@@ -393,25 +247,7 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
 
-<div>
-![Scree Plot y Varianza Acumulada](./portfolio/assets/pca-feature-selection/ames-pca-scree-plot.png)
-</div>
-
-<div>
-![Loadings Plot PC1 vs PC2](./portfolio/assets/pca-feature-selection/ames-pca-loadings-plot.png)
-</div>
-
-<div>
-![Feature Importance por PCA](./portfolio/assets/pca-feature-selection/ames-pca-feature-importance.png)
-</div>
-
-<div>
-![Proyección PCA de Datos](./portfolio/assets/pca-feature-selection/ames-pca-projection.png)
-</div>
-
-</div>
 
 [Ver práctica completa →](portfolio/10-pca.md)
 
@@ -435,29 +271,7 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
 
-<div>
-![Rolling Mean vs Actual Cart Size](./portfolio/assets/temporal-features/temporal-rolling-mean-cart-size.png)
-</div>
-
-<div>
-![Rolling vs Expanding Windows](./portfolio/assets/temporal-features/temporal-rolling-vs-expanding.png)
-</div>
-
-<div>
-![Distribuciones RFM](./portfolio/assets/temporal-features/temporal-rfm-distributions.png)
-</div>
-
-<div>
-![Comparación Time Windows](./portfolio/assets/temporal-features/temporal-time-windows-comparison.png)
-</div>
-
-<div>
-![Product Diversity](./portfolio/assets/temporal-features/temporal-product-diversity.png)
-</div>
-
-</div>
 
 [Ver práctica completa →](portfolio/11-future_temp.md)
 
@@ -544,14 +358,7 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 ### Librerías Utilizadas
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;">
 
-  <div style="background: white; border: 2px solid #1f77b4; padding: 1.5rem; border-radius: 8px; text-align: center;">
-    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📊</div>
-    <strong style="color: #1f77b4;">Matplotlib</strong>
-    <p style="font-size: 0.85rem; color: #666; margin: 0.5rem 0 0 0;">Base plotting, subplots, customización</p>
-    <div style="margin-top: 0.5rem; font-size: 0.8rem; color: #999;">v3.10.0</div>
-  </div>
 
   <div style="background: white; border: 2px solid #ff7f0e; padding: 1.5rem; border-radius: 8px; text-align: center;">
     <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎨</div>
