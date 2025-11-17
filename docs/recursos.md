@@ -197,10 +197,28 @@ En esta unidad trabajé en:
 ## 📊 Recursos Adicionales
 
 ### Plataformas de Aprendizaje
-
-- 🎓 **Kaggle Learn** - Cursos interactivos gratuitos, notebooks ejecutables, certificados al completar
-- 📚 **O'Reilly Learning** - Libros técnicos completos, acceso universitario UCU, videos y tutoriales
-- 🔬 **Google ML Crash Course** - Teoría + práctica, casos de uso reales, énfasis en buenas prácticas
+```markdown
+┌─────────────────────────────────────────────┐
+│  PLATAFORMAS QUE USÉ                        │
+├─────────────────────────────────────────────┤
+│                                             │
+│  🎓 Kaggle Learn                            │
+│     • Cursos interactivos gratuitos         │
+│     • Notebooks ejecutables                 │
+│     • Certificados al completar             │
+│                                             │
+│  📚 O'Reilly Learning                       │
+│     • Libros técnicos completos             │
+│     • Acceso universitario UCU              │
+│     • Videos y tutoriales                   │
+│                                             │
+│  🔬 Google ML Crash Course                  │
+│     • Teoría + práctica                     │
+│     • Casos de uso reales                   │
+│     • Énfasis en buenas prácticas           │
+│                                             │
+└─────────────────────────────────────────────┘
+```
 
 ### Comunidad y Soporte
 
