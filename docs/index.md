@@ -1,4 +1,3 @@
-# 🚀 Portfolio de Ingeniería de Datos
 
 <div style="text-align: center; margin: 3rem 0;">
   <h1 style="font-size: 3rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">
