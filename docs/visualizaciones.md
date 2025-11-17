@@ -375,18 +375,18 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 | Práctica | N° Visualizaciones | % del Total | Complejidad |
 |----------|-------------------|-------------|-------------|
-| **Práctica 9** (Encoding) | 12 | 19.4% | 🔴🔴🔴 Alta |
-| **Práctica 3** (Series Temporales) | 10 | 16.1% | 🔴🔴 Media-Alta |
-| **Práctica 11** (Temporal Features) | 10 | 16.1% | 🔴🔴 Media-Alta |
-| **Práctica 5** (Calidad) | 9 | 14.5% | 🟡 Media |
-| **Práctica 1** (Iris) | 8 | 12.9% | 🟢 Básica |
-| **Práctica 10** (PCA) | 7 | 11.3% | 🔴 Alta |
-| **Práctica 8** (FE Avanzado) | 3 | 4.8% | 🔴 Alta |
-| **Práctica 6** (Bias) | 2 | 3.2% | 🟡 Media |
-| **Práctica 7** (FE Básico) | 1 | 1.6% | 🟢 Básica |
-| **Práctica 4** (Joins) | 0 | 0.0% | 🟢 Enfoque SQL |
+| **Práctica 8** (FE Avanzado) | 10 | 25.6% | 🔴🔴🔴 Alta |
+| **Práctica 6** (Feature Scaling) | 8 | 20.5% | 🔴🔴 Alta |
+| **Práctica 9** (Encoding) | 5 | 12.8% | 🔴🔴 Alta |
+| **Práctica 11** (Temporal Features) | 5 | 12.8% | 🔴🔴 Media-Alta |
+| **Práctica 1** (Iris) | 4 | 10.3% | 🟢 Básica |
+| **Práctica 5** (Calidad) | 4 | 10.3% | 🟡 Media |
+| **Práctica 10** (PCA) | 4 | 10.3% | 🔴 Alta |
+| **Práctica 3** (Netflix) | 1 | 2.6% | 🟡 Media |
+| **Práctica 4** (Multi-fuentes) | 1 | 2.6% | 🟢 Enfoque SQL |
+| **Práctica 7** (Bias) | 1 | 2.6% | 🟡 Media |
 
-**Total:** 62 visualizaciones
+**Total:** 39 visualizaciones
 
 </div>
 
