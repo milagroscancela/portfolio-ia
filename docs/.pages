@@ -3,9 +3,13 @@ nav:
   - Acerca de mí: acerca.md
   - Portfolio: portfolio/
   - Recursos: recursos.md
+  - Exploraciones Extra: extras.md
+  - Visualizaciones: visualizaciones.md
+  - Apuntes: apuntes.md
 title: Inicio
 arrange:
   - index.md
   - acerca.md
   - portfolio
   - recursos.md
+  - extras.md 
