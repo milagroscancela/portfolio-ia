@@ -3,14 +3,14 @@
 <div style="text-align: center; margin: 2rem 0;">
   <img src="../assets/profile/milagros-cancela.jpg" alt="Milagros Cancela" style="border-radius: 50%; width: 200px; height: 200px; object-fit: cover; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
   <h2 style="margin-top: 1rem; color: #2c3e50;">Milagros Cancela</h2>
-  <p style="font-size: 1.1rem; color: #7f8c8d;">Estudiante de Ciencia de Datos | UCU</p>
+  <p style="font-size: 1.1rem; color: #7f8c8d;">Estudiante de Ing. en IA y Ciencia de Datos | UCU</p>
 </div>
 
 ---
 
 ## 🎓 Bio
 
-¡Hola! Soy Milagros, estudiante de Ciencia de Datos en la Universidad Católica del Uruguay. Me apasiona transformar datos en insights accionables y construir modelos que generen impacto real.
+¡Hola! Soy Milagros, estudiante de Ing. IA y Ciencia de Datos en la Universidad Católica del Uruguay. Me apasiona transformar datos en insights accionables y construir modelos que generen impacto real.
 
 Actualmente estoy enfocada en **feature engineering**, **análisis exploratorio de datos** y **machine learning aplicado**, con especial interés en proyectos que combinen rigor técnico con impacto social.
 
