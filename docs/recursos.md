@@ -202,7 +202,7 @@ En esta unidad trabajé en:
 │  PLATAFORMAS QUE USÉ                        │
 ├─────────────────────────────────────────────┤
 │                                             │
-│  🎓 Kaggle Learn                            │
+│  🎓 Kaggle Learn                            |
 │     • Cursos interactivos gratuitos         │
 │     • Notebooks ejecutables                 │
 │     • Certificados al completar             │
