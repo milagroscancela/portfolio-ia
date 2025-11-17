@@ -126,9 +126,7 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
-<div style="text-align: center; margin: 2rem 0;">
-![Netflix Dashboard](./portfolio/assets/netflix/netflix_dashboard.png)
-</div>
+![Netflix Dashboard](portfolio/assets/netflix/netflix_dashboard.png)
 
 [Ver práctica completa →](portfolio/03-netflix.md)
 
@@ -147,9 +145,7 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
-<div style="text-align: center; margin: 2rem 0;">
-![Resultados del Pipeline](./portfolio/assets/multifuentes/Captura de pantalla 2025-11-15 a la(s) 15.56.16.png)
-</div>
+![Resultados del Pipeline](portfolio/assets/multifuentes/Captura de pantalla 2025-11-15 a la(s) 15.56.16.png)
 
 [Ver práctica completa →](portfolio/04-multifuentes.md)
 
@@ -173,25 +169,13 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+![Patrones de Missing Data](portfolio/assets/missing-data/missing_patterns.png)
 
-<div>
-![Patrones de Missing Data](./portfolio/assets/missing-data/missing_patterns.png)
-</div>
+![Análisis de Outliers](portfolio/assets/missing-data/outliers_analysis.png)
 
-<div>
-![Análisis de Outliers](./portfolio/assets/missing-data/outliers_analysis.png)
-</div>
+![Comparación de Distribuciones](portfolio/assets/missing-data/distribution_comparison.png)
 
-<div>
-![Comparación de Distribuciones](./portfolio/assets/missing-data/distribution_comparison.png)
-</div>
-
-<div>
-![Comparación de Correlaciones](./portfolio/assets/missing-data/correlation_comparison.png)
-</div>
-
-</div>
+![Comparación de Correlaciones](portfolio/assets/missing-data/correlation_comparison.png)
 
 [Ver práctica completa →](portfolio/05-missing.md)
 
@@ -215,9 +199,7 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
-<div style="text-align: center; margin: 2rem 0;">
-![Distribución de Precios por Grupo Racial](./portfolio/assets/fairness-bias/f4cde845-7446-4bba-a8d1-e312f7bbacce.png)
-</div>
+![Distribución de Precios por Grupo Racial](portfolio/assets/fairness-bias/f4cde845-7446-4bba-a8d1-e312f7bbacce.png)
 
 [Ver práctica completa →](portfolio/07-fairlearn.md)
 
