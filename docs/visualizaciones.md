@@ -84,13 +84,25 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+
+<div>
 ![Histograma KDE por Especie](portfolio/assets/iris/histogramas_kde_por_especie.png)
+</div>
 
+<div>
 ![Pairplot por Especie](portfolio/assets/iris/pairplot_por_especie.png)
+</div>
 
+<div>
 ![Matriz de Correlaciones](portfolio/assets/iris/matriz_correlaciones.png)
+</div>
 
+<div>
 ![Análisis de Missing Data](portfolio/assets/iris/missing.png)
+</div>
+
+</div>
 
 [Ver práctica completa →](portfolio/01-iris.md)
 
@@ -114,7 +126,9 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
+<div style="text-align: center; margin: 2rem 0;">
 ![Netflix Dashboard](portfolio/assets/netflix/netflix_dashboard.png)
+</div>
 
 [Ver práctica completa →](portfolio/03-netflix.md)
 
@@ -133,7 +147,9 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
+<div style="text-align: center; margin: 2rem 0;">
 ![Resultados del Pipeline](portfolio/assets/multifuentes/Captura de pantalla 2025-11-15 a la(s) 15.56.16.png)
+</div>
 
 [Ver práctica completa →](portfolio/04-multifuentes.md)
 
@@ -157,13 +173,25 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+
+<div>
 ![Patrones de Missing Data](portfolio/assets/missing-data/missing_patterns.png)
+</div>
 
+<div>
 ![Análisis de Outliers](portfolio/assets/missing-data/outliers_analysis.png)
+</div>
 
+<div>
 ![Comparación de Distribuciones](portfolio/assets/missing-data/distribution_comparison.png)
+</div>
 
+<div>
 ![Comparación de Correlaciones](portfolio/assets/missing-data/correlation_comparison.png)
+</div>
+
+</div>
 
 [Ver práctica completa →](portfolio/05-missing.md)
 
@@ -187,7 +215,9 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
+<div style="text-align: center; margin: 2rem 0;">
 ![Distribución de Precios por Grupo Racial](portfolio/assets/fairness-bias/f4cde845-7446-4bba-a8d1-e312f7bbacce.png)
+</div>
 
 [Ver práctica completa →](portfolio/07-fairlearn.md)
 
@@ -211,21 +241,41 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+
+<div>
 ![Distribuciones Numéricas](portfolio/assets/feature-scaling/distribucion_numericas.png)
+</div>
 
+<div>
 ![Boxplots de Escalas](portfolio/assets/feature-scaling/boxplot_escalas.png)
+</div>
 
+<div>
 ![Histogramas de Escalas](portfolio/assets/feature-scaling/histograma_escalas.png)
+</div>
 
+<div>
 ![PowerTransformer Investigation](portfolio/assets/feature-scaling/INVESTIGACIÓN DE [PowerTransformer (Yeo-Johnson)] sobre columna- 'SalePrice'.png)
+</div>
 
+<div>
 ![QuantileTransformer Investigation](portfolio/assets/feature-scaling/INVESTIGACIÓN DE [QuantileTransformer→normal]sobre columna- 'SalePrice'.png)
+</div>
 
+<div>
 ![Log Transform Investigation](portfolio/assets/feature-scaling/INVESTIGACIÓN DE [FunctionTransformer (log1p seguro)] sobre columna- 'SalePrice'.png)
+</div>
 
+<div>
 ![Histograma Log Transform](portfolio/assets/feature-scaling/histograma_log_transform.png)
+</div>
 
+<div>
 ![MaxAbsScaler Investigation](portfolio/assets/feature-scaling/INVESTIGACIÓN DE [MaxAbsScaler] sobre columna- 'SalePrice'.png)
+</div>
+
+</div>
 
 [Ver práctica completa →](portfolio/06-pipeline.md)
 
@@ -249,25 +299,49 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+
+<div>
 ![Feature Importance - Mutual Information](portfolio/assets/feature-engineering/feature-importance-mutual-info.png)
+</div>
 
+<div>
 ![Feature Importance - Random Forest](portfolio/assets/feature-engineering/feature-importance-random-forest.png)
+</div>
 
+<div>
 ![F-test Features](portfolio/assets/feature-engineering/ames-f-test-features.png)
+</div>
 
+<div>
 ![Derived Features Distributions](portfolio/assets/feature-engineering/derived-features-distributions.png)
+</div>
 
+<div>
 ![Feature Distributions Analysis](portfolio/assets/feature-engineering/feature-distributions-analysis.png)
+</div>
 
+<div>
 ![PCA Scree Plot](portfolio/assets/feature-engineering/ames-pca-scree-plot.png)
+</div>
 
+<div>
 ![PCA Incremental Variance](portfolio/assets/feature-engineering/ames-incremental-pca-variance.png)
+</div>
 
+<div>
 ![PCA Feature Importance](portfolio/assets/feature-engineering/ames-pca-feature-importance.png)
+</div>
 
+<div>
 ![PCA Projection](portfolio/assets/feature-engineering/ames-pca-projection.png)
+</div>
 
+<div>
 ![PCA Loadings Plot](portfolio/assets/feature-engineering/ames-pca-loadings-plot.png)
+</div>
+
+</div>
 
 [Ver práctica completa →](portfolio/08-future.md)
 
@@ -291,15 +365,29 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+
+<div>
 ![Cardinalidad de Variables Categóricas](portfolio/assets/encoding-avanzado/cardinalidad_variables_cat.png)
+</div>
 
+<div>
 ![Experimento de Smoothing](portfolio/assets/encoding-avanzado/smoothing_experiment.png)
+</div>
 
+<div>
 ![Comparación de Métodos](portfolio/assets/encoding-avanzado/comparacion_metodos_de_encoding.png)
+</div>
 
+<div>
 ![Top Features Random Forest](portfolio/assets/encoding-avanzado/Top_Features_mas_importantes.png)
+</div>
 
+<div>
 ![Comparación Importancia por Método](portfolio/assets/encoding-avanzado/comparacion_importancia_por_metodo.png)
+</div>
+
+</div>
 
 [Ver práctica completa →](portfolio/09-encoding.md)
 
@@ -323,13 +411,25 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+
+<div>
 ![Scree Plot y Varianza Acumulada](portfolio/assets/pca-feature-selection/ames-pca-scree-plot.png)
+</div>
 
+<div>
 ![Loadings Plot PC1 vs PC2](portfolio/assets/pca-feature-selection/ames-pca-loadings-plot.png)
+</div>
 
+<div>
 ![Feature Importance por PCA](portfolio/assets/pca-feature-selection/ames-pca-feature-importance.png)
+</div>
 
+<div>
 ![Proyección PCA de Datos](portfolio/assets/pca-feature-selection/ames-pca-projection.png)
+</div>
+
+</div>
 
 [Ver práctica completa →](portfolio/10-pca.md)
 
@@ -353,15 +453,29 @@ Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácti
 
 **Visualizaciones:**
 
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+
+<div>
 ![Rolling Mean vs Actual Cart Size](portfolio/assets/temporal-features/temporal-rolling-mean-cart-size.png)
+</div>
 
+<div>
 ![Rolling vs Expanding Windows](portfolio/assets/temporal-features/temporal-rolling-vs-expanding.png)
+</div>
 
+<div>
 ![Distribuciones RFM](portfolio/assets/temporal-features/temporal-rfm-distributions.png)
+</div>
 
+<div>
 ![Comparación Time Windows](portfolio/assets/temporal-features/temporal-time-windows-comparison.png)
+</div>
 
+<div>
 ![Product Diversity](portfolio/assets/temporal-features/temporal-product-diversity.png)
+</div>
+
+</div>
 
 [Ver práctica completa →](portfolio/11-future_temp.md)
 
@@ -594,21 +708,7 @@ Práctica 10-11 → Modelado avanzado (PCA, temporal features)
 - 🎨 [Seaborn Example Gallery](https://seaborn.pydata.org/examples/index.html)
 - 📈 [Data-to-Viz](https://www.data-to-viz.com/)
 
----
-
-## 📞 Colaboraciones
-
-¿Necesitas visualizaciones profesionales para tu proyecto de datos?
-
-<div style="text-align: center; margin: 3rem 0;">
-  <a href="mailto:mcancelacano@gmail.com?subject=Solicitud%20de%20Visualización" style="text-decoration: none;">
-    <button style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 1.25rem 2.5rem; border-radius: 8px; cursor: pointer; font-size: 1.1rem; font-weight: 600; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
-      📧 Contáctame para Colaborar
-    </button>
-  </a>
-</div>
-
----
+--- 
 
 > 📅 **Última actualización:** 17 de Noviembre de 2025  
 > 👤 **Portfolio de:** Milagros Cancela  
