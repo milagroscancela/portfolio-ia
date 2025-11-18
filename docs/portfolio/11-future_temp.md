@@ -298,7 +298,7 @@ df['rolling_cart_mean_3'] = (
 
 ### 2.3. Visualización: Rolling Mean Captura Tendencias
 
-![Rolling Mean vs Actual Cart Size](./assets/temporal-features/temporal-rolling-mean-cart-size.png)
+![Rolling Mean vs Actual Cart Size](assets/temporal-features/temporal-rolling-mean-cart-size.png)
 
 *Figura 1: Rolling mean de cart size (ventana de 3 órdenes) vs valores reales para usuario 12748. **Panel:** Línea verde con X muestra cart size real (alta volatilidad, rango 4-70 items). Línea coral con círculos muestra rolling mean que suaviza fluctuaciones. Área sombreada (±1 std) indica variabilidad capturada por `rolling_cart_std_3`. **Observaciones:** (1) Rolling mean "amortigua" picos extremos (ej: orden 10 con 1 item no arrastra promedio a 1, se mantiene ~25). (2) Banda de confianza (std) se expande en períodos erráticos (órdenes 8-12) y se contrae en períodos estables (órdenes 15-18). **Insight de negocio:** Este usuario tiene comportamiento bimodal - compras grandes (~60 items) vs pequeñas (~10 items), rolling mean detecta el "baseline" alrededor de 30-40 items.*
 
@@ -361,7 +361,7 @@ df['expanding_total_spent'] = (
 
 ### 3.3. Comparación Visual: Rolling vs Expanding
 
-![Rolling vs Expanding Windows](./assets/temporal-features/temporal-rolling-vs-expanding.png)
+![Rolling vs Expanding Windows](assets/temporal-features/temporal-rolling-vs-expanding.png)
 
 *Figura 2: Comparación de rolling mean (tendencia reciente) vs expanding mean (comportamiento histórico acumulado). **Panel izquierdo:** Rolling mean de cart size muestra alta sensibilidad a cambios - pendiente pronunciada en órdenes 15-20 cuando usuario aumenta volumen. **Panel derecho:** Expanding mean de días entre órdenes converge a ~15 días después de orden 7 y se mantiene estable. **Interpretación:** (1) Rolling detecta "este usuario está comprando MÁS" (mean sube 30→63 en 5 órdenes). (2) Expanding dice "históricamente este usuario compra cada 15 días" (valor estable). **Uso en modelo:** Rolling para features de **cambio de comportamiento**, Expanding para features de **perfil de usuario**.*
 
@@ -438,7 +438,7 @@ df['monetary_total'] = df['expanding_total_spent']
 
 ### 4.3. Distribuciones RFM
 
-![Distribuciones RFM](./assets/temporal-features/temporal-rfm-distributions.png)
+![Distribuciones RFM](assets/temporal-features/temporal-rfm-distributions.png)
 
 *Figura 3: Distribución de las tres dimensiones RFM en el dataset. **Panel izquierdo (Recency):** Distribución bimodal con pico en ~350 días (usuarios inactivos del inicio del dataset) y distribución uniforme 0-300 días (usuarios activos recientes). **Panel central (Frequency):** Distribución log-normal con pico en 18-20 órdenes totales, cola larga hasta 35+ órdenes (usuarios power). **Panel derecho (Monetary):** Fuerte concentración en ticket promedio bajo (<£500), cola extremadamente larga hasta £100k+ (indicativo de clientes B2B o mayoristas). **Conclusión:** Dataset tiene mezcla de usuarios casuales (1-5 órdenes, £100-300 ticket) y usuarios premium/B2B (20+ órdenes, £5k+ ticket).*
 
@@ -535,7 +535,7 @@ df = df.groupby('user_id', group_keys=False).apply(calculate_time_windows_for_us
 
 ### 5.3. Comparación de Ventanas Temporales
 
-![Comparación Time Windows](./assets/temporal-features/temporal-time-windows-comparison.png)
+![Comparación Time Windows](assets/temporal-features/temporal-time-windows-comparison.png)
 
 *Figura 4: Análisis de actividad en ventanas temporales de 7, 30 y 90 días. **Panel izquierdo:** Promedio de órdenes por ventana - barras muestran escalamiento esperado (7d: 0.4 órdenes, 30d: 1.4 órdenes, 90d: 3.7 órdenes). Relación ~lineal con ventana temporal valida consistencia de features. **Panel derecho:** Scatter plot de actividad reciente (7d) vs histórica (90d) revela segmentos: (1) Cluster en origen (0,0) = usuarios inactivos o nuevos. (2) Línea diagonal = usuarios con actividad constante (orders_7d proporcional a orders_90d). (3) Puntos sobre diagonal (ej: 10 órdenes en 90d, 3 en 7d) = **usuarios acelerando** - alta probabilidad de recompra. (4) Puntos bajo diagonal = usuarios desacelerando (potencial churn). **Valor predictivo:** Ratio orders_7d/orders_90d es fuerte indicador de engagement actual.*
 
@@ -592,7 +592,7 @@ diversity_features['product_diversity_ratio'] = (
 
 ### 6.3. Resultados y Análisis
 
-![Product Diversity](./assets/temporal-features/temporal-product-diversity.png)
+![Product Diversity](assets/temporal-features/temporal-product-diversity.png)
 
 *Figura 5: Análisis de diversidad de productos por usuario. **Panel izquierdo:** Scatter de productos únicos vs total items comprados. Línea roja diagonal (y=x) representa diversidad perfecta (nunca recompra). Mayoría de puntos caen DEBAJO de línea → usuarios recompran productos. Dispersión vertical para mismo total_items indica variabilidad en comportamiento (ej: 2000 items → algunos usuarios tienen 500 únicos, otros 1500). **Panel derecho:** Histograma de diversity ratio muestra distribución concentrada en 0.75-0.90 con mediana en 0.84 (línea roja). Interpretación: usuario típico compra 84% de productos únicos → ~16% son recompras. Cola hacia 0.5 indica segmento de usuarios con alta recompra (potencialmente productos consumibles). **Insight de negocio:** Mayoría de usuarios son "exploradores" (high diversity) vs "recompradores" (low diversity) - implicación para estrategia de recomendación.*
 
