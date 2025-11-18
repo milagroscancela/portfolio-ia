@@ -1,0 +1,682 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../01-primera-entrada/">
+      
+      
+        <link rel="next" href="../03-netflix/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>🚀 Publicar mi Portafolio con GitHub Pages con MkDocs - Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#publicar-mi-portafolio-con-github-pages-con-mkdocs" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Portfolio" class="md-header__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🚀 Publicar mi Portafolio con GitHub Pages con MkDocs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Portfolio" class="md-nav__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acerca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Acerca de mí
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Portfolio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exploraciones Extra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualizaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visualizaciones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apuntes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apuntes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Objetivo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contexto-y-proceso-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧭 Contexto y proceso de trabajo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desarrollo-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Desarrollo paso a paso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Desarrollo paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-creacion-del-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Creación del repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configuracion-de-mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Configuración de MkDocs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-activacion-de-github-pages-con-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ 3. Activación de GitHub Pages con Actions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ 3. Activación de GitHub Pages con Actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-troubleshooting-y-aprendizajes-del-despliegue" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 4. Troubleshooting y aprendizajes del despliegue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructura-de-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Estructura de proyecto:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflexion-personal" class="md-nav__link">
+    <span class="md-ellipsis">
+      💭 Reflexión Personal
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Referencias
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="publicar-mi-portafolio-con-github-pages-con-mkdocs">🚀 Publicar mi Portafolio con GitHub Pages con MkDocs<a class="headerlink" href="#publicar-mi-portafolio-con-github-pages-con-mkdocs" title="Permanent link">¶</a></h1>
+<blockquote>
+<p><strong>📚Tiempo estimado de lectura:</strong> ~7 min<br>
+<strong>Autora:</strong> Milagros Cancela<br>
+<strong>Fecha:</strong> 16/08/2025<br>
+<strong>Entorno:</strong> MkDocs Material + GitHub Actions<br>
+<strong>Referencia de la tarea:</strong> <a href="https://juanfkurucz.com/ucu-id/ut1/02-portafolio-github-pages/">Tarea 2 — Publicar tu Portafolio con GitHub Pages</a></p>
+</blockquote>
+<hr>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
+<p>El propósito de esta práctica fue <strong>publicar mi portafolio profesional de Ingeniería de Datos</strong> en línea, configurando correctamente la estructura, el flujo de despliegue con GitHub Actions y la documentación con MkDocs Material.<br>
+El resultado final debía ser un sitio accesible públicamente, con las primeras prácticas integradas, incluyendo el análisis exploratorio del dataset <em>Iris</em>.</p>
+<hr>
+<h2 id="contexto-y-proceso-de-trabajo">🧭 Contexto y proceso de trabajo<a class="headerlink" href="#contexto-y-proceso-de-trabajo" title="Permanent link">¶</a></h2>
+<p>Esta práctica fue un verdadero recorrido técnico.<br>
+Inicialmente, comencé a construir mi portafolio con <strong>MkDocs</strong>, aprovechando su simplicidad para generar sitios estáticos a partir de Markdown.<br>
+Sin embargo, en un intento de lograr más dinamismo y componentes interactivos, <strong>migré temporalmente a Vercel</strong>, usando un enfoque más orientado a front-end con Node.js y Next.js.</p>
+<p>La experiencia en Vercel fue útil para entender cómo funcionan los despliegues continuos, pero terminé volviendo a <strong>MkDocs</strong> porque lo que necesitaba no era tanto un sitio complejo, sino una documentación clara, organizada y profesional.<br>
+MkDocs, además, es más compatible con el formato académico y con los flujos automatizados de GitHub Pages.  </p>
+<p>Este cambio de enfoque me permitió entender la diferencia entre <strong>presentar proyectos visualmente</strong> y <strong>documentar el proceso técnico de forma reproducible</strong>, que es lo que realmente se evalúa en el curso.</p>
+<hr>
+<h2 id="desarrollo-paso-a-paso">⚙️ Desarrollo paso a paso<a class="headerlink" href="#desarrollo-paso-a-paso" title="Permanent link">¶</a></h2>
+<h3 id="1-creacion-del-repositorio">1. Creación del repositorio<a class="headerlink" href="#1-creacion-del-repositorio" title="Permanent link">¶</a></h3>
+<p>Comencé a partir del template oficial <a href="https://github.com/ucudal/ia-portfolio-template"><code>ucudal/ia-portfolio-template</code></a> utilizando la opción <strong>Use this template</strong>.<br>
+Evité hacer <em>fork</em> y configuré lo siguiente:</p>
+<ul>
+<li><strong>Owner:</strong> <code>milagroscancela</code>  </li>
+<li><strong>Repository name:</strong> <code>portfolio-ia</code>  </li>
+<li><strong>Visibilidad:</strong> Pública  </li>
+<li><strong>Descripción:</strong> Portafolio personal de Ingeniería de Datos — UCU  </li>
+</ul>
+<p>Una vez creado, cloné el repo en mi MacBook y lo abrí con Visual Studio Code / Cursor.</p>
+<hr>
+<h3 id="2-configuracion-de-mkdocs">2. Configuración de MkDocs<a class="headerlink" href="#2-configuracion-de-mkdocs" title="Permanent link">¶</a></h3>
+<p>El template ya incluye el archivo <code>mkdocs.yml</code>, donde definí la estructura de navegación, tema visual y rutas:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="s">"Portafolio</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Ingeniería</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Datos</span><span class="nv"> </span><span class="s">—</span><span class="nv"> </span><span class="s">Milagros</span><span class="nv"> </span><span class="s">Cancela"</span>
+<span class="nt">theme</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
+<span class="w">  </span><span class="nt">palette</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">primary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pink</span>
+<span class="w">    </span><span class="nt">accent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">purple</span>
+<span class="nt">nav</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Inicio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Prácticas</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"01</span><span class="nv"> </span><span class="s">—</span><span class="nv"> </span><span class="s">Exploración</span><span class="nv"> </span><span class="s">del</span><span class="nv"> </span><span class="s">Dataset</span><span class="nv"> </span><span class="s">Iris"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">portfolio/01-iris.md</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"02</span><span class="nv"> </span><span class="s">—</span><span class="nv"> </span><span class="s">Publicación</span><span class="nv"> </span><span class="s">del</span><span class="nv"> </span><span class="s">Portafolio"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">portfolio/02-portfolio.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Acerca de mí</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">about.md</span>
+</code></pre></div>
+<h2 id="3-activacion-de-github-pages-con-actions">⚙️ 3. Activación de GitHub Pages con Actions<a class="headerlink" href="#3-activacion-de-github-pages-con-actions" title="Permanent link">¶</a></h2>
+<p>Una vez verificado el contenido local, pasé al <strong>despliegue automático con GitHub Actions</strong>.<br>
+El proceso fue el siguiente:</p>
+<ol>
+<li>En <strong>Settings → Pages → Build and deployment</strong>, seleccioné:</li>
+<li>GitHub creó automáticamente un flujo de trabajo en<br>
+<code>.github/workflows/ci.yml</code>, encargado de <strong>construir el sitio</strong> y <strong>subirlo a la rama <code>gh-pages</code></strong>.  </li>
+<li>Publiqué los cambios con los siguientes comandos:</li>
+</ol>
+<p></p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat: publicar portafolio con MkDocs"</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+4. Esperé entre 1 y 3 minutos a que el workflow finalizara correctamente en la pestaña Actions.<p></p>
+<p>✅ Resultado:
+Mi sitio quedó disponible públicamente en la URL:
+👉 https://milagroscancela.github.io/portfolio-ia/</p>
+<h3 id="4-troubleshooting-y-aprendizajes-del-despliegue">🧩 4. Troubleshooting y aprendizajes del despliegue<a class="headerlink" href="#4-troubleshooting-y-aprendizajes-del-despliegue" title="Permanent link">¶</a></h3>
+<p>Durante el despliegue encontré algunos errores que me ayudaron a comprender mejor cómo funciona el flujo entre el build local, la rama gh-pages y los workflows de GitHub Actions:
+- ❌ DNS check unsuccessful:
+Al intentar usar un dominio personalizado (portafolio.milagroscancela.com), GitHub no encontraba los registros CNAME.
+Lo solucioné eliminando temporalmente el dominio y volviendo a usar la URL por defecto de GitHub Pages.
+- ❌ 404 tras el deploy:
+El sitio tardó unos minutos en procesar el workflow. El truco fue limpiar la caché y esperar la confirmación verde en Actions antes de recargar la página.
+- 💡 Tip técnico:
+Si MkDocs no refleja los últimos cambios, ejecutar:
+</p><div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>build<span class="w"> </span>--clean
+</code></pre></div>
+Esto fuerza la reconstrucción completa del sitio y limpia artefactos antiguos.
+Estos pasos me sirvieron para consolidar la relación entre el entorno local y el entorno remoto, entendiendo mejor el ciclo CI/CD (Integración y Despliegue Continuo).<p></p>
+<h3 id="estructura-de-proyecto">⚙️ Estructura de proyecto:<a class="headerlink" href="#estructura-de-proyecto" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>docs/<span class="w"> </span>
+├──<span class="w"> </span>index.md<span class="w"> </span>
+├──<span class="w"> </span>about.md<span class="w"> </span>
+├──<span class="w"> </span>portfolio/<span class="w"> </span>
+│<span class="w"> </span>└──<span class="w"> </span>actividades/<span class="w"> </span>
+│<span class="w"> </span>├──<span class="w"> </span>act_uno_iris/<span class="w"> </span>
+│<span class="w"> </span>└──<span class="w"> </span>act_tres_portafolio/<span class="w"> </span>
+└──<span class="w"> </span>assets/
+</code></pre></div>
+<h2 id="reflexion-personal">💭 Reflexión Personal<a class="headerlink" href="#reflexion-personal" title="Permanent link">¶</a></h2>
+<p>Esta práctica me enseñó que <strong>publicar un proyecto no es el final del proceso técnico</strong>, sino una etapa más dentro de su ciclo de vida.<br>
+Antes veía <em>MkDocs</em> solo como una herramienta de documentación, pero hoy lo entiendo como un <strong>lenguaje para comunicar ingeniería</strong>: una forma de estructurar resultados, visualizaciones y reflexiones con rigor técnico y claridad visual.</p>
+<p>Mi breve paso por <em>Vercel</em> me sirvió para experimentar con frameworks más complejos, pero también me mostró que la <strong>simplicidad de MkDocs es su mayor fortaleza</strong>.<br>
+Volver a MkDocs fue, en cierto modo, <strong>volver al propósito original del curso</strong>: documentar el pensamiento analítico detrás de cada práctica, no solo mostrar gráficos o métricas.</p>
+<p>Además, configurar <strong>GitHub Pages con Actions</strong> me permitió comprender los fundamentos del <strong>despliegue continuo (CI/CD)</strong> y del <strong>control de versiones</strong> como prácticas reales de la ingeniería de datos moderna.</p>
+<h2 id="referencias">📚 Referencias<a class="headerlink" href="#referencias" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages">GitHub Docs — Getting Started with GitHub Pages</a>  </li>
+<li><a href="https://docs.github.com/en/actions/quickstart">GitHub Docs — Actions Quickstart</a>  </li>
+<li><a href="https://github.com/ucudal/ia-portfolio-template">Template oficial — ucudal/ia-portfolio-template</a>  </li>
+<li><a href="https://squidfunk.github.io/mkdocs-material/">MkDocs Material — Documentación oficial</a>  </li>
+<li>Kurucz, J. (2025). <em>Publicar tu Portafolio con GitHub Pages.</em> Universidad Católica del Uruguay.</li>
+</ul>
+<hr>
+<blockquote>
+<p>📁 <strong>Ubicación:</strong> <code>docs/portfolio/actividades/act_tres_portafolio/README.md</code><br>
+🌐 <strong>Sitio activo:</strong> <a href="https://milagroscancela.github.io/portfolio-ia/">https://milagroscancela.github.io/portfolio-ia/</a><br>
+💬 <strong>Último commit:</strong> <code>feat: publicar portafolio con MkDocs</code><br>
+🧠 <strong>Estado:</strong> Deploy estable y verificado</p>
+</blockquote>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="13 de noviembre de 2025 19:35:59 UTC">13 de noviembre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

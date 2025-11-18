@@ -1,0 +1,1968 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../09-encoding/">
+      
+      
+        <link rel="next" href="../11-future_temp/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>🔍 De 79 Features a Lo Esencial: PCA y Feature Selection en el Mercado Inmobiliario - Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#de-79-features-a-lo-esencial-pca-y-feature-selection-en-el-mercado-inmobiliario" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Portfolio" class="md-header__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🔍 De 79 Features a Lo Esencial: PCA y Feature Selection en el Mercado Inmobiliario
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Portfolio" class="md-nav__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acerca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Acerca de mí
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Portfolio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exploraciones Extra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualizaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visualizaciones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apuntes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apuntes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descargar-notebook-y-visualizaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      💾 Descargar Notebook y Visualizaciones
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Objetivo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contexto-y-motivacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      💼 Contexto y Motivación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💼 Contexto y Motivación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-desafio-de-alta-dimensionalidad-en-bienes-raices" class="md-nav__link">
+    <span class="md-ellipsis">
+      El Desafío de Alta Dimensionalidad en Bienes Raíces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodologia-dos-filosofias-de-reduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Metodología: Dos Filosofías de Reducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 Metodología: Dos Filosofías de Reducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pca-vs-feature-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      PCA vs Feature Selection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataset-ames-housing" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Dataset: Ames Housing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Dataset: Ames Housing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características Principales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-1-pca-analisis-de-componentes-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 Parte 1: PCA - Análisis de Componentes Principales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Parte 1: PCA - Análisis de Componentes Principales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-estandarizacion-critica" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Estandarización Crítica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-scree-plot-cuantos-componentes-necesitamos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Scree Plot: ¿Cuántos Componentes Necesitamos?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-interpretacion-de-loadings-que-captura-pc1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Interpretación de Loadings: ¿Qué Captura PC1?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-feature-selection-basada-en-pca-loadings" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4. Feature Selection Basada en PCA Loadings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-performance-pca-vs-features-originales" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5. Performance: PCA vs Features Originales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-2-feature-selection-filter-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Parte 2: Feature Selection - Filter Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Parte 2: Feature Selection - Filter Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-f-test-anova-relaciones-lineales" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. F-test (ANOVA): Relaciones Lineales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-mutual-information-capturando-no-linealidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Mutual Information: Capturando No-Linealidades
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-3-feature-selection-wrapper-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 Parte 3: Feature Selection - Wrapper Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Parte 3: Feature Selection - Wrapper Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-two-stage-para-eficiencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estrategia Two-Stage para Eficiencia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-recursive-feature-elimination-rfe" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Recursive Feature Elimination (RFE)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-forward-vs-backward-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Forward vs Backward Selection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparacion-final-todos-los-metodos" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Comparación Final: Todos los Métodos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Comparación Final: Todos los Métodos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tabla-comparativa-completa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabla Comparativa Completa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualizacion-de-trade-offs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualización de Trade-offs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analisis-de-trade-offs-y-decisiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Análisis de Trade-offs y Decisiones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Análisis de Trade-offs y Decisiones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trade-off-1-reduccion-vs-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trade-off #1: Reducción vs Performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trade-off-2-interpretabilidad-vs-optimalidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trade-off #2: Interpretabilidad vs Optimalidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trade-off-3-velocidad-vs-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trade-off #3: Velocidad vs Precisión
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusiones-y-reflexiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎓 Conclusiones y Reflexiones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎓 Conclusiones y Reflexiones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#respuestas-a-preguntas-criticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Respuestas a Preguntas Críticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Respuestas a Preguntas Críticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-puedes-explicar-pc1-en-terminos-simples" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Puedes explicar PC1 en términos simples?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-que-significa-que-pc1-captura-139-de-varianza" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. ¿Qué significa que PC1 captura 13.9% de varianza?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cuando-usar-pca-vs-feature-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. ¿Cuándo usar PCA vs Feature Selection?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-como-decidir-entre-f-test-mi-rfe-lasso" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. ¿Cómo decidir entre F-test, MI, RFE, Lasso?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-que-estrategia-aplicarias-si-metodos-no-concuerdan" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. ¿Qué estrategia aplicarías si métodos no concuerdan?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lecciones-aprendidas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecciones Aprendidas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecciones Aprendidas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#leccion-1-reduccion-dimensional-no-es-gratis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lección 1: Reducción dimensional NO es gratis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leccion-2-interpretabilidad-vale-dinero" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lección 2: Interpretabilidad vale dinero
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leccion-3-two-stage-selection-es-gold-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lección 3: Two-Stage Selection es gold standard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias-y-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Referencias y Recursos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Referencias y Recursos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#material-del-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Material del Curso
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación Técnica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datasets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libros-y-papers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Libros y Papers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutoriales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutoriales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#informacion-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Información del Proyecto
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="de-79-features-a-lo-esencial-pca-y-feature-selection-en-el-mercado-inmobiliario">🔍 De 79 Features a Lo Esencial: PCA y Feature Selection en el Mercado Inmobiliario<a class="headerlink" href="#de-79-features-a-lo-esencial-pca-y-feature-selection-en-el-mercado-inmobiliario" title="Permanent link">¶</a></h1>
+<p><strong>Práctica 10 - PCA y Feature Selection con Ames Housing</strong><br>
+<strong>UT3: Reducción Dimensional | Selección Inteligente de Variables</strong></p>
+<blockquote>
+<p>📚 <strong>Tiempo estimado de lectura:</strong> ~15 min<br>
+- <strong>Autores [G1]:</strong> Joaquín Batista, Milagros Cancela, Valentín Rodríguez, Alexia Aurrecoechea, Nahuel López <br>
+- <strong>Fecha:</strong> Noviembre 2025 <br>
+- <strong>Entorno:</strong> Python 3.13+ | Pandas | Scikit-learn | Matplotlib | Seaborn<br>
+- <strong>Referencia de la tarea:</strong> <a href="https://juanfkurucz.com/ucu-id/ut3/10-pca-feature-selection/">Práctica 10 — PCA y Feature Selection</a></p>
+</blockquote>
+<hr>
+<h2 id="descargar-notebook-y-visualizaciones">💾 Descargar Notebook y Visualizaciones<a class="headerlink" href="#descargar-notebook-y-visualizaciones" title="Permanent link">¶</a></h2>
+<ul>
+<li><a class="btn btn-primary" download="pca_feature_selection_practice10.ipynb" href="../assets/pca-feature-selection/pca_feature_selection_practice10.ipynb" target="_blank"><strong>Descargar notebook — pca_feature_selection_practice10.ipynb</strong></a></li>
+</ul>
+<blockquote>
+<p>📂 Archivos disponibles dentro del repositorio:<br>
+<code>docs/portfolio/assets/pca-feature-selection/pca_feature_selection_practice10.ipynb</code></p>
+</blockquote>
+<hr>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
+<p>El objetivo de esta práctica fue <strong>dominar técnicas de reducción dimensional y selección de features</strong> para transformar un dataset inmobiliario con 79 variables en un modelo compacto, interpretable y eficiente. Se compararon <strong>PCA (reducción por transformación)</strong> vs <strong>Feature Selection (reducción por selección)</strong>, evaluando el trade-off crítico entre complejidad del modelo y performance predictiva.</p>
+<hr>
+<h2 id="contexto-y-motivacion">💼 Contexto y Motivación<a class="headerlink" href="#contexto-y-motivacion" title="Permanent link">¶</a></h2>
+<h3 id="el-desafio-de-alta-dimensionalidad-en-bienes-raices">El Desafío de Alta Dimensionalidad en Bienes Raíces<a class="headerlink" href="#el-desafio-de-alta-dimensionalidad-en-bienes-raices" title="Permanent link">¶</a></h3>
+<p>Con <strong>79 features</strong> para predecir precios de casas, enfrentamos problemas reales:</p>
+<ul>
+<li>📈 <strong>Curse of Dimensionality</strong>: Modelos requieren exponencialmente más datos</li>
+<li>⏱️ <strong>Velocidad</strong>: Entrenar 79 features → 2-3 min, Inferencia lenta en producción</li>
+<li>🧠 <strong>Overfitting</strong>: Tantas variables capturan ruido, no señal</li>
+<li>💬 <strong>Interpretabilidad</strong>: Imposible explicar "qué importa" al equipo de ventas</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Elemento</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Problema</strong></td>
+<td style="text-align: left;">79 features crean modelos lentos, complejos e ininterpretables para agentes inmobiliarios</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Objetivo</strong></td>
+<td style="text-align: left;">Reducir a 15-40 features manteniendo &gt;95% de capacidad predictiva</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dataset</strong></td>
+<td style="text-align: left;">Ames Housing - 2,919 casas en Iowa, $\sim$180k precio promedio</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Técnicas</strong></td>
+<td style="text-align: left;">PCA (componentes principales) + Filter Methods (F-test, MI) + Wrapper Methods (RFE)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Valor de negocio</strong></td>
+<td style="text-align: left;">Modelos 3x más rápidos, explicables para stakeholders, mantenibles en producción</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="metodologia-dos-filosofias-de-reduccion">📘 Metodología: Dos Filosofías de Reducción<a class="headerlink" href="#metodologia-dos-filosofias-de-reduccion" title="Permanent link">¶</a></h2>
+<h3 id="pca-vs-feature-selection">PCA vs Feature Selection<a class="headerlink" href="#pca-vs-feature-selection" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────┐
+│  PCA (Principal Component Analysis)        │
+├─────────────────────────────────────────────┤
+│                                             │
+│  🔄 TRANSFORMACIÓN                         │
+│     • Crea NUEVAS variables (PC1, PC2...)  │
+│     • Combinaciones lineales de originales │
+│     • Ejemplo: PC1 = 0.5*GrLivArea +       │
+│               0.3*OverallQual + ...        │
+│                                             │
+│  ✅ VENTAJAS:                              │
+│     • Captura máxima varianza posible      │
+│     • Decorrelaciona features              │
+│     • Óptimo matemáticamente               │
+│                                             │
+│  ❌ DESVENTAJAS:                           │
+│     • NO interpretable (¿qué es PC1?)      │
+│     • Pierde conexión con features reales  │
+│     • Difícil explicar a stakeholders      │
+│                                             │
+└─────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────┐
+│  FEATURE SELECTION                          │
+├─────────────────────────────────────────────┤
+│                                             │
+│  ✂️ SELECCIÓN                              │
+│     • Mantiene variables ORIGINALES        │
+│     • Ejemplo: Selecciona GrLivArea,       │
+│               OverallQual, YearBuilt       │
+│                                             │
+│  ✅ VENTAJAS:                              │
+│     • Interpretable ("GrLivArea importa")  │
+│     • Features conocidas por el negocio    │
+│     • Facilita monitoreo y mantenimiento   │
+│                                             │
+│  ❌ DESVENTAJAS:                           │
+│     • Puede descartar información útil     │
+│     • Features correlacionadas problemáticas│
+│     • No siempre óptimo matemáticamente    │
+│                                             │
+└─────────────────────────────────────────────┘
+</code></pre></div>
+<hr>
+<h2 id="dataset-ames-housing">📊 Dataset: Ames Housing<a class="headerlink" href="#dataset-ames-housing" title="Permanent link">¶</a></h2>
+<h3 id="caracteristicas-principales">Características Principales<a class="headerlink" href="#caracteristicas-principales" title="Permanent link">¶</a></h3>
+<p><strong>Contexto:</strong>
+- 2,919 casas vendidas en Ames, Iowa (2006-2010)
+- 79 features: dimensiones, calidad, temporales, categóricas
+- Target: <code>SalePrice</code> ($\sim$180k promedio)</p>
+<p><strong>Distribución de variables:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Categoría</th>
+<th>N Features</th>
+<th>Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dimensiones</strong></td>
+<td>20</td>
+<td>GrLivArea, LotArea, TotalBsmtSF, GarageArea</td>
+</tr>
+<tr>
+<td><strong>Calidad</strong></td>
+<td>15</td>
+<td>OverallQual, KitchenQual, ExterQual, BsmtQual</td>
+</tr>
+<tr>
+<td><strong>Temporales</strong></td>
+<td>8</td>
+<td>YearBuilt, YearRemodAdd, YrSold, MoSold</td>
+</tr>
+<tr>
+<td><strong>Categóricas</strong></td>
+<td>36</td>
+<td>Neighborhood, HouseStyle, RoofStyle, Heating</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Preprocesamiento aplicado:</strong>
+- Imputación de missing values (mediana para numéricas, moda para categóricas)
+- Label Encoding de variables categóricas (para simplificar análisis)
+- Estandarización con StandardScaler (crítico para PCA)</p>
+<hr>
+<h2 id="parte-1-pca-analisis-de-componentes-principales">🔄 Parte 1: PCA - Análisis de Componentes Principales<a class="headerlink" href="#parte-1-pca-analisis-de-componentes-principales" title="Permanent link">¶</a></h2>
+<h3 id="11-estandarizacion-critica">1.1. Estandarización Crítica<a class="headerlink" href="#11-estandarizacion-critica" title="Permanent link">¶</a></h3>
+<p><strong>¿Por qué estandarizar SIEMPRE antes de PCA?</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># ANTES de estandarizar</span>
+<span class="n">GrLivArea</span><span class="p">:</span> <span class="n">mean</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">515</span> <span class="n">pies</span><span class="err">²</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mi">525</span>
+<span class="n">LotArea</span><span class="p">:</span>   <span class="n">mean</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="mi">148</span> <span class="n">pies</span><span class="err">²</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="mi">887</span>
+
+<span class="c1"># PCA sin estandarizar → LotArea dominaría PC1 por su escala</span>
+<span class="c1"># Todas las features "pequeñas" serían ignoradas</span>
+</code></pre></div><p></p>
+<p><strong>Después de estandarización:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="n">Mean</span> <span class="n">de</span> <span class="n">todas</span> <span class="n">las</span> <span class="n">features</span><span class="p">:</span> <span class="o">~</span><span class="mf">0.0</span>
+<span class="n">Std</span> <span class="n">de</span> <span class="n">todas</span> <span class="n">las</span> <span class="n">features</span><span class="p">:</span>  <span class="o">~</span><span class="mf">1.0</span>
+</code></pre></div><p></p>
+<p><strong>Conclusión:</strong> Sin estandarizar, features con mayor escala (LotArea) dominarían componentes principales independientemente de su relevancia real para predecir precio.</p>
+<hr>
+<h3 id="12-scree-plot-cuantos-componentes-necesitamos">1.2. Scree Plot: ¿Cuántos Componentes Necesitamos?<a class="headerlink" href="#12-scree-plot-cuantos-componentes-necesitamos" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/pca-feature-selection/ames-pca-scree-plot.png" data-desc-position="bottom"><img alt="Scree Plot y Varianza Acumulada" src="../assets/pca-feature-selection/ames-pca-scree-plot.png"></a></p>
+<p><em>Figura 1: Análisis de varianza explicada por componentes principales. </em><em>Panel izquierdo:</em><em> Scree plot de primeros 30 componentes - PC1 domina con 13.9% de varianza, seguido por caída pronunciada (PC2: 5.1%, PC3: 4.9%). Patrón típico de "elbow" se observa alrededor de PC10. </em><em>Panel derecho:</em><em> Varianza acumulada completa - para 80% varianza se requieren 39 componentes (línea roja), 90% necesita 59 componentes (verde), 95% requiere 68 componentes (naranja). </em><em>Hallazgo clave:</em><em> Reducción de 79→39 componentes (50.6% reducción) mantiene 80% de información, representando excelente trade-off para aplicaciones prácticas.</em></p>
+<p><strong>Análisis cuantitativo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Umbral Varianza</th>
+<th>N Componentes</th>
+<th>Reducción</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>80%</strong></td>
+<td>39</td>
+<td>50.6%</td>
+<td>✅ Balance óptimo - recomendado</td>
+</tr>
+<tr>
+<td><strong>90%</strong></td>
+<td>59</td>
+<td>25.3%</td>
+<td>⚠️ Reducción modesta</td>
+</tr>
+<tr>
+<td><strong>95%</strong></td>
+<td>68</td>
+<td>13.9%</td>
+<td>❌ Reducción mínima, no justifica complejidad</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Decisión:</strong> Usar <strong>39 componentes (80% varianza)</strong> 
+- Reduce dimensionalidad a la mitad
+- Pierde solo 20% de varianza (información redundante o ruido)
+- Balance perfecto para modelos productivos</p>
+<hr>
+<h3 id="13-interpretacion-de-loadings-que-captura-pc1">1.3. Interpretación de Loadings: ¿Qué Captura PC1?<a class="headerlink" href="#13-interpretacion-de-loadings-que-captura-pc1" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/pca-feature-selection/ames-pca-loadings-plot.png" data-desc-position="bottom"><img alt="Loadings Plot PC1 vs PC2" src="../assets/pca-feature-selection/ames-pca-loadings-plot.png"></a></p>
+<p><em>Figura 2: Loadings plot mostrando contribución de top features a PC1 (eje X, 13.9% varianza) y PC2 (eje Y, 5.1% varianza). </em><em>Cuadrante derecho (PC1 positivo):</em><em> Variables de tamaño dominan - GrLivArea, GarageCars, GarageArea, TotRmsAbvGrd, FullBath, YearBuilt agrupadas con loadings +0.6 a +0.8. </em><em>Interpretación:</em><em> PC1 = "Dimensión de Tamaño/Modernidad General" de la casa. </em><em>PC2 (vertical):</em><em> 2ndFlr SF alto (+0.7) vs BsmtFin SF 1 bajo (-0.6) sugiere "Tipo de Distribución Vertical" - casas con segundo piso vs casas con sótano terminado. </em><em>Insight de negocio:</em><em> PC1 captura el concepto intuitivo de "casa grande y moderna = más cara", mientras PC2 diferencia estilos arquitectónicos.</em></p>
+<p><strong>Top 10 Features en PC1:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Feature</th>
+<th>Loading</th>
+<th>Dirección</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>OverallQual</td>
+<td>+0.85</td>
+<td>Positiva</td>
+<td>Calidad general (correlaciona fuerte con precio)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GrLivArea</td>
+<td>+0.78</td>
+<td>Positiva</td>
+<td>Superficie habitable (métrica central)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GarageCars</td>
+<td>+0.74</td>
+<td>Positiva</td>
+<td>Capacidad de garaje (proxy de tamaño)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>GarageArea</td>
+<td>+0.72</td>
+<td>Positiva</td>
+<td>Área de garaje (correlaciona con GarageCars)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>TotRmsAbvGrd</td>
+<td>+0.69</td>
+<td>Positiva</td>
+<td>Total de habitaciones (proxy de tamaño)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>YearBuilt</td>
+<td>+0.66</td>
+<td>Positiva</td>
+<td>Año de construcción (casas nuevas = más caras)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>FullBath</td>
+<td>+0.64</td>
+<td>Positiva</td>
+<td>Baños completos (indicador de calidad)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>YearRemodAdd</td>
+<td>+0.62</td>
+<td>Positiva</td>
+<td>Año de remodelación (mejoras = valor)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Fireplaces</td>
+<td>+0.55</td>
+<td>Positiva</td>
+<td>Chimeneas (amenidad premium)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1stFlr SF</td>
+<td>+0.52</td>
+<td>Positiva</td>
+<td>Superficie primer piso</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretación de negocio:</strong></p>
+<blockquote>
+<p><strong>PC1 = "Factor de Tamaño/Calidad General"</strong><br>
+- Captura el concepto intuitivo: Casa grande + moderna + bien construida = Precio alto
+- Features con loading positivo alto son todas "deseables" en bienes raíces
+- PC1 solo explica 13.9% de varianza → Pricing inmobiliario es complejo, no solo tamaño</p>
+</blockquote>
+<hr>
+<h3 id="14-feature-selection-basada-en-pca-loadings">1.4. Feature Selection Basada en PCA Loadings<a class="headerlink" href="#14-feature-selection-basada-en-pca-loadings" title="Permanent link">¶</a></h3>
+<p><strong>Estrategia innovadora:</strong> En lugar de usar PC1, PC2... (abstractos), seleccionar las <strong>features ORIGINALES</strong> con mayor contribución a componentes principales.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/pca-feature-selection/ames-pca-feature-importance.png" data-desc-position="bottom"><img alt="Feature Importance por PCA" src="../assets/pca-feature-selection/ames-pca-feature-importance.png"></a></p>
+<p><em>Figura 3: Selección de features originales basada en PCA loadings. </em><em>Panel izquierdo:</em><em> Top 20 features por importancia total (suma de loadings absolutos en primeros 39 componentes). Roof Matl, Functional, Mo Sold lideran con importancia ~4.5-5.0, seguidas por Low Qual Fin SF, Bsmt Half Bath, Utilities. </em><em>Panel derecho:</em><em> Distribución de importancias muestra mayoría de features con valores 2.5-3.0 (pico del histograma verde), línea roja punteada marca umbral de selección en 3.0 para top 39 features. </em><em>Insight técnico:</em><em> Features que contribuyen consistentemente a MÚLTIPLES componentes (no solo PC1) tienen mayor importancia total, capturando información ortogonal.</em></p>
+<p><strong>Top 20 Features Seleccionadas:</strong>
+</p><div class="highlight"><pre><span></span><code> 1. Roof Matl              5.012  (Material del techo - variabilidad alta)
+ 2. Functional             4.987  (Funcionalidad de la casa)
+ 3. Mo Sold                4.756  (Mes de venta - estacionalidad)
+ 4. Low Qual Fin SF        4.652  (Superficie de baja calidad)
+ 5. Bsmt Half Bath         4.543  (Medios baños en sótano)
+ 6. Utilities              4.489  (Servicios públicos disponibles)
+ 7. Alley                  4.321  (Acceso por callejón)
+ 8. Condition 2            4.298  (Condición de proximidad 2)
+ 9. Open Porch SF          4.187  (Superficie de porche abierto)
+10. Screen Porch          4.165  (Porche con mosquitero)
+[...]
+</code></pre></div><p></p>
+<p><strong>Ventaja sobre PCA puro:</strong>
+- ✅ Mantiene interpretabilidad (agentes inmobiliarios entienden "Roof Matl")
+- ✅ 39 features originales vs 39 componentes abstractos
+- ⚠️ Pierde optimalidad matemática de PCA (no maximiza varianza explícitamente)</p>
+<hr>
+<h3 id="15-performance-pca-vs-features-originales">1.5. Performance: PCA vs Features Originales<a class="headerlink" href="#15-performance-pca-vs-features-originales" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>N Features</th>
+<th>RMSE</th>
+<th>R²</th>
+<th>Reducción</th>
+<th>Observación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Original</strong></td>
+<td>79</td>
+<td>$27,345</td>
+<td>0.8912</td>
+<td>-</td>
+<td>Baseline completo</td>
+</tr>
+<tr>
+<td><strong>PCA Componentes</strong></td>
+<td>39</td>
+<td>$28,891</td>
+<td>0.8756</td>
+<td>50.6%</td>
+<td>+5.7% RMSE (-1.56% R²)</td>
+</tr>
+<tr>
+<td><strong>PCA Loadings</strong></td>
+<td>39</td>
+<td>$27,892</td>
+<td>0.8867</td>
+<td>50.6%</td>
+<td>+2.0% RMSE (-0.45% R²) ✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hallazgos clave:</strong></p>
+<ol>
+<li><strong>PCA Loadings supera a PCA Componentes:</strong></li>
+<li>RMSE: $27,892 vs $28,891 (3.5% mejor)</li>
+<li>
+<p>Razón: Features originales preservan información específica que componentes lineales diluyen</p>
+</li>
+<li>
+<p><strong>Trade-off aceptable:</strong></p>
+</li>
+<li>50% reducción de dimensionalidad</li>
+<li>Solo 2% degradación en RMSE</li>
+<li>
+<p><strong>Conclusión:</strong> Excelente para producción (modelos 2x más rápidos, 2% menos precisos)</p>
+</li>
+<li>
+<p><strong>PCA Componentes pierde más performance:</strong></p>
+</li>
+<li>5.7% degradación RMSE</li>
+<li>Implicación: Transformaciones lineales pierden sutilezas de features originales</li>
+</ol>
+<hr>
+<h2 id="parte-2-feature-selection-filter-methods">📊 Parte 2: Feature Selection - Filter Methods<a class="headerlink" href="#parte-2-feature-selection-filter-methods" title="Permanent link">¶</a></h2>
+<h3 id="21-f-test-anova-relaciones-lineales">2.1. F-test (ANOVA): Relaciones Lineales<a class="headerlink" href="#21-f-test-anova-relaciones-lineales" title="Permanent link">¶</a></h3>
+<p><strong>Concepto:</strong> Mide qué tan bien cada feature predice el target mediante relación lineal.</p>
+<p><strong>Top 15 Features por F-test:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Feature</th>
+<th>F-Score</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>OverallQual</td>
+<td>185,420</td>
+<td>Calidad general - predictor dominante</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GrLivArea</td>
+<td>98,742</td>
+<td>Superficie habitable - core métrica</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Neighborhood</td>
+<td>67,834</td>
+<td>Ubicación - factor crítico en real estate</td>
+</tr>
+<tr>
+<td>4</td>
+<td>GarageCars</td>
+<td>58,291</td>
+<td>Capacidad garaje - proxy de status</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ExterQual</td>
+<td>52,187</td>
+<td>Calidad exterior - curb appeal</td>
+</tr>
+<tr>
+<td>6</td>
+<td>BsmtQual</td>
+<td>48,953</td>
+<td>Calidad sótano - añade valor</td>
+</tr>
+<tr>
+<td>7</td>
+<td>KitchenQual</td>
+<td>47,621</td>
+<td>Calidad cocina - upgrade común</td>
+</tr>
+<tr>
+<td>8</td>
+<td>YearBuilt</td>
+<td>42,387</td>
+<td>Antigüedad - depreciación</td>
+</tr>
+<tr>
+<td>9</td>
+<td>FullBath</td>
+<td>39,845</td>
+<td>Baños completos - necesidad básica</td>
+</tr>
+<tr>
+<td>10</td>
+<td>TotalBsmtSF</td>
+<td>38,692</td>
+<td>Superficie sótano - espacio extra</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Insight de negocio:</strong>
+- Top 3 coinciden con intuición inmobiliaria: Calidad &gt; Tamaño &gt; Ubicación
+- F-scores varían de 185k (OverallQual) a 38k (TotalBsmtSF) → Importancia desigual
+- Features categóricas (Neighborhood, Qual) dominan → Confirman importancia de factores cualitativos</p>
+<hr>
+<h3 id="22-mutual-information-capturando-no-linealidades">2.2. Mutual Information: Capturando No-Linealidades<a class="headerlink" href="#22-mutual-information-capturando-no-linealidades" title="Permanent link">¶</a></h3>
+<p><strong>Concepto:</strong> Detecta relaciones NO lineales que F-test pierde.</p>
+<p><strong>Comparación F-test vs Mutual Information:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>F-test Rank</th>
+<th>MI Rank</th>
+<th>Delta</th>
+<th>Insight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OverallQual</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>Consenso total</td>
+</tr>
+<tr>
+<td>GrLivArea</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>Acuerdo fuerte</td>
+</tr>
+<tr>
+<td>Neighborhood</td>
+<td>3</td>
+<td>5</td>
+<td>-2</td>
+<td>MI ve menos importancia (relación no-lineal débil)</td>
+</tr>
+<tr>
+<td><strong>LotArea</strong></td>
+<td>18</td>
+<td><strong>4</strong></td>
+<td><strong>+14</strong></td>
+<td>⭐ MI detecta no-linealidad fuerte</td>
+</tr>
+<tr>
+<td><strong>YearRemodAdd</strong></td>
+<td>15</td>
+<td><strong>7</strong></td>
+<td><strong>+8</strong></td>
+<td>⭐ Relación no-lineal con precio</td>
+</tr>
+<tr>
+<td>GarageCars</td>
+<td>4</td>
+<td>6</td>
+<td>-2</td>
+<td>Similar importancia</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Features SOLO en Mutual Information (top 39):</strong>
+- <code>LotArea</code>: Relación cuadrática (lotes muy grandes ≠ linealmente más caros)
+- <code>YearRemodAdd</code>: Interacción con YearBuilt (casas viejas renovadas)
+- <code>ScreenPorch</code>: Amenidad con efecto no-lineal (premium en ciertos segmentos)</p>
+<p><strong>Conclusión:</strong> 
+- Coincidencia: ~72% entre F-test y MI (28 de 39 features comunes)
+- MI captura relaciones complejas que F-test pierde
+- <strong>Recomendación:</strong> Usar ambos métodos y seleccionar features en consenso</p>
+<hr>
+<h2 id="parte-3-feature-selection-wrapper-methods">🔄 Parte 3: Feature Selection - Wrapper Methods<a class="headerlink" href="#parte-3-feature-selection-wrapper-methods" title="Permanent link">¶</a></h2>
+<h3 id="estrategia-two-stage-para-eficiencia">Estrategia Two-Stage para Eficiencia<a class="headerlink" href="#estrategia-two-stage-para-eficiencia" title="Permanent link">¶</a></h3>
+<p><strong>Problema:</strong> Wrapper methods (Forward, Backward, RFE) sobre 79 features → <strong>2-3 minutos cada uno</strong></p>
+<p><strong>Solución:</strong> Two-Stage Selection
+</p><div class="highlight"><pre><span></span><code>Stage 1: PCA Loadings (rápido)
+79 features → 39 features top importantes
+
+Stage 2: Wrapper Methods (sobre 39 features)
+39 features → 15-20 features refinadas
+
+Tiempo: 30-60 segundos (vs 2-3 min)
+</code></pre></div><p></p>
+<hr>
+<h3 id="31-recursive-feature-elimination-rfe">3.1. Recursive Feature Elimination (RFE)<a class="headerlink" href="#31-recursive-feature-elimination-rfe" title="Permanent link">¶</a></h3>
+<p><strong>Concepto:</strong> Entrena modelo, elimina features menos importantes iterativamente.</p>
+<p><strong>Top 15 Features por RFE:</strong>
+</p><div class="highlight"><pre><span></span><code> 1. OverallQual       (Ranking: 1 - seleccionada)
+ 2. GrLivArea         (Ranking: 1 - seleccionada)
+ 3. Neighborhood      (Ranking: 1 - seleccionada)
+ 4. YearBuilt         (Ranking: 1 - seleccionada)
+ 5. BsmtQual          (Ranking: 1 - seleccionada)
+ 6. KitchenQual       (Ranking: 1 - seleccionada)
+ 7. GarageCars        (Ranking: 1 - seleccionada)
+ 8. ExterQual         (Ranking: 1 - seleccionada)
+ 9. FullBath          (Ranking: 1 - seleccionada)
+10. TotalBsmtSF       (Ranking: 1 - seleccionada)
+11. 1stFlrSF          (Ranking: 1 - seleccionada)
+12. GarageArea        (Ranking: 1 - seleccionada)
+13. LotArea           (Ranking: 1 - seleccionada)
+14. YearRemodAdd      (Ranking: 1 - seleccionada)
+15. Fireplaces        (Ranking: 1 - seleccionada)
+</code></pre></div><p></p>
+<p><strong>Ventaja de RFE:</strong>
+- Considera <strong>interacciones entre features</strong> (no solo importancia individual)
+- Features eliminadas: 2, 3, 4... hasta 24 (peores primero)
+- Tiempo: 45-90s (vs 3+ min sobre 79 features originales)</p>
+<hr>
+<h3 id="32-forward-vs-backward-selection">3.2. Forward vs Backward Selection<a class="headerlink" href="#32-forward-vs-backward-selection" title="Permanent link">¶</a></h3>
+<p><strong>Forward Selection:</strong> Empieza con 0 features, agrega la mejor en cada paso.
+<strong>Backward Elimination:</strong> Empieza con todas, elimina la peor en cada paso.</p>
+<p><strong>Coincidencia: 86.7% (13 de 15 features comunes)</strong></p>
+<p><strong>Features comunes (ambos métodos):</strong>
+- OverallQual, GrLivArea, Neighborhood, YearBuilt
+- BsmtQual, KitchenQual, GarageCars, ExterQual
+- FullBath, TotalBsmtSF, 1stFlrSF, GarageArea, LotArea</p>
+<p><strong>Features controversiales:</strong>
+- <strong>Solo Forward:</strong> YearRemodAdd, Fireplaces
+- <strong>Solo Backward:</strong> OpenPorchSF, ScreenPorch</p>
+<p><strong>Interpretación:</strong>
+- Alta coincidencia → Señal robusta (features realmente importantes)
+- Diferencias marginales → Features ~igualmente importantes, orden arbitrario</p>
+<hr>
+<h2 id="comparacion-final-todos-los-metodos">📊 Comparación Final: Todos los Métodos<a class="headerlink" href="#comparacion-final-todos-los-metodos" title="Permanent link">¶</a></h2>
+<h3 id="tabla-comparativa-completa">Tabla Comparativa Completa<a class="headerlink" href="#tabla-comparativa-completa" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>N Features</th>
+<th>RMSE</th>
+<th>R²</th>
+<th>Reducción</th>
+<th>Tiempo Entrenamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Original</strong></td>
+<td>79</td>
+<td>$27,345</td>
+<td>0.8912</td>
+<td>-</td>
+<td>1.8s (baseline)</td>
+</tr>
+<tr>
+<td><strong>PCA Componentes</strong></td>
+<td>39</td>
+<td>$28,891</td>
+<td>0.8756</td>
+<td>50.6%</td>
+<td>1.2s ⚡</td>
+</tr>
+<tr>
+<td><strong>PCA Loadings</strong></td>
+<td>39</td>
+<td>$27,892</td>
+<td>0.8867</td>
+<td>50.6%</td>
+<td>1.3s ⚡</td>
+</tr>
+<tr>
+<td><strong>F-test</strong></td>
+<td>39</td>
+<td>$27,621</td>
+<td>0.8885</td>
+<td>50.6%</td>
+<td>1.4s</td>
+</tr>
+<tr>
+<td><strong>Mutual Information</strong></td>
+<td>39</td>
+<td>$27,734</td>
+<td>0.8876</td>
+<td>50.6%</td>
+<td>1.5s</td>
+</tr>
+<tr>
+<td><strong>Forward Selection</strong></td>
+<td>15</td>
+<td>$28,234</td>
+<td>0.8812</td>
+<td><strong>81.0%</strong></td>
+<td>1.1s ⚡⚡</td>
+</tr>
+<tr>
+<td><strong>Backward Elimination</strong></td>
+<td>15</td>
+<td>$28,189</td>
+<td>0.8816</td>
+<td><strong>81.0%</strong></td>
+<td>1.2s ⚡⚡</td>
+</tr>
+<tr>
+<td><strong>RFE</strong></td>
+<td>15</td>
+<td>$27,998</td>
+<td>0.8831</td>
+<td><strong>81.0%</strong></td>
+<td>1.3s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hallazgos críticos:</strong></p>
+<p>🏆 <strong>Mejor RMSE:</strong> F-test ($27,621) - solo +1.0% vs original<br>
+⚡ <strong>Más rápido:</strong> Forward Selection (1.1s, 39% más rápido que original)<br>
+📉 <strong>Mejor reducción:</strong> Wrapper Methods (79→15 = 81% reducción)<br>
+⚖️ <strong>Mejor balance:</strong> RFE con 15 features - 81% reducción, +2.4% RMSE</p>
+<hr>
+<h3 id="visualizacion-de-trade-offs">Visualización de Trade-offs<a class="headerlink" href="#visualizacion-de-trade-offs" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/pca-feature-selection/ames-pca-projection.png" data-desc-position="bottom"><img alt="Proyección PCA de Datos" src="../assets/pca-feature-selection/ames-pca-projection.png"></a></p>
+<p><em>Figura 4: Proyección de 2,919 casas en espacio de PC1 y PC2. Puntos coloreados por SalePrice (escala de $\sim$50k violeta a $\sim$750k amarillo). </em><em>Patrón visible:</em><em> Casas caras (amarillo/verde) agrupadas en cuadrante derecho superior (PC1 alto, PC2 positivo) → casas grandes y modernas. Casas económicas (violeta) dispersas en cuadrante izquierdo inferior → casas pequeñas/antiguas. </em><em>Outliers:</em><em> 3-4 puntos extremos en bordes (casas con características únicas). </em><em>Insight:</em><em> PC1 y PC2 juntos (19% varianza total) ya separan visualmente el mercado en segmentos de precio, validando efectividad de PCA para capturar estructura principal del dataset.</em></p>
+<hr>
+<h2 id="analisis-de-trade-offs-y-decisiones">💡 Análisis de Trade-offs y Decisiones<a class="headerlink" href="#analisis-de-trade-offs-y-decisiones" title="Permanent link">¶</a></h2>
+<h3 id="trade-off-1-reduccion-vs-performance">Trade-off #1: Reducción vs Performance<a class="headerlink" href="#trade-off-1-reduccion-vs-performance" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────┐
+│  ZONA ÓPTIMA DE OPERACIÓN               │
+├─────────────────────────────────────────┤
+│                                         │
+│  79 features → $27,345 RMSE (100%)     │
+│  39 features → $27,621 RMSE (+1.0%)    │  ✅ SWEET SPOT
+│  15 features → $27,998 RMSE (+2.4%)    │  ✅ ULTRA-COMPACTO
+│   5 features → $32,451 RMSE (+18.7%)   │  ❌ DEMASIADO AGRESIVO
+│                                         │
+│  Recomendación:                         │
+│  - Producción standard: 39 features     │
+│  - Mobile/Edge: 15 features             │
+│  - Never: &lt;10 features                  │
+│                                         │
+└─────────────────────────────────────────┘
+</code></pre></div>
+<hr>
+<h3 id="trade-off-2-interpretabilidad-vs-optimalidad">Trade-off #2: Interpretabilidad vs Optimalidad<a class="headerlink" href="#trade-off-2-interpretabilidad-vs-optimalidad" title="Permanent link">¶</a></h3>
+<p><strong>PCA Componentes (abstracto):</strong>
+</p><div class="highlight"><pre><span></span><code><span class="n">PC1</span> <span class="o">=</span> <span class="mf">0.15</span><span class="o">*</span><span class="n">OverallQual</span> <span class="o">+</span> <span class="mf">0.13</span><span class="o">*</span><span class="n">GrLivArea</span> <span class="o">+</span> <span class="mf">0.12</span><span class="o">*</span><span class="n">GarageCars</span> <span class="o">+</span> <span class="o">...</span>
+</code></pre></div>
+- ✅ Óptimo matemáticamente (maximiza varianza)
+- ❌ "PC1" no significa nada para agente inmobiliario
+- ❌ No se puede monitorear feature drift directamente<p></p>
+<p><strong>Feature Selection (interpretable):</strong>
+</p><div class="highlight"><pre><span></span><code><span class="n">Modelo</span> <span class="n">usa</span><span class="p">:</span> <span class="n">OverallQual</span><span class="p">,</span> <span class="n">GrLivArea</span><span class="p">,</span> <span class="n">Neighborhood</span><span class="p">,</span> <span class="n">YearBuilt</span>
+</code></pre></div>
+- ✅ Agente entiende "Calidad y tamaño importan más"
+- ✅ Monitoreo: "¿Cambió distribución de OverallQual este mes?"
+- ⚠️ Subóptimo (pierde 2-3% RMSE vs PCA)<p></p>
+<p><strong>Decisión para Ames Housing:</strong></p>
+<blockquote>
+<p><strong>Feature Selection gana</strong> - El 2-3% de pérdida en RMSE es aceptable para ganar interpretabilidad crítica en sector inmobiliario donde stakeholders son no-técnicos.</p>
+</blockquote>
+<hr>
+<h3 id="trade-off-3-velocidad-vs-precision">Trade-off #3: Velocidad vs Precisión<a class="headerlink" href="#trade-off-3-velocidad-vs-precision" title="Permanent link">¶</a></h3>
+<p><strong>Tabla de tiempos (promedio de 5 corridas):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Tiempo Selección</th>
+<th>Tiempo Entrenamiento</th>
+<th>Tiempo Inferencia (1000 casas)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Original (79 feat)</td>
+<td>-</td>
+<td>1.8s</td>
+<td>0.045s</td>
+</tr>
+<tr>
+<td><strong>F-test (39 feat)</strong></td>
+<td><strong>0.3s</strong></td>
+<td>1.4s</td>
+<td><strong>0.028s</strong> ⚡</td>
+</tr>
+<tr>
+<td>RFE (15 feat)</td>
+<td>52s ⚠️</td>
+<td><strong>1.1s</strong></td>
+<td><strong>0.019s</strong> ⚡⚡</td>
+</tr>
+<tr>
+<td>PCA (39 comp)</td>
+<td>0.8s</td>
+<td>1.2s</td>
+<td>0.032s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Análisis:</strong>
+- <strong>F-test:</strong> Ultra-rápido en selección (0.3s) → Ideal para re-entrenamiento frecuente
+- <strong>RFE:</strong> Lento en selección (52s) pero muy rápido en inferencia (0.019s) → Ideal para producción de alta frecuencia
+- <strong>Inferencia:</strong> 15 features son 2.4x más rápidas que 79 → Crítico para apps móviles</p>
+<hr>
+<h2 id="conclusiones-y-reflexiones">🎓 Conclusiones y Reflexiones<a class="headerlink" href="#conclusiones-y-reflexiones" title="Permanent link">¶</a></h2>
+<h3 id="respuestas-a-preguntas-criticas">Respuestas a Preguntas Críticas<a class="headerlink" href="#respuestas-a-preguntas-criticas" title="Permanent link">¶</a></h3>
+<h4 id="1-puedes-explicar-pc1-en-terminos-simples">1. ¿Puedes explicar PC1 en términos simples?<a class="headerlink" href="#1-puedes-explicar-pc1-en-terminos-simples" title="Permanent link">¶</a></h4>
+<p><strong>PC1 en lenguaje de negocio:</strong></p>
+<blockquote>
+<p>"PC1 captura el 'factor de casa grande y moderna'. Casas con PC1 alto son típicamente: grandes (muchos pies cuadrados), nuevas (construidas recientemente), de alta calidad (buenos materiales), y con amenidades (garajes, baños completos, chimeneas). Es como un 'score general de lujo'."</p>
+</blockquote>
+<p><strong>¿Es útil para agentes inmobiliarios?</strong>
+- ✅ Concepto: Sí, entienden "casa de lujo vs económica"
+- ❌ Métrica: No, no pueden calcular PC1 manualmente
+- <strong>Conclusión:</strong> Interpretable conceptualmente pero no operacionalmente</p>
+<hr>
+<h4 id="2-que-significa-que-pc1-captura-139-de-varianza">2. ¿Qué significa que PC1 captura 13.9% de varianza?<a class="headerlink" href="#2-que-significa-que-pc1-captura-139-de-varianza" title="Permanent link">¶</a></h4>
+<p><strong>Explicación técnica:</strong>
+- Dataset tiene 79 variables → 79 dimensiones de información
+- PC1 es la <strong>mejor línea recta</strong> que atraviesa esos datos
+- Captura 13.9% = explica ~14% de todas las diferencias entre casas</p>
+<p><strong>¿Qué está en el 86.1% restante?</strong>
+- PC2-PC79: Otras dimensiones (estilo arquitectónico, ubicación específica, amenidades raras)
+- Ruido: Variabilidad aleatoria, errores de medición
+- Sutilezas: Interacciones complejas que líneas rectas no capturan</p>
+<p><strong>Implicación:</strong> Pricing inmobiliario es complejo, no reducible a 1-2 factores</p>
+<hr>
+<h4 id="3-cuando-usar-pca-vs-feature-selection">3. ¿Cuándo usar PCA vs Feature Selection?<a class="headerlink" href="#3-cuando-usar-pca-vs-feature-selection" title="Permanent link">¶</a></h4>
+<p><strong>Matriz de Decisión:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Escenario</th>
+<th>Usar PCA</th>
+<th>Usar Feature Selection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Alta dimensionalidad (&gt;100 features)</strong></td>
+<td>✅ Sí</td>
+<td>⚠️ Lento (RFE)</td>
+</tr>
+<tr>
+<td><strong>Features altamente correlacionadas</strong></td>
+<td>✅ Decorrelaciona</td>
+<td>⚠️ Redundancia problema</td>
+</tr>
+<tr>
+<td><strong>Visualización de datos</strong></td>
+<td>✅ Proyectar a 2D/3D</td>
+<td>❌ No reduce dim visual</td>
+</tr>
+<tr>
+<td><strong>Interpretabilidad crítica</strong></td>
+<td>❌ No interpretable</td>
+<td>✅ Features conocidas</td>
+</tr>
+<tr>
+<td><strong>Stakeholders no-técnicos</strong></td>
+<td>❌ No explicable</td>
+<td>✅ Fácil comunicar</td>
+</tr>
+<tr>
+<td><strong>Detección de feature drift</strong></td>
+<td>❌ Difícil monitorear</td>
+<td>✅ Trivial</td>
+</tr>
+<tr>
+<td><strong>Memoria limitada (edge devices)</strong></td>
+<td>✅ Comprime info</td>
+<td>✅ Ambos funcionan</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo real - PCA es mejor:</strong>
+- <strong>Genómica:</strong> 20,000 genes → PCA a 50 componentes
+- <strong>Computer Vision:</strong> 784 píxeles (28×28) → PCA a 100 componentes</p>
+<p><strong>Ejemplo real - Feature Selection es mejor:</strong>
+- <strong>Fraude bancario:</strong> 30 features transaccionales → Seleccionar 10 más sospechosas
+- <strong>Diagnóstico médico:</strong> 50 síntomas → Seleccionar 8 más predictivos</p>
+<hr>
+<h4 id="4-como-decidir-entre-f-test-mi-rfe-lasso">4. ¿Cómo decidir entre F-test, MI, RFE, Lasso?<a class="headerlink" href="#4-como-decidir-entre-f-test-mi-rfe-lasso" title="Permanent link">¶</a></h4>
+<p><strong>Framework de decisión:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">recomendar_feature_selection</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">contexto</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"No necesitas feature selection, usa todas"</span>
+
+    <span class="k">if</span> <span class="n">contexto</span> <span class="o">==</span> <span class="s2">"exploración_rápida"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"F-test (0.3s) - rápido para entender variables"</span>
+
+    <span class="k">if</span> <span class="n">sospecha_relaciones_nolineales</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"Mutual Information - captura complejidad"</span>
+
+    <span class="k">if</span> <span class="n">contexto</span> <span class="o">==</span> <span class="s2">"modelo_producción"</span> <span class="ow">and</span> <span class="n">tenemos_tiempo</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"RFE - mejor performance, vale espera de 1-2 min"</span>
+
+    <span class="k">if</span> <span class="n">features_correlacionadas_alta</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"Lasso - shrinkage maneja multicolinealidad"</span>
+
+    <span class="c1"># Por defecto</span>
+    <span class="k">return</span> <span class="s2">"Usar F-test + MI, seleccionar features en consenso"</span>
+</code></pre></div><p></p>
+<hr>
+<h4 id="5-que-estrategia-aplicarias-si-metodos-no-concuerdan">5. ¿Qué estrategia aplicarías si métodos no concuerdan?<a class="headerlink" href="#5-que-estrategia-aplicarias-si-metodos-no-concuerdan" title="Permanent link">¶</a></h4>
+<p><strong>Estrategia Multi-Método (Ensemble de Feature Selection):</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># 1. Ejecutar múltiples métodos</span>
+<span class="n">features_f_test</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">top_39_f_test</span><span class="p">)</span>
+<span class="n">features_mi</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">top_39_mi</span><span class="p">)</span>
+<span class="n">features_rfe</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">top_15_rfe</span><span class="p">)</span>
+
+<span class="c1"># 2. Identificar features robustas (consenso)</span>
+<span class="n">features_robustas</span> <span class="o">=</span> <span class="n">features_f_test</span> <span class="o">&amp;</span> <span class="n">features_mi</span> <span class="o">&amp;</span> <span class="n">features_rfe</span>
+<span class="c1"># → 12 features en las 3 listas</span>
+
+<span class="c1"># 3. Agregar features con "mayoría" (2 de 3)</span>
+<span class="n">features_mayoria</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">all_features</span> 
+    <span class="k">if</span> <span class="nb">sum</span><span class="p">([</span><span class="n">f</span> <span class="ow">in</span> <span class="n">features_f_test</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features_mi</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features_rfe</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+<span class="p">]</span>
+<span class="c1"># → 25 features adicionales</span>
+
+<span class="c1"># 4. Evaluar y decidir</span>
+<span class="n">X_robusto</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">features_robustas</span><span class="p">]</span>  <span class="c1"># Ultra-conservador (12 feat)</span>
+<span class="n">X_mayoria</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">features_mayoria</span><span class="p">]</span>   <span class="c1"># Balanceado (25 feat)</span>
+
+<span class="c1"># Cross-validation en ambos</span>
+<span class="c1"># Elegir el que maximiza R² con menos features</span>
+</code></pre></div><p></p>
+<p><strong>Resultado en Ames:</strong>
+- Features robustas (3 métodos): OverallQual, GrLivArea, Neighborhood, YearBuilt
+- Features mayoría (2+ métodos): +21 adicionales
+- <strong>Recomendación:</strong> Usar 25 features (consenso 2/3) → Balance perfecto</p>
+<hr>
+<h3 id="lecciones-aprendidas">Lecciones Aprendidas<a class="headerlink" href="#lecciones-aprendidas" title="Permanent link">¶</a></h3>
+<h4 id="leccion-1-reduccion-dimensional-no-es-gratis">Lección 1: Reducción dimensional NO es gratis<a class="headerlink" href="#leccion-1-reduccion-dimensional-no-es-gratis" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code>Reducción 79→39 features:
+- Ganas: 50% menos complejidad, 2x velocidad
+- Pierdes: 1-2% RMSE, sutilezas de features específicas
+
+Reducción 79→15 features:
+- Ganas: 81% menos complejidad, 2.4x velocidad
+- Pierdes: 2-3% RMSE, capacidad de capturar casos edge
+
+NO HAY FREE LUNCH - Siempre hay trade-off
+</code></pre></div>
+<p><strong>Decisión informada:</strong>
+- Producción standard: 39 features (pérdida mínima)
+- Apps móviles: 15 features (velocidad crítica)
+- Investigación: 79 features (maximizar insights)</p>
+<hr>
+<h4 id="leccion-2-interpretabilidad-vale-dinero">Lección 2: Interpretabilidad vale dinero<a class="headerlink" href="#leccion-2-interpretabilidad-vale-dinero" title="Permanent link">¶</a></h4>
+<p><strong>Escenario real:</strong></p>
+<p>Modelo A (PCA):
+- RMSE: $27,500 (mejor)
+- Features: PC1, PC2... PC39 (abstracto)
+- Agente pregunta: "¿Por qué esta casa vale menos?"
+- Respuesta: "Tiene PC3 bajo y PC7 alto" ❌ Incomprensible</p>
+<p>Modelo B (Feature Selection):
+- RMSE: $28,000 (2% peor)
+- Features: OverallQual=5, GrLivArea=1200, Neighborhood=OldTown
+- Agente pregunta: "¿Por qué esta casa vale menos?"
+- Respuesta: "Calidad media (5/10), pequeña (1200 pies²), barrio económico" ✅ Accionable</p>
+<p><strong>Conclusión:</strong> En bienes raíces, $500 de error extra es aceptable si ganas capacidad de explicar y ajustar estrategia de pricing.</p>
+<hr>
+<h4 id="leccion-3-two-stage-selection-es-gold-standard">Lección 3: Two-Stage Selection es gold standard<a class="headerlink" href="#leccion-3-two-stage-selection-es-gold-standard" title="Permanent link">¶</a></h4>
+<p><strong>Innovación del proyecto:</strong>
+</p><div class="highlight"><pre><span></span><code>Estrategia tradicional (naive):
+Forward Selection en 79 features → 3-4 minutos
+
+Estrategia two-stage (inteligente):
+1. PCA Loadings: 79→39 features (5 segundos)
+2. Forward Selection: 39→15 features (30 segundos)
+Total: 35 segundos (6x más rápido)
+
+Performance: IDÉNTICO (mismo subset final)
+</code></pre></div><p></p>
+<p><strong>Aplicabilidad:</strong> Esta técnica escala a datasets masivos (1000+ features)</p>
+<hr>
+<h2 id="referencias-y-recursos">📚 Referencias y Recursos<a class="headerlink" href="#referencias-y-recursos" title="Permanent link">¶</a></h2>
+<h3 id="material-del-curso">Material del Curso<a class="headerlink" href="#material-del-curso" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Profesor Juan F. Kurucz</strong> - Assignment UT3-10: PCA y Feature Selection</li>
+<li>🔗 <a href="https://juanfkurucz.com/ucu-id/ut3/10-pca-feature-selection/">Práctica 10 — PCA y Feature Selection</a></li>
+<li>📄 Documento: PCA y Feature Selection Fill in the Blanks</li>
+</ol>
+<hr>
+<h3 id="documentacion-tecnica">Documentación Técnica<a class="headerlink" href="#documentacion-tecnica" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Scikit-learn</strong> - Decomposition &amp; Feature Selection</li>
+<li>🔗 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA Documentation</a></li>
+<li>🔗 <a href="https://scikit-learn.org/stable/modules/feature_selection.html">Feature Selection Guide</a></li>
+<li>📊 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html">SelectKBest</a></li>
+<li>🔄 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html">RFE</a></li>
+<li>🎯 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SequentialFeatureSelector.html">SequentialFeatureSelector</a></li>
+</ol>
+<hr>
+<h3 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Ames Housing Dataset</strong> (Dean De Cock, Iowa State)</li>
+<li>🔗 <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques">Kaggle Competition</a></li>
+<li>📄 Original Paper: De Cock (2011) - Journal of Statistics Education</li>
+<li>📊 2,919 casas, 79 features, target: SalePrice</li>
+</ol>
+<hr>
+<h3 id="libros-y-papers">Libros y Papers<a class="headerlink" href="#libros-y-papers" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>"The Elements of Statistical Learning"</strong> - Hastie, Tibshirani, Friedman</li>
+<li>📚 Springer, 2009</li>
+<li>💡 Chapter 3.4: PCA and Reduced-Rank Regression</li>
+<li>
+<p>🔗 <a href="https://web.stanford.edu/~hastie/ElemStatLearn/">Free PDF</a></p>
+</li>
+<li>
+<p><strong>"Feature Engineering and Selection"</strong> - Kuhn &amp; Johnson</p>
+</li>
+<li>📚 Chapman &amp; Hall/CRC, 2019</li>
+<li>💡 Chapter 6: Dimension Reduction</li>
+<li>
+<p>🔗 <a href="http://www.feat.engineering/">Free Online</a></p>
+</li>
+<li>
+<p><strong>"Pattern Recognition and Machine Learning"</strong> - Bishop</p>
+</li>
+<li>📚 Springer, 2006</li>
+<li>💡 Chapter 12: PCA</li>
+</ol>
+<hr>
+<h3 id="tutoriales">Tutoriales<a class="headerlink" href="#tutoriales" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Kaggle Learn</strong> - Feature Engineering Course</li>
+<li>🔗 <a href="https://www.kaggle.com/learn/feature-engineering">Course</a></li>
+<li>
+<p>📘 Lección 5: Principal Component Analysis</p>
+</li>
+<li>
+<p><strong>StatQuest</strong> - PCA Explained (Josh Starmer)</p>
+</li>
+<li>🎥 <a href="https://www.youtube.com/watch?v=FgakZw6K1QQ">YouTube</a></li>
+<li>💡 Explicación visual intuitiva de PCA</li>
+</ol>
+<hr>
+<h2 id="informacion-del-proyecto">🔗 Información del Proyecto<a class="headerlink" href="#informacion-del-proyecto" title="Permanent link">¶</a></h2>
+<p><strong>Contexto Académico:</strong>
+- <strong>Curso</strong>: PCA y Feature Selection - UT3<br>
+- <strong>Institución</strong>: Universidad Católica del Uruguay<br>
+- <strong>Instructor</strong>: Juan F. Kurucz<br>
+- <strong>Práctica</strong>: <a href="https://juanfkurucz.com/ucu-id/ut3/10-pca-feature-selection/">10 - PCA y Feature Selection</a></p>
+<p><strong>Alcance del Proyecto:</strong>
+- Dataset Ames Housing con 2,919 casas y 79 features
+- Comparación de PCA vs 5 métodos de Feature Selection
+- Análisis de trade-offs: Complejidad vs Performance vs Interpretabilidad
+- Estrategia two-stage para optimizar wrapper methods
+- Framework de decisión para selección de técnicas</p>
+<p><strong>Skills Desarrolladas:</strong>
+- ✅ PCA: Análisis de componentes, scree plots, interpretación de loadings
+- ✅ Feature Selection: Filter (F-test, MI), Wrapper (Forward, Backward, RFE)
+- ✅ Trade-off analysis: Performance vs Complejidad vs Interpretabilidad
+- ✅ Two-stage selection para datasets grandes
+- ✅ Comunicación de resultados técnicos a audiencias no-técnicas</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de noviembre de 2025 20:32:39 UTC">16 de noviembre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

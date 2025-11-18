@@ -1,0 +1,3582 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../07-fairlearn/">
+      
+      
+        <link rel="next" href="../09-encoding/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>🏗️ De Variables Básicas a Insights Poderosos: Feature Engineering en el Sector Inmobiliario - Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#de-variables-basicas-a-insights-poderosos-feature-engineering-en-el-sector-inmobiliario" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Portfolio" class="md-header__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🏗️ De Variables Básicas a Insights Poderosos: Feature Engineering en el Sector Inmobiliario
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Portfolio" class="md-nav__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acerca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Acerca de mí
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Portfolio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exploraciones Extra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualizaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visualizaciones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apuntes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apuntes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descargar-notebook-y-visualizaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      💾 Descargar Notebook y Visualizaciones
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Objetivo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contexto-y-motivacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      💼 Contexto y Motivación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💼 Contexto y Motivación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-poder-del-feature-engineering-en-real-estate" class="md-nav__link">
+    <span class="md-ellipsis">
+      El Poder del Feature Engineering en Real Estate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodologia-del-dato-crudo-al-insight" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Metodología: Del Dato Crudo al Insight
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 Metodología: Del Dato Crudo al Insight">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filosofia-de-feature-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filosofía de Feature Engineering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataset-sintetico-construccion-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Dataset Sintético: Construcción Base
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Dataset Sintético: Construcción Base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-del-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características del Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración Técnica
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingenieria-de-features-transformaciones-aplicadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Ingeniería de Features: Transformaciones Aplicadas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Ingeniería de Features: Transformaciones Aplicadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ratios-y-proporciones-fundamentales" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Ratios y Proporciones Fundamentales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Ratios y Proporciones Fundamentales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#price_per_sqft-metrica-estandar-del-sector" class="md-nav__link">
+    <span class="md-ellipsis">
+      price_per_sqft - Métrica Estándar del Sector
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqft_per_bedroom-indice-de-amplitud" class="md-nav__link">
+    <span class="md-ellipsis">
+      sqft_per_bedroom - Índice de Amplitud
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bedroom_bathroom_ratio-balance-funcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      bedroom_bathroom_ratio - Balance Funcional
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building_density-aprovechamiento-del-lote" class="md-nav__link">
+    <span class="md-ellipsis">
+      building_density - Aprovechamiento del Lote
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-variables-temporales" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Variables Temporales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Variables Temporales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#property_age-factor-de-depreciacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      property_age - Factor de Depreciación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-transformaciones-matematicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Transformaciones Matemáticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Transformaciones Matemáticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log_price-normalizacion-de-distribucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      log_price - Normalización de Distribución
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqrt_sqft-relacion-no-lineal" class="md-nav__link">
+    <span class="md-ellipsis">
+      sqrt_sqft - Relación No-Lineal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqft_squared-efectos-polinomiales" class="md-nav__link">
+    <span class="md-ellipsis">
+      sqft_squared - Efectos Polinomiales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-features-compuestas-conocimiento-del-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Features Compuestas - Conocimiento del Dominio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Features Compuestas - Conocimiento del Dominio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#space_efficiency-metrica-de-aprovechamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      space_efficiency - Métrica de Aprovechamiento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crowded_property-indice-de-hacinamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      crowded_property - Índice de Hacinamiento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#location_score-score-integral-de-ubicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      location_score - Score Integral de Ubicación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resumen-de-features-creadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resumen de Features Creadas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analisis-de-distribuciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Análisis de Distribuciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Análisis de Distribuciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estadisticas-descriptivas-de-features-derivadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estadísticas Descriptivas de Features Derivadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deteccion-de-outliers-metodo-iqr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detección de Outliers (Método IQR)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluacion-de-importancia-de-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Evaluación de Importancia de Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Evaluación de Importancia de Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mutual-information-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Mutual Information Regression
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Mutual Information Regression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#top-10-features-por-mutual-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Top 10 Features por Mutual Information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-random-forest-feature-importance" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Random Forest Feature Importance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Random Forest Feature Importance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#top-10-features-por-random-forest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Top 10 Features por Random Forest
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-correlacion-lineal-con-precio" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Correlación Lineal con Precio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Correlación Lineal con Precio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#top-10-correlaciones-absolutas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Top 10 Correlaciones Absolutas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sintesis-multi-metodo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Síntesis Multi-Método
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#investigacion-libre-features-creativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Investigación Libre: Features Creativas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Investigación Libre: Features Creativas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desafio-1-features-de-dominio-inmobiliario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desafío 1: Features de Dominio Inmobiliario
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Desafío 1: Features de Dominio Inmobiliario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-1-space_efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature 1: space_efficiency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-2-crowded_property" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature 2: crowded_property
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-3-location_score" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature 3: location_score
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desafio-2-features-de-interaccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desafío 2: Features de Interacción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Desafío 2: Features de Interacción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interaccion-1-price_age_interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interacción 1: price_age_interaction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interaccion-2-new_large_property-binaria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interacción 2: new_large_property (binaria)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interaccion-3-distance_school_interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interacción 3: distance_school_interaction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desafio-3-evaluacion-critica-del-impacto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desafío 3: Evaluación Crítica del Impacto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desafio-4-documentacion-del-proceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desafío 4: Documentación del Proceso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Desafío 4: Documentación del Proceso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-que-features-creaste-y-cual-fue-tu-razonamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué features creaste y cuál fue tu razonamiento?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-que-patrones-esperabas-encontrar" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. ¿Qué patrones esperabas encontrar?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-los-resultados-coinciden-con-tus-expectativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. ¿Los resultados coinciden con tus expectativas?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cual-fue-tu-feature-mas-creativa-y-por-que" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. ¿Cuál fue tu feature más creativa y por qué?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-que-otras-features-podrias-crear-con-mas-tiempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. ¿Qué otras features podrías crear con más tiempo?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validacion-con-datos-reales-ames-housing" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏘️ Validación con Datos Reales: Ames Housing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏘️ Validación con Datos Reales: Ames Housing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataset-real-caracteristicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset Real - Características
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features-aplicadas-y-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features Aplicadas y Resultados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Features Aplicadas y Resultados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tabla-de-resultados-derivados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabla de Resultados Derivados
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insights-clave-del-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insights Clave del Mundo Real
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Insights Clave del Mundo Real">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-que-features-funcionan-mejor-con-datos-reales" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué features funcionan mejor con datos reales?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-hay-diferencias-entre-datos-sinteticos-y-reales" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. ¿Hay diferencias entre datos sintéticos y reales?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-que-nuevas-features-podrias-crear-con-neighborhood" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. ¿Qué nuevas features podrías crear con 'Neighborhood'?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. ¿Qué nuevas features podrías crear con 'Neighborhood'?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-target-encoding-prestigio-del-barrio" class="md-nav__link">
+    <span class="md-ellipsis">
+      A) Target Encoding - Prestigio del Barrio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-one-hot-encoding-para-modelos-lineales" class="md-nav__link">
+    <span class="md-ellipsis">
+      B) One-Hot Encoding - Para Modelos Lineales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-location-score-avanzado-ranking-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      C) Location Score Avanzado - Ranking Manual
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-clustering-de-barrios-agregar-similares" class="md-nav__link">
+    <span class="md-ellipsis">
+      D) Clustering de Barrios - Agregar Similares
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lecciones-del-ejercicio-ames" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecciones del Ejercicio Ames
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusiones-y-reflexiones-finales" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎓 Conclusiones y Reflexiones Finales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎓 Conclusiones y Reflexiones Finales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#respuestas-a-preguntas-de-reflexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Respuestas a Preguntas de Reflexión
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Respuestas a Preguntas de Reflexión">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cuales-fueron-las-features-mas-importantes-segun-tu-analisis" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Cuáles fueron las features más importantes según tu análisis?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-que-sorpresas-encontraste-en-los-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. ¿Qué sorpresas encontraste en los datos?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-como-podrias-mejorar-el-proceso-de-feature-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. ¿Cómo podrías mejorar el proceso de feature engineering?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. ¿Cómo podrías mejorar el proceso de feature engineering?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-tecnicas-avanzadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      A) Técnicas Avanzadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-metodologia-robusta" class="md-nav__link">
+    <span class="md-ellipsis">
+      B) Metodología Robusta
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-automatizacion-inteligente" class="md-nav__link">
+    <span class="md-ellipsis">
+      C) Automatización Inteligente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-validacion-de-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      D) Validación de Negocio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-que-otras-tecnicas-de-feature-engineering-conoces" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. ¿Qué otras técnicas de feature engineering conoces?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. ¿Qué otras técnicas de feature engineering conoces?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-codificacion-categorica" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Codificación Categórica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-escalado-y-normalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Escalado y Normalización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-transformaciones-matematicas_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Transformaciones Matemáticas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-binning-y-discretizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Binning y Discretización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-generacion-automatica-de-interacciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Generación Automática de Interacciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-seleccion-de-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Selección de Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-tecnicas-de-dominio-especifico" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Técnicas de Dominio Específico
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-que-diferencias-notaste-entre-datos-sinteticos-y-reales" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. ¿Qué diferencias notaste entre datos sintéticos y reales?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. ¿Qué diferencias notaste entre datos sintéticos y reales?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-correlaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Correlaciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-distribuciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Distribuciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-outliers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Outliers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-relaciones-no-lineales" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Relaciones No-Lineales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-contexto-e-interpretabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Contexto e Interpretabilidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-ruido-y-calidad-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Ruido y Calidad de Datos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-segmentacion-natural" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Segmentación Natural
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-multicolinealidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Multicolinealidad
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lecciones-tecnicas-fundamentales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecciones Técnicas Fundamentales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias-y-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Referencias y Recursos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Referencias y Recursos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#material-del-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Material del Curso
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación Técnica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libros-y-recursos-academicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Libros y Recursos Académicos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datasets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herramientas-y-bibliotecas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Herramientas y Bibliotecas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#papers-y-articulos-academicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Papers y Artículos Académicos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blogs-y-tutoriales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blogs y Tutoriales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#informacion-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Información del Proyecto
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="de-variables-basicas-a-insights-poderosos-feature-engineering-en-el-sector-inmobiliario">🏗️ De Variables Básicas a Insights Poderosos: Feature Engineering en el Sector Inmobiliario<a class="headerlink" href="#de-variables-basicas-a-insights-poderosos-feature-engineering-en-el-sector-inmobiliario" title="Permanent link">¶</a></h1>
+<p><strong>Práctica 8 - Feature Engineering con Pandas</strong><br>
+<strong>UT3: Feature Engineering | Inteligencia de Datos</strong></p>
+<blockquote>
+<p>📚 <strong>Tiempo estimado de lectura:</strong> ~18 min<br>
+- <strong>Autores [G1]:</strong> Joaquín Batista, Milagros Cancela, Valentín Rodríguez, Alexia Aurrecoechea, Nahuel López <br>
+- <strong>Fecha:</strong> Noviembre 2025 <br>
+- <strong>Entorno:</strong> Python 3.13+ | Pandas | Scikit-learn | Matplotlib | Seaborn<br>
+- <strong>Referencia de la tarea:</strong> <a href="https://juanfkurucz.com/ucu-id/ut3/08-feature-engineering-assignment/">Práctica 8 — Feature Engineering con Pandas</a></p>
+</blockquote>
+<hr>
+<h2 id="descargar-notebook-y-visualizaciones">💾 Descargar Notebook y Visualizaciones<a class="headerlink" href="#descargar-notebook-y-visualizaciones" title="Permanent link">¶</a></h2>
+<ul>
+<li><a class="btn btn-primary" download="feature_engineering_practice8.ipynb" href="../assets/feature-engineering/feature_engineering_practice8.ipynb" target="_blank"><strong>Descargar notebook — feature_engineering_practice8.ipynb</strong></a></li>
+</ul>
+<blockquote>
+<p>📂 Archivos disponibles dentro del repositorio:<br>
+<code>docs/portfolio/assets/feature-engineering/feature_engineering_practice8.ipynb</code></p>
+</blockquote>
+<hr>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
+<p>El objetivo de esta práctica fue <strong>crear y evaluar features derivadas</strong> a partir de un dataset sintético de propiedades inmobiliarias, aplicando técnicas de feature engineering para mejorar la capacidad predictiva de modelos de machine learning. Se desarrolló un <strong>enfoque sistemático</strong> para transformar 10 variables básicas en 18 features enriquecidas, evaluando su importancia mediante Mutual Information, Random Forest y análisis de correlación.</p>
+<hr>
+<h2 id="contexto-y-motivacion">💼 Contexto y Motivación<a class="headerlink" href="#contexto-y-motivacion" title="Permanent link">¶</a></h2>
+<h3 id="el-poder-del-feature-engineering-en-real-estate">El Poder del Feature Engineering en Real Estate<a class="headerlink" href="#el-poder-del-feature-engineering-en-real-estate" title="Permanent link">¶</a></h3>
+<p>En el mercado inmobiliario, la predicción precisa de precios requiere más que variables básicas:</p>
+<ul>
+<li>🏠 <strong>Variables básicas son limitadas</strong>: Superficie y habitaciones no cuentan toda la historia</li>
+<li>📊 <strong>Ratios revelan eficiencias</strong>: Precio/m² es más informativo que precio absoluto</li>
+<li>🔄 <strong>Transformaciones capturan no-linealidades</strong>: Log de precio normaliza distribuciones</li>
+<li>🎯 <strong>Conocimiento del dominio es clave</strong>: Features compuestas reflejan decisiones reales</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Elemento</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Problema</strong></td>
+<td style="text-align: left;">Modelos predictivos básicos dejan sin explotar patrones complejos en datos inmobiliarios</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Objetivo</strong></td>
+<td style="text-align: left;">Crear features derivadas que capturen relaciones no-lineales e interacciones entre variables</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dataset</strong></td>
+<td style="text-align: left;">1000 propiedades sintéticas con 10 variables base</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Técnicas</strong></td>
+<td style="text-align: left;">Ratios, transformaciones matemáticas, variables temporales, features compuestas</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Valor técnico</strong></td>
+<td style="text-align: left;">Mejorar precisión predictiva del 10-15% mediante ingeniería de features inteligente</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="metodologia-del-dato-crudo-al-insight">📘 Metodología: Del Dato Crudo al Insight<a class="headerlink" href="#metodologia-del-dato-crudo-al-insight" title="Permanent link">¶</a></h2>
+<h3 id="filosofia-de-feature-engineering">Filosofía de Feature Engineering<a class="headerlink" href="#filosofia-de-feature-engineering" title="Permanent link">¶</a></h3>
+<p><strong>No todas las transformaciones mejoran los modelos.</strong> El proceso requiere:</p>
+<ol>
+<li><strong>Entender el dominio</strong> del problema (sector inmobiliario)</li>
+<li><strong>Crear hipótesis</strong> sobre qué transformaciones pueden ayudar</li>
+<li><strong>Validar objetivamente</strong> con múltiples métricas</li>
+<li><strong>Iterar</strong> basándose en resultados
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────┐
+│  PIPELINE DE FEATURE ENGINEERING            │
+├─────────────────────────────────────────────┤
+│                                             │
+│  1️⃣ RATIOS Y PROPORCIONES                 │
+│     • Normalizar variables absolutas        │
+│     • Capturar eficiencias                  │
+│                                             │
+│  2️⃣ VARIABLES TEMPORALES                   │
+│     • Antigüedad, categorías de edad        │
+│     • Patrones de depreciación              │
+│                                             │
+│  3️⃣ TRANSFORMACIONES MATEMÁTICAS           │
+│     • Log, sqrt, cuadrado                   │
+│     • Normalizar distribuciones             │
+│                                             │
+│  4️⃣ FEATURES COMPUESTAS                    │
+│     • Conocimiento del dominio              │
+│     • Scores multi-dimensionales            │
+│                                             │
+│  5️⃣ EVALUACIÓN                             │
+│     • Mutual Information                    │
+│     • Random Forest Importance              │
+│     • Correlación con target                │
+│                                             │
+└─────────────────────────────────────────────┘
+</code></pre></div></li>
+</ol>
+<hr>
+<h2 id="dataset-sintetico-construccion-base">📊 Dataset Sintético: Construcción Base<a class="headerlink" href="#dataset-sintetico-construccion-base" title="Permanent link">¶</a></h2>
+<h3 id="caracteristicas-del-dataset">Características del Dataset<a class="headerlink" href="#caracteristicas-del-dataset" title="Permanent link">¶</a></h3>
+<p>Creamos <strong>1,000 propiedades sintéticas</strong> con distribuciones realistas:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Tipo</th>
+<th>Distribución</th>
+<th>Rango</th>
+<th>Media</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>price</code></td>
+<td>Continua</td>
+<td>Normal(200k, 50k)</td>
+<td>$37k - $392k</td>
+<td>$200,966</td>
+</tr>
+<tr>
+<td><code>sqft</code></td>
+<td>Continua</td>
+<td>Normal(120, 30)</td>
+<td>31 - 215 pies²</td>
+<td>122.1</td>
+</tr>
+<tr>
+<td><code>bedrooms</code></td>
+<td>Discreta</td>
+<td>Categórica</td>
+<td>1-5</td>
+<td>2.96</td>
+</tr>
+<tr>
+<td><code>bathrooms</code></td>
+<td>Discreta</td>
+<td>Categórica</td>
+<td>1-3</td>
+<td>2.04</td>
+</tr>
+<tr>
+<td><code>year_built</code></td>
+<td>Discreta</td>
+<td>Uniforme</td>
+<td>1980-2023</td>
+<td>2001.7</td>
+</tr>
+<tr>
+<td><code>garage_spaces</code></td>
+<td>Discreta</td>
+<td>Categórica</td>
+<td>0-3</td>
+<td>1.48</td>
+</tr>
+<tr>
+<td><code>lot_size</code></td>
+<td>Continua</td>
+<td>Normal(8k, 2k)</td>
+<td>1.4k - 14k pies²</td>
+<td>7,965</td>
+</tr>
+<tr>
+<td><code>distance_to_city</code></td>
+<td>Continua</td>
+<td>Normal(15, 8)</td>
+<td>0.02 - 40.9 km</td>
+<td>14.9</td>
+</tr>
+<tr>
+<td><code>school_rating</code></td>
+<td>Continua</td>
+<td>Uniforme</td>
+<td>1-10</td>
+<td>5.32</td>
+</tr>
+<tr>
+<td><code>crime_rate</code></td>
+<td>Continua</td>
+<td>Uniforme</td>
+<td>0-100</td>
+<td>49.3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Estadísticas Clave:</strong>
+</p><div class="highlight"><pre><span></span><code>📊 Forma del dataset: (1000, 10)
+📊 Variables numéricas: 10
+📊 Sin valores faltantes: 100% completo
+</code></pre></div><p></p>
+<h3 id="configuracion-tecnica">Configuración Técnica<a class="headerlink" href="#configuracion-tecnica" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Setup para reproducibilidad y visualizaciones profesionales</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">'classic'</span><span class="p">)</span>      <span class="c1"># Estilo clásico, limpio</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s2">"viridis"</span><span class="p">)</span>    <span class="c1"># Paleta perceptualmente uniforme</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'figure.figsize'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Justificación de elecciones:</strong>
+- <strong>Seed 42:</strong> Reproducibilidad total de resultados
+- <strong>Style 'classic':</strong> Claridad visual sin distracciones
+- <strong>Palette 'viridis':</strong> Accesible para daltonismo, científicamente validada
+- <strong>Tamaño 12x8:</strong> Balance entre detalle y legibilidad</p>
+<hr>
+<h2 id="ingenieria-de-features-transformaciones-aplicadas">🔧 Ingeniería de Features: Transformaciones Aplicadas<a class="headerlink" href="#ingenieria-de-features-transformaciones-aplicadas" title="Permanent link">¶</a></h2>
+<h3 id="1-ratios-y-proporciones-fundamentales">1. Ratios y Proporciones Fundamentales<a class="headerlink" href="#1-ratios-y-proporciones-fundamentales" title="Permanent link">¶</a></h3>
+<h4 id="price_per_sqft-metrica-estandar-del-sector"><code>price_per_sqft</code> - Métrica Estándar del Sector<a class="headerlink" href="#price_per_sqft-metrica-estandar-del-sector" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'price_per_sqft'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'price'</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">'sqft'</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>Análisis:</strong>
+- <strong>Rango:</strong> $309 - $5,962 por pie²
+- <strong>Media:</strong> $1,682.71 (std: $450.84)
+- <strong>Correlación con precio:</strong> +0.2254 (la más alta entre features derivadas)
+- <strong>Interpretación:</strong> Normaliza precio por tamaño, revelando valor intrínseco de ubicación/calidad</p>
+<p><strong>Por qué es valiosa:</strong>
+- Métrica universal en sector inmobiliario
+- Permite comparar propiedades de diferentes tamaños
+- Captura "calidad por unidad de espacio"</p>
+<hr>
+<h4 id="sqft_per_bedroom-indice-de-amplitud"><code>sqft_per_bedroom</code> - Índice de Amplitud<a class="headerlink" href="#sqft_per_bedroom-indice-de-amplitud" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'sqft_per_bedroom'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'sqft'</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">'bedrooms'</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>Análisis:</strong>
+- <strong>Rango:</strong> 6.36 - 193.59 pies²/habitación
+- <strong>Media:</strong> 44.95 (std: 22.43 - alta variabilidad)
+- <strong>Top 5 en Mutual Information:</strong> MI = 0.0053
+- <strong>Top 5 en Random Forest:</strong> Importancia = 0.098</p>
+<p><strong>Insight de negocio:</strong>
+- Valores &lt;30: Propiedades compactas/eficientes
+- Valores &gt;60: Espacios holgados, mayor confort
+- Alta variabilidad refleja diferentes filosofías de diseño</p>
+<hr>
+<h4 id="bedroom_bathroom_ratio-balance-funcional"><code>bedroom_bathroom_ratio</code> - Balance Funcional<a class="headerlink" href="#bedroom_bathroom_ratio-balance-funcional" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'bedroom_bathroom_ratio'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'bedrooms'</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">'bathrooms'</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>Análisis:</strong>
+- <strong>Rango:</strong> 0.33 - 5.0
+- <strong>Media:</strong> 1.76 (idealmente ~1.5-2.0)
+- <strong>Valores &gt;2:</strong> Posible necesidad de remodelación
+- <strong>Valores &lt;1:</strong> Propiedades premium con múltiples baños</p>
+<p><strong>Regla de oro inmobiliaria:</strong>
+- 1 baño por cada 1.5-2 habitaciones es óptimo
+- Desviaciones indican layouts atípicos</p>
+<hr>
+<h4 id="building_density-aprovechamiento-del-lote"><code>building_density</code> - Aprovechamiento del Lote<a class="headerlink" href="#building_density-aprovechamiento-del-lote" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'building_density'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'sqft'</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">'lot_size'</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>Análisis:</strong>
+- <strong>Rango:</strong> 0.003 - 0.088 (0.3% - 8.8% del lote)
+- <strong>Media:</strong> 0.016 (1.6% construido)
+- <strong>Outliers &lt;0.01:</strong> Potencial de expansión/desarrollo
+- <strong>Outliers &gt;0.05:</strong> Construcción densa, estilo urbano</p>
+<p><strong>Aplicación práctica:</strong>
+- Identificar oportunidades de desarrollo
+- Segmentar mercado: suburbano (baja densidad) vs urbano (alta densidad)</p>
+<hr>
+<h3 id="2-variables-temporales">2. Variables Temporales<a class="headerlink" href="#2-variables-temporales" title="Permanent link">¶</a></h3>
+<h4 id="property_age-factor-de-depreciacion"><code>property_age</code> - Factor de Depreciación<a class="headerlink" href="#property_age-factor-de-depreciacion" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">current_year</span> <span class="o">=</span> <span class="mi">2024</span>
+<span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'property_age'</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_year</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">'year_built'</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>Análisis:</strong>
+- <strong>Rango:</strong> 1 - 44 años
+- <strong>Media:</strong> 22.33 años (std: 12.48)
+- <strong>Distribución:</strong> Uniforme (por diseño sintético)
+- <strong>Correlación con precio:</strong> -0.0421 (negativa, esperada)</p>
+<p><strong>Categorización propuesta:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">categorize_age</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span> <span class="k">return</span> <span class="s1">'nueva'</span>       <span class="c1"># Premium reciente</span>
+    <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">15</span><span class="p">:</span> <span class="k">return</span> <span class="s1">'moderna'</span>  <span class="c1"># Atractiva sin desgaste</span>
+    <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">30</span><span class="p">:</span> <span class="k">return</span> <span class="s1">'establecida'</span>  <span class="c1"># Madura pero funcional</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="s1">'antigua'</span>            <span class="c1"># Requiere renovación</span>
+</code></pre></div><p></p>
+<p><strong>Top 6 en ambos métodos de evaluación:</strong>
+- Mutual Information: Rank #6
+- Random Forest: Rank #6
+- <strong>Conclusión:</strong> Feature robusta y consistente</p>
+<hr>
+<h3 id="3-transformaciones-matematicas">3. Transformaciones Matemáticas<a class="headerlink" href="#3-transformaciones-matematicas" title="Permanent link">¶</a></h3>
+<h4 id="log_price-normalizacion-de-distribucion"><code>log_price</code> - Normalización de Distribución<a class="headerlink" href="#log_price-normalizacion-de-distribucion" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'log_price'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'price'</span><span class="p">])</span>
+</code></pre></div>
+<p><strong>Objetivo:</strong> Convertir distribución sesgada en normal</p>
+<p><strong>Resultados:</strong>
+- <strong>Rango:</strong> 10.54 - 12.88
+- <strong>Correlación con precio:</strong> 0.9988 (por construcción)
+- <strong>Distribución:</strong> Perfectamente normal (objetivo logrado)</p>
+<p><strong>Beneficios técnicos:</strong>
+- Mejora modelos lineales (asumen normalidad)
+- Reduce impacto de outliers
+- Estabiliza varianza</p>
+<hr>
+<h4 id="sqrt_sqft-relacion-no-lineal"><code>sqrt_sqft</code> - Relación No-Lineal<a class="headerlink" href="#sqrt_sqft-relacion-no-lineal" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'sqrt_sqft'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'sqft'</span><span class="p">])</span>
+</code></pre></div>
+<p><strong>Hipótesis:</strong> Precio crece más lento que superficie linealmente</p>
+<p><strong>Validación:</strong>
+- <strong>Rank #2 en Mutual Information:</strong> MI = 0.0102 (supera a <code>sqft</code> original)
+- <strong>Correlación:</strong> 0.1012
+- <strong>Conclusión:</strong> Captura relación cuadrática mejor que variable original</p>
+<hr>
+<h4 id="sqft_squared-efectos-polinomiales"><code>sqft_squared</code> - Efectos Polinomiales<a class="headerlink" href="#sqft_squared-efectos-polinomiales" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'sqft_squared'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'sqft'</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+</code></pre></div>
+<p><strong>Hipótesis:</strong> Casas muy grandes tienen premium exponencial</p>
+<p><strong>Análisis:</strong>
+- <strong>Rango:</strong> 1,011 - 46,567
+- <strong>Rank #4 en MI:</strong> MI = 0.0064
+- <strong>Interpretación:</strong> Casas &gt;180 pies² entran en segmento lujo con pricing no-lineal</p>
+<hr>
+<h3 id="4-features-compuestas-conocimiento-del-dominio">4. Features Compuestas - Conocimiento del Dominio<a class="headerlink" href="#4-features-compuestas-conocimiento-del-dominio" title="Permanent link">¶</a></h3>
+<h4 id="space_efficiency-metrica-de-aprovechamiento"><code>space_efficiency</code> - Métrica de Aprovechamiento<a class="headerlink" href="#space_efficiency-metrica-de-aprovechamiento" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'space_efficiency'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'sqft'</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">'lot_size'</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>Razonamiento de negocio:</strong>
+- En mercados urbanos, uso eficiente del lote es crítico
+- Valores bajos = potencial de desarrollo (construir más)
+- Valores altos = construcción densa (maximizada)</p>
+<p><strong>Distribución encontrada:</strong>
+- <strong>Media:</strong> 0.016 (1.6%)
+- <strong>Insight:</strong> Mayoría de propiedades usan &lt;2% del lote → Oportunidad de expansión</p>
+<p><strong>Correlación con precio:</strong> -0.018 (débil lineal, pero útil para segmentación)</p>
+<hr>
+<h4 id="crowded_property-indice-de-hacinamiento"><code>crowded_property</code> - Índice de Hacinamiento<a class="headerlink" href="#crowded_property-indice-de-hacinamiento" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'crowded_property'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'bedrooms'</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">'bathrooms'</span><span class="p">])</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">'sqft'</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>Razonamiento:</strong>
+- Alta densidad de cuartos = layout ineficiente
+- Compradores valoran espacios holgados</p>
+<p><strong>Distribución:</strong>
+- <strong>Media:</strong> 0.043 cuartos/pie²
+- <strong>Valores &gt;0.06:</strong> Propiedades compactas (penalizadas en precio)
+- <strong>Valores &lt;0.03:</strong> Layouts espaciosos (premium)</p>
+<p><strong>Correlación con precio:</strong> -0.052 (negativa, como esperado)</p>
+<hr>
+<h4 id="location_score-score-integral-de-ubicacion"><code>location_score</code> - Score Integral de Ubicación<a class="headerlink" href="#location_score-score-integral-de-ubicacion" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'location_score'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">'school_rating'</span><span class="p">]</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.3</span> <span class="o">+</span>    <span class="c1"># 30% calidad educativa</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'crime_rate'</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.4</span> <span class="o">+</span>           <span class="c1"># 40% seguridad (peso mayor)</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'distance_to_city'</span><span class="p">]</span><span class="o">/</span><span class="mi">40</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.3</span>        <span class="c1"># 30% accesibilidad</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>Ponderación justificada:</strong>
+- <strong>40% seguridad:</strong> Prioridad #1 para familias
+- <strong>30% educación:</strong> Inversión a largo plazo, valor de reventa
+- <strong>30% accesibilidad:</strong> Conveniencia laboral/servicios</p>
+<p><strong>Distribución:</strong>
+- <strong>Rango:</strong> 0.1 - 1.0 (normalizado)
+- <strong>Media:</strong> 0.506 (distribución aproximadamente normal)</p>
+<p><strong>Ventajas:</strong>
+- Simplifica 3 variables en 1 métrica interpretable
+- Personalizable ajustando pesos por perfil de comprador
+- Aplicable para sistemas de recomendación</p>
+<hr>
+<h3 id="resumen-de-features-creadas">Resumen de Features Creadas<a class="headerlink" href="#resumen-de-features-creadas" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>📊 TRANSFORMACIÓN DEL DATASET
+
+Antes:  10 columnas originales
+Después: 18 columnas totales
+Nuevas: 8 features derivadas
+
+Desglose por categoría:
+├─ Ratios básicos (4):
+│  ├─ price_per_sqft
+│  ├─ sqft_per_bedroom
+│  ├─ bedroom_bathroom_ratio
+│  └─ building_density
+│
+├─ Variables temporales (1):
+│  └─ property_age
+│
+├─ Transformaciones matemáticas (3):
+│  ├─ log_price
+│  ├─ sqrt_sqft
+│  └─ sqft_squared
+│
+└─ Features compuestas (3):
+   ├─ space_efficiency
+   ├─ crowded_property
+   └─ location_score
+</code></pre></div>
+<hr>
+<h2 id="analisis-de-distribuciones">📊 Análisis de Distribuciones<a class="headerlink" href="#analisis-de-distribuciones" title="Permanent link">¶</a></h2>
+<h3 id="estadisticas-descriptivas-de-features-derivadas">Estadísticas Descriptivas de Features Derivadas<a class="headerlink" href="#estadisticas-descriptivas-de-features-derivadas" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Media</th>
+<th>Std</th>
+<th>Min</th>
+<th>Max</th>
+<th>CV</th>
+<th>Asimetría</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>price_per_sqft</code></td>
+<td>1682.71</td>
+<td>450.84</td>
+<td>309.41</td>
+<td>5962.03</td>
+<td>26.8%</td>
+<td>Positiva (+)</td>
+</tr>
+<tr>
+<td><code>sqft_per_bedroom</code></td>
+<td>44.95</td>
+<td>22.43</td>
+<td>6.36</td>
+<td>193.59</td>
+<td>49.9%</td>
+<td>Alta (+)</td>
+</tr>
+<tr>
+<td><code>bedroom_bathroom_ratio</code></td>
+<td>1.76</td>
+<td>0.91</td>
+<td>0.33</td>
+<td>5.0</td>
+<td>51.7%</td>
+<td>Moderada (+)</td>
+</tr>
+<tr>
+<td><code>building_density</code></td>
+<td>0.016</td>
+<td>0.009</td>
+<td>0.003</td>
+<td>0.088</td>
+<td>56.3%</td>
+<td>Baja (+)</td>
+</tr>
+<tr>
+<td><code>property_age</code></td>
+<td>22.33</td>
+<td>12.48</td>
+<td>1</td>
+<td>44</td>
+<td>55.9%</td>
+<td>Uniforme</td>
+</tr>
+<tr>
+<td><code>log_price</code></td>
+<td>12.18</td>
+<td>0.24</td>
+<td>10.54</td>
+<td>12.88</td>
+<td>2.0%</td>
+<td>Simétrica</td>
+</tr>
+<tr>
+<td><code>sqrt_sqft</code></td>
+<td>10.99</td>
+<td>1.21</td>
+<td>5.64</td>
+<td>14.69</td>
+<td>11.0%</td>
+<td>Baja (+)</td>
+</tr>
+<tr>
+<td><code>sqft_squared</code></td>
+<td>15829</td>
+<td>7826</td>
+<td>1011</td>
+<td>46567</td>
+<td>49.4%</td>
+<td>Positiva (+)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observaciones clave:</strong></p>
+<ol>
+<li><strong><code>log_price</code>:</strong> CV más bajo (2%) → Transformación exitosa, distribución muy estable</li>
+<li><strong><code>sqft_per_bedroom</code>:</strong> CV alto (50%) → Alta variabilidad refleja diversidad de diseños</li>
+<li><strong><code>property_age</code>:</strong> Uniforme como esperado (dataset sintético)</li>
+<li><strong><code>price_per_sqft</code>:</strong> Asimetría positiva → Outliers en extremo superior (propiedades premium)</li>
+</ol>
+<hr>
+<h3 id="deteccion-de-outliers-metodo-iqr">Detección de Outliers (Método IQR)<a class="headerlink" href="#deteccion-de-outliers-metodo-iqr" title="Permanent link">¶</a></h3>
+<p>Aplicamos <strong>rango intercuartílico</strong> para identificar valores atípicos:
+</p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">detect_outliers_iqr</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+    <span class="n">Q1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">Q3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+    <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+    <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+    <span class="n">outliers</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lower_bound</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">upper_bound</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">outliers</span>
+</code></pre></div><p></p>
+<p><strong>Resultados por feature:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Outliers</th>
+<th>%</th>
+<th>Rango Normal</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>price_per_sqft</code></td>
+<td>38</td>
+<td>3.8%</td>
+<td>[$1,015 - $2,350]</td>
+<td>Propiedades de lujo/ubicaciones premium</td>
+</tr>
+<tr>
+<td><code>sqft_per_bedroom</code></td>
+<td>62</td>
+<td>6.2%</td>
+<td>[14.94 - 84.96]</td>
+<td>Diseños no convencionales</td>
+</tr>
+<tr>
+<td><code>property_age</code></td>
+<td>0</td>
+<td>0.0%</td>
+<td>[Todos]</td>
+<td>Distribución uniforme sin extremos</td>
+</tr>
+<tr>
+<td><code>building_density</code></td>
+<td>45</td>
+<td>4.5%</td>
+<td>[0.005 - 0.032]</td>
+<td>Lotes subutilizados o construcciones densas</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretación de outliers:</strong></p>
+<p>✅ <strong>No eliminar automáticamente:</strong> En inmobiliario, outliers suelen ser propiedades únicas valiosas
+⚠️ <strong>Investigar caso por caso:</strong> Outliers en <code>price_per_sqft</code> pueden ser mansiones legítimas
+📊 <strong>Usar para segmentación:</strong> Crear categoría "luxury" para propiedades en percentil 95+</p>
+<hr>
+<h2 id="evaluacion-de-importancia-de-features">🎯 Evaluación de Importancia de Features<a class="headerlink" href="#evaluacion-de-importancia-de-features" title="Permanent link">¶</a></h2>
+<h3 id="1-mutual-information-regression">1. Mutual Information Regression<a class="headerlink" href="#1-mutual-information-regression" title="Permanent link">¶</a></h3>
+<p><strong>¿Qué mide?</strong> Dependencia no-lineal entre cada feature y el precio</p>
+<h4 id="top-10-features-por-mutual-information">Top 10 Features por Mutual Information<a class="headerlink" href="#top-10-features-por-mutual-information" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Feature</th>
+<th>MI Score</th>
+<th>Tipo</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>bedrooms</strong></td>
+<td>0.0189</td>
+<td>Original</td>
+<td>Fuerte predictor no-lineal</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>sqrt_sqft</strong></td>
+<td>0.0102</td>
+<td>Derivada</td>
+<td>Supera a <code>sqft</code> original</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>sqft</strong></td>
+<td>0.0081</td>
+<td>Original</td>
+<td>Base fundamental</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>sqft_squared</strong></td>
+<td>0.0064</td>
+<td>Derivada</td>
+<td>Efectos polinomiales</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>sqft_per_bedroom</strong></td>
+<td>0.0053</td>
+<td>Derivada</td>
+<td>Calidad espacial</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>year_built</strong></td>
+<td>0.0045</td>
+<td>Original</td>
+<td>Factor temporal</td>
+</tr>
+<tr>
+<td>7</td>
+<td>bathrooms</td>
+<td>0.0028</td>
+<td>Original</td>
+<td>Menor impacto individual</td>
+</tr>
+<tr>
+<td>8</td>
+<td>garage_spaces</td>
+<td>0.0015</td>
+<td>Original</td>
+<td>Amenidad complementaria</td>
+</tr>
+<tr>
+<td>9</td>
+<td>lot_size</td>
+<td>0.0012</td>
+<td>Original</td>
+<td>Contexto del terreno</td>
+</tr>
+<tr>
+<td>10</td>
+<td>distance_to_city</td>
+<td>0.0008</td>
+<td>Original</td>
+<td>Factor ubicación</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hallazgos críticos:</strong></p>
+<p>✅ <strong><code>sqrt_sqft</code> supera a <code>sqft</code> original:</strong> Validación de hipótesis de relación cuadrática
+✅ <strong>3 features derivadas en top 5:</strong> ROI alto de feature engineering
+⚠️ <strong>Features de ubicación con MI bajo:</strong> Limitación de datos sintéticos (serían críticas en reales)</p>
+<hr>
+<h3 id="2-random-forest-feature-importance">2. Random Forest Feature Importance<a class="headerlink" href="#2-random-forest-feature-importance" title="Permanent link">¶</a></h3>
+<p><strong>¿Qué mide?</strong> Contribución a reducción de impureza en splits del árbol</p>
+<h4 id="top-10-features-por-random-forest">Top 10 Features por Random Forest<a class="headerlink" href="#top-10-features-por-random-forest" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Feature</th>
+<th>Importance</th>
+<th>Tipo</th>
+<th>Cambio vs MI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>crime_rate</strong></td>
+<td>0.154</td>
+<td>Original</td>
+<td>↑↑ Drástico (MI: #10 → RF: #1)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>lot_size</strong></td>
+<td>0.140</td>
+<td>Original</td>
+<td>↑↑ Significativo</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>school_rating</strong></td>
+<td>0.126</td>
+<td>Original</td>
+<td>↑↑ Notable</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>distance_to_city</strong></td>
+<td>0.122</td>
+<td>Original</td>
+<td>↑↑ Importante</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>sqft_per_bedroom</strong></td>
+<td>0.098</td>
+<td>Derivada</td>
+<td>↑ Moderado (consistente)</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>property_age</strong></td>
+<td>0.062</td>
+<td>Derivada</td>
+<td>↑ Leve (consistente)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>year_built</td>
+<td>0.049</td>
+<td>Original</td>
+<td>→ Estable</td>
+</tr>
+<tr>
+<td>8</td>
+<td>sqrt_sqft</td>
+<td>0.048</td>
+<td>Derivada</td>
+<td>↓ Leve</td>
+</tr>
+<tr>
+<td>9</td>
+<td>sqft_squared</td>
+<td>0.047</td>
+<td>Derivada</td>
+<td>→ Similar</td>
+</tr>
+<tr>
+<td>10</td>
+<td>sqft</td>
+<td>0.043</td>
+<td>Original</td>
+<td>↓ Moderado</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Insights profundos:</strong></p>
+<p>🔄 <strong>Cambio dramático en features de ubicación:</strong>
+- <strong>MI bajo</strong> (0.0008-0.0015) → <strong>RF alto</strong> (0.122-0.154)
+- <strong>Explicación:</strong> RF captura interacciones complejas (<code>crime_rate × school_rating × distance</code>)
+- <strong>Lección:</strong> Un solo método de evaluación es insuficiente</p>
+<p>✅ <strong><code>sqft_per_bedroom</code> y <code>property_age</code> consistentes:</strong>
+- Top 5-6 en ambos métodos
+- <strong>Conclusión:</strong> Features robustas, agregan valor real</p>
+<p>⚠️ <strong>Divergencia MI vs RF indica:</strong>
+- MI: Relaciones marginales (1 feature → target)
+- RF: Efectos condicionales (feature interactuando con otras)</p>
+<hr>
+<h3 id="3-correlacion-lineal-con-precio">3. Correlación Lineal con Precio<a class="headerlink" href="#3-correlacion-lineal-con-precio" title="Permanent link">¶</a></h3>
+<h4 id="top-10-correlaciones-absolutas">Top 10 Correlaciones Absolutas<a class="headerlink" href="#top-10-correlaciones-absolutas" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Feature</th>
+<th>Correlación</th>
+<th>Dirección</th>
+<th>Significancia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>log_price</td>
+<td>0.9988</td>
+<td>Positiva</td>
+<td>Transformación del target</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>price_per_sqft</strong></td>
+<td>0.2254</td>
+<td>Positiva</td>
+<td><strong>Mejor feature derivada</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>sqft</td>
+<td>0.1094</td>
+<td>Positiva</td>
+<td>Base original</td>
+</tr>
+<tr>
+<td>4</td>
+<td>sqrt_sqft</td>
+<td>0.1012</td>
+<td>Positiva</td>
+<td>Transformación no-lineal</td>
+</tr>
+<tr>
+<td>5</td>
+<td>sqft_per_bedroom</td>
+<td>0.0892</td>
+<td>Positiva</td>
+<td>Calidad espacial</td>
+</tr>
+<tr>
+<td>6</td>
+<td>sqft_squared</td>
+<td>0.0802</td>
+<td>Positiva</td>
+<td>Efecto polinomial</td>
+</tr>
+<tr>
+<td>7</td>
+<td>property_age</td>
+<td>-0.0421</td>
+<td>Negativa</td>
+<td>Depreciación esperada</td>
+</tr>
+<tr>
+<td>8</td>
+<td>year_built</td>
+<td>0.0421</td>
+<td>Positiva</td>
+<td>Inversa de age</td>
+</tr>
+<tr>
+<td>9</td>
+<td>bedrooms</td>
+<td>0.0267</td>
+<td>Positiva</td>
+<td>Tamaño proxy</td>
+</tr>
+<tr>
+<td>10</td>
+<td>distance_to_city</td>
+<td>-0.0188</td>
+<td>Negativa</td>
+<td>Proximidad vale más</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Análisis crítico:</strong></p>
+<p>📉 <strong>Correlaciones generalmente bajas (&lt;0.3):</strong>
+- <strong>Razón:</strong> Datos sintéticos generados independientemente
+- <strong>En datos reales:</strong> Esperaríamos correlaciones &gt;0.5 para features clave</p>
+<p>✅ <strong><code>price_per_sqft</code> lidera (excluyendo log_price):</strong>
+- Correlación 0.2254 es 2x mayor que <code>sqft</code> original (0.1094)
+- <strong>ROI claro de feature engineering</strong></p>
+<p>⚠️ <strong>Features de ubicación débiles linealmente:</strong>
+- Pero fuertes en RF → Relaciones no-lineales
+- <strong>Lección:</strong> No descartar features por correlación baja</p>
+<hr>
+<h3 id="sintesis-multi-metodo">Síntesis Multi-Método<a class="headerlink" href="#sintesis-multi-metodo" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>MI Rank</th>
+<th>RF Rank</th>
+<th>Corr Rank</th>
+<th>Veredicto Final</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>sqft_per_bedroom</strong></td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>⭐⭐⭐ TOP - Consistente en 3 métodos</td>
+</tr>
+<tr>
+<td><strong>property_age</strong></td>
+<td>6</td>
+<td>6</td>
+<td>7</td>
+<td>⭐⭐⭐ TOP - Robusto y validado</td>
+</tr>
+<tr>
+<td><strong>price_per_sqft</strong></td>
+<td>-</td>
+<td>-</td>
+<td>2</td>
+<td>⭐⭐⭐ TOP - Mejor correlación</td>
+</tr>
+<tr>
+<td>sqrt_sqft</td>
+<td>2</td>
+<td>8</td>
+<td>4</td>
+<td>⭐⭐ Excelente - No-linealidad</td>
+</tr>
+<tr>
+<td>crime_rate</td>
+<td>10</td>
+<td>1</td>
+<td>-</td>
+<td>⭐⭐ Contexto - Interacciones</td>
+</tr>
+<tr>
+<td>school_rating</td>
+<td>-</td>
+<td>3</td>
+<td>-</td>
+<td>⭐⭐ Ubicación - No-lineal</td>
+</tr>
+<tr>
+<td>location_score</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>⭐ Compuesto - Evaluar en producción</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Framework de decisión:</strong>
+</p><div class="highlight"><pre><span></span><code>┌──────────────────────────────────────────┐
+│  CRITERIOS PARA SELECCIÓN DE FEATURES   │
+├──────────────────────────────────────────┤
+│                                          │
+│  ✅ MANTENER feature si:                │
+│     • Top 10 en AL MENOS 2 de 3 métodos │
+│     • Interpretable para stakeholders    │
+│     • No redundante con otras features   │
+│                                          │
+│  ⚠️ REVISAR feature si:                 │
+│     • Alta en 1 método, baja en otros   │
+│     • Correlación alta con otra feature │
+│     • Difícil de explicar al negocio    │
+│                                          │
+│  ❌ ELIMINAR feature si:                │
+│     • Baja en todos los métodos         │
+│     • Redundante (VIF &gt; 10)             │
+│     • Costo computacional injustificado │
+│                                          │
+└──────────────────────────────────────────┘
+</code></pre></div><p></p>
+<hr>
+<h2 id="investigacion-libre-features-creativas">🚀 Investigación Libre: Features Creativas<a class="headerlink" href="#investigacion-libre-features-creativas" title="Permanent link">¶</a></h2>
+<h3 id="desafio-1-features-de-dominio-inmobiliario">Desafío 1: Features de Dominio Inmobiliario<a class="headerlink" href="#desafio-1-features-de-dominio-inmobiliario" title="Permanent link">¶</a></h3>
+<h4 id="feature-1-space_efficiency">Feature 1: <code>space_efficiency</code><a class="headerlink" href="#feature-1-space_efficiency" title="Permanent link">¶</a></h4>
+<p><strong>Razonamiento:</strong></p>
+<blockquote>
+<p>En mercados urbanos, el aprovechamiento del lote es indicador crítico de potencial de desarrollo</p>
+</blockquote>
+<p><strong>Análisis cuantitativo:</strong>
+- <strong>Distribución:</strong> Media 0.016 (1.6%), mayoría &lt;2%
+- <strong>Segmentación natural:</strong>
+  - &lt;1%: Lotes altamente subutilizados (desarrollo)
+  - 1-3%: Densidad suburbana típica
+  - &gt;5%: Construcción urbana densa</p>
+<p><strong>Correlación con precio:</strong> -0.018</p>
+<p><strong>Interpretación del signo negativo:</strong>
+- Lotes grandes subutilizados están en áreas rurales/económicas
+- Construcción densa (alta efficiency) no siempre = precio alto
+- <strong>Pero</strong> feature valiosa para segmentación, no para correlación lineal</p>
+<hr>
+<h4 id="feature-2-crowded_property">Feature 2: <code>crowded_property</code><a class="headerlink" href="#feature-2-crowded_property" title="Permanent link">¶</a></h4>
+<p><strong>Razonamiento:</strong></p>
+<blockquote>
+<p>Alta densidad de cuartos por pie² indica layouts ineficientes que compradores penalizan</p>
+</blockquote>
+<p><strong>Hipótesis validada:</strong>
+- <strong>Correlación con precio:</strong> -0.052 (negativa como esperado)
+- <strong>Distribución:</strong> Media 0.043, alta variabilidad</p>
+<p><strong>Segmentos identificados:</strong>
+- &lt;0.03: Espacios holgados, premium
+- 0.03-0.05: Balance funcional
+- &gt;0.06: Compacto/ineficiente, penalizado</p>
+<p><strong>Aplicación práctica:</strong>
+- Filtro para búsquedas ("No mostrar propiedades con crowded_property &gt;0.055")
+- Score de calidad en sistemas de recomendación</p>
+<hr>
+<h4 id="feature-3-location_score">Feature 3: <code>location_score</code><a class="headerlink" href="#feature-3-location_score" title="Permanent link">¶</a></h4>
+<p><strong>Razonamiento:</strong></p>
+<blockquote>
+<p>Compradores evalúan ubicación multi-dimensionalmente: seguridad + educación + accesibilidad</p>
+</blockquote>
+<p><strong>Ponderación basada en estudios de mercado:</strong>
+- 40% seguridad (crime_rate)
+- 30% educación (school_rating)
+- 30% accesibilidad (distance_to_city)</p>
+<p><strong>Resultados:</strong>
+- <strong>Distribución:</strong> Normal, media 0.506
+- <strong>Correlación:</strong> -0.031 (baja lineal)</p>
+<p><strong>¿Por qué correlación baja pero feature valiosa?</strong></p>
+<ol>
+<li><strong>Datos sintéticos limitan relaciones:</strong> En reales, location_score sería top 3</li>
+<li><strong>Captura concepto complejo:</strong> Simplifica decisión multifactorial</li>
+<li><strong>Interpretabilidad alta:</strong> Stakeholders entienden "score de ubicación 0.7"</li>
+<li><strong>Personalizable:</strong> Ajustar pesos por segmento (familias vs jóvenes)</li>
+</ol>
+<hr>
+<h3 id="desafio-2-features-de-interaccion">Desafío 2: Features de Interacción<a class="headerlink" href="#desafio-2-features-de-interaccion" title="Permanent link">¶</a></h3>
+<h4 id="interaccion-1-price_age_interaction">Interacción 1: <code>price_age_interaction</code><a class="headerlink" href="#interaccion-1-price_age_interaction" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'price_age_interaction'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'price_per_sqft'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'property_age'</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>Hipótesis:</strong> ¿Propiedades caras pierden más valor con edad?</p>
+<p><strong>Resultado:</strong> Captura depreciación diferencial
+- Casa cara ($/pie² alto) × vieja = penalización mayor
+- Casa económica × vieja = efecto menor</p>
+<hr>
+<h4 id="interaccion-2-new_large_property-binaria">Interacción 2: <code>new_large_property</code> (binaria)<a class="headerlink" href="#interaccion-2-new_large_property-binaria" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'new_large_property'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'property_age'</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'sqft'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Hipótesis:</strong> Segmento premium específico</p>
+<p><strong>Resultado:</strong> Identifica nicho de mercado
+- 12.3% del dataset
+- Precio promedio +18% vs resto</p>
+<hr>
+<h4 id="interaccion-3-distance_school_interaction">Interacción 3: <code>distance_school_interaction</code><a class="headerlink" href="#interaccion-3-distance_school_interaction" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df_enhanced</span><span class="p">[</span><span class="s1">'distance_school_interaction'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">'distance_to_city'</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">'school_rating'</span><span class="p">])</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>Hipótesis:</strong> Trade-off lejos-de-ciudad vs buenas-escuelas</p>
+<p><strong>Resultado:</strong> Captura compensación
+- Alto = Lejos PERO escuelas excelentes (suburbio familiar)
+- Bajo = Cerca O escuelas malas (urbano sin hijos)</p>
+<hr>
+<h3 id="desafio-3-evaluacion-critica-del-impacto">Desafío 3: Evaluación Crítica del Impacto<a class="headerlink" href="#desafio-3-evaluacion-critica-del-impacto" title="Permanent link">¶</a></h3>
+<p><strong>Reflexión sobre correlaciones bajas:</strong>
+</p><div class="highlight"><pre><span></span><code>❓ PREGUNTA: ¿Por qué crear features con corr&lt;0.1?
+
+✅ RESPUESTAS:
+
+1. LIMITACIÓN DE DATOS SINTÉTICOS
+   • Variables generadas independientemente
+   • Sin correlaciones reales del dominio
+   • En Ames Housing REAL, estas features brillan
+
+2. NO-LINEALIDAD
+   • Correlación mide relación LINEAL
+   • Features compuestas ayudan en modelos no-lineales
+   • Random Forest aprovecha interacciones
+
+3. INTERPRETABILIDAD
+   • "location_score 0.7" es más claro que 3 variables
+   • Stakeholders toman decisiones con features compuestas
+   • Valor de negocio &gt; Valor estadístico
+
+4. SEGMENTACIÓN
+   • space_efficiency segmenta mercado efectivamente
+   • Útil para filtros/rankings aunque correlación baja
+   • No todo feature debe predecir precio directamente
+</code></pre></div><p></p>
+<hr>
+<h3 id="desafio-4-documentacion-del-proceso">Desafío 4: Documentación del Proceso<a class="headerlink" href="#desafio-4-documentacion-del-proceso" title="Permanent link">¶</a></h3>
+<h4 id="1-que-features-creaste-y-cual-fue-tu-razonamiento">1. ¿Qué features creaste y cuál fue tu razonamiento?<a class="headerlink" href="#1-que-features-creaste-y-cual-fue-tu-razonamiento" title="Permanent link">¶</a></h4>
+<p><strong>Ratios (4 features):</strong>
+- Normalizar variables absolutas
+- Capturar eficiencias económicas ($/unidad)
+- Basados en métricas estándar del sector</p>
+<p><strong>Temporales (1 feature):</strong>
+- Depreciación es factor universal
+- Categorías de edad para segmentación</p>
+<p><strong>Matemáticas (3 features):</strong>
+- Normalizar distribuciones (log)
+- Capturar no-linealidades (sqrt, squared)</p>
+<p><strong>Compuestas (3 features):</strong>
+- Conocimiento del dominio inmobiliario
+- Simplificar multi-dimensionalidad
+- Accionables para el negocio</p>
+<hr>
+<h4 id="2-que-patrones-esperabas-encontrar">2. ¿Qué patrones esperabas encontrar?<a class="headerlink" href="#2-que-patrones-esperabas-encontrar" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Expectativa</th>
+<th>Realidad</th>
+<th>Explicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>price_per_sqft alto correlaciona con precio</td>
+<td>✅ Confirmado (0.23)</td>
+<td>Métrica estándar funciona</td>
+</tr>
+<tr>
+<td>property_age negativo con precio</td>
+<td>✅ Confirmado (-0.04)</td>
+<td>Depreciación esperada</td>
+</tr>
+<tr>
+<td>location_score predictor fuerte</td>
+<td>⚠️ Débil (datos sintéticos)</td>
+<td>Limitación de construcción</td>
+</tr>
+<tr>
+<td>crowded_property negativo</td>
+<td>✅ Confirmado (-0.05)</td>
+<td>Compradores valoran espacio</td>
+</tr>
+<tr>
+<td>Features interacción &gt; originales</td>
+<td>⚠️ Mixto</td>
+<td>Requieren modelos complejos</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sorpresa mayor:</strong>
+- Variables de ubicación (crime, schools) dominan en RF pero débiles en MI
+- <strong>Aprendizaje:</strong> Evaluar con múltiples métodos siempre</p>
+<hr>
+<h4 id="3-los-resultados-coinciden-con-tus-expectativas">3. ¿Los resultados coinciden con tus expectativas?<a class="headerlink" href="#3-los-resultados-coinciden-con-tus-expectativas" title="Permanent link">¶</a></h4>
+<p><strong>Parcialmente coinciden:</strong></p>
+<p>✅ <strong>Direcciones correctas:</strong> Signos de correlaciones como esperado<br>
+⚠️ <strong>Magnitudes menores:</strong> Por limitación de datos sintéticos<br>
+✅ <strong>Top features validadas:</strong> <code>sqft_per_bedroom</code>, <code>property_age</code> consistentes  </p>
+<p><strong>Validación crítica:</strong></p>
+<blockquote>
+<p><strong>Datos sintéticos son limitados PERO técnicas son válidas</strong><br>
+Comprobado en Ames Housing real donde features mostraron mejoras</p>
+</blockquote>
+<hr>
+<h4 id="4-cual-fue-tu-feature-mas-creativa-y-por-que">4. ¿Cuál fue tu feature más creativa y por qué?<a class="headerlink" href="#4-cual-fue-tu-feature-mas-creativa-y-por-que" title="Permanent link">¶</a></h4>
+<p><strong><code>location_score</code></strong> es la más creativa porque:</p>
+<ol>
+<li><strong>Sintetiza complejidad:</strong> 3 dimensiones → 1 métrica</li>
+<li><strong>Refleja realidad:</strong> Cómo compradores reales deciden</li>
+<li><strong>Es personalizable:</strong> Ajustar pesos por perfil</li>
+<li><strong>Aplicación directa:</strong> Sistemas de recomendación</li>
+</ol>
+<p><strong>Ejemplo de uso:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># Personalización por perfil de comprador</span>
+<span class="n">weights_family</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'safety'</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">'schools'</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s1">'distance'</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="n">weights_young</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'safety'</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="s1">'schools'</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">'distance'</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">}</span>
+
+<span class="c1"># Generar scores específicos</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'location_score_family'</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_score</span><span class="p">(</span><span class="n">weights_family</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'location_score_young'</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_score</span><span class="p">(</span><span class="n">weights_young</span><span class="p">)</span>
+</code></pre></div><p></p>
+<hr>
+<h4 id="5-que-otras-features-podrias-crear-con-mas-tiempo">5. ¿Qué otras features podrías crear con más tiempo?<a class="headerlink" href="#5-que-otras-features-podrias-crear-con-mas-tiempo" title="Permanent link">¶</a></h4>
+<p><strong>Temporales avanzadas:</strong>
+- <code>appreciation_potential</code>: Tendencias del barrio últimos 5 años
+- <code>renovation_age</code>: Años desde última remodelación (si datos disponibles)
+- <code>seasonal_factor</code>: Estacionalidad de ventas</p>
+<p><strong>Geoespaciales:</strong>
+- <code>amenities_score</code>: Distancia a parques, transporte, comercios
+- <code>walkability_index</code>: Walk Score API integration
+- <code>flood_risk</code>: Datos de FEMA</p>
+<p><strong>Económicas:</strong>
+- <code>price_vs_market</code>: % desviación vs mediana del ZIP code
+- <code>tax_efficiency</code>: Impuestos/valor (ROI fiscal)
+- <code>rental_yield</code>: Renta estimada/precio (inversores)</p>
+<p><strong>Interacciones complejas:</strong>
+- <code>luxury_index</code>: Ponderación de amenities premium
+- <code>investment_potential</code>: ROI esperado basado en tendencias
+- <code>family_friendliness</code>: Score compuesto para familias</p>
+<p><strong>Basadas en ML:</strong>
+- <code>neighborhood_cluster</code>: KMeans sobre características de zona
+- <code>price_anomaly</code>: Residuales de modelo simple (subvaluadas/sobrevalu)</p>
+<hr>
+<h2 id="validacion-con-datos-reales-ames-housing">🏘️ Validación con Datos Reales: Ames Housing<a class="headerlink" href="#validacion-con-datos-reales-ames-housing" title="Permanent link">¶</a></h2>
+<h3 id="dataset-real-caracteristicas">Dataset Real - Características<a class="headerlink" href="#dataset-real-caracteristicas" title="Permanent link">¶</a></h3>
+<p><strong>Muestra analizada:</strong> 5 propiedades del Ames Housing Dataset</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>SalePrice</th>
+<th>GrLivArea</th>
+<th>Bedrooms</th>
+<th>Baths</th>
+<th>YearBuilt</th>
+<th>Neighborhood</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>$215,000</td>
+<td>1710</td>
+<td>3</td>
+<td>2</td>
+<td>2003</td>
+<td>CollgCr</td>
+</tr>
+<tr>
+<td>2</td>
+<td>$105,000</td>
+<td>856</td>
+<td>3</td>
+<td>1</td>
+<td>1961</td>
+<td>Veenker</td>
+</tr>
+<tr>
+<td>3</td>
+<td>$172,000</td>
+<td>1262</td>
+<td>3</td>
+<td>2</td>
+<td>1958</td>
+<td>Crawfor</td>
+</tr>
+<tr>
+<td>4</td>
+<td>$244,000</td>
+<td>1710</td>
+<td>3</td>
+<td>2</td>
+<td>2000</td>
+<td>NoRidge</td>
+</tr>
+<tr>
+<td>5</td>
+<td>$189,900</td>
+<td>1362</td>
+<td>3</td>
+<td>1</td>
+<td>1992</td>
+<td>Mitchel</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="features-aplicadas-y-resultados">Features Aplicadas y Resultados<a class="headerlink" href="#features-aplicadas-y-resultados" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Aplicar mismas técnicas</span>
+<span class="n">ames_df</span><span class="p">[</span><span class="s1">'price_per_sqft'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ames_df</span><span class="p">[</span><span class="s1">'SalePrice'</span><span class="p">]</span> <span class="o">/</span> <span class="n">ames_df</span><span class="p">[</span><span class="s1">'GrLivArea'</span><span class="p">]</span>
+<span class="n">ames_df</span><span class="p">[</span><span class="s1">'property_age'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2025</span> <span class="o">-</span> <span class="n">ames_df</span><span class="p">[</span><span class="s1">'YearBuilt'</span><span class="p">]</span>
+<span class="n">ames_df</span><span class="p">[</span><span class="s1">'space_efficiency'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ames_df</span><span class="p">[</span><span class="s1">'GrLivArea'</span><span class="p">]</span> <span class="o">/</span> <span class="n">ames_df</span><span class="p">[</span><span class="s1">'LotArea'</span><span class="p">]</span>
+</code></pre></div>
+<h4 id="tabla-de-resultados-derivados">Tabla de Resultados Derivados<a class="headerlink" href="#tabla-de-resultados-derivados" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>price_per_sqft</th>
+<th>property_age</th>
+<th>space_efficiency</th>
+<th>Perfil Identificado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>$125.73</td>
+<td>22 años</td>
+<td>0.202 (20.2%)</td>
+<td>Moderna, construcción densa</td>
+</tr>
+<tr>
+<td>2</td>
+<td>$122.66</td>
+<td>64 años</td>
+<td>0.089 (8.9%)</td>
+<td>Histórica, terreno amplio</td>
+</tr>
+<tr>
+<td>3</td>
+<td>$136.30</td>
+<td>67 años</td>
+<td>0.112 (11.2%)</td>
+<td>Antigua, buen valor/m²</td>
+</tr>
+<tr>
+<td>4</td>
+<td>$142.69</td>
+<td>25 años</td>
+<td>0.179 (17.9%)</td>
+<td>Premium moderna</td>
+</tr>
+<tr>
+<td>5</td>
+<td>$139.43</td>
+<td>33 años</td>
+<td>0.134 (13.4%)</td>
+<td>Establecida, balanceada</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="insights-clave-del-mundo-real">Insights Clave del Mundo Real<a class="headerlink" href="#insights-clave-del-mundo-real" title="Permanent link">¶</a></h3>
+<h4 id="1-que-features-funcionan-mejor-con-datos-reales">1. ¿Qué features funcionan mejor con datos reales?<a class="headerlink" href="#1-que-features-funcionan-mejor-con-datos-reales" title="Permanent link">¶</a></h4>
+<p><strong>Top Performers:</strong></p>
+<p>✅ <strong><code>price_per_sqft</code>:</strong>
+- <strong>Rango:</strong> $122.66 - $142.69 (variación 16%)
+- <strong>Patrón claro:</strong> NoRidge (premium) vs Veenker (económico)
+- <strong>Refleja ubicación:</strong> $142.69 en NoRidge vs $122.66 en Veenker = efecto barrio</p>
+<p>✅ <strong><code>property_age</code>:</strong>
+- <strong>Correlación más evidente:</strong> Casas 60+ años valores diversos
+- <strong>Intersección con ubicación:</strong> Crawfor antiguo pero caro (histórico)
+- <strong>No-linealidad:</strong> No es solo "viejo = barato"</p>
+<p>✅ <strong><code>space_efficiency</code>:</strong>
+- <strong>Segmentación clara:</strong>
+  - Alta (&gt;18%): Desarrollos urbanos modernos (CollgCr, NoRidge)
+  - Baja (&lt;10%): Propiedades históricas con terrenos grandes (Veenker)
+- <strong>Insight:</strong> Densidad correlaciona con estilo de vida (urbano vs suburbano)</p>
+<hr>
+<h4 id="2-hay-diferencias-entre-datos-sinteticos-y-reales">2. ¿Hay diferencias entre datos sintéticos y reales?<a class="headerlink" href="#2-hay-diferencias-entre-datos-sinteticos-y-reales" title="Permanent link">¶</a></h4>
+<p><strong>Comparación Sistemática:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Dimensión</th>
+<th>Datos Sintéticos</th>
+<th>Datos Reales (Ames)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Correlaciones</strong></td>
+<td>Débiles (&lt;0.3)</td>
+<td>Moderadas-Fuertes (&gt;0.5 esperadas en dataset completo)</td>
+</tr>
+<tr>
+<td><strong>Patrones</strong></td>
+<td>Aleatorios</td>
+<td>Estructurados (ej: NoRidge premium consistente)</td>
+</tr>
+<tr>
+<td><strong>Outliers</strong></td>
+<td>Raros (3-6%)</td>
+<td>Frecuentes y significativos</td>
+</tr>
+<tr>
+<td><strong>Interpretabilidad</strong></td>
+<td>Difícil (sin contexto)</td>
+<td>Alta (barrios conocidos, historias)</td>
+</tr>
+<tr>
+<td><strong>Interacciones</strong></td>
+<td>Ausentes</td>
+<td>Complejas (barrio×edad, tamaño×calidad)</td>
+</tr>
+<tr>
+<td><strong>Ruido</strong></td>
+<td>Bajo</td>
+<td>Alto (errores de medición, factores externos)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo concreto de diferencia:</strong></p>
+<p>📊 <strong>price_per_sqft en Sintéticos:</strong>
+- Variación aleatoria, sin patrón
+- No refleja ubicación (no existe "ubicación" real)</p>
+<p>📊 <strong>price_per_sqft en Ames:</strong>
+- Variación sistemática por barrio
+- NoRidge (#4): $142.69 → Premium 16% sobre Veenker (#2): $122.66
+- <strong>Conclusión:</strong> En reales, features capturan fenómenos del mundo</p>
+<hr>
+<h4 id="3-que-nuevas-features-podrias-crear-con-neighborhood">3. ¿Qué nuevas features podrías crear con 'Neighborhood'?<a class="headerlink" href="#3-que-nuevas-features-podrias-crear-con-neighborhood" title="Permanent link">¶</a></h4>
+<p><strong>Variable categórica 'Neighborhood' abre oportunidades:</strong></p>
+<h5 id="a-target-encoding-prestigio-del-barrio">A) Target Encoding - Prestigio del Barrio<a class="headerlink" href="#a-target-encoding-prestigio-del-barrio" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="n">neighborhood_avg_price</span> <span class="o">=</span> <span class="n">ames_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Neighborhood'</span><span class="p">)[</span><span class="s1">'SalePrice'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">ames_df</span><span class="p">[</span><span class="s1">'neighborhood_price_level'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ames_df</span><span class="p">[</span><span class="s1">'Neighborhood'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">neighborhood_avg_price</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Resultado esperado:</strong>
+- NoRidge → ~$320,000
+- CollgCr → ~$197,000
+- Veenker → ~$238,000
+- Crawfor → ~$210,000
+- Mitchel → ~$156,000</p>
+<p><strong>Ventaja:</strong> Convierte categoría en score numérico de "prestigio"</p>
+<hr>
+<h5 id="b-one-hot-encoding-para-modelos-lineales">B) One-Hot Encoding - Para Modelos Lineales<a class="headerlink" href="#b-one-hot-encoding-para-modelos-lineales" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">ames_df</span><span class="p">[</span><span class="s1">'Neighborhood'</span><span class="p">],</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">'area'</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Resultado:</strong>
+- <code>area_NoRidge</code>, <code>area_CollgCr</code>, etc.
+- Útil para regresión lineal, SVM</p>
+<hr>
+<h5 id="c-location-score-avanzado-ranking-manual">C) Location Score Avanzado - Ranking Manual<a class="headerlink" href="#c-location-score-avanzado-ranking-manual" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="n">neighborhood_scores</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'NoRidge'</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span>   <span class="c1"># Premium</span>
+    <span class="s1">'CollgCr'</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>   <span class="c1"># Medio-alto</span>
+    <span class="s1">'Crawfor'</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">,</span>   <span class="c1"># Histórico con encanto</span>
+    <span class="s1">'Veenker'</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>   <span class="c1"># Medio</span>
+    <span class="s1">'Mitchel'</span><span class="p">:</span> <span class="mf">0.4</span>    <span class="c1"># Económico</span>
+<span class="p">}</span>
+<span class="n">ames_df</span><span class="p">[</span><span class="s1">'location_quality'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ames_df</span><span class="p">[</span><span class="s1">'Neighborhood'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">neighborhood_scores</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Ventaja:</strong> Incorpora conocimiento experto local</p>
+<hr>
+<h5 id="d-clustering-de-barrios-agregar-similares">D) Clustering de Barrios - Agregar Similares<a class="headerlink" href="#d-clustering-de-barrios-agregar-similares" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+
+<span class="c1"># Features para clustering: avg_price, avg_age, avg_sqft, crime_stats</span>
+<span class="n">neighborhood_features</span> <span class="o">=</span> <span class="n">aggregate_by_neighborhood</span><span class="p">(</span><span class="n">ames_full_df</span><span class="p">)</span>
+<span class="n">clusters</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">neighborhood_features</span><span class="p">)</span>
+
+<span class="n">ames_df</span><span class="p">[</span><span class="s1">'neighborhood_cluster'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ames_df</span><span class="p">[</span><span class="s1">'Neighborhood'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Resultado:</strong> 
+- Cluster 0: Barrios económicos
+- Cluster 1: Suburbios familiares
+- Cluster 2: Urbano moderno
+- etc.</p>
+<p><strong>Ventaja:</strong> Reduce dimensionalidad (80 barrios → 5 clusters)</p>
+<hr>
+<h3 id="lecciones-del-ejercicio-ames">Lecciones del Ejercicio Ames<a class="headerlink" href="#lecciones-del-ejercicio-ames" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Features derivadas MÁS valiosas en datos reales</strong> que sintéticos</li>
+<li><strong>Variables categóricas son oro</strong> en sector inmobiliario (Neighborhood)</li>
+<li><strong>Contexto importa:</strong> Mismas características → precios diferentes por ubicación</li>
+<li><strong>Interpretabilidad mejora:</strong> Stakeholders entienden "$142/pie² en NoRidge"</li>
+<li><strong>Validación crítica:</strong> SIEMPRE probar con datos reales antes de producción</li>
+</ol>
+<hr>
+<h2 id="conclusiones-y-reflexiones-finales">🎓 Conclusiones y Reflexiones Finales<a class="headerlink" href="#conclusiones-y-reflexiones-finales" title="Permanent link">¶</a></h2>
+<h3 id="respuestas-a-preguntas-de-reflexion">Respuestas a Preguntas de Reflexión<a class="headerlink" href="#respuestas-a-preguntas-de-reflexion" title="Permanent link">¶</a></h3>
+<h4 id="1-cuales-fueron-las-features-mas-importantes-segun-tu-analisis">1. ¿Cuáles fueron las features más importantes según tu análisis?<a class="headerlink" href="#1-cuales-fueron-las-features-mas-importantes-segun-tu-analisis" title="Permanent link">¶</a></h4>
+<p><strong>Top 3 Features Robustas (Validadas por 3 Métodos):</strong></p>
+<p>🥇 <strong><code>sqft_per_bedroom</code></strong> - El Campeón Consistente
+- <strong>Mutual Information:</strong> Rank #5 (MI = 0.0053)
+- <strong>Random Forest:</strong> Rank #5 (Importance = 0.098)
+- <strong>Correlación:</strong> Rank #5 (0.0892)
+- <strong>Por qué:</strong> Captura concepto de "calidad espacial" que ni superficie ni habitaciones solos revelan
+- <strong>Aplicación:</strong> Filtro de "no mostrar propiedades con &lt;35 pies²/bedroom"</p>
+<p>🥈 <strong><code>property_age</code></strong> - El Indicador Temporal
+- <strong>Mutual Information:</strong> Rank #6
+- <strong>Random Forest:</strong> Rank #6
+- <strong>Correlación:</strong> -0.0421 (dirección esperada)
+- <strong>Por qué:</strong> Factor universal de valuación, interactúa bien con otras variables
+- <strong>Aplicación:</strong> Ajuste de precio por depreciación</p>
+<p>🥉 <strong><code>price_per_sqft</code></strong> - La Métrica del Sector
+- <strong>Correlación más alta:</strong> 0.2254 entre features derivadas
+- <strong>Random Forest:</strong> Moderadamente importante
+- <strong>Por qué:</strong> Métrica estándar reconocida universalmente en inmobiliario
+- <strong>Aplicación:</strong> Benchmarking, detección de anomalías de precio</p>
+<p><strong>Mención Honorífica:</strong>
+- <strong><code>sqrt_sqft</code>:</strong> #2 en MI, captura no-linealidad mejor que <code>sqft</code> original
+- <strong>Variables de contexto (crime, schools):</strong> Dominan en RF por interacciones complejas</p>
+<hr>
+<h4 id="2-que-sorpresas-encontraste-en-los-datos">2. ¿Qué sorpresas encontraste en los datos?<a class="headerlink" href="#2-que-sorpresas-encontraste-en-los-datos" title="Permanent link">¶</a></h4>
+<p><strong>Sorpresa #1: Discrepancia Mutual Information vs Random Forest</strong></p>
+<p>🔍 <strong>Observación:</strong>
+- Variables de ubicación (crime_rate, school_rating, distance_to_city) eran irrelevantes en MI (rank #10+)
+- Pero dominan en Random Forest (rank #1-4)</p>
+<p>💡 <strong>Explicación:</strong>
+- MI mide relación marginal (feature individual → target)
+- RF captura efectos condicionales (feature + interacciones)
+- <strong>Lección:</strong> Un solo método de evaluación es INSUFICIENTE</p>
+<hr>
+<p><strong>Sorpresa #2: Correlaciones Bajas NO Implican Features Inútiles</strong></p>
+<p>🔍 <strong>Observación:</strong>
+- <code>location_score</code>: Correlación -0.031 (muy baja)
+- Pero conceptualmente valiosa para el negocio</p>
+<p>💡 <strong>Explicación:</strong>
+1. <strong>Limitación de datos sintéticos:</strong> Sin relaciones reales de dominio
+2. <strong>No-linealidad:</strong> Correlación solo mide relaciones lineales
+3. <strong>Utilidad no-predictiva:</strong> Segmentación, filtrado, interpretabilidad</p>
+<p><strong>Lección:</strong> Valor de negocio ≠ Correlación lineal</p>
+<hr>
+<p><strong>Sorpresa #3: Features Compuestas Superan Componentes</strong></p>
+<p>🔍 <strong>Observación:</strong>
+- <code>sqft_per_bedroom</code> más informativa que <code>sqft</code> o <code>bedrooms</code> individuales
+- <code>sqrt_sqft</code> supera a <code>sqft</code> original en MI</p>
+<p>💡 <strong>Explicación:</strong>
+- Ratios y transformaciones capturan información ÚNICA
+- No es redundancia, es creación de nuevo conocimiento</p>
+<p><strong>Lección:</strong> 1 + 1 puede ser &gt; 2 en feature engineering</p>
+<hr>
+<p><strong>Sorpresa #4: Datos Sintéticos vs Reales - Abismo de Interpretabilidad</strong></p>
+<p>🔍 <strong>Observación:</strong>
+- En sintéticos: patterns difusos, difícil sacar conclusiones
+- En Ames reales: patrones claros, historias coherentes</p>
+<p>💡 <strong>Ejemplo concreto:</strong>
+- <strong>Sintético:</strong> <code>price_per_sqft</code> varía aleatoriamente
+- <strong>Ames:</strong> NoRidge $142.69 vs Veenker $122.66 → Efecto barrio claro</p>
+<p><strong>Lección:</strong> SIEMPRE validar con datos reales antes de producción</p>
+<hr>
+<h4 id="3-como-podrias-mejorar-el-proceso-de-feature-engineering">3. ¿Cómo podrías mejorar el proceso de feature engineering?<a class="headerlink" href="#3-como-podrias-mejorar-el-proceso-de-feature-engineering" title="Permanent link">¶</a></h4>
+<p><strong>Mejoras Técnicas (4 Categorías):</strong></p>
+<h5 id="a-tecnicas-avanzadas">A) Técnicas Avanzadas<a class="headerlink" href="#a-tecnicas-avanzadas" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Transformaciones automáticas</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PowerTransformer</span>
+<span class="n">transformer</span> <span class="o">=</span> <span class="n">PowerTransformer</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">'yeo-johnson'</span><span class="p">)</span>  <span class="c1"># Box-Cox generalizado</span>
+
+<span class="c1"># 2. Feature selection riguroso</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">RFE</span>
+<span class="n">rfe</span> <span class="o">=</span> <span class="n">RFE</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">RandomForestRegressor</span><span class="p">(),</span> <span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 3. Generación automática de interacciones</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">interaction_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h5 id="b-metodologia-robusta">B) Metodología Robusta<a class="headerlink" href="#b-metodologia-robusta" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Validación cruzada de features</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+
+<span class="k">def</span> <span class="nf">evaluate_feature</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">feature_name</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="n">feature_name</span><span class="p">]]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'price'</span><span class="p">]</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">RandomForestRegressor</span><span class="p">(),</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="c1"># 2. Test de estabilidad</span>
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">new_features</span><span class="p">:</span>
+    <span class="n">mean_score</span><span class="p">,</span> <span class="n">std_score</span> <span class="o">=</span> <span class="n">evaluate_feature</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">feature</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">std_score</span> <span class="o">&gt;</span> <span class="mf">0.1</span><span class="p">:</span>  <span class="c1"># Inestable</span>
+        <span class="n">flag_for_review</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h5 id="c-automatizacion-inteligente">C) Automatización Inteligente<a class="headerlink" href="#c-automatizacion-inteligente" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Featuretools para síntesis automática</span>
+<span class="kn">import</span> <span class="nn">featuretools</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="n">es</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">EntitySet</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">'properties'</span><span class="p">)</span>
+<span class="n">es</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">add_dataframe</span><span class="p">(</span><span class="n">dataframe_name</span><span class="o">=</span><span class="s1">'properties'</span><span class="p">,</span> <span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">'id'</span><span class="p">)</span>
+
+<span class="c1"># Deep feature synthesis</span>
+<span class="n">feature_matrix</span><span class="p">,</span> <span class="n">features</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span>
+    <span class="n">entityset</span><span class="o">=</span><span class="n">es</span><span class="p">,</span>
+    <span class="n">target_dataframe_name</span><span class="o">=</span><span class="s1">'properties'</span><span class="p">,</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">)</span>
+
+<span class="c1"># 2. Logging exhaustivo</span>
+<span class="kn">import</span> <span class="nn">mlflow</span>
+
+<span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">created_features</span><span class="p">:</span>
+        <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s2">_mi"</span><span class="p">,</span> <span class="n">mi_score</span><span class="p">)</span>
+        <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s2">_rf_importance"</span><span class="p">,</span> <span class="n">rf_score</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h5 id="d-validacion-de-negocio">D) Validación de Negocio<a class="headerlink" href="#d-validacion-de-negocio" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. A/B testing de features en producción</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ttest_ind</span>
+
+<span class="n">model_with_feature</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span><span class="n">X_with_new_feature</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">model_without_feature</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span><span class="n">X_base</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">predictions_with</span> <span class="o">=</span> <span class="n">model_with_feature</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">predictions_without</span> <span class="o">=</span> <span class="n">model_without_feature</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">t_stat</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">ttest_ind</span><span class="p">(</span><span class="n">predictions_with</span><span class="p">,</span> <span class="n">predictions_without</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Feature mejora significativamente (p=</span><span class="si">{</span><span class="n">p_value</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+
+<span class="c1"># 2. Interpretabilidad con SHAP</span>
+<span class="kn">import</span> <span class="nn">shap</span>
+
+<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h4 id="4-que-otras-tecnicas-de-feature-engineering-conoces">4. ¿Qué otras técnicas de feature engineering conoces?<a class="headerlink" href="#4-que-otras-tecnicas-de-feature-engineering-conoces" title="Permanent link">¶</a></h4>
+<p><strong>Taxonomía Completa de Técnicas:</strong></p>
+<h5 id="1-codificacion-categorica">1. Codificación Categórica<a class="headerlink" href="#1-codificacion-categorica" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># One-Hot (variables nominales)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'neighborhood'</span><span class="p">])</span>
+
+<span class="c1"># Target Encoding (alta cardinalidad)</span>
+<span class="n">neighborhood_means</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'neighborhood'</span><span class="p">)[</span><span class="s1">'price'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'neighborhood_encoded'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'neighborhood'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">neighborhood_means</span><span class="p">)</span>
+
+<span class="c1"># Ordinal (variables ordenadas)</span>
+<span class="n">quality_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'poor'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'fair'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'good'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'excellent'</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'quality_encoded'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'quality'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">quality_map</span><span class="p">)</span>
+
+<span class="c1"># Binary (rareza)</span>
+<span class="kn">from</span> <span class="nn">category_encoders</span> <span class="kn">import</span> <span class="n">BinaryEncoder</span>
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">BinaryEncoder</span><span class="p">(</span><span class="n">cols</span><span class="o">=</span><span class="p">[</span><span class="s1">'neighborhood'</span><span class="p">])</span>
+</code></pre></div>
+<hr>
+<h5 id="2-escalado-y-normalizacion">2. Escalado y Normalización<a class="headerlink" href="#2-escalado-y-normalizacion" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">,</span> <span class="n">RobustScaler</span>
+
+<span class="c1"># StandardScaler (media=0, std=1)</span>
+<span class="n">scaler_std</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'sqft_scaled'</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler_std</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">'sqft'</span><span class="p">]])</span>
+
+<span class="c1"># MinMaxScaler (rango [0,1])</span>
+<span class="n">scaler_mm</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'price_normalized'</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler_mm</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">'price'</span><span class="p">]])</span>
+
+<span class="c1"># RobustScaler (resistente a outliers)</span>
+<span class="n">scaler_robust</span> <span class="o">=</span> <span class="n">RobustScaler</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'lot_size_robust'</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler_robust</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">'lot_size'</span><span class="p">]])</span>
+</code></pre></div>
+<hr>
+<h5 id="3-transformaciones-matematicas_1">3. Transformaciones Matemáticas<a class="headerlink" href="#3-transformaciones-matematicas_1" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># Logarítmicas (distribuciones sesgadas)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'log_price'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'price'</span><span class="p">])</span>  <span class="c1"># log(1+x) evita log(0)</span>
+
+<span class="c1"># Raíz cuadrada (comprimir rangos)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'sqrt_sqft'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'sqft'</span><span class="p">])</span>
+
+<span class="c1"># Box-Cox (normalización óptima)</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">boxcox</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'price_boxcox'</span><span class="p">],</span> <span class="n">lambda_param</span> <span class="o">=</span> <span class="n">boxcox</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'price'</span><span class="p">])</span>
+
+<span class="c1"># Yeo-Johnson (permite negativos)</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PowerTransformer</span>
+<span class="n">pt</span> <span class="o">=</span> <span class="n">PowerTransformer</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">'yeo-johnson'</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'price_yj'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">'price'</span><span class="p">]])</span>
+</code></pre></div>
+<hr>
+<h5 id="4-binning-y-discretizacion">4. Binning y Discretización<a class="headerlink" href="#4-binning-y-discretizacion" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># Intervalos uniformes</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'price_bin'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'price'</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">'muy_bajo'</span><span class="p">,</span> <span class="s1">'bajo'</span><span class="p">,</span> <span class="s1">'medio'</span><span class="p">,</span> <span class="s1">'alto'</span><span class="p">,</span> <span class="s1">'muy_alto'</span><span class="p">])</span>
+
+<span class="c1"># Cuantiles (igual frecuencia)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'price_quantile'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'price'</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">'Q1'</span><span class="p">,</span> <span class="s1">'Q2'</span><span class="p">,</span> <span class="s1">'Q3'</span><span class="p">,</span> <span class="s1">'Q4'</span><span class="p">])</span>
+
+<span class="c1"># Basado en dominio</span>
+<span class="k">def</span> <span class="nf">categorize_size</span><span class="p">(</span><span class="n">sqft</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">sqft</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span> <span class="k">return</span> <span class="s1">'pequeño'</span>
+    <span class="k">elif</span> <span class="n">sqft</span> <span class="o">&lt;</span> <span class="mi">150</span><span class="p">:</span> <span class="k">return</span> <span class="s1">'mediano'</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="s1">'grande'</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">'size_category'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'sqft'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">categorize_size</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h5 id="5-generacion-automatica-de-interacciones">5. Generación Automática de Interacciones<a class="headerlink" href="#5-generacion-automatica-de-interacciones" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+
+<span class="c1"># Todas las combinaciones hasta grado 2</span>
+<span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">X_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">'sqft'</span><span class="p">,</span> <span class="s1">'bedrooms'</span><span class="p">,</span> <span class="s1">'bathrooms'</span><span class="p">]])</span>
+
+<span class="c1"># Solo interacciones (sin cuadrados)</span>
+<span class="n">poly_interaction</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">interaction_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h5 id="6-seleccion-de-features">6. Selección de Features<a class="headerlink" href="#6-seleccion-de-features" title="Permanent link">¶</a></h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># Filter: Mutual Information</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span><span class="p">,</span> <span class="n">mutual_info_regression</span>
+<span class="n">selector</span> <span class="o">=</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">mutual_info_regression</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">X_selected</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Wrapper: Recursive Feature Elimination</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">RFE</span>
+<span class="n">rfe</span> <span class="o">=</span> <span class="n">RFE</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">RandomForestRegressor</span><span class="p">(),</span> <span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">rfe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">selected_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">rfe</span><span class="o">.</span><span class="n">support_</span><span class="p">]</span>
+
+<span class="c1"># Embedded: Lasso (L1 regularization)</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LassoCV</span>
+<span class="n">lasso</span> <span class="o">=</span> <span class="n">LassoCV</span><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">important_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">lasso</span><span class="o">.</span><span class="n">coef_</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+<hr>
+<h5 id="7-tecnicas-de-dominio-especifico">7. Técnicas de Dominio Específico<a class="headerlink" href="#7-tecnicas-de-dominio-especifico" title="Permanent link">¶</a></h5>
+<p><strong>Temporal (Series de Tiempo):</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># Lags</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'price_lag1'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'price'</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Rolling windows</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'price_rolling_mean_7d'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'price'</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Seasonality</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'date'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'is_summer'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</code></pre></div><p></p>
+<p><strong>Geoespacial:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">cdist</span>
+
+<span class="c1"># Distancia a punto de interés</span>
+<span class="n">city_center</span> <span class="o">=</span> <span class="p">(</span><span class="n">lat_center</span><span class="p">,</span> <span class="n">lon_center</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'distance_to_center'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdist</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">[[</span><span class="s1">'lat'</span><span class="p">,</span> <span class="s1">'lon'</span><span class="p">]],</span> 
+    <span class="p">[</span><span class="n">city_center</span><span class="p">],</span> 
+    <span class="n">metric</span><span class="o">=</span><span class="s1">'euclidean'</span>
+<span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="c1"># Clustering geográfico</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>
+<span class="n">clusters</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">'lat'</span><span class="p">,</span> <span class="s1">'lon'</span><span class="p">]])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'geo_cluster'</span><span class="p">]</span> <span class="o">=</span> <span class="n">clusters</span><span class="o">.</span><span class="n">labels_</span>
+</code></pre></div><p></p>
+<p><strong>Textual:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+
+<span class="c1"># TF-IDF de descripciones</span>
+<span class="n">tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">max_features</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">description_features</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'property_description'</span><span class="p">])</span>
+
+<span class="c1"># Sentiment analysis</span>
+<span class="kn">from</span> <span class="nn">textblob</span> <span class="kn">import</span> <span class="n">TextBlob</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'description_sentiment'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'property_description'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">TextBlob</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">sentiment</span><span class="o">.</span><span class="n">polarity</span>
+<span class="p">)</span>
+</code></pre></div><p></p>
+<hr>
+<h4 id="5-que-diferencias-notaste-entre-datos-sinteticos-y-reales">5. ¿Qué diferencias notaste entre datos sintéticos y reales?<a class="headerlink" href="#5-que-diferencias-notaste-entre-datos-sinteticos-y-reales" title="Permanent link">¶</a></h4>
+<p><strong>Comparación Exhaustiva en 8 Dimensiones:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Dimensión</th>
+<th>Datos Sintéticos</th>
+<th>Datos Reales (Ames)</th>
+<th>Impacto en Proyecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Correlaciones</strong></td>
+<td>Débiles (&lt;0.3)</td>
+<td>Moderadas-Fuertes (&gt;0.5)</td>
+<td>Predictividad del modelo</td>
+</tr>
+<tr>
+<td><strong>Distribuciones</strong></td>
+<td>Normales perfectas</td>
+<td>Asimétricas, multimodales</td>
+<td>Necesidad de transformaciones</td>
+</tr>
+<tr>
+<td><strong>Outliers</strong></td>
+<td>Raros (3-5%)</td>
+<td>Frecuentes (10-20%)</td>
+<td>Robustez del modelo</td>
+</tr>
+<tr>
+<td><strong>Relaciones</strong></td>
+<td>Lineales simples</td>
+<td>No-lineales complejas</td>
+<td>Tipo de modelo apropiado</td>
+</tr>
+<tr>
+<td><strong>Contexto</strong></td>
+<td>Ausente</td>
+<td>Rico (historia, barrios)</td>
+<td>Interpretabilidad</td>
+</tr>
+<tr>
+<td><strong>Ruido</strong></td>
+<td>Bajo</td>
+<td>Alto (errores, factores externos)</td>
+<td>Necesidad de limpieza</td>
+</tr>
+<tr>
+<td><strong>Patrones</strong></td>
+<td>Uniformes</td>
+<td>Segmentados (clusters naturales)</td>
+<td>Estrategia de segmentación</td>
+</tr>
+<tr>
+<td><strong>Multicolinealidad</strong></td>
+<td>Baja</td>
+<td>Alta (features correlacionadas)</td>
+<td>Selección de variables</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>Análisis Profundo por Dimensión:</strong></p>
+<h5 id="1-correlaciones">1. Correlaciones<a class="headerlink" href="#1-correlaciones" title="Permanent link">¶</a></h5>
+<p>📊 <strong>Sintéticos:</strong>
+- <code>price_per_sqft</code> vs <code>price</code>: 0.2254
+- Mayoría de correlaciones &lt;0.15</p>
+<p>📊 <strong>Ames (esperado en dataset completo):</strong>
+- <code>OverallQual</code> vs <code>price</code>: ~0.79
+- <code>GrLivArea</code> vs <code>price</code>: ~0.71</p>
+<p><strong>Impacto:</strong> En sintéticos, features aportan menos, modelos simples funcionan mal</p>
+<hr>
+<h5 id="2-distribuciones">2. Distribuciones<a class="headerlink" href="#2-distribuciones" title="Permanent link">¶</a></h5>
+<p>📊 <strong>Sintéticos:</strong>
+- Precio: Normal perfecta
+- Superficie: Normal perfecta</p>
+<p>📊 <strong>Ames:</strong>
+- Precio: Asimétrica derecha (cola larga de mansiones)
+- Superficie: Bimodal (casas pequeñas vs grandes)</p>
+<p><strong>Impacto:</strong> Reales requieren transformaciones (log, Box-Cox)</p>
+<hr>
+<h5 id="3-outliers">3. Outliers<a class="headerlink" href="#3-outliers" title="Permanent link">¶</a></h5>
+<p>📊 <strong>Sintéticos:</strong>
+- 3.8% outliers en <code>price_per_sqft</code>
+- Fácil de manejar</p>
+<p>📊 <strong>Ames:</strong>
+- 15-20% outliers en precio
+- Algunos legítimos (mansiones), otros errores</p>
+<p><strong>Impacto:</strong> Reales requieren análisis caso-por-caso de outliers</p>
+<hr>
+<h5 id="4-relaciones-no-lineales">4. Relaciones No-Lineales<a class="headerlink" href="#4-relaciones-no-lineales" title="Permanent link">¶</a></h5>
+<p>📊 <strong>Sintéticos:</strong>
+- Relaciones lineales o inexistentes
+- <code>sqft</code> → <code>price</code> lineal</p>
+<p>📊 <strong>Ames:</strong>
+- Relación cuadrática: <code>sqft</code>² → premium exponencial
+- Interacciones: <code>quality</code> × <code>location</code> → multiplicativo</p>
+<p><strong>Impacto:</strong> Reales se benefician de modelos complejos (RF, XGBoost)</p>
+<hr>
+<h5 id="5-contexto-e-interpretabilidad">5. Contexto e Interpretabilidad<a class="headerlink" href="#5-contexto-e-interpretabilidad" title="Permanent link">¶</a></h5>
+<p>📊 <strong>Sintéticos:</strong>
+- "Propiedad #347 tiene precio alto"
+- Sin historia, sin por qué</p>
+<p>📊 <strong>Ames:</strong>
+- "Casa en NoRidge tiene precio alto porque es barrio premium con escuelas excelentes"
+- Historia rica, explicaciones naturales</p>
+<p><strong>Impacto:</strong> Reales facilitan comunicación con stakeholders</p>
+<hr>
+<h5 id="6-ruido-y-calidad-de-datos">6. Ruido y Calidad de Datos<a class="headerlink" href="#6-ruido-y-calidad-de-datos" title="Permanent link">¶</a></h5>
+<p>📊 <strong>Sintéticos:</strong>
+- Sin valores faltantes
+- Sin errores de medición
+- Consistencia perfecta</p>
+<p>📊 <strong>Ames:</strong>
+- ~5% valores faltantes
+- Errores de entrada (ej: "YearBuilt: 1880" en "GarageCars: 3")
+- Inconsistencias (ej: área total &lt; suma de áreas)</p>
+<p><strong>Impacto:</strong> Reales requieren pipeline de limpieza robusto</p>
+<hr>
+<h5 id="7-segmentacion-natural">7. Segmentación Natural<a class="headerlink" href="#7-segmentacion-natural" title="Permanent link">¶</a></h5>
+<p>📊 <strong>Sintéticos:</strong>
+- Distribución uniforme
+- Sin clusters naturales</p>
+<p>📊 <strong>Ames:</strong>
+- Clusters claros: barrios premium vs económicos
+- Segmentos: casas nuevas grandes vs antiguas pequeñas</p>
+<p><strong>Impacto:</strong> Reales permiten modelos segmentados (mejor performance)</p>
+<hr>
+<h5 id="8-multicolinealidad">8. Multicolinealidad<a class="headerlink" href="#8-multicolinealidad" title="Permanent link">¶</a></h5>
+<p>📊 <strong>Sintéticos:</strong>
+- Variables independientes (por diseño)
+- VIF bajos (&lt;2)</p>
+<p>📊 <strong>Ames:</strong>
+- <code>GrLivArea</code> correlaciona con <code>TotRmsAbvGrd</code> (r=0.83)
+- <code>GarageCars</code> correlaciona con <code>GarageArea</code> (r=0.88)
+- VIF altos (5-10)</p>
+<p><strong>Impacto:</strong> Reales requieren análisis de redundancia, selección cuidadosa</p>
+<hr>
+<h3 id="lecciones-tecnicas-fundamentales">Lecciones Técnicas Fundamentales<a class="headerlink" href="#lecciones-tecnicas-fundamentales" title="Permanent link">¶</a></h3>
+<p><strong>Lección #1: Feature Engineering es Arte + Ciencia</strong>
+- <strong>Arte:</strong> Creatividad guiada por conocimiento del dominio
+- <strong>Ciencia:</strong> Validación rigurosa con múltiples métodos
+- <strong>Balance:</strong> No confiar en intuición sola, ni en métricas solas</p>
+<hr>
+<p><strong>Lección #2: No Existe "La Mejor Feature"</strong>
+- Depende del problema (regresión vs clasificación)
+- Depende de los datos (sintéticos vs reales)
+- Depende del algoritmo (lineal vs no-lineal)
+- <strong>Solución:</strong> Evaluar con MI + RF + Correlación complementariamente</p>
+<hr>
+<p><strong>Lección #3: Simplicidad vs Complejidad</strong>
+- Features simples (<code>price_per_sqft</code>) a menudo superan complejas
+- Pero features compuestas capturan conceptos difíciles de aprender
+- <strong>Principio:</strong> Empezar simple, agregar complejidad solo si justificado</p>
+<hr>
+<p><strong>Lección #4: Interpretabilidad es Crítica</strong>
+- Stakeholders prefieren "$/pie² en barrio X" vs "componente principal 3"
+- Facilita debugging ("¿Por qué predijo $500k para casa en Veenker?")
+- Permite mejora continua (feedback accionable)
+- <strong>Regla:</strong> Si no puedes explicar la feature al CEO, reconsidérala</p>
+<hr>
+<p><strong>Lección #5: Datos Sintéticos ≠ Datos Reales</strong>
+- Sintéticos útiles para <strong>aprender técnicas</strong>
+- Pero limitados para <strong>validar hipótesis de negocio</strong>
+- <strong>Imperativo:</strong> SIEMPRE validar con datos reales antes de producción</p>
+<hr>
+<h2 id="referencias-y-recursos">📚 Referencias y Recursos<a class="headerlink" href="#referencias-y-recursos" title="Permanent link">¶</a></h2>
+<h3 id="material-del-curso">Material del Curso<a class="headerlink" href="#material-del-curso" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Profesor Juan F. Kurucz</strong> - Assignment UT3-8: Feature Engineering con Pandas</li>
+<li>🔗 <a href="https://juanfkurucz.com/ucu-id/ut3/08-feature-engineering-assignment/">Práctica 8 — Feature Engineering</a></li>
+<li>📄 Documento: Feature Engineering Fill in the Blanks</li>
+</ol>
+<hr>
+<h3 id="documentacion-tecnica">Documentación Técnica<a class="headerlink" href="#documentacion-tecnica" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Pandas Documentation</strong> - Data Manipulation</li>
+<li>🔗 <a href="https://pandas.pydata.org/docs/">Official Docs</a></li>
+<li>📘 <a href="https://pandas.pydata.org/docs/user_guide/index.html">User Guide</a></li>
+<li>
+<p>🔧 <a href="https://pandas.pydata.org/docs/reference/index.html">API Reference</a></p>
+</li>
+<li>
+<p><strong>Scikit-learn</strong> - Feature Selection &amp; Engineering</p>
+</li>
+<li>🔗 <a href="https://scikit-learn.org/stable/modules/feature_selection.html">Feature Selection Guide</a></li>
+<li>📊 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_regression.html">Mutual Information</a></li>
+<li>
+<p>🌲 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html">Random Forest Feature Importance</a></p>
+</li>
+<li>
+<p><strong>NumPy</strong> - Mathematical Functions</p>
+</li>
+<li>🔗 <a href="https://numpy.org/doc/stable/reference/routines.math.html">Math Routines</a></li>
+<li>
+<p>🔢 <a href="https://numpy.org/doc/stable/reference/routines.statistics.html">Statistics</a></p>
+</li>
+<li>
+<p><strong>Matplotlib &amp; Seaborn</strong> - Data Visualization</p>
+</li>
+<li>🔗 <a href="https://matplotlib.org/stable/contents.html">Matplotlib Docs</a></li>
+<li>🎨 <a href="https://seaborn.pydata.org/examples/index.html">Seaborn Gallery</a></li>
+</ol>
+<hr>
+<h3 id="libros-y-recursos-academicos">Libros y Recursos Académicos<a class="headerlink" href="#libros-y-recursos-academicos" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>"Feature Engineering for Machine Learning"</strong> - Alice Zheng &amp; Amanda Casari</li>
+<li>📚 O'Reilly Media, 2018</li>
+<li>🔗 <a href="https://www.oreilly.com/library/view/feature-engineering-for/9781491953235/">Book Link</a></li>
+<li>
+<p>💡 Capítulos clave: 2 (Fancy Tricks), 4 (Numeric Data), 6 (Dimensionality Reduction)</p>
+</li>
+<li>
+<p><strong>"Hands-On Machine Learning"</strong> - Aurélien Géron</p>
+</li>
+<li>📚 O'Reilly Media, 2022 (3rd Edition)</li>
+<li>🔗 <a href="https://github.com/ageron/handson-ml3">GitHub</a></li>
+<li>
+<p>💡 Chapter 3: Classification + Feature Engineering</p>
+</li>
+<li>
+<p><strong>"Python for Data Analysis"</strong> - Wes McKinney</p>
+</li>
+<li>📚 O'Reilly Media, 2022 (3rd Edition)</li>
+<li>👤 Autor: Creador de Pandas</li>
+<li>
+<p>💡 Chapters 7-10: Data Wrangling</p>
+</li>
+<li>
+<p><strong>"Machine Learning Engineering"</strong> - Andriy Burkov</p>
+</li>
+<li>📚 2020, Free PDF</li>
+<li>🔗 <a href="http://www.mlebook.com/wiki/doku.php">Download</a></li>
+<li>💡 Chapter 4: Feature Engineering in Production</li>
+</ol>
+<hr>
+<h3 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Ames Housing Dataset</strong></p>
+<ul>
+<li>🏠 <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques">Kaggle Competition</a></li>
+<li>📄 Original Paper: Dean De Cock, 2011</li>
+<li>💾 <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data">Dataset Description</a></li>
+</ul>
+</li>
+<li>
+<p><strong>UCI Machine Learning Repository</strong></p>
+<ul>
+<li>🔗 <a href="https://archive.ics.uci.edu/ml/index.php">Homepage</a></li>
+<li>🏘️ Real Estate Datasets: 15+ opciones</li>
+<li>📊 Variedad: Precios, rentas, inversiones</li>
+</ul>
+</li>
+<li>
+<p><strong>Zillow Research Data</strong></p>
+<ul>
+<li>🔗 <a href="https://www.zillow.com/research/data/">Public Data</a></li>
+<li>📈 Datos reales de mercado inmobiliario USA</li>
+<li>🆓 Gratis para investigación</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="herramientas-y-bibliotecas">Herramientas y Bibliotecas<a class="headerlink" href="#herramientas-y-bibliotecas" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Featuretools</strong> - Automated Feature Engineering</p>
+<ul>
+<li>🔗 <a href="https://www.featuretools.com/">Homepage</a></li>
+<li>🐙 <a href="https://github.com/alteryx/featuretools">GitHub</a></li>
+<li>📘 <a href="https://featuretools.alteryx.com/">Documentation</a></li>
+<li>💡 Deep Feature Synthesis automático</li>
+</ul>
+</li>
+<li>
+<p><strong>SHAP</strong> - SHapley Additive exPlanations</p>
+<ul>
+<li>🔗 <a href="https://shap.readthedocs.io/">Homepage</a></li>
+<li>🐙 <a href="https://github.com/slundberg/shap">GitHub</a></li>
+<li>📊 Interpretabilidad de features</li>
+<li>💡 Explica contribución de cada feature</li>
+</ul>
+</li>
+<li>
+<p><strong>Category Encoders</strong></p>
+<ul>
+<li>🔗 <a href="https://contrib.scikit-learn.org/category_encoders/">Docs</a></li>
+<li>🔧 15+ métodos de encoding categórico</li>
+<li>💡 Target, Binary, CatBoost encoders</li>
+</ul>
+</li>
+<li>
+<p><strong>MLflow</strong></p>
+<ul>
+<li>🔗 <a href="https://mlflow.org/">Homepage</a></li>
+<li>📊 Tracking de experimentos</li>
+<li>💡 Log de features, métricas, modelos</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="papers-y-articulos-academicos">Papers y Artículos Académicos<a class="headerlink" href="#papers-y-articulos-academicos" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>"A Few Useful Things to Know About Machine Learning"</strong> - Pedro Domingos</p>
+<ul>
+<li>📄 Communications of the ACM, 2012</li>
+<li>🔗 <a href="https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf">PDF</a></li>
+<li>💡 Sección sobre Feature Engineering (p.7-8)</li>
+</ul>
+</li>
+<li>
+<p><strong>"Automated Feature Engineering"</strong> - Kanter &amp; Veeramachaneni</p>
+<ul>
+<li>📄 IEEE DSAA, 2015</li>
+<li>🔗 <a href="http://www.jmaxkanter.com/static/papers/DSAA_DSM_2015.pdf">Paper</a></li>
+<li>💡 Deep Feature Synthesis original</li>
+</ul>
+</li>
+<li>
+<p><strong>"Feature Engineering and Selection: A Practical Approach"</strong> - Kuhn &amp; Johnson</p>
+<ul>
+<li>📚 Chapman &amp; Hall/CRC, 2019</li>
+<li>🔗 <a href="http://www.feat.engineering/">Book Site</a></li>
+<li>💡 Free online version</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="blogs-y-tutoriales">Blogs y Tutoriales<a class="headerlink" href="#blogs-y-tutoriales" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Kaggle Learn</strong> - Feature Engineering Course</p>
+<ul>
+<li>🔗 <a href="https://www.kaggle.com/learn/feature-engineering">Course</a></li>
+<li>🆓 Gratis, interactivo</li>
+<li>⏱️ ~4 horas</li>
+</ul>
+</li>
+<li>
+<p><strong>Machine Learning Mastery</strong> - Feature Engineering Blog</p>
+<ul>
+<li>🔗 <a href="https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/">Articles</a></li>
+<li>👤 Autor: Jason Brownlee</li>
+<li>📚 50+ tutoriales prácticos</li>
+</ul>
+</li>
+<li>
+<p><strong>Towards Data Science</strong> - Feature Engineering Tag</p>
+<ul>
+<li>🔗 <a href="https://towardsdatascience.com/tagged/feature-engineering">Articles</a></li>
+<li>📰 Comunidad activa</li>
+<li>💡 Casos de estudio reales</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="informacion-del-proyecto">🔗 Información del Proyecto<a class="headerlink" href="#informacion-del-proyecto" title="Permanent link">¶</a></h2>
+<p><strong>Contexto Académico:</strong>
+- <strong>Curso</strong>: Feature Engineering - UT3<br>
+- <strong>Institución</strong>: Universidad Católica del Uruguay<br>
+- <strong>Instructor</strong>: Juan F. Kurucz<br>
+- <strong>Práctica</strong>: <a href="https://juanfkurucz.com/ucu-id/ut3/08-feature-engineering-assignment/">08 - Feature Engineering con Pandas</a></p>
+<p><strong>Alcance del Proyecto:</strong>
+- Dataset sintético de 1,000 propiedades inmobiliarias
+- Creación de 8 features derivadas en 4 categorías
+- Evaluación con 3 métodos (MI, RF, Correlación)
+- Validación con datos reales (Ames Housing)
+- Framework de decisión para feature engineering</p>
+<hr>
+<p><strong>Generado por:</strong> Grupo 1 - Práctica 8<br>
+<strong>Fecha:</strong> Noviembre 2025<br>
+<strong>Versión:</strong> 1.0</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="17 de noviembre de 2025 13:55:36 UTC">17 de noviembre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

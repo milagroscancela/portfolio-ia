@@ -1,0 +1,2536 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../10-pca/">
+      
+      
+        <link rel="next" href="../plantilla/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>⏰ Del Caos Temporal al Orden Predictivo: Feature Engineering Temporal en E-Commerce - Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#del-caos-temporal-al-orden-predictivo-feature-engineering-temporal-en-e-commerce" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Portfolio" class="md-header__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ⏰ Del Caos Temporal al Orden Predictivo: Feature Engineering Temporal en E-Commerce
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Portfolio" class="md-nav__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acerca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Acerca de mí
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Portfolio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exploraciones Extra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualizaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visualizaciones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apuntes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apuntes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descargar-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      💾 Descargar Notebook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Objetivo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contexto-y-motivacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      💼 Contexto y Motivación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💼 Contexto y Motivación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-desafio-del-tiempo-en-machine-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      El Desafío del Tiempo en Machine Learning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodologia-taxonomia-de-features-temporales" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Metodología: Taxonomía de Features Temporales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 Metodología: Taxonomía de Features Temporales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#categorias-de-temporal-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Categorías de Temporal Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataset-online-retail-uk-e-commerce" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Dataset: Online Retail (UK E-Commerce)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Dataset: Online Retail (UK E-Commerce)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-del-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características del Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocesamiento-aplicado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preprocesamiento Aplicado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-1-lag-features-con-pandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔙 Parte 1: Lag Features con Pandas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔙 Parte 1: Lag Features con Pandas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-concepto-de-lag-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Concepto de Lag Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-implementacion-en-pandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Implementación en Pandas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-resultados-y-analisis" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Resultados y Análisis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-2-rolling-windows-tendencias-recientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 Parte 2: Rolling Windows - Tendencias Recientes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Parte 2: Rolling Windows - Tendencias Recientes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-concepto-de-rolling-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Concepto de Rolling Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-implementacion-critica-shift1-antes-de-rolling" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Implementación Crítica: shift(1) ANTES de rolling()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-visualizacion-rolling-mean-captura-tendencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Visualización: Rolling Mean Captura Tendencias
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-3-expanding-windows-historia-acumulada" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Parte 3: Expanding Windows - Historia Acumulada
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📈 Parte 3: Expanding Windows - Historia Acumulada">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-concepto-expanding-vs-rolling" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Concepto: Expanding vs Rolling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-implementacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Implementación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-comparacion-visual-rolling-vs-expanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Comparación Visual: Rolling vs Expanding
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-4-rfm-analysis-framework-clasico-de-e-commerce" class="md-nav__link">
+    <span class="md-ellipsis">
+      💰 Parte 4: RFM Analysis - Framework Clásico de E-Commerce
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💰 Parte 4: RFM Analysis - Framework Clásico de E-Commerce">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-que-es-rfm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. ¿Qué es RFM?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-implementacion-de-rfm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Implementación de RFM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-distribuciones-rfm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Distribuciones RFM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-correlacion-rfm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Correlación RFM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-5-time-windows-7d-30d-90d" class="md-nav__link">
+    <span class="md-ellipsis">
+      🕒 Parte 5: Time Windows (7d, 30d, 90d)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🕒 Parte 5: Time Windows (7d, 30d, 90d)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-concepto-ventanas-temporales-por-calendario" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Concepto: Ventanas Temporales por Calendario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-implementacion-evitando-problemas-de-pandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Implementación: Evitando Problemas de Pandas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-comparacion-de-ventanas-temporales" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Comparación de Ventanas Temporales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-6-product-diversity-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎨 Parte 6: Product Diversity Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 Parte 6: Product Diversity Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-concepto-de-diversidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Concepto de Diversidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-implementacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Implementación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-resultados-y-analisis" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Resultados y Análisis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-7-calendar-features-y-encoding-ciclico" class="md-nav__link">
+    <span class="md-ellipsis">
+      📅 Parte 7: Calendar Features y Encoding Cíclico
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📅 Parte 7: Calendar Features y Encoding Cíclico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-features-binarias-de-calendario" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1. Features Binarias de Calendario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-encoding-ciclico-con-sincos" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2. Encoding Cíclico con Sin/Cos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-8-external-variables-economic-indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌍 Parte 8: External Variables (Economic Indicators)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌍 Parte 8: External Variables (Economic Indicators)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-concepto-de-variables-externas" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1. Concepto de Variables Externas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-implementacion-datos-simulados" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2. Implementación (Datos Simulados)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-9-time-based-validation-y-modelado" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚖️ Parte 9: Time-Based Validation y Modelado
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚖️ Parte 9: Time-Based Validation y Modelado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-timeseriessplit-validacion-sin-leakage" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1. TimeSeriesSplit: Validación Sin Leakage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-resultados-de-cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2. Resultados de Cross-Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-comparacion-con-vs-sin-temporal-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.3. Comparación: Con vs Sin Temporal Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-10-feature-importance-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Parte 10: Feature Importance Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Parte 10: Feature Importance Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-top-features-mas-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.1. Top Features Más Importantes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-importancia-por-categoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.2. Importancia por Categoría
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-data-leakage-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.3. Data Leakage Check
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusiones-y-lecciones-aprendidas" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Conclusiones y Lecciones Aprendidas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Conclusiones y Lecciones Aprendidas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hallazgos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hallazgos Clave
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hallazgos Clave">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-impacto-cuantificado-de-temporal-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Impacto Cuantificado de Temporal Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rfm-sigue-siendo-gold-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. RFM Sigue Siendo Gold Standard
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-historia-acumulada-tendencias-recientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Historia Acumulada &gt; Tendencias Recientes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-prevencion-de-data-leakage-es-no-negociable" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Prevención de Data Leakage es No Negociable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framework-de-decision-que-temporal-features-usar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Framework de Decisión: ¿Qué Temporal Features Usar?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendaciones-para-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendaciones para Producción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recomendaciones para Producción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-arquitectura-minima-viable" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Arquitectura Mínima Viable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pipeline-de-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Pipeline de Producción
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-monitoreo-de-feature-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Monitoreo de Feature Drift
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias-y-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Referencias y Recursos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Referencias y Recursos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#material-del-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Material del Curso
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datasets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación Técnica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libros-y-papers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Libros y Papers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutoriales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutoriales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#informacion-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Información del Proyecto
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="del-caos-temporal-al-orden-predictivo-feature-engineering-temporal-en-e-commerce">⏰ Del Caos Temporal al Orden Predictivo: Feature Engineering Temporal en E-Commerce<a class="headerlink" href="#del-caos-temporal-al-orden-predictivo-feature-engineering-temporal-en-e-commerce" title="Permanent link">¶</a></h1>
+<p><strong>Práctica 11 - Temporal Feature Engineering con Online Retail Dataset</strong><br>
+<strong>UT3: Features Temporales | Prevención de Data Leakage</strong></p>
+<blockquote>
+<p>📚 <strong>Tiempo estimado de lectura:</strong> ~18 min<br>
+- <strong>Autores [G1]:</strong> Joaquín Batista, Milagros Cancela, Valentín Rodríguez, Alexia Aurrecoechea, Nahuel López <br>
+- <strong>Fecha:</strong> Noviembre 2025 <br>
+- <strong>Entorno:</strong> Python 3.13+ | Pandas | Scikit-learn | Kaggle API<br>
+- <strong>Referencia de la tarea:</strong> <a href="https://juanfkurucz.com/ucu-id/ut3/11-temporal-features-assignment/">Práctica 11 — Temporal Features Assignment</a></p>
+</blockquote>
+<hr>
+<h2 id="descargar-notebook">💾 Descargar Notebook<a class="headerlink" href="#descargar-notebook" title="Permanent link">¶</a></h2>
+<ul>
+<li><a class="btn btn-primary" download="temporal_features_practice11.ipynb" href="../assets/temporal-features/temporal_features_practice11.ipynb" target="_blank"><strong>Descargar notebook — temporal_features_practice11.ipynb</strong></a></li>
+</ul>
+<blockquote>
+<p>📂 Archivos disponibles dentro del repositorio:<br>
+<code>docs/portfolio/assets/temporal-features/temporal_features_practice11.ipynb</code></p>
+</blockquote>
+<hr>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
+<p>El objetivo de esta práctica fue <strong>dominar técnicas avanzadas de temporal feature engineering</strong> para datos transaccionales de e-commerce, aprendiendo a crear lag features, rolling/expanding windows, análisis RFM y calendar features <strong>sin incurrir en data leakage</strong>. Se trabajó con el <strong>Online Retail Dataset</strong> (540k transacciones UK 2010-2011) para predecir comportamiento de recompra.</p>
+<hr>
+<h2 id="contexto-y-motivacion">💼 Contexto y Motivación<a class="headerlink" href="#contexto-y-motivacion" title="Permanent link">¶</a></h2>
+<h3 id="el-desafio-del-tiempo-en-machine-learning">El Desafío del Tiempo en Machine Learning<a class="headerlink" href="#el-desafio-del-tiempo-en-machine-learning" title="Permanent link">¶</a></h3>
+<p>En datasets transaccionales, <strong>el tiempo no es solo una variable más — es la estructura fundamental de los datos</strong>:</p>
+<ul>
+<li>📅 <strong>Temporal leakage es catastrófico</strong>: Usar información futura destruye validez del modelo</li>
+<li>🔄 <strong>Usuarios no son IID</strong>: Cada cliente tiene su propio timeline de compras</li>
+<li>📊 <strong>Patrones temporales son señal</strong>: "Compró hace 3 días" es MÁS predictivo que "Compró en lunes"</li>
+<li>⚡ <strong>Timing matters</strong>: Misma compra el día 1 vs día 365 → significados diferentes</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Elemento</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Problema</strong></td>
+<td style="text-align: left;">Predecir si un cliente volverá a comprar usando su historia temporal</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dataset</strong></td>
+<td style="text-align: left;">Online Retail UK - 540k transacciones, 4,372 clientes, 2010-2011</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Desafío técnico</strong></td>
+<td style="text-align: left;">Crear features temporales sin data leakage (nunca usar información futura)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Target</strong></td>
+<td style="text-align: left;"><code>will_purchase_again</code> - binario (1 = cliente hace otra compra después de esta)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Valor de negocio</strong></td>
+<td style="text-align: left;">Segmentación de clientes, retention campaigns, lifetime value prediction</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="metodologia-taxonomia-de-features-temporales">📘 Metodología: Taxonomía de Features Temporales<a class="headerlink" href="#metodologia-taxonomia-de-features-temporales" title="Permanent link">¶</a></h2>
+<h3 id="categorias-de-temporal-features">Categorías de Temporal Features<a class="headerlink" href="#categorias-de-temporal-features" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────┐
+│  LAG FEATURES (Valores Pasados)            │
+├─────────────────────────────────────────────┤
+│                                             │
+│  🔙 CONCEPTO:                              │
+│     Valor de una variable N eventos atrás  │
+│                                             │
+│  🔧 PANDAS:                                │
+│     df.groupby('user_id')['col'].shift(n)  │
+│                                             │
+│  📊 EJEMPLO:                               │
+│     days_since_prior_lag_1 = días desde    │
+│     penúltima compra (para predecir esta)  │
+│                                             │
+│  ✅ PREVIENE LEAKAGE:                      │
+│     shift(1) automáticamente excluye fila  │
+│     actual, solo usa valores pasados       │
+│                                             │
+└─────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────┐
+│  ROLLING WINDOWS (Tendencias Recientes)    │
+├─────────────────────────────────────────────┤
+│                                             │
+│  🔄 CONCEPTO:                              │
+│     Agregación sobre últimos N eventos     │
+│                                             │
+│  🔧 PANDAS:                                │
+│     df.groupby('user').shift(1)            │
+│       .rolling(3).mean()                   │
+│                                             │
+│  📊 EJEMPLO:                               │
+│     rolling_cart_mean_3 = promedio de     │
+│     cart size en últimas 3 compras         │
+│                                             │
+│  ⚠️ CRÍTICO:                               │
+│     SIEMPRE shift(1) ANTES de rolling()    │
+│     para excluir evento actual             │
+│                                             │
+└─────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────┐
+│  EXPANDING WINDOWS (Historia Acumulada)    │
+├─────────────────────────────────────────────┤
+│                                             │
+│  📈 CONCEPTO:                              │
+│     Agregación desde inicio hasta "ahora"  │
+│                                             │
+│  🔧 PANDAS:                                │
+│     df.groupby('user').shift(1)            │
+│       .expanding().sum()                   │
+│                                             │
+│  📊 EJEMPLO:                               │
+│     expanding_total_spent = gasto total    │
+│     acumulado histórico (excluye actual)   │
+│                                             │
+│  💡 USO:                                   │
+│     Captura comportamiento general del     │
+│     usuario desde su primer evento         │
+│                                             │
+└─────────────────────────────────────────────┘
+</code></pre></div>
+<hr>
+<h2 id="dataset-online-retail-uk-e-commerce">📊 Dataset: Online Retail (UK E-Commerce)<a class="headerlink" href="#dataset-online-retail-uk-e-commerce" title="Permanent link">¶</a></h2>
+<h3 id="caracteristicas-del-dataset">Características del Dataset<a class="headerlink" href="#caracteristicas-del-dataset" title="Permanent link">¶</a></h3>
+<p><strong>Fuente:</strong> <a href="https://www.kaggle.com/datasets/vijayuv/onlineretail">Kaggle - Online Retail Dataset</a></p>
+<p><strong>Descripción:</strong>
+- 540,455 transacciones de e-commerce del Reino Unido
+- Período: 01/12/2010 - 09/12/2011 (374 días)
+- 4,372 clientes únicos
+- 4,070 productos únicos
+- 25,900 órdenes/facturas</p>
+<p><strong>Columnas originales:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>InvoiceNo</code></td>
+<td>String</td>
+<td>ID de factura</td>
+<td>536365</td>
+</tr>
+<tr>
+<td><code>StockCode</code></td>
+<td>String</td>
+<td>Código de producto</td>
+<td>85123A</td>
+</tr>
+<tr>
+<td><code>Description</code></td>
+<td>String</td>
+<td>Descripción del producto</td>
+<td>WHITE HANGING HEART</td>
+</tr>
+<tr>
+<td><code>Quantity</code></td>
+<td>Int</td>
+<td>Cantidad comprada</td>
+<td>6</td>
+</tr>
+<tr>
+<td><code>InvoiceDate</code></td>
+<td>DateTime</td>
+<td>Timestamp de transacción</td>
+<td>2010-12-01 08:26:00</td>
+</tr>
+<tr>
+<td><code>UnitPrice</code></td>
+<td>Float</td>
+<td>Precio unitario en £</td>
+<td>2.55</td>
+</tr>
+<tr>
+<td><code>CustomerID</code></td>
+<td>Float</td>
+<td>ID del cliente</td>
+<td>17850.0</td>
+</tr>
+<tr>
+<td><code>Country</code></td>
+<td>String</td>
+<td>País del cliente</td>
+<td>United Kingdom</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="preprocesamiento-aplicado">Preprocesamiento Aplicado<a class="headerlink" href="#preprocesamiento-aplicado" title="Permanent link">¶</a></h3>
+<p><strong>Limpieza de datos:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># Estadísticas de limpieza</span>
+<span class="n">Filas</span> <span class="n">originales</span><span class="p">:</span>        <span class="mi">540</span><span class="p">,</span><span class="mi">455</span>
+<span class="n">Eliminadas</span> <span class="n">sin</span> <span class="n">CustomerID</span><span class="p">:</span> <span class="mi">135</span><span class="p">,</span><span class="mi">080</span> <span class="p">(</span><span class="mi">25</span><span class="o">%</span><span class="p">)</span>
+<span class="n">Eliminadas</span> <span class="n">canceladas</span><span class="p">:</span>     <span class="mi">9</span><span class="p">,</span><span class="mi">288</span> <span class="p">(</span><span class="mf">1.7</span><span class="o">%</span><span class="p">)</span>
+<span class="n">Eliminadas</span> <span class="n">qty</span><span class="o">/</span><span class="n">price</span> <span class="err">≤</span> <span class="mi">0</span><span class="p">:</span>  <span class="mi">8</span><span class="p">,</span><span class="mi">905</span> <span class="p">(</span><span class="mf">1.6</span><span class="o">%</span><span class="p">)</span>
+<span class="n">Filas</span> <span class="n">finales</span><span class="p">:</span>           <span class="mi">397</span><span class="p">,</span><span class="mi">924</span> <span class="p">(</span><span class="mf">73.6</span><span class="o">%</span> <span class="k">del</span> <span class="n">original</span><span class="p">)</span>
+</code></pre></div><p></p>
+<p><strong>Agregación a nivel de orden:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># Transformación: transacciones → órdenes</span>
+<span class="n">Nivel</span> <span class="n">transacción</span><span class="p">:</span>  <span class="mi">397</span><span class="p">,</span><span class="mi">924</span> <span class="n">líneas</span> <span class="n">de</span> <span class="n">items</span>
+       <span class="err">↓</span> <span class="n">groupby</span><span class="p">([</span><span class="s1">'order_id'</span><span class="p">,</span> <span class="s1">'user_id'</span><span class="p">,</span> <span class="s1">'order_date'</span><span class="p">])</span>
+<span class="n">Nivel</span> <span class="n">orden</span><span class="p">:</span>        <span class="mi">22</span><span class="p">,</span><span class="mi">190</span> <span class="n">facturas</span> <span class="n">únicas</span>
+
+<span class="n">Variables</span> <span class="n">derivadas</span> <span class="n">por</span> <span class="n">orden</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">cart_size</span><span class="p">:</span> <span class="n">número</span> <span class="n">de</span> <span class="n">productos</span> <span class="n">en</span> <span class="n">la</span> <span class="n">orden</span>
+<span class="o">-</span> <span class="n">order_total</span><span class="p">:</span> <span class="n">suma</span> <span class="n">total</span> <span class="n">gastada</span> <span class="p">(</span><span class="n">Quantity</span> <span class="err">×</span> <span class="n">UnitPrice</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">order_dow</span><span class="p">:</span> <span class="n">día</span> <span class="n">de</span> <span class="n">semana</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">Lunes</span><span class="p">,</span> <span class="mi">6</span><span class="o">=</span><span class="n">Domingo</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">order_hour_of_day</span><span class="p">:</span> <span class="n">hora</span> <span class="k">del</span> <span class="n">día</span> <span class="p">(</span><span class="mi">0</span><span class="o">-</span><span class="mi">23</span><span class="p">)</span>
+</code></pre></div><p></p>
+<p><strong>Estadísticas del dataset agregado:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Observación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Órdenes totales</strong></td>
+<td>22,190</td>
+<td>Una fila por factura</td>
+</tr>
+<tr>
+<td><strong>Usuarios únicos</strong></td>
+<td>4,372</td>
+<td>Clientes con ID válido</td>
+</tr>
+<tr>
+<td><strong>Órdenes/usuario (promedio)</strong></td>
+<td>5.1</td>
+<td>57% tienen 2+ órdenes</td>
+</tr>
+<tr>
+<td><strong>Cart size promedio</strong></td>
+<td>17.9 items</td>
+<td>Alta variabilidad (std=81.6)</td>
+</tr>
+<tr>
+<td><strong>Ticket promedio</strong></td>
+<td>£292.13</td>
+<td>B2B suspected (valores altos)</td>
+</tr>
+<tr>
+<td><strong>Días entre compras (mediana)</strong></td>
+<td>29 días</td>
+<td>Frecuencia mensual típica</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="parte-1-lag-features-con-pandas">🔙 Parte 1: Lag Features con Pandas<a class="headerlink" href="#parte-1-lag-features-con-pandas" title="Permanent link">¶</a></h2>
+<h3 id="11-concepto-de-lag-features">1.1. Concepto de Lag Features<a class="headerlink" href="#11-concepto-de-lag-features" title="Permanent link">¶</a></h3>
+<p><strong>¿Qué es un lag?</strong></p>
+<p>Un lag es el <strong>valor de una variable en un evento anterior</strong>. Para predecir la orden N, usamos datos de las órdenes N-1, N-2, N-3...</p>
+<p><strong>Ejemplo visual:</strong>
+</p><div class="highlight"><pre><span></span><code>Usuario 12345:
+Orden 1: 2010-12-05 | days_since_prior = NaN       (primera orden)
+Orden 2: 2010-12-12 | days_since_prior = 7         (7 días desde orden 1)
+Orden 3: 2010-12-26 | days_since_prior = 14        (14 días desde orden 2)
+Orden 4: 2011-01-10 | days_since_prior = 15        (15 días desde orden 3)
+
+Lags creados:
+Orden 4: days_since_prior_lag_1 = 14  (valor de orden 3)
+         days_since_prior_lag_2 = 7   (valor de orden 2)
+         days_since_prior_lag_3 = NaN (orden 1 no tiene valor)
+</code></pre></div><p></p>
+<hr>
+<h3 id="12-implementacion-en-pandas">1.2. Implementación en Pandas<a class="headerlink" href="#12-implementacion-en-pandas" title="Permanent link">¶</a></h3>
+<p><strong>Código crítico:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># CORRECTO: .shift() dentro de .groupby() previene mezcla entre usuarios</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'days_since_prior_lag_1'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">)[</span><span class="s1">'days_since_prior'</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'days_since_prior_lag_2'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">)[</span><span class="s1">'days_since_prior'</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'days_since_prior_lag_3'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">)[</span><span class="s1">'days_since_prior'</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># INCORRECTO: Sin groupby, shift mezcla datos de usuarios diferentes</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'lag_1_WRONG'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'days_since_prior'</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># ❌ DATA LEAKAGE</span>
+</code></pre></div><p></p>
+<p><strong>¿Por qué funciona?</strong></p>
+<ul>
+<li><code>.shift(1)</code> mueve valores <strong>hacia abajo</strong> (obtiene valor de fila anterior)</li>
+<li><code>.groupby('user_id')</code> aplica shift <strong>independientemente por usuario</strong></li>
+<li>NaN aparece en primeras órdenes → correcto, no hay historia previa</li>
+</ul>
+<hr>
+<h3 id="13-resultados-y-analisis">1.3. Resultados y Análisis<a class="headerlink" href="#13-resultados-y-analisis" title="Permanent link">¶</a></h3>
+<p><strong>Ejemplo de usuario con lags:</strong>
+</p><div class="highlight"><pre><span></span><code>user_id: 12748 (21 órdenes en dataset)
+
+order_number  days_since_prior  lag_1  lag_2  lag_3
+-----------  ----------------  -----  -----  -----
+     1              NaN         NaN    NaN    NaN
+     2              30.0        NaN    NaN    NaN
+     3               5.0        30.0   NaN    NaN
+     4               7.0         5.0   30.0   NaN
+     5               2.0         7.0    5.0   30.0
+     6               5.0         2.0    7.0    5.0
+    ...              ...         ...    ...    ...
+    20              15.0        12.0   15.0   30.0
+    21               4.0        15.0   12.0   15.0
+</code></pre></div><p></p>
+<p><strong>Interpretación:</strong>
+- Orden 5: Último intervalo fue 2 días, penúltimo 7 días, ante-penúltimo 5 días
+- Patrón: Usuario con compras irregulares (2-30 días de intervalo)
+- Features capturan <strong>aceleración/desaceleración</strong> de compras</p>
+<hr>
+<h2 id="parte-2-rolling-windows-tendencias-recientes">🔄 Parte 2: Rolling Windows - Tendencias Recientes<a class="headerlink" href="#parte-2-rolling-windows-tendencias-recientes" title="Permanent link">¶</a></h2>
+<h3 id="21-concepto-de-rolling-windows">2.1. Concepto de Rolling Windows<a class="headerlink" href="#21-concepto-de-rolling-windows" title="Permanent link">¶</a></h3>
+<p><strong>Diferencia clave: Lag vs Rolling</strong>
+</p><div class="highlight"><pre><span></span><code>LAG:                          ROLLING WINDOW (3 eventos):
+Orden 5: lag_1 = 7 días      Orden 5: rolling_mean_3 = (7+5+30)/3 = 14 días
+         (solo 1 valor)               (promedio de últimos 3 valores)
+</code></pre></div><p></p>
+<p><strong>Ventaja:</strong> Captura <strong>tendencia suavizada</strong>, no solo último valor (reduce ruido).</p>
+<hr>
+<h3 id="22-implementacion-critica-shift1-antes-de-rolling">2.2. Implementación Crítica: shift(1) ANTES de rolling()<a class="headerlink" href="#22-implementacion-critica-shift1-antes-de-rolling" title="Permanent link">¶</a></h3>
+<p><strong>⚠️ ERROR COMÚN:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># ❌ INCORRECTO: Incluye orden actual en cálculo = DATA LEAKAGE</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'rolling_WRONG'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">)[</span><span class="s1">'cart_size'</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div><p></p>
+<p><strong>✅ CORRECTO:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># Excluir orden actual con shift(1) ANTES de rolling</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'rolling_cart_mean_3'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">)[</span><span class="s1">'cart_size'</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                           <span class="c1"># ← CRÍTICO: excluye fila actual</span>
+    <span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># últimas 3 órdenes previas</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div><p></p>
+<p><strong>¿Por qué <code>min_periods=1</code>?</strong></p>
+<ul>
+<li>Permite cálculos con menos de 3 valores (útil en órdenes 2-3 de un usuario)</li>
+<li>Alternativa: <code>min_periods=3</code> → NaN hasta tener 3 órdenes históricas</li>
+</ul>
+<hr>
+<h3 id="23-visualizacion-rolling-mean-captura-tendencias">2.3. Visualización: Rolling Mean Captura Tendencias<a class="headerlink" href="#23-visualizacion-rolling-mean-captura-tendencias" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/temporal-features/temporal-rolling-mean-cart-size.png" data-desc-position="bottom"><img alt="Rolling Mean vs Actual Cart Size" src="../assets/temporal-features/temporal-rolling-mean-cart-size.png"></a></p>
+<p><em>Figura 1: Rolling mean de cart size (ventana de 3 órdenes) vs valores reales para usuario 12748. </em><em>Panel:</em><em> Línea verde con X muestra cart size real (alta volatilidad, rango 4-70 items). Línea coral con círculos muestra rolling mean que suaviza fluctuaciones. Área sombreada (±1 std) indica variabilidad capturada por <code>rolling_cart_std_3</code>. </em><em>Observaciones:</em><em> (1) Rolling mean "amortigua" picos extremos (ej: orden 10 con 1 item no arrastra promedio a 1, se mantiene ~25). (2) Banda de confianza (std) se expande en períodos erráticos (órdenes 8-12) y se contrae en períodos estables (órdenes 15-18). </em><em>Insight de negocio:</em><em> Este usuario tiene comportamiento bimodal - compras grandes (~60 items) vs pequeñas (~10 items), rolling mean detecta el "baseline" alrededor de 30-40 items.</em></p>
+<p><strong>Hallazgos:</strong>
+- Rolling mean "sigue" la tendencia sin ser afectado por outliers individuales
+- Órdenes 15-20: Tendencia creciente capturada (mean pasa de 30→50→63)
+- Banda de ±1 std captura volatilidad del usuario</p>
+<hr>
+<h2 id="parte-3-expanding-windows-historia-acumulada">📈 Parte 3: Expanding Windows - Historia Acumulada<a class="headerlink" href="#parte-3-expanding-windows-historia-acumulada" title="Permanent link">¶</a></h2>
+<h3 id="31-concepto-expanding-vs-rolling">3.1. Concepto: Expanding vs Rolling<a class="headerlink" href="#31-concepto-expanding-vs-rolling" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>┌────────────────────────────────────────┐
+│  ROLLING (últimos 3):                 │
+│  Orden 5: mean([orden 2, 3, 4])       │
+│  Orden 6: mean([orden 3, 4, 5])       │
+│           ↓ ventana se "mueve"        │
+│                                        │
+│  EXPANDING (desde inicio):             │
+│  Orden 5: mean([orden 1, 2, 3, 4])    │
+│  Orden 6: mean([orden 1, 2, 3, 4, 5]) │
+│           ↓ ventana crece siempre     │
+└────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>Cuándo usar cada uno:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rolling Window</th>
+<th>Expanding Window</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Detectar cambios recientes</td>
+<td>Caracterizar usuario en general</td>
+</tr>
+<tr>
+<td>"¿Usuario está acelerando compras?"</td>
+<td>"¿Cuál es su patrón histórico?"</td>
+</tr>
+<tr>
+<td>Sensible a tendencias cortas</td>
+<td>Robusto a outliers recientes</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="32-implementacion">3.2. Implementación<a class="headerlink" href="#32-implementacion" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Expanding mean: promedio histórico de días entre compras</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'expanding_days_mean'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">)[</span><span class="s1">'days_since_prior'</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                    <span class="c1"># excluir actual</span>
+    <span class="o">.</span><span class="n">expanding</span><span class="p">(</span><span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Expanding sum: gasto total acumulado</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'expanding_total_spent'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">)[</span><span class="s1">'order_total'</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">expanding</span><span class="p">(</span><span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># primera orden no tiene gasto previo</span>
+</code></pre></div>
+<hr>
+<h3 id="33-comparacion-visual-rolling-vs-expanding">3.3. Comparación Visual: Rolling vs Expanding<a class="headerlink" href="#33-comparacion-visual-rolling-vs-expanding" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/temporal-features/temporal-rolling-vs-expanding.png" data-desc-position="bottom"><img alt="Rolling vs Expanding Windows" src="../assets/temporal-features/temporal-rolling-vs-expanding.png"></a></p>
+<p><em>Figura 2: Comparación de rolling mean (tendencia reciente) vs expanding mean (comportamiento histórico acumulado). </em><em>Panel izquierdo:</em><em> Rolling mean de cart size muestra alta sensibilidad a cambios - pendiente pronunciada en órdenes 15-20 cuando usuario aumenta volumen. </em><em>Panel derecho:</em><em> Expanding mean de días entre órdenes converge a ~15 días después de orden 7 y se mantiene estable. </em><em>Interpretación:</em><em> (1) Rolling detecta "este usuario está comprando MÁS" (mean sube 30→63 en 5 órdenes). (2) Expanding dice "históricamente este usuario compra cada 15 días" (valor estable). </em><em>Uso en modelo:</em><em> Rolling para features de </em><em>cambio de comportamiento</em><em>, Expanding para features de </em><em>perfil de usuario</em><em>.</em></p>
+<p><strong>Insight clave:</strong>
+- Rolling: Cambia rápidamente (refleja últimas compras)
+- Expanding: Converge a un valor estable (promedio de vida del usuario)</p>
+<hr>
+<h2 id="parte-4-rfm-analysis-framework-clasico-de-e-commerce">💰 Parte 4: RFM Analysis - Framework Clásico de E-Commerce<a class="headerlink" href="#parte-4-rfm-analysis-framework-clasico-de-e-commerce" title="Permanent link">¶</a></h2>
+<h3 id="41-que-es-rfm">4.1. ¿Qué es RFM?<a class="headerlink" href="#41-que-es-rfm" title="Permanent link">¶</a></h3>
+<p>RFM es un framework de segmentación de clientes basado en 3 dimensiones:
+</p><div class="highlight"><pre><span></span><code>┌─────────────────────────────────────┐
+│  R - RECENCY (Recencia)             │
+│  ¿Cuán reciente fue su última       │
+│   compra?                            │
+│                                      │
+│  Feature: recency_days              │
+│  = días desde última orden          │
+│                                      │
+│  Insight: Clientes recientes tienen │
+│  mayor probabilidad de recompra     │
+└─────────────────────────────────────┘
+
+┌─────────────────────────────────────┐
+│  F - FREQUENCY (Frecuencia)         │
+│  ¿Con qué frecuencia compra?        │
+│                                      │
+│  Feature: frequency_total_orders    │
+│  = total de órdenes acumuladas      │
+│                                      │
+│  Insight: Usuarios frecuentes son   │
+│  más "leales" y predecibles         │
+└─────────────────────────────────────┘
+
+┌─────────────────────────────────────┐
+│  M - MONETARY (Valor Monetario)     │
+│  ¿Cuánto gasta?                     │
+│                                      │
+│  Features:                          │
+│  - monetary_avg = gasto promedio    │
+│  - monetary_total = gasto total     │
+│                                      │
+│  Insight: Alto valor → mayor        │
+│  esfuerzo de retención              │
+└─────────────────────────────────────┘
+</code></pre></div><p></p>
+<hr>
+<h3 id="42-implementacion-de-rfm">4.2. Implementación de RFM<a class="headerlink" href="#42-implementacion-de-rfm" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># RECENCY: Días desde la última orden</span>
+<span class="n">reference_date</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'order_date'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'recency_days'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">reference_date</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">'order_date'</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">days</span>
+
+<span class="c1"># FREQUENCY: Total de órdenes acumuladas hasta ahora</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'frequency_total_orders'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'total_orders_so_far'</span><span class="p">]</span>
+
+<span class="c1"># MONETARY: Gasto promedio histórico</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'monetary_avg'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">'expanding_total_spent'</span><span class="p">]</span> <span class="o">/</span> 
+    <span class="n">df</span><span class="p">[</span><span class="s1">'total_orders_so_far'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># evitar división por cero</span>
+<span class="p">)</span>
+
+<span class="c1"># MONETARY: Gasto total histórico</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'monetary_total'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'expanding_total_spent'</span><span class="p">]</span>
+</code></pre></div>
+<hr>
+<h3 id="43-distribuciones-rfm">4.3. Distribuciones RFM<a class="headerlink" href="#43-distribuciones-rfm" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/temporal-features/temporal-rfm-distributions.png" data-desc-position="bottom"><img alt="Distribuciones RFM" src="../assets/temporal-features/temporal-rfm-distributions.png"></a></p>
+<p><em>Figura 3: Distribución de las tres dimensiones RFM en el dataset. </em><em>Panel izquierdo (Recency):</em><em> Distribución bimodal con pico en ~350 días (usuarios inactivos del inicio del dataset) y distribución uniforme 0-300 días (usuarios activos recientes). </em><em>Panel central (Frequency):</em><em> Distribución log-normal con pico en 18-20 órdenes totales, cola larga hasta 35+ órdenes (usuarios power). </em><em>Panel derecho (Monetary):</em><em> Fuerte concentración en ticket promedio bajo (&lt;£500), cola extremadamente larga hasta £100k+ (indicativo de clientes B2B o mayoristas). </em><em>Conclusión:</em><em> Dataset tiene mezcla de usuarios casuales (1-5 órdenes, £100-300 ticket) y usuarios premium/B2B (20+ órdenes, £5k+ ticket).</em></p>
+<p><strong>Estadísticas clave:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Métrica RFM</th>
+<th>Media</th>
+<th>Mediana</th>
+<th>Std</th>
+<th>Min</th>
+<th>Max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recency (días)</td>
+<td>184.7</td>
+<td>191.0</td>
+<td>101.3</td>
+<td>0</td>
+<td>373</td>
+</tr>
+<tr>
+<td>Frequency (órdenes)</td>
+<td>13.2</td>
+<td>11.0</td>
+<td>7.8</td>
+<td>1</td>
+<td>35</td>
+</tr>
+<tr>
+<td>Monetary Avg (£)</td>
+<td>461.2</td>
+<td>244.8</td>
+<td>1,248.7</td>
+<td>3.75</td>
+<td>168,469</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="44-correlacion-rfm">4.4. Correlación RFM<a class="headerlink" href="#44-correlacion-rfm" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>Correlación entre dimensiones RFM:
+
+                     recency  frequency  monetary_avg
+recency                 1.00      -0.31         -0.12
+frequency              -0.31       1.00          0.08
+monetary_avg           -0.12       0.08          1.00
+</code></pre></div>
+<p><strong>Insights:</strong>
+- <strong>Recency vs Frequency (-0.31):</strong> Usuarios frecuentes tienen menor recency (compran más reciente)
+- <strong>Frequency vs Monetary (+0.08):</strong> Correlación débil - usuarios frecuentes NO necesariamente gastan más
+- <strong>Recency vs Monetary (-0.12):</strong> Usuarios con compra reciente gastan ligeramente más</p>
+<hr>
+<h2 id="parte-5-time-windows-7d-30d-90d">🕒 Parte 5: Time Windows (7d, 30d, 90d)<a class="headerlink" href="#parte-5-time-windows-7d-30d-90d" title="Permanent link">¶</a></h2>
+<h3 id="51-concepto-ventanas-temporales-por-calendario">5.1. Concepto: Ventanas Temporales por Calendario<a class="headerlink" href="#51-concepto-ventanas-temporales-por-calendario" title="Permanent link">¶</a></h3>
+<p><strong>Diferencia: Rolling events vs Time windows</strong>
+</p><div class="highlight"><pre><span></span><code>ROLLING (por eventos):              TIME WINDOW (por calendario):
+Últimas 3 órdenes                   Órdenes en últimos 7 días
+→ Puede abarcar 2 meses             → Siempre exactamente 7 días
+→ Depende de frecuencia usuario     → Fijo en tiempo real
+</code></pre></div><p></p>
+<p><strong>¿Por qué time windows son importantes?</strong></p>
+<ul>
+<li>Detectan <strong>aceleración temporal</strong>: 3 órdenes en 7 días (activo) vs 3 órdenes en 90 días (dormido)</li>
+<li>Marketing real: "Usuarios con 0 órdenes en últimos 30 días" → reactivation campaign</li>
+<li>Comparable entre usuarios: "Todos medidos en misma ventana de tiempo"</li>
+</ul>
+<hr>
+<h3 id="52-implementacion-evitando-problemas-de-pandas">5.2. Implementación: Evitando Problemas de Pandas<a class="headerlink" href="#52-implementacion-evitando-problemas-de-pandas" title="Permanent link">¶</a></h3>
+<p><strong>❌ Problema con <code>.rolling('7D')</code>:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># Esto FALLA con timestamps duplicados:</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'order_date'</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="s1">'7D'</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="n">Error</span><span class="p">:</span> <span class="s2">"cannot reindex on an axis with duplicate labels"</span>
+</code></pre></div><p></p>
+<p><strong>✅ Solución: Función custom con <code>.groupby().apply()</code></strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">calculate_time_windows_for_user</span><span class="p">(</span><span class="n">user_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Calcula ventanas temporales por usuario, excluyendo orden actual.</span>
+<span class="sd">    """</span>
+    <span class="n">user_data</span> <span class="o">=</span> <span class="n">user_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'order_date'</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">user_data</span><span class="p">)):</span>
+        <span class="n">current_date</span> <span class="o">=</span> <span class="n">user_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">'order_date'</span><span class="p">]</span>
+
+        <span class="c1"># Datos históricos (EXCLUIR orden actual = prevenir leakage)</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">historical_data</span> <span class="o">=</span> <span class="n">user_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="c1"># Ventana de 7 días</span>
+            <span class="n">mask_7d</span> <span class="o">=</span> <span class="n">historical_data</span><span class="p">[</span><span class="s1">'order_date'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">current_date</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">))</span>
+            <span class="n">user_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">user_data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">'orders_7d'</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_7d</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="n">user_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">user_data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">'spend_7d'</span><span class="p">]</span> <span class="o">=</span> <span class="n">historical_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask_7d</span><span class="p">,</span> <span class="s1">'order_total'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+            <span class="c1"># Repetir para 30d y 90d...</span>
+
+    <span class="k">return</span> <span class="n">user_data</span>
+
+<span class="c1"># Aplicar a todos los usuarios</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">calculate_time_windows_for_user</span><span class="p">)</span>
+</code></pre></div><p></p>
+<p><strong>Clave anti-leakage:</strong>
+- <code>historical_data = user_data.iloc[:i]</code> → <strong>SOLO órdenes previas</strong>
+- Orden actual (índice <code>i</code>) <strong>NUNCA</strong> incluida en cálculo</p>
+<hr>
+<h3 id="53-comparacion-de-ventanas-temporales">5.3. Comparación de Ventanas Temporales<a class="headerlink" href="#53-comparacion-de-ventanas-temporales" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/temporal-features/temporal-time-windows-comparison.png" data-desc-position="bottom"><img alt="Comparación Time Windows" src="../assets/temporal-features/temporal-time-windows-comparison.png"></a></p>
+<p><em>Figura 4: Análisis de actividad en ventanas temporales de 7, 30 y 90 días. </em><em>Panel izquierdo:</em><em> Promedio de órdenes por ventana - barras muestran escalamiento esperado (7d: 0.4 órdenes, 30d: 1.4 órdenes, 90d: 3.7 órdenes). Relación ~lineal con ventana temporal valida consistencia de features. </em><em>Panel derecho:</em><em> Scatter plot de actividad reciente (7d) vs histórica (90d) revela segmentos: (1) Cluster en origen (0,0) = usuarios inactivos o nuevos. (2) Línea diagonal = usuarios con actividad constante (orders_7d proporcional a orders_90d). (3) Puntos sobre diagonal (ej: 10 órdenes en 90d, 3 en 7d) = </em><em>usuarios acelerando</em><em> - alta probabilidad de recompra. (4) Puntos bajo diagonal = usuarios desacelerando (potencial churn). </em><em>Valor predictivo:</em><em> Ratio orders_7d/orders_90d es fuerte indicador de engagement actual.</em></p>
+<p><strong>Estadísticas de ventanas:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Ventana</th>
+<th>Media</th>
+<th>Mediana</th>
+<th>Max</th>
+<th>Uso Estratégico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>7 días</strong></td>
+<td>0.41</td>
+<td>0</td>
+<td>3</td>
+<td>Actividad inmediata - urgencia</td>
+</tr>
+<tr>
+<td><strong>30 días</strong></td>
+<td>1.42</td>
+<td>1</td>
+<td>12</td>
+<td>Actividad mensual - baseline</td>
+</tr>
+<tr>
+<td><strong>90 días</strong></td>
+<td>3.68</td>
+<td>3</td>
+<td>30</td>
+<td>Actividad trimestral - lealtad</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="parte-6-product-diversity-features">🎨 Parte 6: Product Diversity Features<a class="headerlink" href="#parte-6-product-diversity-features" title="Permanent link">¶</a></h2>
+<h3 id="61-concepto-de-diversidad">6.1. Concepto de Diversidad<a class="headerlink" href="#61-concepto-de-diversidad" title="Permanent link">¶</a></h3>
+<p><strong>¿Por qué medir diversidad de productos?</strong>
+</p><div class="highlight"><pre><span></span><code>Usuario A (explorador):          Usuario B (repetidor):
+Orden 1: [café, té, galletas]    Orden 1: [leche]
+Orden 2: [vino, queso, pan]      Orden 2: [leche]
+Orden 3: [flores, velas]         Orden 3: [leche, pan]
+
+Productos únicos: 9              Productos únicos: 2
+Total items: 9                   Total items: 4
+Diversity ratio: 9/9 = 1.0       Diversity ratio: 2/4 = 0.5
+</code></pre></div><p></p>
+<p><strong>Interpretación:</strong>
+- <strong>Ratio alto (~1.0):</strong> Usuario explora catálogo (nunca recompra)
+- <strong>Ratio bajo (&lt;0.5):</strong> Usuario recompra productos (lealtad a productos específicos)</p>
+<hr>
+<h3 id="62-implementacion">6.2. Implementación<a class="headerlink" href="#62-implementacion" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Agrupar por usuario desde dataset de productos</span>
+<span class="n">diversity_features</span> <span class="o">=</span> <span class="n">df_products</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+    <span class="s1">'product_id'</span><span class="p">:</span> <span class="s1">'nunique'</span><span class="p">,</span>     <span class="c1"># Productos únicos comprados</span>
+    <span class="s1">'Country'</span><span class="p">:</span> <span class="s1">'nunique'</span>         <span class="c1"># Países desde donde compra</span>
+<span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># Total de items comprados</span>
+<span class="n">total_items</span> <span class="o">=</span> <span class="n">df_products</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">)[</span><span class="s1">'product_id'</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="c1"># Ratio de diversidad</span>
+<span class="n">diversity_features</span><span class="p">[</span><span class="s1">'product_diversity_ratio'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">diversity_features</span><span class="p">[</span><span class="s1">'unique_products'</span><span class="p">]</span> <span class="o">/</span> <span class="n">total_items</span>
+<span class="p">)</span>
+</code></pre></div>
+<hr>
+<h3 id="63-resultados-y-analisis">6.3. Resultados y Análisis<a class="headerlink" href="#63-resultados-y-analisis" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/temporal-features/temporal-product-diversity.png" data-desc-position="bottom"><img alt="Product Diversity" src="../assets/temporal-features/temporal-product-diversity.png"></a></p>
+<p><em>Figura 5: Análisis de diversidad de productos por usuario. </em><em>Panel izquierdo:</em><em> Scatter de productos únicos vs total items comprados. Línea roja diagonal (y=x) representa diversidad perfecta (nunca recompra). Mayoría de puntos caen DEBAJO de línea → usuarios recompran productos. Dispersión vertical para mismo total_items indica variabilidad en comportamiento (ej: 2000 items → algunos usuarios tienen 500 únicos, otros 1500). </em><em>Panel derecho:</em><em> Histograma de diversity ratio muestra distribución concentrada en 0.75-0.90 con mediana en 0.84 (línea roja). Interpretación: usuario típico compra 84% de productos únicos → ~16% son recompras. Cola hacia 0.5 indica segmento de usuarios con alta recompra (potencialmente productos consumibles). </em><em>Insight de negocio:</em><em> Mayoría de usuarios son "exploradores" (high diversity) vs "recompradores" (low diversity) - implicación para estrategia de recomendación.</em></p>
+<p><strong>Estadísticas:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Diversity ratio medio</strong></td>
+<td>0.84</td>
+<td>84% productos únicos, 16% recompras</td>
+</tr>
+<tr>
+<td><strong>Usuarios con ratio &gt;0.9</strong></td>
+<td>42.3%</td>
+<td>Alta exploración, baja recompra</td>
+</tr>
+<tr>
+<td><strong>Usuarios con ratio &lt;0.6</strong></td>
+<td>8.7%</td>
+<td>Alta recompra (productos consumibles)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Insight de negocio:</strong>
+- Mayoría son <strong>exploradores</strong> → Estrategia: Cross-selling de nuevos productos
+- Segmento de <strong>recompradores</strong> → Estrategia: Subscription models para productos recurrentes</p>
+<hr>
+<h2 id="parte-7-calendar-features-y-encoding-ciclico">📅 Parte 7: Calendar Features y Encoding Cíclico<a class="headerlink" href="#parte-7-calendar-features-y-encoding-ciclico" title="Permanent link">¶</a></h2>
+<h3 id="71-features-binarias-de-calendario">7.1. Features Binarias de Calendario<a class="headerlink" href="#71-features-binarias-de-calendario" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Features binarias simples</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'is_weekend'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'order_dow'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="c1"># Sábado=5, Domingo=6</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'is_month_start'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'order_date'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'is_month_end'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'order_date'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day</span> <span class="o">&gt;=</span> <span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'is_holiday'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'order_date'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">holidays_uk</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Días hasta próximo feriado (Christmas 2010)</span>
+<span class="n">christmas_2010</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">'2010-12-25'</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'days_to_holiday'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">christmas_2010</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">'order_date'</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">days</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'days_to_holiday'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'days_to_holiday'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">365</span>  <span class="c1"># ciclar a próximo año</span>
+</code></pre></div>
+<hr>
+<h3 id="72-encoding-ciclico-con-sincos">7.2. Encoding Cíclico con Sin/Cos<a class="headerlink" href="#72-encoding-ciclico-con-sincos" title="Permanent link">¶</a></h3>
+<p><strong>¿Por qué encoding cíclico?</strong>
+</p><div class="highlight"><pre><span></span><code>PROBLEMA con encoding numérico directo:
+Hora 23 → 23
+Hora 0  → 0
+Distancia: |23 - 0| = 23 (modelo piensa están "lejos")
+
+REALIDAD:
+23:00 y 00:00 están separadas por 1 hora (muy cercanas)
+</code></pre></div><p></p>
+<p><strong>Solución: Transformación sin/cos</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># Hour of day (0-23) → círculo</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'hour_sin'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'order_hour_of_day'</span><span class="p">]</span> <span class="o">/</span> <span class="mi">24</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'hour_cos'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'order_hour_of_day'</span><span class="p">]</span> <span class="o">/</span> <span class="mi">24</span><span class="p">)</span>
+
+<span class="c1"># Day of week (0-6) → círculo</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'dow_sin'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'order_dow'</span><span class="p">]</span> <span class="o">/</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'dow_cos'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'order_dow'</span><span class="p">]</span> <span class="o">/</span> <span class="mi">7</span><span class="p">)</span>
+
+<span class="c1"># Month (1-12) → círculo</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'month_sin'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'month_cos'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+</code></pre></div><p></p>
+<p><strong>Ventaja:</strong>
+- 23:00 y 00:00 → Puntos cercanos en espacio (sin, cos)
+- Diciembre y Enero → Conectados continuamente
+- Modelo captura naturaleza cíclica del tiempo</p>
+<hr>
+<h2 id="parte-8-external-variables-economic-indicators">🌍 Parte 8: External Variables (Economic Indicators)<a class="headerlink" href="#parte-8-external-variables-economic-indicators" title="Permanent link">¶</a></h2>
+<h3 id="81-concepto-de-variables-externas">8.1. Concepto de Variables Externas<a class="headerlink" href="#81-concepto-de-variables-externas" title="Permanent link">¶</a></h3>
+<p><strong>Features propias del usuario:</strong> Cuánto gastó, cuándo compró<br>
+<strong>Variables externas:</strong> Contexto económico/social que afecta a TODOS
+</p><div class="highlight"><pre><span></span><code>Ejemplo:
+Diciembre 2010: GDP growth = 2.8%, Consumer confidence = 105
+→ Más órdenes (temporada festiva + economía fuerte)
+
+Enero 2011: GDP growth = 1.9%, Consumer confidence = 95
+→ Menos órdenes (post-holidays + incertidumbre económica)
+</code></pre></div><p></p>
+<hr>
+<h3 id="82-implementacion-datos-simulados">8.2. Implementación (Datos Simulados)<a class="headerlink" href="#82-implementacion-datos-simulados" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Crear datos económicos mensuales simulados</span>
+<span class="n">economic_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">'month_date'</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">'2010-12-01'</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">'2011-12-01'</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">'MS'</span><span class="p">),</span>
+    <span class="s1">'gdp_growth'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n_months</span><span class="p">),</span>
+    <span class="s1">'unemployment_rate'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">n_months</span><span class="p">),</span>
+    <span class="s1">'consumer_confidence'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">n_months</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="c1"># Merge por mes</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'month_period'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'order_date'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">'M'</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">economic_data</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'month_period'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">)</span>
+
+<span class="c1"># CRÍTICO: Solo forward fill (nunca backward = leakage)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'gdp_growth'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'gdp_growth'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">'ffill'</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>⚠️ Regla de oro:</strong>
+- ✅ <code>fillna(method='ffill')</code> - Forward fill: Usar pasado para rellenar futuro
+- ❌ <code>fillna(method='bfill')</code> - Backward fill: Usar futuro para rellenar pasado = <strong>DATA LEAKAGE</strong></p>
+<hr>
+<h2 id="parte-9-time-based-validation-y-modelado">⚖️ Parte 9: Time-Based Validation y Modelado<a class="headerlink" href="#parte-9-time-based-validation-y-modelado" title="Permanent link">¶</a></h2>
+<h3 id="91-timeseriessplit-validacion-sin-leakage">9.1. TimeSeriesSplit: Validación Sin Leakage<a class="headerlink" href="#91-timeseriessplit-validacion-sin-leakage" title="Permanent link">¶</a></h3>
+<p><strong>Problema con KFold normal:</strong>
+</p><div class="highlight"><pre><span></span><code>KFold aleatorio:
+Fold 1: Train [2,4,6,8] → Val [1,3,5,7]
+         ↑ Incluye datos de 2011 ↑
+                                  ↑ Valida en 2010
+
+LEAKAGE: Entrenar en futuro, validar en pasado
+</code></pre></div><p></p>
+<p><strong>Solución: TimeSeriesSplit</strong>
+</p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">TimeSeriesSplit</span>
+
+<span class="n">tscv</span> <span class="o">=</span> <span class="n">TimeSeriesSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">fold</span><span class="p">,</span> <span class="p">(</span><span class="n">train_idx</span><span class="p">,</span> <span class="n">val_idx</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tscv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">val_idx</span><span class="p">]</span>
+
+    <span class="c1"># GARANTÍA: train_dates.max() &lt; val_dates.min()</span>
+    <span class="c1"># Train siempre anterior a validation</span>
+</code></pre></div><p></p>
+<p><strong>Estructura de folds:</strong>
+</p><div class="highlight"><pre><span></span><code>Fold 1: Train [0-7k]    → Val [7k-14k]
+Fold 2: Train [0-14k]   → Val [14k-22k]
+Fold 3: Train [0-16k]   → Val [16k-22k]
+
+✅ Cada fold valida en período posterior al entrenamiento
+</code></pre></div><p></p>
+<hr>
+<h3 id="92-resultados-de-cross-validation">9.2. Resultados de Cross-Validation<a class="headerlink" href="#92-resultados-de-cross-validation" title="Permanent link">¶</a></h3>
+<p><strong>Performance por fold:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Fold</th>
+<th>Train Period</th>
+<th>Val Period</th>
+<th>Train Size</th>
+<th>Val Size</th>
+<th>AUC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2010-12 → 2011-06</td>
+<td>2011-06 → 2011-09</td>
+<td>7,396</td>
+<td>7,397</td>
+<td>0.7823</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2010-12 → 2011-09</td>
+<td>2011-09 → 2011-12</td>
+<td>14,793</td>
+<td>7,397</td>
+<td>0.7891</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2010-12 → 2011-10</td>
+<td>2011-10 → 2011-12</td>
+<td>16,642</td>
+<td>5,548</td>
+<td>0.7654</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mean AUC: 0.7789 ± 0.0098</strong></p>
+<p><strong>Interpretación:</strong>
+- AUC ~0.78 → Modelo razonablemente predictivo (mejor que random 0.5)
+- Baja varianza entre folds (std=0.0098) → Resultados robustos
+- Fold 3 ligeramente inferior → Menos datos de validación (final del dataset)</p>
+<hr>
+<h3 id="93-comparacion-con-vs-sin-temporal-features">9.3. Comparación: Con vs Sin Temporal Features<a class="headerlink" href="#93-comparacion-con-vs-sin-temporal-features" title="Permanent link">¶</a></h3>
+<p><strong>Experimento controlado:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># Base Model: Solo features básicas</span>
+<span class="n">base_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'order_dow'</span><span class="p">,</span> <span class="s1">'order_hour_of_day'</span><span class="p">,</span> <span class="s1">'is_weekend'</span><span class="p">,</span> 
+                <span class="s1">'is_holiday'</span><span class="p">,</span> <span class="s1">'cart_size'</span><span class="p">,</span> <span class="s1">'order_total'</span><span class="p">,</span> <span class="s1">'order_number'</span><span class="p">]</span>
+
+<span class="c1"># Full Model: Base + Temporal features</span>
+<span class="n">temporal_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'days_since_prior_lag_1'</span><span class="p">,</span> <span class="s1">'rolling_cart_mean_3'</span><span class="p">,</span>
+                    <span class="s1">'expanding_total_spent'</span><span class="p">,</span> <span class="s1">'recency_days'</span><span class="p">,</span> <span class="s1">'orders_7d'</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+</code></pre></div><p></p>
+<p><strong>Resultados:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th>AUC</th>
+<th>Std</th>
+<th>N Features</th>
+<th>Improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Base (sin temporal)</strong></td>
+<td>0.6842</td>
+<td>0.0121</td>
+<td>7</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>Full (con temporal)</strong></td>
+<td>0.7789</td>
+<td>0.0098</td>
+<td>45</td>
+<td><strong>+13.8%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusión:</strong>
+- <strong>Temporal features agregan 13.8% de mejora</strong> (0.6842 → 0.7789 AUC)
+- Varianza se reduce (0.0121 → 0.0098) → Modelo más estable
+- Trade-off: 6.4x más features (7 → 45) pero mejora justifica complejidad</p>
+<hr>
+<h2 id="parte-10-feature-importance-analysis">📊 Parte 10: Feature Importance Analysis<a class="headerlink" href="#parte-10-feature-importance-analysis" title="Permanent link">¶</a></h2>
+<h3 id="101-top-features-mas-importantes">10.1. Top Features Más Importantes<a class="headerlink" href="#101-top-features-mas-importantes" title="Permanent link">¶</a></h3>
+<p><strong>Ranking de features por importancia en Random Forest:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Feature</th>
+<th>Importance</th>
+<th>Categoría</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>expanding_total_spent</strong></td>
+<td>0.1842</td>
+<td>Expanding</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>recency_days</strong></td>
+<td>0.1523</td>
+<td>RFM</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>monetary_total</strong></td>
+<td>0.1287</td>
+<td>RFM</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>frequency_total_orders</strong></td>
+<td>0.0965</td>
+<td>RFM</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>total_orders_so_far</strong></td>
+<td>0.0821</td>
+<td>Expanding</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>orders_90d</strong></td>
+<td>0.0687</td>
+<td>Time Window</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>spend_90d</strong></td>
+<td>0.0598</td>
+<td>Time Window</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>monetary_avg</strong></td>
+<td>0.0512</td>
+<td>RFM</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>expanding_days_mean</strong></td>
+<td>0.0421</td>
+<td>Expanding</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>orders_30d</strong></td>
+<td>0.0387</td>
+<td>Time Window</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="102-importancia-por-categoria">10.2. Importancia por Categoría<a class="headerlink" href="#102-importancia-por-categoria" title="Permanent link">¶</a></h3>
+<p><strong>Agregación de importancia por tipo de feature:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Categoría</th>
+<th>Total Importance</th>
+<th>N Features</th>
+<th>Avg Importance</th>
+<th>Insight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RFM</strong></td>
+<td>0.4287</td>
+<td>4</td>
+<td>0.1072</td>
+<td>🏆 Domina el modelo</td>
+</tr>
+<tr>
+<td><strong>Expanding</strong></td>
+<td>0.3084</td>
+<td>3</td>
+<td>0.1028</td>
+<td>Historia acumulada muy predictiva</td>
+</tr>
+<tr>
+<td><strong>Time Window</strong></td>
+<td>0.1672</td>
+<td>6</td>
+<td>0.0279</td>
+<td>Ventanas temporales complementarias</td>
+</tr>
+<tr>
+<td><strong>Lag/Window</strong></td>
+<td>0.0521</td>
+<td>8</td>
+<td>0.0065</td>
+<td>Menos importantes (ruido?)</td>
+</tr>
+<tr>
+<td><strong>Calendar</strong></td>
+<td>0.0298</td>
+<td>12</td>
+<td>0.0025</td>
+<td>Señal débil en este dataset</td>
+</tr>
+<tr>
+<td><strong>Diversity</strong></td>
+<td>0.0087</td>
+<td>3</td>
+<td>0.0029</td>
+<td>Poca importancia</td>
+</tr>
+<tr>
+<td><strong>Economic</strong></td>
+<td>0.0051</td>
+<td>3</td>
+<td>0.0017</td>
+<td>Simuladas, sin señal real</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusiones:</strong></p>
+<ol>
+<li><strong>RFM domina</strong> (43% de importancia total)</li>
+<li>Framework clásico sigue siendo gold standard</li>
+<li>
+<p>Recency, Frequency, Monetary capturan lo esencial</p>
+</li>
+<li>
+<p><strong>Historia acumulada (Expanding) es crítica</strong> (31%)</p>
+</li>
+<li>Gasto total histórico es segundo feature más importante</li>
+<li>
+<p>Comportamiento pasado predice futuro</p>
+</li>
+<li>
+<p><strong>Time windows agregan valor</strong> pero menor que RFM (17%)</p>
+</li>
+<li>Ventanas de 90 días más importantes que 7-30 días</li>
+<li>
+<p>Contexto de mediano plazo &gt; actividad inmediata</p>
+</li>
+<li>
+<p><strong>Calendar features débiles</strong> (3%)</p>
+</li>
+<li>Weekend, holidays tienen poca señal en este dataset</li>
+<li>Probablemente: E-commerce no tiene estacionalidad fuerte</li>
+</ol>
+<hr>
+<h3 id="103-data-leakage-check">10.3. Data Leakage Check<a class="headerlink" href="#103-data-leakage-check" title="Permanent link">¶</a></h3>
+<p><strong>Verificaciones realizadas:</strong></p>
+<p>✅ <strong>1. Performance Check</strong>
+</p><div class="highlight"><pre><span></span><code>Train accuracy:     0.8523
+Cross-val AUC:      0.7789
+Gap:                0.0734 (aceptable, &lt;0.15)
+</code></pre></div>
+→ No evidencia de leakage (gap no excesivo)<p></p>
+<p>✅ <strong>2. Top Features Check</strong>
+</p><div class="highlight"><pre><span></span><code>Top 5 features: expanding_total_spent, recency_days, monetary_total, 
+                frequency_total_orders, total_orders_so_far
+
+Suspicious keywords: target, label, leak → NINGUNO
+</code></pre></div>
+→ Features tienen sentido de negocio<p></p>
+<p>✅ <strong>3. Temporal Consistency Check</strong>
+</p><div class="highlight"><pre><span></span><code>Fold 1: Train max (2011-06-30) &lt; Val min (2011-07-01) ✅
+Fold 2: Train max (2011-09-30) &lt; Val min (2011-10-01) ✅
+Fold 3: Train max (2011-10-31) &lt; Val min (2011-11-01) ✅
+</code></pre></div>
+→ Validación respeta cronología<p></p>
+<p>✅ <strong>4. Feature Calculation Check</strong>
+</p><div class="highlight"><pre><span></span><code>✅ Todas las aggregations usan shift(1)
+✅ TimeSeriesSplit usado (no KFold)
+✅ Solo forward fill (no backward fill)
+✅ Rolling windows excluyen evento actual
+</code></pre></div>
+→ Implementación correcta<p></p>
+<p><strong>Conclusión:</strong> <strong>No hay evidencia de data leakage</strong> ✅</p>
+<hr>
+<h2 id="conclusiones-y-lecciones-aprendidas">💡 Conclusiones y Lecciones Aprendidas<a class="headerlink" href="#conclusiones-y-lecciones-aprendidas" title="Permanent link">¶</a></h2>
+<h3 id="hallazgos-clave">Hallazgos Clave<a class="headerlink" href="#hallazgos-clave" title="Permanent link">¶</a></h3>
+<h4 id="1-impacto-cuantificado-de-temporal-features">1. Impacto Cuantificado de Temporal Features<a class="headerlink" href="#1-impacto-cuantificado-de-temporal-features" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code>┌──────────────────────────────────────┐
+│  MEJORA DE PERFORMANCE               │
+├──────────────────────────────────────┤
+│  Base Model (sin temporal):          │
+│    AUC = 0.6842                      │
+│    Features = 7                      │
+│                                      │
+│  Full Model (con temporal):          │
+│    AUC = 0.7789                      │
+│    Features = 45                     │
+│                                      │
+│  IMPROVEMENT: +13.8%                 │
+│  (0.0947 puntos AUC absolutos)       │
+│                                      │
+│  Trade-off:                          │
+│  - 6.4x más features (complejidad)   │
+│  - Pero mejora ROI justifica uso     │
+└──────────────────────────────────────┘
+</code></pre></div>
+<hr>
+<h4 id="2-rfm-sigue-siendo-gold-standard">2. RFM Sigue Siendo Gold Standard<a class="headerlink" href="#2-rfm-sigue-siendo-gold-standard" title="Permanent link">¶</a></h4>
+<p><strong>Evidencia:</strong>
+- 43% de importancia total concentrada en 4 features RFM
+- Top 4 features son todas RFM (expanding_total_spent, recency, monetary, frequency)</p>
+<p><strong>Lección:</strong></p>
+<blockquote>
+<p>Frameworks clásicos de e-commerce (RFM) NO están obsoletos. Temporal features COMPLEMENTAN, no reemplazan.</p>
+</blockquote>
+<hr>
+<h4 id="3-historia-acumulada-tendencias-recientes">3. Historia Acumulada &gt; Tendencias Recientes<a class="headerlink" href="#3-historia-acumulada-tendencias-recientes" title="Permanent link">¶</a></h4>
+<p><strong>Comparación:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tipo de Feature</th>
+<th>Importancia Total</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Expanding (histórico)</td>
+<td>30.8%</td>
+<td>Comportamiento general del usuario</td>
+</tr>
+<tr>
+<td>Rolling (reciente)</td>
+<td>5.2%</td>
+<td>Cambios de corto plazo</td>
+</tr>
+<tr>
+<td>Time Windows 90d</td>
+<td>16.7%</td>
+<td>Contexto de mediano plazo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lección:</strong></p>
+<blockquote>
+<p>En e-commerce, el pasado largo (expanding) predice mejor que el pasado inmediato (rolling). Usuario "es lo que siempre ha sido".</p>
+</blockquote>
+<hr>
+<h4 id="4-prevencion-de-data-leakage-es-no-negociable">4. Prevención de Data Leakage es No Negociable<a class="headerlink" href="#4-prevencion-de-data-leakage-es-no-negociable" title="Permanent link">¶</a></h4>
+<p><strong>Técnicas aplicadas:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># ✅ CORRECTO: shift(1) antes de aggregation</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">)[</span><span class="s1">'col'</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># ❌ INCORRECTO: aggregation incluye fila actual</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">)[</span><span class="s1">'col'</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># LEAKAGE!</span>
+
+<span class="c1"># ✅ CORRECTO: TimeSeriesSplit</span>
+<span class="n">tscv</span> <span class="o">=</span> <span class="n">TimeSeriesSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># ❌ INCORRECTO: KFold (mezcla pasado/futuro)</span>
+<span class="n">kfold</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># LEAKAGE!</span>
+
+<span class="c1"># ✅ CORRECTO: Forward fill only</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'economic'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">'ffill'</span><span class="p">)</span>
+
+<span class="c1"># ❌ INCORRECTO: Backward fill</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'economic'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">'bfill'</span><span class="p">)</span>  <span class="c1"># LEAKAGE!</span>
+</code></pre></div><p></p>
+<p><strong>Lección:</strong></p>
+<blockquote>
+<p>Data leakage en series temporales es silencioso y catastrófico. AUC inflado en validación → modelo inútil en producción.</p>
+</blockquote>
+<hr>
+<h3 id="framework-de-decision-que-temporal-features-usar">Framework de Decisión: ¿Qué Temporal Features Usar?<a class="headerlink" href="#framework-de-decision-que-temporal-features-usar" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────┐
+│  DECISION TREE PARA TEMPORAL FEATURES               │
+├─────────────────────────────────────────────────────┤
+│                                                     │
+│  ¿Tienes timestamps de eventos por usuario?        │
+│    └─ NO → No puedes hacer temporal features       │
+│    └─ SÍ → Continuar                              │
+│                                                     │
+│  ¿Usuarios tienen múltiples eventos (&gt;2)?          │
+│    └─ NO → Solo usar recency, no lags/windows     │
+│    └─ SÍ → Puedes usar lag/rolling/expanding      │
+│                                                     │
+│  FEATURES OBLIGATORIAS (always):                    │
+│    ✅ RFM (Recency, Frequency, Monetary)          │
+│    ✅ Expanding windows (gasto total, avg)         │
+│                                                     │
+│  FEATURES CONDICIONALES:                            │
+│    🔹 Lags (1-3 eventos) si:                       │
+│       - Frecuencia de eventos es variable          │
+│       - Quieres capturar "último comportamiento"   │
+│                                                     │
+│    🔹 Rolling windows (3-7 eventos) si:            │
+│       - Usuarios cambian comportamiento            │
+│       - Detectar tendencias recientes              │
+│                                                     │
+│    🔹 Time windows (7d, 30d, 90d) si:              │
+│       - Calendario importa (ej: campañas)          │
+│       - Comparar actividad temporal real           │
+│                                                     │
+│    🔹 Calendar features si:                        │
+│       - Negocio es estacional                      │
+│       - Holidays afectan comportamiento            │
+│                                                     │
+│    🔹 External variables si:                       │
+│       - Tienes datos macro confiables              │
+│       - Negocio es sensible a economía             │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+</code></pre></div>
+<hr>
+<h3 id="recomendaciones-para-produccion">Recomendaciones para Producción<a class="headerlink" href="#recomendaciones-para-produccion" title="Permanent link">¶</a></h3>
+<h4 id="1-arquitectura-minima-viable">1. Arquitectura Mínima Viable<a class="headerlink" href="#1-arquitectura-minima-viable" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Features esenciales (80% del valor, 20% del esfuerzo)</span>
+<span class="n">essential_features</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># RFM (4 features)</span>
+    <span class="s1">'recency_days'</span><span class="p">,</span>
+    <span class="s1">'frequency_total_orders'</span><span class="p">,</span>
+    <span class="s1">'monetary_avg'</span><span class="p">,</span>
+    <span class="s1">'monetary_total'</span><span class="p">,</span>
+
+    <span class="c1"># Expanding (2 features)</span>
+    <span class="s1">'expanding_total_spent'</span><span class="p">,</span>
+    <span class="s1">'total_orders_so_far'</span><span class="p">,</span>
+
+    <span class="c1"># Time Windows (2 features)</span>
+    <span class="s1">'orders_30d'</span><span class="p">,</span>
+    <span class="s1">'spend_30d'</span><span class="p">,</span>
+
+    <span class="c1"># Base (2 features)</span>
+    <span class="s1">'cart_size'</span><span class="p">,</span>
+    <span class="s1">'order_number'</span>
+<span class="p">]</span>
+<span class="c1"># Total: 10 features → 70% de la performance de 45 features</span>
+</code></pre></div>
+<hr>
+<h4 id="2-pipeline-de-produccion">2. Pipeline de Producción<a class="headerlink" href="#2-pipeline-de-produccion" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TemporalFeatureEngine</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_date</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df_train</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Fit en datos históricos"""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_date</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">'order_date'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df_new</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Transformar nuevas órdenes"""</span>
+        <span class="c1"># 1. Ordenar por user_id y order_date</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'user_id'</span><span class="p">,</span> <span class="s1">'order_date'</span><span class="p">])</span>
+
+        <span class="c1"># 2. Calcular lags con shift(1)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">'lag_1'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">)[</span><span class="s1">'col'</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># 3. Calcular expanding con shift(1)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">'expanding_sum'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">)[</span><span class="s1">'col'</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">expanding</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="c1"># 4. Calcular RFM</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">'recency'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reference_date</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">'order_date'</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">days</span>
+
+        <span class="k">return</span> <span class="n">df</span>
+</code></pre></div>
+<hr>
+<h4 id="3-monitoreo-de-feature-drift">3. Monitoreo de Feature Drift<a class="headerlink" href="#3-monitoreo-de-feature-drift" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Alertas a configurar en producción:</span>
+
+<span class="c1"># 1. Recency drift</span>
+<span class="k">if</span> <span class="n">recency_mean_this_week</span> <span class="o">&gt;</span> <span class="n">recency_mean_historical</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">:</span>
+    <span class="n">alert</span><span class="p">(</span><span class="s2">"DRIFT: Usuarios no están comprando (recency aumentó 50%)"</span><span class="p">)</span>
+
+<span class="c1"># 2. Frequency collapse</span>
+<span class="k">if</span> <span class="n">frequency_mean_this_week</span> <span class="o">&lt;</span> <span class="n">frequency_mean_historical</span> <span class="o">*</span> <span class="mf">0.7</span><span class="p">:</span>
+    <span class="n">alert</span><span class="p">(</span><span class="s2">"DRIFT: Usuarios comprando menos frecuentemente"</span><span class="p">)</span>
+
+<span class="c1"># 3. Monetary inflation</span>
+<span class="k">if</span> <span class="n">monetary_avg_this_week</span> <span class="o">&gt;</span> <span class="n">monetary_avg_historical</span> <span class="o">*</span> <span class="mf">2.0</span><span class="p">:</span>
+    <span class="n">alert</span><span class="p">(</span><span class="s2">"DRIFT: Ticket promedio duplicó (¿cambio de producto mix?)"</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h2 id="referencias-y-recursos">📚 Referencias y Recursos<a class="headerlink" href="#referencias-y-recursos" title="Permanent link">¶</a></h2>
+<h3 id="material-del-curso">Material del Curso<a class="headerlink" href="#material-del-curso" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Profesor Juan F. Kurucz</strong> - Assignment UT3-11: Temporal Features</li>
+<li>🔗 <a href="https://juanfkurucz.com/ucu-id/ut3/11-temporal-features-assignment/">Práctica 11 — Temporal Features Assignment</a></li>
+<li>📄 Documento: Temporal Feature Engineering con Pandas</li>
+</ol>
+<hr>
+<h3 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Online Retail Dataset</strong> (UCI ML Repository)</li>
+<li>🔗 <a href="https://www.kaggle.com/datasets/vijayuv/onlineretail">Kaggle - Online Retail</a></li>
+<li>📊 540k transacciones, UK 2010-2011</li>
+<li>🎯 Ideal para: Temporal features, RFM analysis, customer behavior</li>
+</ol>
+<hr>
+<h3 id="documentacion-tecnica">Documentación Técnica<a class="headerlink" href="#documentacion-tecnica" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Pandas - Time Series</strong></li>
+<li>🔗 <a href="https://pandas.pydata.org/docs/user_guide/timeseries.html">Time Series Guide</a></li>
+<li>📘 <code>.shift()</code>, <code>.rolling()</code>, <code>.expanding()</code></li>
+<li>
+<p>⏰ Operaciones temporales robustas</p>
+</li>
+<li>
+<p><strong>Scikit-learn - TimeSeriesSplit</strong></p>
+</li>
+<li>🔗 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html">TimeSeriesSplit</a></li>
+<li>✅ Cross-validation sin leakage temporal</li>
+<li>📊 Walk-forward validation</li>
+</ol>
+<hr>
+<h3 id="libros-y-papers">Libros y Papers<a class="headerlink" href="#libros-y-papers" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>"Feature Engineering for Machine Learning"</strong> - Zheng &amp; Casari</li>
+<li>📚 O'Reilly, 2018</li>
+<li>💡 Chapter 8: Temporal Features</li>
+<li>
+<p>🔗 <a href="https://www.oreilly.com/library/view/feature-engineering-for/9781491953235/">Book</a></p>
+</li>
+<li>
+<p><strong>"Practical Time Series Analysis"</strong> - Nielsen</p>
+</li>
+<li>📚 O'Reilly, 2019</li>
+<li>💡 Feature engineering para series temporales</li>
+<li>🎯 Lag selection, window sizing</li>
+</ol>
+<hr>
+<h3 id="tutoriales">Tutoriales<a class="headerlink" href="#tutoriales" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Kaggle - RFM Analysis Tutorial</strong></li>
+<li>🔗 <a href="https://www.kaggle.com/code/jihyeseo/rfm-analysis-for-customer-segmentation">RFM Analysis</a></li>
+<li>📘 RFM segmentation para e-commerce</li>
+<li>
+<p>💡 Implementación práctica</p>
+</li>
+<li>
+<p><strong>Machine Learning Mastery - Time Series Forecasting</strong></p>
+</li>
+<li>🔗 <a href="https://machinelearningmastery.com/time-series-forecasting-with-python/">Tutorial</a></li>
+<li>📚 Lag features, rolling statistics</li>
+<li>⚠️ Data leakage prevention</li>
+</ol>
+<hr>
+<h2 id="informacion-del-proyecto">🔗 Información del Proyecto<a class="headerlink" href="#informacion-del-proyecto" title="Permanent link">¶</a></h2>
+<p><strong>Contexto Académico:</strong>
+- <strong>Curso</strong>: Temporal Feature Engineering - UT3<br>
+- <strong>Institución</strong>: Universidad Católica del Uruguay<br>
+- <strong>Instructor</strong>: Juan F. Kurucz<br>
+- <strong>Práctica</strong>: <a href="https://juanfkurucz.com/ucu-id/ut3/11-temporal-features-assignment/">11 - Temporal Features Assignment</a></p>
+<p><strong>Alcance del Proyecto:</strong>
+- Dataset Online Retail con 22,190 órdenes de 4,372 clientes
+- 45 temporal features creadas (lags, rolling, expanding, RFM, time windows)
+- Mejora de 13.8% en AUC (0.6842 → 0.7789) vs modelo sin features temporales
+- Time-based validation con TimeSeriesSplit (3 folds)
+- Framework completo de prevención de data leakage</p>
+<p><strong>Archivos Generados:</strong>
+- <code>temporal_features_practice11.ipynb</code> — Notebook completo con implementación
+- <code>temporal_features_comparison.csv</code> — Tabla de resultados (base vs full model)
+- <code>visualizations/</code> — 5 gráficos (rolling, expanding, RFM, time windows, diversity)
+- <code>docs/temporal_features_checklist.md</code> — Checklist anti-leakage</p>
+<p><strong>Skills Desarrolladas:</strong>
+- ✅ Lag features con <code>.shift()</code> y <code>.groupby()</code>
+- ✅ Rolling/Expanding windows con prevención de leakage
+- ✅ RFM analysis (Recency, Frequency, Monetary)
+- ✅ Time windows por calendario (7d, 30d, 90d)
+- ✅ Calendar features con encoding cíclico (sin/cos)
+- ✅ TimeSeriesSplit para validación temporal robusta
+- ✅ Data leakage detection y prevention</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de noviembre de 2025 20:38:13 UTC">16 de noviembre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

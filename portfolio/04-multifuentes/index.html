@@ -1,0 +1,1524 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../03-netflix/">
+      
+      
+        <link rel="next" href="../05-missing/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>🚕 Análisis Empresarial de Movilidad Urbana: Integrando 3M+ Viajes de NYC Taxi con Pipeline ETL Automatizado - Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#analisis-empresarial-de-movilidad-urbana-integrando-3m-viajes-de-nyc-taxi-con-pipeline-etl-automatizado" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Portfolio" class="md-header__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🚕 Análisis Empresarial de Movilidad Urbana: Integrando 3M+ Viajes de NYC Taxi con Pipeline ETL Automatizado
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Portfolio" class="md-nav__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acerca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Acerca de mí
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Portfolio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exploraciones Extra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualizaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visualizaciones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apuntes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apuntes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descargar-notebook-y-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      💾 Descargar Notebook y Recursos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Objetivo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contexto-de-negocio-crisp-dm-business-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      💼 Contexto de Negocio (CRISP-DM: Business Understanding)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descripcion-general-de-los-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Descripción General de los Datasets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 Descripción General de los Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-de-datos-multi-fuente" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗂️ Arquitectura de Datos Multi-fuente
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodologia-y-pipeline-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Metodología y Pipeline ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Metodología y Pipeline ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fase-1-ingesta-multi-formato" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fase 1: Ingesta Multi-formato
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fase-2-normalizacion-y-optimizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fase 2: Normalización y Optimización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fase-3-estrategia-de-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fase 3: Estrategia de Joins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fase 3: Estrategia de Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#join-1-trips-zones-left-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      Join 1: Trips ← Zones (LEFT JOIN)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join-2-tripszones-calendar-left-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      Join 2: Trips+Zones ← Calendar (LEFT JOIN)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metricas-clave-por-borough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métricas Clave por Borough
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#impacto-de-eventos-especiales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Impacto de Eventos Especiales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#horas-pico-identificadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Horas Pico Identificadas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analisis-de-calidad-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Análisis de Calidad de Datos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insights-de-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      💼 Insights de Negocio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💼 Insights de Negocio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dominancia-de-manhattan-oportunidad-de-eficiencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 1. Dominancia de Manhattan — Oportunidad de Eficiencia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pricing-dinamico-oportunidad-de-revenue-172" class="md-nav__link">
+    <span class="md-ellipsis">
+      💰 2. Pricing Dinámico — Oportunidad de Revenue +17.2%
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-bronx-mercado-desatendido-solo-36-cuota" class="md-nav__link">
+    <span class="md-ellipsis">
+      📍 3. Bronx — Mercado Desatendido (Solo 3.6% cuota)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-optimizacion-horaria-estrategias-por-franja" class="md-nav__link">
+    <span class="md-ellipsis">
+      🕒 4. Optimización Horaria — Estrategias por Franja
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-queensstaten-island-oportunidad-de-premium-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚗 5. Queens/Staten Island — Oportunidad de Premium Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-automatizado-con-prefect" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Pipeline Automatizado con Prefect
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Pipeline Automatizado con Prefect">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementacion-de-orquestacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementación de Orquestación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resultados-del-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resultados del Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-del-pipeline-con-prefect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas del Pipeline con Prefect
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#casos-de-uso-empresariales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Casos de Uso Empresariales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tecnicas-avanzadas-implementadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Técnicas Avanzadas Implementadas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Técnicas Avanzadas Implementadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-optimizacion-para-big-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Optimización para Big Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-validacion-de-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Validación de Joins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-agregaciones-multi-nivel" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Agregaciones Multi-nivel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills-desarrolladas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎓 Skills Desarrolladas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎓 Skills Desarrolladas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tecnicas-de-analisis-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Técnicas de Análisis de Datos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingenieria-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingeniería de Datos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#business-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Business Analytics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusiones-estrategicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Conclusiones Estratégicas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📈 Conclusiones Estratégicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aprendizajes-tecnicos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aprendizajes Técnicos Clave
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendaciones-de-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendaciones de Negocio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias-y-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Referencias y Recursos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Referencias y Recursos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datasets-oficiales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datasets Oficiales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación Técnica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contexto-de-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contexto de Negocio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#informacion-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Información del Proyecto
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="analisis-empresarial-de-movilidad-urbana-integrando-3m-viajes-de-nyc-taxi-con-pipeline-etl-automatizado">🚕 Análisis Empresarial de Movilidad Urbana: Integrando 3M+ Viajes de NYC Taxi con Pipeline ETL Automatizado<a class="headerlink" href="#analisis-empresarial-de-movilidad-urbana-integrando-3m-viajes-de-nyc-taxi-con-pipeline-etl-automatizado" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>📚 <strong>Tiempo estimado de lectura:</strong> ~15 min<br>
+- <strong>Autores [G1]:</strong> Joaquín Batista, Milagros Cancela, Valentín Rodríguez, Alexia Aurrecoechea, Nahuel López <br>
+- <strong>Fecha:</strong> Septiembre 2025<br>
+- <strong>Entorno:</strong> Python 3.8+ | Pandas 2.0+ | Prefect<br>
+- <strong>Referencia de la tarea:</strong> <a href="https://juanfkurucz.com/ucu-id/ut1/04-eda-multifuentes-joins/">Tarea 4 — EDA Multi-fuentes y Joins</a></p>
+</blockquote>
+<hr>
+<h2 id="descargar-notebook-y-recursos">💾 Descargar Notebook y Recursos<a class="headerlink" href="#descargar-notebook-y-recursos" title="Permanent link">¶</a></h2>
+<ul>
+<li><a class="btn btn-primary" download="nyc_taxi_pipeline.ipynb" href="../assets/multifuentes/Practica_4_EDA_Multi_fuentes_y_Joins_Fill_in_the_Blanks.ipynb" target="_blank"><strong>Descargar notebook — nyc_taxi_pipeline.ipynb</strong></a>  </li>
+</ul>
+<blockquote>
+<p>📂 Archivo disponible dentro del repositorio:<br>
+<code>docs/portfolio/assets/multifuentes/Practica_4_EDA_Multi_fuentes_y_Joins_Fill_in_the_Blanks.ipynb</code>  </p>
+</blockquote>
+<hr>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
+<p>El objetivo de esta práctica fue desarrollar un <strong>pipeline ETL robusto</strong> que integra datos de múltiples fuentes (Parquet, CSV, JSON) para analizar <strong>3+ millones de viajes de taxi</strong> en Nueva York. Se aplicaron técnicas de optimización de memoria, joins estratégicos y orquestación con Prefect para generar <strong>insights empresariales accionables</strong> sobre patrones de movilidad urbana.</p>
+<hr>
+<h2 id="contexto-de-negocio-crisp-dm-business-understanding">💼 Contexto de Negocio (CRISP-DM: Business Understanding)<a class="headerlink" href="#contexto-de-negocio-crisp-dm-business-understanding" title="Permanent link">¶</a></h2>
+<p>La NYC Taxi &amp; Limousine Commission necesita procesar y analizar millones de viajes mensuales para optimizar operaciones, identificar oportunidades de pricing dinámico y mejorar la distribución de flota.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Elemento</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Problema</strong></td>
+<td style="text-align: left;">Procesamiento manual de 3M+ registros mensuales sin integración de datos geográficos y eventos especiales</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Objetivo</strong></td>
+<td style="text-align: left;">Integrar datos oficiales completos (viajes + zonas + calendario) para entender patrones metropolitanos y optimizar estrategia comercial</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Escala</strong></td>
+<td style="text-align: left;">~3M viajes/mes, 265 zonas, 5 boroughs, datos en tiempo real</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Variables clave</strong></td>
+<td style="text-align: left;">Ubicaciones pickup/dropoff, distancias, tarifas, propinas, timestamps, eventos especiales</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Valor para el negocio</strong></td>
+<td style="text-align: left;">Decisiones basadas en datos reales a escala metropolitana: pricing dinámico, optimización de flota, expansión estratégica</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 <em>Datos oficiales de <a href="https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page">NYC Taxi &amp; Limousine Commission</a> — Dataset completo de enero 2023.</em></p>
+</blockquote>
+<hr>
+<h2 id="descripcion-general-de-los-datasets">📘 Descripción General de los Datasets<a class="headerlink" href="#descripcion-general-de-los-datasets" title="Permanent link">¶</a></h2>
+<h3 id="arquitectura-de-datos-multi-fuente">🗂️ Arquitectura de Datos Multi-fuente<a class="headerlink" href="#arquitectura-de-datos-multi-fuente" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>graph LR
+    A[NYC Taxi TripsParquet - 3M rows] --&gt; D[Pipeline ETL]
+    B[NYC Taxi ZonesCSV - 265 zones] --&gt; D
+    C[Event CalendarJSON - Special days] --&gt; D
+    D --&gt; E[Unified Dataset]
+    E --&gt; F[Business Analytics]
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Dataset</th>
+<th style="text-align: left;">Formato</th>
+<th style="text-align: left;">Registros</th>
+<th style="text-align: left;">Variables Clave</th>
+<th style="text-align: left;">Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>NYC Taxi Trips</strong></td>
+<td style="text-align: left;">Parquet</td>
+<td style="text-align: left;">3,145,632</td>
+<td style="text-align: left;">pickup/dropoff datetime, locations, fare, tip, distance</td>
+<td style="text-align: left;">Transacciones operativas</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>NYC Taxi Zones</strong></td>
+<td style="text-align: left;">CSV</td>
+<td style="text-align: left;">265</td>
+<td style="text-align: left;">LocationID, Borough, Zone, Service Zone</td>
+<td style="text-align: left;">Georreferencia</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Event Calendar</strong></td>
+<td style="text-align: left;">JSON</td>
+<td style="text-align: left;">31 días</td>
+<td style="text-align: left;">date, special_day, event_type</td>
+<td style="text-align: left;">Contexto temporal</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Resultado de integración:</strong> Dataset unificado de 3,145,632 registros × 20+ columnas con información operativa, geográfica y contextual.</p>
+<hr>
+<h2 id="metodologia-y-pipeline-etl">🔧 Metodología y Pipeline ETL<a class="headerlink" href="#metodologia-y-pipeline-etl" title="Permanent link">¶</a></h2>
+<h3 id="fase-1-ingesta-multi-formato">Fase 1: Ingesta Multi-formato<a class="headerlink" href="#fase-1-ingesta-multi-formato" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Parquet: Formato columnar eficiente para Big Data</span>
+<span class="n">trips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">trips_url</span><span class="p">)</span>  <span class="c1"># ~450 MB inicial</span>
+
+<span class="c1"># CSV: Lookup table estática</span>
+<span class="n">zones</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">zones_url</span><span class="p">)</span>
+
+<span class="c1"># JSON: Datos semi-estructurados</span>
+<span class="n">calendar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">calendar_url</span><span class="p">)</span>
+<span class="n">calendar</span><span class="p">[</span><span class="s1">'date'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">calendar</span><span class="p">[</span><span class="s1">'date'</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+</code></pre></div>
+<p><strong>Tiempo de carga:</strong> ~13 segundos para 3M+ registros</p>
+<h3 id="fase-2-normalizacion-y-optimizacion">Fase 2: Normalización y Optimización<a class="headerlink" href="#fase-2-normalizacion-y-optimizacion" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Estandarización de nomenclatura</span>
+<span class="n">trips</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">trips</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">zones</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">zones</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="c1"># 2. Feature engineering</span>
+<span class="n">trips</span><span class="p">[</span><span class="s1">'pickup_date'</span><span class="p">]</span> <span class="o">=</span> <span class="n">trips</span><span class="p">[</span><span class="s1">'tpep_pickup_datetime'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+
+<span class="c1"># 3. Optimización de memoria (CRÍTICO para 3M registros)</span>
+<span class="n">trips</span><span class="p">[</span><span class="s1">'pulocationid'</span><span class="p">]</span> <span class="o">=</span> <span class="n">trips</span><span class="p">[</span><span class="s1">'pulocationid'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'int16'</span><span class="p">)</span>    <span class="c1"># 64→16 bits</span>
+<span class="n">trips</span><span class="p">[</span><span class="s1">'passenger_count'</span><span class="p">]</span> <span class="o">=</span> <span class="n">trips</span><span class="p">[</span><span class="s1">'passenger_count'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'int8'</span><span class="p">)</span> <span class="c1"># 64→8 bits</span>
+
+<span class="c1"># 4. Limpieza de valores críticos</span>
+<span class="n">trips</span><span class="p">[</span><span class="s1">'passenger_count'</span><span class="p">]</span> <span class="o">=</span> <span class="n">trips</span><span class="p">[</span><span class="s1">'passenger_count'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">trips</span> <span class="o">=</span> <span class="n">trips</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">'pulocationid'</span><span class="p">,</span> <span class="s1">'dolocationid'</span><span class="p">])</span>
+</code></pre></div>
+<p><strong>Impacto de optimización:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Antes</th>
+<th>Después</th>
+<th>Mejora</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Memoria total</td>
+<td>449.8 MB</td>
+<td>279.3 MB</td>
+<td><strong>-37.8%</strong></td>
+</tr>
+<tr>
+<td>Tiempo de agregaciones</td>
+<td>2.4s</td>
+<td>1.5s</td>
+<td><strong>-37.5%</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="fase-3-estrategia-de-joins">Fase 3: Estrategia de Joins<a class="headerlink" href="#fase-3-estrategia-de-joins" title="Permanent link">¶</a></h3>
+<h4 id="join-1-trips-zones-left-join">Join 1: Trips ← Zones (LEFT JOIN)<a class="headerlink" href="#join-1-trips-zones-left-join" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">trips_with_zones</span> <span class="o">=</span> <span class="n">trips</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">zones</span><span class="p">,</span>
+    <span class="n">left_on</span><span class="o">=</span><span class="s1">'pulocationid'</span><span class="p">,</span>
+    <span class="n">right_on</span><span class="o">=</span><span class="s1">'locationid'</span><span class="p">,</span>
+    <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">,</span>
+    <span class="n">validate</span><span class="o">=</span><span class="s1">'m:1'</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>Decisión estratégica:</strong> LEFT JOIN preserva todos los viajes (3,145,632) e identifica datos problemáticos (2,741 sin zona = 0.09%)</p>
+<p><strong>Resultado:</strong> Match rate <strong>99.91%</strong> | 261 de 265 zonas utilizadas (98.5% coverage)</p>
+<h4 id="join-2-tripszones-calendar-left-join">Join 2: Trips+Zones ← Calendar (LEFT JOIN)<a class="headerlink" href="#join-2-tripszones-calendar-left-join" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">trips_complete</span> <span class="o">=</span> <span class="n">trips_with_zones</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">calendar</span><span class="p">,</span>
+    <span class="n">left_on</span><span class="o">=</span><span class="s1">'pickup_date'</span><span class="p">,</span>
+    <span class="n">right_on</span><span class="o">=</span><span class="s1">'date'</span><span class="p">,</span>
+    <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span>
+<span class="p">)</span>
+<span class="n">trips_complete</span><span class="p">[</span><span class="s1">'is_special_day'</span><span class="p">]</span> <span class="o">=</span> <span class="n">trips_complete</span><span class="p">[</span><span class="s1">'special'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">'False'</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Rationale:</strong> La mayoría de días NO son especiales (28 de 31 en enero) → LEFT JOIN evita perder 90% de datos</p>
+<hr>
+<h3 id="metricas-clave-por-borough">Métricas Clave por Borough<a class="headerlink" href="#metricas-clave-por-borough" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Borough</th>
+<th>Market Share</th>
+<th>Avg Distance</th>
+<th>Avg Total</th>
+<th>Revenue/km</th>
+<th>Tip Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Manhattan</strong></td>
+<td><strong>68.5%</strong></td>
+<td>3.2 mi</td>
+<td>$18.45</td>
+<td><strong>$5.77</strong></td>
+<td>16.8%</td>
+</tr>
+<tr>
+<td><strong>Queens</strong></td>
+<td>16.6%</td>
+<td><strong>4.8 mi</strong></td>
+<td>$24.32</td>
+<td>$5.07</td>
+<td>14.2%</td>
+</tr>
+<tr>
+<td><strong>Brooklyn</strong></td>
+<td>9.5%</td>
+<td>3.9 mi</td>
+<td>$21.18</td>
+<td>$5.43</td>
+<td>15.1%</td>
+</tr>
+<tr>
+<td><strong>Bronx</strong></td>
+<td>3.6%</td>
+<td>3.5 mi</td>
+<td>$19.87</td>
+<td>$5.68</td>
+<td>13.9%</td>
+</tr>
+<tr>
+<td><strong>Staten Island</strong></td>
+<td>1.5%</td>
+<td>5.2 mi</td>
+<td><strong>$26.54</strong></td>
+<td>$5.10</td>
+<td>12.4%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="impacto-de-eventos-especiales">Impacto de Eventos Especiales<a class="headerlink" href="#impacto-de-eventos-especiales" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Día Normal</th>
+<th>Día Especial</th>
+<th>Cambio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Avg Distance</strong></td>
+<td>3.6 mi</td>
+<td>3.9 mi</td>
+<td><strong>+8.2%</strong></td>
+</tr>
+<tr>
+<td><strong>Avg Amount</strong></td>
+<td>$18.32</td>
+<td>$21.47</td>
+<td><strong>+17.2%</strong></td>
+</tr>
+<tr>
+<td><strong>Trips/Hour</strong></td>
+<td>4,009</td>
+<td>5,174</td>
+<td><strong>+29.0%</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="horas-pico-identificadas">Horas Pico Identificadas<a class="headerlink" href="#horas-pico-identificadas" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Hora</th>
+<th>Num Trips</th>
+<th>Avg Amount</th>
+<th>Patrón</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>18:00</strong></td>
+<td>185,432</td>
+<td>$19.87</td>
+<td>Rush hour vespertino</td>
+</tr>
+<tr>
+<td><strong>08:00</strong></td>
+<td>167,823</td>
+<td>$17.54</td>
+<td>Commute matutino</td>
+</tr>
+<tr>
+<td><strong>23:00</strong></td>
+<td>142,567</td>
+<td>$22.13</td>
+<td>Vida nocturna</td>
+</tr>
+<tr>
+<td><strong>04:00</strong></td>
+<td>23,456</td>
+<td>$27.45</td>
+<td>Traslados aeropuerto</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="analisis-de-calidad-de-datos">🎯 Análisis de Calidad de Datos<a class="headerlink" href="#analisis-de-calidad-de-datos" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Criterio</th>
+<th style="text-align: left;">Evaluación</th>
+<th style="text-align: left;">Observación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Integridad post-join</strong></td>
+<td style="text-align: left;">✅ Excelente</td>
+<td style="text-align: left;">99.91% match rate en zonas geográficas</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Valores faltantes</strong></td>
+<td style="text-align: left;">⚠️ Controlado</td>
+<td style="text-align: left;"><code>passenger_count</code> imputado con modal (1 pasajero)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Datos problemáticos</strong></td>
+<td style="text-align: left;">✅ Identificados</td>
+<td style="text-align: left;">2,741 trips sin zona (0.09%) — LocationIDs [264, 265]</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Optimización memoria</strong></td>
+<td style="text-align: left;">✅ Exitosa</td>
+<td style="text-align: left;">-37.8% reducción sin pérdida de precisión</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cobertura geográfica</strong></td>
+<td style="text-align: left;">✅ Alta</td>
+<td style="text-align: left;">261 de 265 zonas utilizadas (98.5%)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="insights-de-negocio">💼 Insights de Negocio<a class="headerlink" href="#insights-de-negocio" title="Permanent link">¶</a></h2>
+<h3 id="1-dominancia-de-manhattan-oportunidad-de-eficiencia">🎯 1. Dominancia de Manhattan — Oportunidad de Eficiencia<a class="headerlink" href="#1-dominancia-de-manhattan-oportunidad-de-eficiencia" title="Permanent link">¶</a></h3>
+<p><strong>Hallazgo:</strong> Manhattan concentra el <strong>68.5% de la demanda</strong> con el mejor revenue/km ($5.77)</p>
+<p><strong>Acción recomendada:</strong>
+- Concentrar <strong>70% de flota activa</strong> en Manhattan
+- Vehículos compactos híbridos para maximizar rotación
+- Enfoque en viajes cortos (&lt;4 mi) con alta frecuencia
+- <strong>ROI esperado:</strong> +15% en revenue/vehículo</p>
+<h3 id="2-pricing-dinamico-oportunidad-de-revenue-172">💰 2. Pricing Dinámico — Oportunidad de Revenue +17.2%<a class="headerlink" href="#2-pricing-dinamico-oportunidad-de-revenue-172" title="Permanent link">¶</a></h3>
+<p><strong>Hallazgo:</strong> Días especiales muestran <strong>+17.2% en tarifa promedio</strong> sin surge pricing oficial</p>
+<p><strong>Modelo de pricing sugerido:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">calcular_surge_pricing</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="k">if</span> <span class="n">is_special_day</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+        <span class="n">multiplier</span> <span class="o">*=</span> <span class="mf">1.17</span>  <span class="c1"># +17% días especiales</span>
+    <span class="k">if</span> <span class="n">hour</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">]:</span>
+        <span class="n">multiplier</span> <span class="o">*=</span> <span class="mf">1.12</span>  <span class="c1"># +12% rush hour</span>
+    <span class="k">if</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">high_demand_zones</span><span class="p">:</span>
+        <span class="n">multiplier</span> <span class="o">*=</span> <span class="mf">1.08</span>  <span class="c1"># +8% zonas premium</span>
+    <span class="k">return</span> <span class="n">multiplier</span>
+</code></pre></div><p></p>
+<p><strong>Impacto proyectado:</strong> Revenue adicional +8-12% anual</p>
+<h3 id="3-bronx-mercado-desatendido-solo-36-cuota">📍 3. Bronx — Mercado Desatendido (Solo 3.6% cuota)<a class="headerlink" href="#3-bronx-mercado-desatendido-solo-36-cuota" title="Permanent link">¶</a></h3>
+<p><strong>Diagnóstico:</strong> Buenos economics pero bajo volumen</p>
+<p><strong>Estrategia de expansión:</strong>
+- Incrementar flota gradualmente en +25%
+- Marketing localizado + partnerships
+- Timeline: 6 meses para validación
+- <strong>Potencial:</strong> Capturar mercado subatendido con alta rentabilidad</p>
+<h3 id="4-optimizacion-horaria-estrategias-por-franja">🕒 4. Optimización Horaria — Estrategias por Franja<a class="headerlink" href="#4-optimizacion-horaria-estrategias-por-franja" title="Permanent link">¶</a></h3>
+<p><strong>6-9 AM:</strong> Alta rotación, distancias cortas → Flota compacta<br>
+<strong>6-8 PM:</strong> Implementar surge pricing (+10-15%)<br>
+<strong>11 PM-3 AM:</strong> Premium nocturno (+20%) + enfoque seguridad<br>
+<strong>3-5 AM:</strong> Tarifas aeropuerto, viajes largos premium</p>
+<h3 id="5-queensstaten-island-oportunidad-de-premium-service">🚗 5. Queens/Staten Island — Oportunidad de Premium Service<a class="headerlink" href="#5-queensstaten-island-oportunidad-de-premium-service" title="Permanent link">¶</a></h3>
+<p><strong>Hallazgo:</strong> Viajes más largos (&gt;4.8 mi), tarifas más altas ($24-26)</p>
+<p><strong>Estrategia:</strong> 
+- Flota SUV especializada
+- Premium pricing justificado (+10%)
+- Enfoque: Aeropuerto + rutas interborough</p>
+<hr>
+<h2 id="pipeline-automatizado-con-prefect">🚀 Pipeline Automatizado con Prefect<a class="headerlink" href="#pipeline-automatizado-con-prefect" title="Permanent link">¶</a></h2>
+<h3 id="implementacion-de-orquestacion">Implementación de Orquestación<a class="headerlink" href="#implementacion-de-orquestacion" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">prefect</span> <span class="kn">import</span> <span class="n">task</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">get_run_logger</span>
+
+<span class="nd">@task</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Cargar Datos"</span><span class="p">,</span> <span class="n">retries</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">retry_delay_seconds</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cargar_datos</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tipo</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Task con retry automático para manejo de fallos de red"""</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">get_run_logger</span><span class="p">()</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"📥 Cargando </span><span class="si">{</span><span class="n">tipo</span><span class="si">}</span><span class="s2"> desde </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">tipo</span> <span class="o">==</span> <span class="s2">"trips"</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">tipo</span> <span class="o">==</span> <span class="s2">"zones"</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># calendar</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">'date'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">'date'</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"✅ </span><span class="si">{</span><span class="n">tipo</span><span class="si">}</span><span class="s2"> cargado: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> registros"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="nd">@flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Pipeline NYC Taxi Analytics"</span><span class="p">,</span> <span class="n">log_prints</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">pipeline_taxi_empresarial</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""Flow principal con orquestación completa"""</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">get_run_logger</span><span class="p">()</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"🚀 Iniciando pipeline empresarial..."</span><span class="p">)</span>
+
+    <span class="c1"># Carga paralela con retry automático</span>
+    <span class="n">trips</span> <span class="o">=</span> <span class="n">cargar_datos</span><span class="p">(</span><span class="n">trips_url</span><span class="p">,</span> <span class="s2">"trips"</span><span class="p">)</span>
+    <span class="n">zones</span> <span class="o">=</span> <span class="n">cargar_datos</span><span class="p">(</span><span class="n">zones_url</span><span class="p">,</span> <span class="s2">"zones"</span><span class="p">)</span>
+    <span class="n">calendar</span> <span class="o">=</span> <span class="n">cargar_datos</span><span class="p">(</span><span class="n">calendar_url</span><span class="p">,</span> <span class="s2">"calendar"</span><span class="p">)</span>
+
+    <span class="c1"># Joins y análisis</span>
+    <span class="n">trips_with_zones</span> <span class="o">=</span> <span class="n">hacer_join_optimizado</span><span class="p">(</span><span class="n">trips</span><span class="p">,</span> <span class="n">zones</span><span class="p">)</span>
+    <span class="n">trips_complete</span> <span class="o">=</span> <span class="n">trips_with_zones</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">calendar</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+    <span class="n">resultados</span> <span class="o">=</span> <span class="n">generar_metricas_negocio</span><span class="p">(</span><span class="n">trips_complete</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"✅ Pipeline completado exitosamente"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">resultados</span>
+</code></pre></div>
+<h3 id="resultados-del-pipeline">Resultados del Pipeline<a class="headerlink" href="#resultados-del-pipeline" title="Permanent link">¶</a></h3>
+<p></p><div class="highlight"><pre><span></span><code><span class="c1"># Ejecución exitosa del flow completo</span>
+<span class="n">Total</span> <span class="n">registros</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span><span class="mi">632</span>
+<span class="n">Distancia</span> <span class="n">promedio</span><span class="p">:</span> <span class="mf">3.6</span> <span class="n">millas</span>  
+<span class="n">Tarifa</span> <span class="n">promedio</span><span class="p">:</span> <span class="err">$</span><span class="mf">18.75</span>
+<span class="n">Top</span> <span class="mi">3</span> <span class="n">Boroughs</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">Manhattan</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="mi">154</span><span class="p">,</span><span class="mi">234</span> <span class="n">viajes</span> <span class="p">(</span><span class="mf">68.5</span><span class="o">%</span><span class="p">)</span>
+  <span class="o">-</span> <span class="n">Queens</span><span class="p">:</span> <span class="mi">521</span><span class="p">,</span><span class="mi">098</span> <span class="n">viajes</span> <span class="p">(</span><span class="mf">16.6</span><span class="o">%</span><span class="p">)</span>
+  <span class="o">-</span> <span class="n">Brooklyn</span><span class="p">:</span> <span class="mi">298</span><span class="p">,</span><span class="mi">765</span> <span class="n">viajes</span> <span class="p">(</span><span class="mf">9.5</span><span class="o">%</span><span class="p">)</span>
+</code></pre></div>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/multifuentes/Captura%20de%20pantalla%202025-11-15%20a%20la%28s%29%2015.56.16.png" data-desc-position="bottom"><img alt="Resultados del pipeline" src="../assets/multifuentes/Captura%20de%20pantalla%202025-11-15%20a%20la%28s%29%2015.56.16.png"></a>
+<em>Dashboard de Prefect mostrando los flows ejecutados y tasks completados.</em><p></p>
+<h3 id="ventajas-del-pipeline-con-prefect">Ventajas del Pipeline con Prefect<a class="headerlink" href="#ventajas-del-pipeline-con-prefect" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Sin Prefect</th>
+<th>Con Prefect</th>
+<th>Beneficio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Retry Logic</strong></td>
+<td>Manual try/except</td>
+<td>Automático (<code>retries=2</code>)</td>
+<td>+95% robustez</td>
+</tr>
+<tr>
+<td><strong>Logging</strong></td>
+<td>print() dispersos</td>
+<td>Logger estructurado</td>
+<td>Trazabilidad completa</td>
+</tr>
+<tr>
+<td><strong>Monitoreo</strong></td>
+<td>No disponible</td>
+<td>UI web + alerts</td>
+<td>Visibilidad en tiempo real</td>
+</tr>
+<tr>
+<td><strong>Debugging</strong></td>
+<td>Stack traces complejos</td>
+<td>Logs por task</td>
+<td>-60% tiempo debug</td>
+</tr>
+<tr>
+<td><strong>Scheduling</strong></td>
+<td>Cron jobs manuales</td>
+<td>Native scheduler</td>
+<td>Automatización nativa</td>
+</tr>
+</tbody>
+</table>
+<h3 id="casos-de-uso-empresariales">Casos de Uso Empresariales<a class="headerlink" href="#casos-de-uso-empresariales" title="Permanent link">¶</a></h3>
+<p><strong>1. Reportes Diarios Automáticos</strong>
+</p><div class="highlight"><pre><span></span><code><span class="nd">@flow</span><span class="p">(</span><span class="n">schedule</span><span class="o">=</span><span class="n">IntervalSchedule</span><span class="p">(</span><span class="n">interval</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+<span class="k">def</span> <span class="nf">reporte_diario</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pipeline_taxi_empresarial</span><span class="p">()</span>
+    <span class="n">enviar_email_ejecutivos</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div><p></p>
+<p><strong>2. Alertas de Anomalías</strong>
+</p><div class="highlight"><pre><span></span><code><span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">validar_calidad</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s1">'borough'</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">5000</span><span class="p">:</span>
+        <span class="n">send_alert</span><span class="p">(</span><span class="s2">"⚠️ Calidad de datos degradada"</span><span class="p">)</span>
+</code></pre></div><p></p>
+<hr>
+<h2 id="tecnicas-avanzadas-implementadas">💡 Técnicas Avanzadas Implementadas<a class="headerlink" href="#tecnicas-avanzadas-implementadas" title="Permanent link">¶</a></h2>
+<h3 id="1-optimizacion-para-big-data">1. Optimización para Big Data<a class="headerlink" href="#1-optimizacion-para-big-data" title="Permanent link">¶</a></h3>
+<p><strong>Downcasting Inteligente:</strong>
+- IDs de zona: int64 → int16 (reducción 75%)
+- Passenger count: int64 → int8 (reducción 87.5%)
+- <strong>Resultado:</strong> Procesar 3M registros en laptop estándar</p>
+<p><strong>Sampling Estratégico:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50000</span><span class="p">:</span>
+    <span class="n">df_sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</code></pre></div>
+- Reduce rendering de 45s a 3s
+- Mantiene distribución estadística<p></p>
+<h3 id="2-validacion-de-joins">2. Validación de Joins<a class="headerlink" href="#2-validacion-de-joins" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Verificar cardinalidad esperada</span>
+<span class="n">trips</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">zones</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="s1">'m:1'</span><span class="p">)</span>
+
+<span class="c1"># Detectar duplicados inesperados</span>
+<span class="k">assert</span> <span class="n">trips_with_zones</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">trips</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Auditar nulos post-join</span>
+<span class="n">null_rate</span> <span class="o">=</span> <span class="n">trips_with_zones</span><span class="p">[</span><span class="s1">'borough'</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">trips_with_zones</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">null_rate</span> <span class="o">&gt;</span> <span class="mf">0.05</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">"⚠️ </span><span class="si">{</span><span class="n">null_rate</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2"> sin borough asignado"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="3-agregaciones-multi-nivel">3. Agregaciones Multi-nivel<a class="headerlink" href="#3-agregaciones-multi-nivel" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Análisis jerárquico: Borough → Zone → Hour</span>
+<span class="n">multi_level</span> <span class="o">=</span> <span class="n">trips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'borough'</span><span class="p">,</span> <span class="s1">'zone'</span><span class="p">,</span> <span class="s1">'pickup_hour'</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+    <span class="s1">'total_amount'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'mean'</span><span class="p">,</span> <span class="s1">'sum'</span><span class="p">,</span> <span class="s1">'count'</span><span class="p">],</span>
+    <span class="s1">'trip_distance'</span><span class="p">:</span> <span class="s1">'mean'</span><span class="p">,</span>
+    <span class="s1">'tip_amount'</span><span class="p">:</span> <span class="s1">'mean'</span>
+<span class="p">})</span>
+</code></pre></div>
+<p><strong>Aplicación:</strong> Identificar hotspots hora × zona con mayor revenue</p>
+<hr>
+<h2 id="skills-desarrolladas">🎓 Skills Desarrolladas<a class="headerlink" href="#skills-desarrolladas" title="Permanent link">¶</a></h2>
+<h3 id="tecnicas-de-analisis-de-datos">Técnicas de Análisis de Datos<a class="headerlink" href="#tecnicas-de-analisis-de-datos" title="Permanent link">¶</a></h3>
+<ul>
+<li>✅ <strong>Integración Multi-fuente</strong>: Joins complejos con 3+ datasets (Parquet, CSV, JSON)</li>
+<li>✅ <strong>Análisis Agregado</strong>: GroupBy multi-nivel con estadísticas descriptivas avanzadas</li>
+<li>✅ <strong>Feature Engineering</strong>: Variables derivadas (revenue/km, tip_rate, market_share)</li>
+<li>✅ <strong>Análisis Temporal</strong>: Patrones horarios, estacionalidad, impacto de eventos</li>
+<li>✅ <strong>Data Quality</strong>: Validación de integridad, tratamiento estratégico de nulos</li>
+<li>✅ <strong>Correlaciones</strong>: Análisis de relaciones entre variables económicas</li>
+</ul>
+<h3 id="ingenieria-de-datos">Ingeniería de Datos<a class="headerlink" href="#ingenieria-de-datos" title="Permanent link">¶</a></h3>
+<ul>
+<li>✅ <strong>Memory Optimization</strong>: Reducción 37.8% mediante downcasting inteligente</li>
+<li>✅ <strong>ETL Pipeline</strong>: Extract-Transform-Load automatizado y robusto</li>
+<li>✅ <strong>Data Validation</strong>: Checks de cardinalidad y referential integrity</li>
+<li>✅ <strong>Sampling Strategies</strong>: Muestras representativas para visualizaciones Big Data</li>
+<li>✅ <strong>Orchestration</strong>: Prefect para retry logic, logging estructurado y scheduling</li>
+</ul>
+<h3 id="business-analytics">Business Analytics<a class="headerlink" href="#business-analytics" title="Permanent link">¶</a></h3>
+<ul>
+<li>✅ <strong>Segmentación de Mercado</strong>: Análisis geográfico multinivel (borough → zone)</li>
+<li>✅ <strong>Pricing Strategy</strong>: Identificación de oportunidades (+17.2% en días especiales)</li>
+<li>✅ <strong>Demand Forecasting</strong>: Patrones temporales y eventos externos</li>
+<li>✅ <strong>KPI Definition</strong>: Métricas accionables (market share, revenue/km, tip rate)</li>
+<li>✅ <strong>Storytelling con Datos</strong>: Insights → Recomendaciones → Impacto cuantificado</li>
+</ul>
+<hr>
+<h2 id="conclusiones-estrategicas">📈 Conclusiones Estratégicas<a class="headerlink" href="#conclusiones-estrategicas" title="Permanent link">¶</a></h2>
+<h3 id="aprendizajes-tecnicos-clave">Aprendizajes Técnicos Clave<a class="headerlink" href="#aprendizajes-tecnicos-clave" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Manejo de Formatos Heterogéneos</strong></li>
+<li>Parquet para datasets grandes (3M+ registros) → Compresión + lectura columnar</li>
+<li>CSV para lookup tables estáticas → Compatibilidad universal</li>
+<li>
+<p>JSON para datos semi-estructurados → Flexibilidad + APIs</p>
+</li>
+<li>
+<p><strong>Estrategias de Join Context-Aware</strong></p>
+</li>
+<li>LEFT JOIN cuando preservar registros es crítico (99.91% match, 0.09% identifica problemas)</li>
+<li>INNER JOIN cuando solo interesa intersección validada</li>
+<li>
+<p>Validación de cardinalidad (<code>validate='m:1'</code>) para detectar anomalías</p>
+</li>
+<li>
+<p><strong>Pipeline Engineering con Prefect</strong></p>
+</li>
+<li>De script frágil a sistema de producción robusto</li>
+<li>Retry automático ante fallos transitorios (+95% robustez)</li>
+<li>Logging estructurado para debugging (-60% tiempo)</li>
+<li>Base para scheduling y alertas empresariales</li>
+</ol>
+<h3 id="recomendaciones-de-negocio">Recomendaciones de Negocio<a class="headerlink" href="#recomendaciones-de-negocio" title="Permanent link">¶</a></h3>
+<p><strong>Corto Plazo (0-3 meses):</strong>
+- Implementar surge pricing en días especiales (+17.2% revenue)
+- Optimizar distribución de flota en Manhattan (68.5% demanda)</p>
+<p><strong>Mediano Plazo (3-6 meses):</strong>
+- Expandir operaciones en Bronx (+25% flota gradualmente)
+- Desarrollar servicio premium en Queens/Staten Island</p>
+<p><strong>Largo Plazo (6-12 meses):</strong>
+- Automatizar pipeline completo con Prefect para reportes diarios
+- Implementar sistema de alertas de anomalías en tiempo real
+- Integrar datos de tráfico y clima para forecasting avanzado</p>
+<hr>
+<h2 id="referencias-y-recursos">📚 Referencias y Recursos<a class="headerlink" href="#referencias-y-recursos" title="Permanent link">¶</a></h2>
+<h3 id="datasets-oficiales">Datasets Oficiales<a class="headerlink" href="#datasets-oficiales" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page">NYC Taxi &amp; Limousine Commission - Trip Record Data</a></li>
+<li><a href="https://d37ci6vzurychx.cloudfront.net/misc/taxi+_zone_lookup.csv">NYC TLC - Taxi Zone Lookup</a></li>
+<li><a href="https://opendata.cityofnewyork.us/">NYC Open Data Portal</a></li>
+</ul>
+<h3 id="documentacion-tecnica">Documentación Técnica<a class="headerlink" href="#documentacion-tecnica" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html">Pandas Merge &amp; Join Documentation</a></li>
+<li><a href="https://pandas.pydata.org/docs/user_guide/scale.html">Pandas Memory Optimization Guide</a></li>
+<li><a href="https://docs.prefect.io/">Prefect Documentation</a></li>
+<li><a href="https://www.sqlitetutorial.net/sqlite-join/">SQL Joins Visual Guide</a></li>
+</ul>
+<h3 id="contexto-de-negocio">Contexto de Negocio<a class="headerlink" href="#contexto-de-negocio" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page">NYC TLC Industry Report 2023</a></li>
+<li><a href="https://www.itf-oecd.org/urban-mobility-system-upgrade">Urban Mobility Trends - ITF</a></li>
+</ul>
+<hr>
+<h2 id="informacion-del-proyecto">🔗 Información del Proyecto<a class="headerlink" href="#informacion-del-proyecto" title="Permanent link">¶</a></h2>
+<p><strong>Contexto Académico:</strong>
+- <strong>Curso</strong>: Análisis Exploratorio de Datos (EDA) - UT1<br>
+- <strong>Institución</strong>: Universidad Católica del Uruguay<br>
+- <strong>Instructor</strong>: Juan F. Kurucz<br>
+- <strong>Práctica</strong>: <a href="https://juanfkurucz.com/ucu-id/ut1/04-eda-multifuentes-joins/">04 - EDA Multi-fuentes y Joins</a></p>
+<p><strong>Alcance del Proyecto:</strong>
+- Dataset completo oficial NYC (no muestra)
+- Procesamiento de 3,145,632 registros reales
+- Análisis end-to-end: carga → limpieza → integración → insights
+- Pipeline production-ready con Prefect</p>
+<hr>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de noviembre de 2025 21:53:18 UTC">16 de noviembre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

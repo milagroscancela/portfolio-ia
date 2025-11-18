@@ -1,0 +1,901 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../01-primera-entrada/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>🌸 Exploración del Dataset Iris — Análisis morfológico y correlaciones entre especies - Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exploracion-del-dataset-iris-analisis-morfologico-y-correlaciones-entre-especies" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Portfolio" class="md-header__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🌸 Exploración del Dataset Iris — Análisis morfológico y correlaciones entre especies
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Portfolio" class="md-nav__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acerca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Acerca de mí
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Portfolio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exploraciones Extra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualizaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visualizaciones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apuntes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apuntes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descargar-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      💾 Descargar Notebook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Objetivo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Objetivo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-objetivo-de-esta-practica-fue-realizar-un-analisis-exploratorio-de-datos-eda-sobre-el-clasico-dataset-iris-utilizando-pandas-seaborn-y-matplotlib" class="md-nav__link">
+    <span class="md-ellipsis">
+      El objetivo de esta práctica fue realizar un Análisis Exploratorio de Datos (EDA) sobre el clásico dataset Iris, utilizando pandas, seaborn y matplotlib.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-proposito-fue-comprender-la-estructura-del-dataset-analizar-las-relaciones-entre-variables-y-evaluar-la-calidad-de-los-datos-antes-de-avanzar-hacia-etapas-de-limpieza-y-modelado" class="md-nav__link">
+    <span class="md-ellipsis">
+      El propósito fue comprender la estructura del dataset, analizar las relaciones entre variables y evaluar la calidad de los datos antes de avanzar hacia etapas de limpieza y modelado.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descripcion-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Descripción general
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodologia" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Metodología
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distribucion-de-las-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌸 Distribución de las variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relaciones-entre-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Relaciones entre variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#correlaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Correlaciones
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calidad-de-los-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Calidad de los datos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      📂 Estructura de Resultados
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results-visualizaciones-histogramas_kde_por_especiepng-pairplot_por_especiepng-matriz_correlacionespng-missingpng-boxplots_por_especiepng-perfiles-describecsv-covcsv-skew_kurtcsv-species_distcsv-missingcsv-missing_propcsv-nuloscsv-reportes-range_checkcsv-data_dictionarymd-data_dictionarycsv-respuestas_negociomd-profile_irishtml" class="md-nav__link">
+    <span class="md-ellipsis">
+      results/ ├── visualizaciones/ │ ├── histogramas_kde_por_especie.png │ ├── pairplot_por_especie.png │ ├── matriz_correlaciones.png │ ├── missing.png │ └── boxplots_por_especie.png ├── perfiles/ │ ├── describe.csv │ ├── cov.csv │ ├── skew_kurt.csv │ ├── species_dist.csv │ ├── missing.csv │ ├── missing_prop.csv │ └── nulos.csv └── reportes/ ├── range_check.csv ├── data_dictionary.md ├── data_dictionary.csv ├── respuestas_negocio.md └── profile_iris.html
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hallazgos-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Hallazgos principales
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insights-de-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗂️ Insights de Negocio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🗂️ Insights de Negocio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables-criticas-para-la-toma-de-decisiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Variables críticas para la toma de decisiones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#separabilidad-como-metrica-de-eficiencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌸 Separabilidad como métrica de eficiencia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estabilidad-y-calidad-del-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Estabilidad y calidad del dataset
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notas-de-implementacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Notas de Implementación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflexion-personal" class="md-nav__link">
+    <span class="md-ellipsis">
+      💭 Reflexión Personal
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Referencias
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="exploracion-del-dataset-iris-analisis-morfologico-y-correlaciones-entre-especies">🌸 Exploración del Dataset <em>Iris</em> — Análisis morfológico y correlaciones entre especies<a class="headerlink" href="#exploracion-del-dataset-iris-analisis-morfologico-y-correlaciones-entre-especies" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>📚<strong>Tiempo estimado de lectura:</strong> ~8 min<br>
+- <strong>Autora:</strong> Milagros Cancela<br>
+- <strong>Fecha:</strong> 13/08/2025<br>
+- <strong>Entorno:</strong> Python + VSCode + Cursor
+- <strong>Referencia de la tarea:</strong> <a href="https://juanfkurucz.com/ucu-id/ut1/01-exploracion-iris/">Tarea 1 — Exploración del Dataset Iris</a></p>
+</blockquote>
+<hr>
+<h2 id="descargar-notebook">💾 Descargar Notebook<a class="headerlink" href="#descargar-notebook" title="Permanent link">¶</a></h2>
+<p>Para acceder al notebook completo con el código, gráficos y análisis reproducible:</p>
+<p><a class="btn btn-primary" download="dataset_iris.ipynb" href="../assets/iris/dataset_iris.ipynb" target="_blank"><strong>Descargar notebook — dataset_iris.ipynb</strong></a></p>
+<blockquote>
+<p>📂 Archivo disponible dentro del repositorio:<br>
+<code>docs/portfolio/assets/iris/dataset_iris.ipynb</code></p>
+</blockquote>
+<hr>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
+<h3 id="el-objetivo-de-esta-practica-fue-realizar-un-analisis-exploratorio-de-datos-eda-sobre-el-clasico-dataset-iris-utilizando-pandas-seaborn-y-matplotlib">El objetivo de esta práctica fue realizar un <strong>Análisis Exploratorio de Datos (EDA)</strong> sobre el clásico dataset <em>Iris</em>, utilizando <strong>pandas</strong>, <strong>seaborn</strong> y <strong>matplotlib</strong>.<a class="headerlink" href="#el-objetivo-de-esta-practica-fue-realizar-un-analisis-exploratorio-de-datos-eda-sobre-el-clasico-dataset-iris-utilizando-pandas-seaborn-y-matplotlib" title="Permanent link">¶</a></h3>
+<h3 id="el-proposito-fue-comprender-la-estructura-del-dataset-analizar-las-relaciones-entre-variables-y-evaluar-la-calidad-de-los-datos-antes-de-avanzar-hacia-etapas-de-limpieza-y-modelado">El propósito fue comprender la estructura del dataset, analizar las relaciones entre variables y evaluar la calidad de los datos antes de avanzar hacia etapas de limpieza y modelado.<a class="headerlink" href="#el-proposito-fue-comprender-la-estructura-del-dataset-analizar-las-relaciones-entre-variables-y-evaluar-la-calidad-de-los-datos-antes-de-avanzar-hacia-etapas-de-limpieza-y-modelado" title="Permanent link">¶</a></h3>
+<hr>
+<h2 id="descripcion-general">📘 Descripción general<a class="headerlink" href="#descripcion-general" title="Permanent link">¶</a></h2>
+<p>El dataset contiene <strong>150 observaciones</strong> de tres especies de flores: <em>Setosa</em>, <em>Versicolor</em> y <em>Virginica</em>.<br>
+Incluye cuatro variables numéricas (longitud y ancho de pétalos y sépalos) y una categórica (<code>species</code>).<br>
+Está completamente limpio y balanceado, con 50 muestras por especie.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Unidad</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">sepal_length</td>
+<td style="text-align: left;">float</td>
+<td style="text-align: left;">cm</td>
+<td style="text-align: left;">Longitud del sépalo</td>
+</tr>
+<tr>
+<td style="text-align: left;">sepal_width</td>
+<td style="text-align: left;">float</td>
+<td style="text-align: left;">cm</td>
+<td style="text-align: left;">Ancho del sépalo</td>
+</tr>
+<tr>
+<td style="text-align: left;">petal_length</td>
+<td style="text-align: left;">float</td>
+<td style="text-align: left;">cm</td>
+<td style="text-align: left;">Longitud del pétalo</td>
+</tr>
+<tr>
+<td style="text-align: left;">petal_width</td>
+<td style="text-align: left;">float</td>
+<td style="text-align: left;">cm</td>
+<td style="text-align: left;">Ancho del pétalo</td>
+</tr>
+<tr>
+<td style="text-align: left;">species</td>
+<td style="text-align: left;">category</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">Especie de la flor</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="metodologia">🔧 Metodología<a class="headerlink" href="#metodologia" title="Permanent link">¶</a></h2>
+<ol>
+<li><strong>Carga y validación de datos</strong> → <code>sns.load_dataset("iris")</code><br>
+   Se verificaron estructura, tipos de datos y ausencia de valores faltantes.  </li>
+<li><strong>Análisis estadístico descriptivo</strong> → uso de <code>.describe()</code>, <code>.corr()</code> y medidas de asimetría y curtosis.  </li>
+<li><strong>Exploración visual</strong> → generación de gráficos comparativos para examinar la separación entre especies y sus correlaciones.  </li>
+<li><strong>Documentación</strong> → exportación de perfiles, tablas y reportes a <code>/results/</code>, incluyendo el reporte automatizado <code>profile_iris.html</code>.</li>
+</ol>
+<hr>
+<h2 id="distribucion-de-las-variables">🌸 Distribución de las variables<a class="headerlink" href="#distribucion-de-las-variables" title="Permanent link">¶</a></h2>
+<p>Los <strong>histogramas con curvas KDE</strong> permiten observar cómo se distribuyen las variables dentro de cada especie:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/iris/histogramas_kde_por_especie.png" data-desc-position="bottom"><img alt="Histograma KDE" src="../assets/iris/histogramas_kde_por_especie.png"></a></p>
+<ul>
+<li>En los <strong>pétalos</strong>, las tres especies se separan con claridad.<br>
+<em>Setosa</em> presenta pétalos cortos y angostos, <em>Versicolor</em> ocupa una posición intermedia, y <em>Virginica</em> concentra los valores más altos.<br>
+  Esto sugiere que las variables de pétalos son las más útiles para tareas de clasificación.  </li>
+<li>En los <strong>sépalos</strong>, las distribuciones se superponen más, por lo que aportan menor poder discriminante.</li>
+</ul>
+<hr>
+<h2 id="relaciones-entre-variables">🔍 Relaciones entre variables<a class="headerlink" href="#relaciones-entre-variables" title="Permanent link">¶</a></h2>
+<p>El siguiente gráfico de pares muestra cómo se relacionan las dimensiones:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/iris/pairplot_por_especie.png" data-desc-position="bottom"><img alt="Pairplot" src="../assets/iris/pairplot_por_especie.png"></a></p>
+<p>Cada punto representa una flor. A partir del gráfico se observa que:
+- <em>Setosa</em> forma un grupo totalmente aislado del resto.<br>
+- <em>Versicolor</em> y <em>Virginica</em> se solapan parcialmente, aunque pueden diferenciarse bien si se consideran <code>petal_length</code> y <code>petal_width</code>.  </p>
+<p>Esto confirma que <strong>solo con las variables de pétalos podría construirse un modelo de clasificación con buena precisión</strong>.</p>
+<hr>
+<h2 id="correlaciones">📊 Correlaciones<a class="headerlink" href="#correlaciones" title="Permanent link">¶</a></h2>
+<p>Para verificar las observaciones visuales, analicé la matriz de correlaciones:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/iris/matriz_correlaciones.png" data-desc-position="bottom"><img alt="Matriz de correlaciones" src="../assets/iris/matriz_correlaciones.png"></a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Variables</th>
+<th style="text-align: left;">Correlación</th>
+<th style="text-align: left;">Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">petal_length ↔ petal_width</td>
+<td style="text-align: left;"><strong>0.86</strong></td>
+<td style="text-align: left;">Correlación muy fuerte: ambas crecen de manera proporcional.</td>
+</tr>
+<tr>
+<td style="text-align: left;">sepal_length ↔ sepal_width</td>
+<td style="text-align: left;">-0.12</td>
+<td style="text-align: left;">Correlación débil e inversa: son prácticamente independientes.</td>
+</tr>
+<tr>
+<td style="text-align: left;">sepal_length ↔ petal_length</td>
+<td style="text-align: left;">0.87</td>
+<td style="text-align: left;">Relación positiva, aunque con mayor dispersión.</td>
+</tr>
+</tbody>
+</table>
+<p>Las <strong>variables de pétalos concentran la mayor información explicativa</strong>, mientras que las de sépalo aportan contexto morfológico, pero no separan especies por sí solas.</p>
+<hr>
+<h2 id="calidad-de-los-datos">🧩 Calidad de los datos<a class="headerlink" href="#calidad-de-los-datos" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/iris/missing.png" data-desc-position="bottom"><img alt="Missingness" src="../assets/iris/missing.png"></a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Criterio</th>
+<th style="text-align: left;">Evaluación</th>
+<th style="text-align: left;">Observación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Valores faltantes</strong></td>
+<td style="text-align: left;">❌ Ninguno</td>
+<td style="text-align: left;">Dataset completamente completo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Outliers</strong></td>
+<td style="text-align: left;">⚠️ Mínimos</td>
+<td style="text-align: left;">Algunos valores extremos en <code>sepal_width</code>, sin impacto en la media.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Duplicados</strong></td>
+<td style="text-align: left;">❌ Ninguno</td>
+<td style="text-align: left;">Todos los registros son únicos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Distribución</strong></td>
+<td style="text-align: left;">✅ Aproximadamente normal</td>
+<td style="text-align: left;">Variables de pétalos muestran distribuciones suaves.</td>
+</tr>
+</tbody>
+</table>
+<p>El gráfico de valores faltantes confirma un resultado poco común: <strong>no existe ningún valor nulo</strong>.<br>
+También se validó que los rangos estén dentro de límites biológicos razonables (por ejemplo, sépalos entre 4 y 8 cm).<br>
+No se detectaron duplicados, lo que refuerza la confiabilidad del dataset y su utilidad para prácticas de EDA.</p>
+<hr>
+<h2 id="estructura-de-resultados">📂 Estructura de Resultados<a class="headerlink" href="#estructura-de-resultados" title="Permanent link">¶</a></h2>
+<h2 id="results-visualizaciones-histogramas_kde_por_especiepng-pairplot_por_especiepng-matriz_correlacionespng-missingpng-boxplots_por_especiepng-perfiles-describecsv-covcsv-skew_kurtcsv-species_distcsv-missingcsv-missing_propcsv-nuloscsv-reportes-range_checkcsv-data_dictionarymd-data_dictionarycsv-respuestas_negociomd-profile_irishtml"><div class="highlight"><pre><span></span><code>results/
+├──<span class="w"> </span>visualizaciones/
+│<span class="w">   </span>├──<span class="w"> </span>histogramas_kde_por_especie.png
+│<span class="w">   </span>├──<span class="w"> </span>pairplot_por_especie.png
+│<span class="w">   </span>├──<span class="w"> </span>matriz_correlaciones.png
+│<span class="w">   </span>├──<span class="w"> </span>missing.png
+│<span class="w">   </span>└──<span class="w"> </span>boxplots_por_especie.png
+├──<span class="w"> </span>perfiles/
+│<span class="w">   </span>├──<span class="w"> </span>describe.csv
+│<span class="w">   </span>├──<span class="w"> </span>cov.csv
+│<span class="w">   </span>├──<span class="w"> </span>skew_kurt.csv
+│<span class="w">   </span>├──<span class="w"> </span>species_dist.csv
+│<span class="w">   </span>├──<span class="w"> </span>missing.csv
+│<span class="w">   </span>├──<span class="w"> </span>missing_prop.csv
+│<span class="w">   </span>└──<span class="w"> </span>nulos.csv
+└──<span class="w"> </span>reportes/
+<span class="w">    </span>├──<span class="w"> </span>range_check.csv
+<span class="w">    </span>├──<span class="w"> </span>data_dictionary.md
+<span class="w">    </span>├──<span class="w"> </span>data_dictionary.csv
+<span class="w">    </span>├──<span class="w"> </span>respuestas_negocio.md
+<span class="w">    </span>└──<span class="w"> </span>profile_iris.html
+</code></pre></div><a class="headerlink" href="#results-visualizaciones-histogramas_kde_por_especiepng-pairplot_por_especiepng-matriz_correlacionespng-missingpng-boxplots_por_especiepng-perfiles-describecsv-covcsv-skew_kurtcsv-species_distcsv-missingcsv-missing_propcsv-nuloscsv-reportes-range_checkcsv-data_dictionarymd-data_dictionarycsv-respuestas_negociomd-profile_irishtml" title="Permanent link">¶</a></h2>
+<h2 id="hallazgos-principales">💡 Hallazgos principales<a class="headerlink" href="#hallazgos-principales" title="Permanent link">¶</a></h2>
+<ul>
+<li>Los <strong>pétalos son las variables clave</strong>: longitud y ancho bastan para distinguir especies.  </li>
+<li><strong>Setosa</strong> es la especie más fácil de identificar; sus valores no se superponen con los de las otras dos.  </li>
+<li><strong>Virginica</strong> presenta mayor variabilidad interna, especialmente en el largo del pétalo.  </li>
+<li>Las medidas de sépalo son menos discriminantes, pero aportan independencia estadística.  </li>
+<li>El dataset es <strong>completo, balanceado y sin anomalías</strong>, lo que lo hace ideal para modelado supervisado.</li>
+</ul>
+<hr>
+<h2 id="insights-de-negocio">🗂️ Insights de Negocio<a class="headerlink" href="#insights-de-negocio" title="Permanent link">¶</a></h2>
+<h3 id="variables-criticas-para-la-toma-de-decisiones">🔍 Variables críticas para la toma de decisiones<a class="headerlink" href="#variables-criticas-para-la-toma-de-decisiones" title="Permanent link">¶</a></h3>
+<p>Las variables <code>petal_length</code> y <code>petal_width</code> concentran casi toda la información útil.
+En contextos de clasificación real (por ejemplo, detección automática de especies), se puede reducir la cantidad de sensores o variables medidas sin perder precisión.
+En términos de negocio: menor costo de adquisición de datos, misma efectividad predictiva.</p>
+<h3 id="separabilidad-como-metrica-de-eficiencia">🌸 Separabilidad como métrica de eficiencia<a class="headerlink" href="#separabilidad-como-metrica-de-eficiencia" title="Permanent link">¶</a></h3>
+<p>Setosa presenta una separación morfológica total respecto a las otras dos especies.
+Los sistemas pueden clasificarla sin ambigüedad, liberando capacidad de cómputo para las clases más difíciles (Versicolor y Virginica).</p>
+<h3 id="estabilidad-y-calidad-del-dataset">📈 Estabilidad y calidad del dataset<a class="headerlink" href="#estabilidad-y-calidad-del-dataset" title="Permanent link">¶</a></h3>
+<p>Esto lo convierte en un benchmark ideal para calibrar pipelines de validación de datos o probar frameworks de EDA automatizado sin sesgos introducidos por ruido o errores de captura.
+ Es un ejemplo de “datos bien diseñados” que reflejan procesos de medición estandarizados.</p>
+<hr>
+<h2 id="notas-de-implementacion">⚙️ Notas de Implementación<a class="headerlink" href="#notas-de-implementacion" title="Permanent link">¶</a></h2>
+<ul>
+<li>Análisis realizado en VS Code con entorno Python 3.</li>
+<li>Dependencias:
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pandas<span class="w"> </span>seaborn<span class="w"> </span>matplotlib<span class="w"> </span>ydata-profiling
+</code></pre></div></li>
+<li>Todas las figuras se exportaron con dpi=200 y bbox_inches='tight'.</li>
+<li>Reporte HTML automático generado con ydata-profiling.</li>
+</ul>
+<hr>
+<h2 id="reflexion-personal">💭 Reflexión Personal<a class="headerlink" href="#reflexion-personal" title="Permanent link">¶</a></h2>
+<p>Este proyecto fue, para mí, un ejercicio de aprendizaje técnico, pero también de observación.
+Al principio pensaba que hacer un EDA era simplemente generar gráficos bonitos, pero terminé entendiendo que explorar datos es una forma de pensar: una búsqueda de sentido, paso a paso.
+Cada figura que exporté no era solo un resultado, sino una confirmación de que los patrones existen incluso en datasets tan simples como este.
+Aprendí a organizar mis ideas, a limpiar y documentar, y sobre todo, a no apurarme en sacar conclusiones sin mirar el contexto.
+Lo más desafiante fue elegir cómo mostrar las visualizaciones sin que pierdan claridad.
+Y lo más gratificante fue comprobar que, al final, los datos hablan solos, si uno sabe cómo escucharlos.</p>
+<hr>
+<h2 id="referencias">📚 Referencias<a class="headerlink" href="#referencias" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://bitsandbricks.github.io/ciencia_de_datos_gente_sociable/">Brust, A. V. (2023). <em>Ciencia de Datos para Gente Sociable</em>, Capítulos 1–4.</a> </li>
+<li><a href="https://developers.google.com/machine-learning/guides/good-data-analysis">Google Developers. <em>Good Data Analysis Guide.</em></a></li>
+<li><a href="https://archive.ics.uci.edu/dataset/53/iris">UCI Machine Learning Repository — <em>Iris Dataset.</em></a> </li>
+<li><a href="https://www.kaggle.com/datasets/uciml/iris">Kaggle — <em>Iris Species Dataset.</em></a></li>
+<li>Documentación de <a href="https://pandas.pydata.org/docs/"><em>pandas</em></a>, <a href="https://seaborn.pydata.org/"><em>seaborn</em></a>, <a href="https://matplotlib.org/stable/contents.html"><em>matplotlib</em></a> y <a href="https://docs.profiling.ydata.ai/latest/"><em>ydata-profiling.</em></a></li>
+</ul>
+<hr>
+<blockquote>
+<p>📁 <strong>Ubicación:</strong> <code>docs/portfolio/01-iris.md</code><br>
+📂 <strong>Resultados:</strong> ver <a href="../../actividades/act_dos_iris/results/"><code>../../actividades/act_dos_iris/results/</code></a> para acceder a perfiles y reportes completos en el repositorio.</p>
+</blockquote>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="8 de noviembre de 2025 12:15:00 UTC">8 de noviembre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

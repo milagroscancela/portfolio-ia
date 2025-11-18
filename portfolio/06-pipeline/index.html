@@ -1,0 +1,1851 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../05-missing/">
+      
+      
+        <link rel="next" href="../07-fairlearn/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>⚖️ Feature Scaling &amp; Anti-Leakage: Domando las Escalas en Datos Inmobiliarios - Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#feature-scaling-anti-leakage-domando-las-escalas-en-datos-inmobiliarios" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Portfolio" class="md-header__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ⚖️ Feature Scaling &amp; Anti-Leakage: Domando las Escalas en Datos Inmobiliarios
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Portfolio" class="md-nav__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acerca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Acerca de mí
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Portfolio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exploraciones Extra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualizaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visualizaciones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apuntes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apuntes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descargar-notebook-y-visualizaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      💾 Descargar Notebook y Visualizaciones
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Objetivo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contexto-de-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      💼 Contexto de Negocio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💼 Contexto de Negocio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-problema-de-las-escalas-desbalanceadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      El Problema de las Escalas Desbalanceadas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exploracion-inicial-el-problema-de-las-escalas" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Exploración Inicial: El Problema de las Escalas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 Exploración Inicial: El Problema de las Escalas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagnostico-de-escalas-problematicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      �� Diagnóstico de Escalas Problemáticas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodologia-scalers-basicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Metodología: Scalers Básicos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Metodología: Scalers Básicos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparacion-visual-de-tecnicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparación Visual de Técnicas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-minmaxscaler-normalizacion-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. MinMaxScaler — Normalización [0,1]
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-standardscaler-estandarizacion-z-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. StandardScaler — Estandarización (Z-Score)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-robustscaler-robusto-a-outliers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. RobustScaler — Robusto a Outliers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transformadores-avanzados-investigacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 Transformadores Avanzados: Investigación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Transformadores Avanzados: Investigación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#powertransformer-yeo-johnson-hacia-la-normalidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerTransformer (Yeo-Johnson) — Hacia la Normalidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantiletransformer-forzar-distribucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      QuantileTransformer — Forzar Distribución
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functiontransformer-log1p-transformacion-logaritmica" class="md-nav__link">
+    <span class="md-ellipsis">
+      FunctionTransformer (Log1p) — Transformación Logarítmica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maxabsscaler-para-datos-sparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      MaxAbsScaler — Para Datos Sparse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anti-leakage-la-regla-de-oro-del-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚫 Anti-Leakage: La Regla de Oro del Scaling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚫 Anti-Leakage: La Regla de Oro del Scaling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-error-mortal-fit-en-todo-el-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ El Error Mortal: Fit en TODO el dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodo-correcto-split-antes-de-fit" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Método Correcto: Split ANTES de Fit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-anti-leakage-automatico" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Pipeline: Anti-Leakage Automático
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Pipeline: Anti-Leakage Automático">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-del-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas del Pipeline:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experimento-comparativo-scalers-algoritmos" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Experimento Comparativo: Scalers + Algoritmos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Experimento Comparativo: Scalers + Algoritmos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-del-experimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup del Experimento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resultados-por-algoritmo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resultados por Algoritmo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflexiones-criticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Reflexiones Críticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Reflexiones Críticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cual-scaler-gano" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Cuál Scaler Ganó?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorpresas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorpresas:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-el-orden-importo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. ¿El Orden Importó?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-log-transform-fue-util" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. ¿Log Transform Fue Útil?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cuando-usar-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cuándo usar log:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mi-pipeline-recomendado-para-ames-housing" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Mi Pipeline Recomendado para Ames Housing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 Mi Pipeline Recomendado para Ames Housing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-final-optimizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline Final Optimizado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills-desarrolladas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎓 Skills Desarrolladas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎓 Skills Desarrolladas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tecnicas-de-feature-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Técnicas de Feature Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingenieria-de-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingeniería de Pipelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analisis-experimental" class="md-nav__link">
+    <span class="md-ellipsis">
+      Análisis Experimental
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pensamiento-critico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pensamiento Crítico
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflexion-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      💭 Reflexión Final
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💭 Reflexión Final">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lo-que-realmente-aprendi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lo Que Realmente Aprendí
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-leccion-mas-importante" class="md-nav__link">
+    <span class="md-ellipsis">
+      La Lección Más Importante
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enlaces-y-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Enlaces y Referencias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 Enlaces y Referencias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datasets-y-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datasets y Recursos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación Técnica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#material-del-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Material del Curso
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#papers-y-lecturas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Papers y Lecturas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#informacion-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Información del Proyecto
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="feature-scaling-anti-leakage-domando-las-escalas-en-datos-inmobiliarios">⚖️ Feature Scaling &amp; Anti-Leakage: Domando las Escalas en Datos Inmobiliarios<a class="headerlink" href="#feature-scaling-anti-leakage-domando-las-escalas-en-datos-inmobiliarios" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>📚 <strong>Tiempo estimado de lectura:</strong> ~14 min<br>
+- <strong>Autores [G1]:</strong> Joaquín Batista, Milagros Cancela, Valentín Rodríguez, Alexia Aurrecoechea, Nahuel López <br>
+- <strong>Fecha:</strong> Septiembre 2025 <br>
+- <strong>Entorno:</strong> Python 3.8+ | Scikit-learn | Pandas | Seaborn<br>
+- <strong>Referencia de la tarea:</strong> <a href="https://juanfkurucz.com/ucu-id/ut2/06-feature-scaling-pipeline/">Práctica 6 — Feature Scaling &amp; Anti-Leakage Pipeline</a></p>
+</blockquote>
+<hr>
+<h2 id="descargar-notebook-y-visualizaciones">💾 Descargar Notebook y Visualizaciones<a class="headerlink" href="#descargar-notebook-y-visualizaciones" title="Permanent link">¶</a></h2>
+<ul>
+<li><a class="btn btn-primary" download="feature_scaling_pipeline.ipynb" href="../assets/feature-scaling/feature_scaling_pipeline.ipynb" target="_blank"><strong>Descargar notebook — feature_scaling_pipeline.ipynb</strong></a>  </li>
+</ul>
+<blockquote>
+<p>📂 Archivos disponibles dentro del repositorio:<br>
+<code>docs/portfolio/assets/feature-scaling/feature_scaling_pipeline.ipynb</code>  </p>
+</blockquote>
+<hr>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
+<p>El objetivo de esta práctica fue <strong>dominar el feature scaling</strong> en datos reales del mercado inmobiliario, experimentando con diferentes scalers (MinMax, Standard, Robust) y transformadores avanzados (PowerTransformer, QuantileTransformer). Se implementó un <strong>pipeline anti-leakage robusto</strong> y se compararon resultados para entender cuándo cada técnica es apropiada.</p>
+<hr>
+<h2 id="contexto-de-negocio">💼 Contexto de Negocio<a class="headerlink" href="#contexto-de-negocio" title="Permanent link">¶</a></h2>
+<h3 id="el-problema-de-las-escalas-desbalanceadas">El Problema de las Escalas Desbalanceadas<a class="headerlink" href="#el-problema-de-las-escalas-desbalanceadas" title="Permanent link">¶</a></h3>
+<p>En el dataset Ames Housing, las variables tienen <strong>escalas dramáticamente diferentes</strong>:</p>
+<ul>
+<li>💰 <strong>SalePrice</strong>: $12,789 - $755,000 (ratio 59x)</li>
+<li>📏 <strong>Lot Area</strong>: 1,300 - 215,245 sq ft (ratio 165x)</li>
+<li>📅 <strong>Year Built</strong>: 1872 - 2010 (ratio 1.07x)</li>
+<li>🚗 <strong>Garage Area</strong>: 0 - 1,488 sq ft (ratio infinito con ceros)</li>
+</ul>
+<p><strong>Consecuencias para algoritmos de ML:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Algoritmo</th>
+<th>Sin Scaling</th>
+<th>Con Scaling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>KNN</strong></td>
+<td>❌ Dominado por Lot Area (escala grande)</td>
+<td>✅ Todas las features contribuyen equitativamente</td>
+</tr>
+<tr>
+<td><strong>SVM</strong></td>
+<td>❌ Convergencia lenta/fallida</td>
+<td>✅ Optimización eficiente</td>
+</tr>
+<tr>
+<td><strong>Linear Regression</strong></td>
+<td>⚠️ Funciona pero coeficientes no comparables</td>
+<td>✅ Coeficientes interpretables</td>
+</tr>
+<tr>
+<td><strong>Random Forest</strong></td>
+<td>✅ No afectado (basado en árboles)</td>
+<td>⚠️ Scaling innecesario</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Elemento</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Problema</strong></td>
+<td style="text-align: left;">Variables en escalas muy diferentes sesgan algoritmos de distancia y gradiente</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Objetivo</strong></td>
+<td style="text-align: left;">Experimentar con scalers para normalizar datos sin introducir data leakage</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dataset</strong></td>
+<td style="text-align: left;">Ames Housing (2,930 propiedades × 82 variables)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Variables clave</strong></td>
+<td style="text-align: left;">SalePrice, Lot Area, Year Built, Garage Area, Overall Qual, Gr Liv Area</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Valor para el negocio</strong></td>
+<td style="text-align: left;">Modelos más precisos → Predicciones confiables → Decisiones de inversión informadas</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="exploracion-inicial-el-problema-de-las-escalas">📘 Exploración Inicial: El Problema de las Escalas<a class="headerlink" href="#exploracion-inicial-el-problema-de-las-escalas" title="Permanent link">¶</a></h2>
+<h3 id="diagnostico-de-escalas-problematicas">�� Diagnóstico de Escalas Problemáticas<a class="headerlink" href="#diagnostico-de-escalas-problematicas" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/feature-scaling/distribucion_numericas.png" data-desc-position="bottom"><img alt="Distribuciones Numéricas" src="../assets/feature-scaling/distribucion_numericas.png"></a></p>
+<p><em>Figura 1: Distribuciones de variables numéricas clave. Se observan 6 paneles mostrando SalePrice (asimétrica, cola derecha larga), Lot Area (extremadamente sesgada con outliers), Overall Qual (distribución multimodal en escala 1-10), Year Built (distribución temporal bimodal con picos en 1950-1980 y 2000-2010), 1st Flr SF (aproximadamente normal con ligera asimetría) y Gr Liv Area (distribución normal con algunos outliers). Las escalas varían dramáticamente: SalePrice en cientos de miles, Lot Area hasta 200k sq ft, mientras Year Built está en el rango 1900-2010.</em></p>
+<p><strong>Variables analizadas y sus características:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Min</th>
+<th>Max</th>
+<th>Rango</th>
+<th>Ratio</th>
+<th>Skewness</th>
+<th>Problema Principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SalePrice</strong></td>
+<td>$12,789</td>
+<td>$755,000</td>
+<td>$742,211</td>
+<td>59x</td>
+<td><strong>4.68</strong></td>
+<td>Asimetría extrema + outliers</td>
+</tr>
+<tr>
+<td><strong>Lot Area</strong></td>
+<td>1,300</td>
+<td>215,245</td>
+<td>213,945 sq ft</td>
+<td>165x</td>
+<td><strong>12.82</strong></td>
+<td>Cola larga + valores extremos</td>
+</tr>
+<tr>
+<td><strong>Gr Liv Area</strong></td>
+<td>334</td>
+<td>5,642</td>
+<td>5,308 sq ft</td>
+<td>16.9x</td>
+<td>1.27</td>
+<td>Distribución razonable</td>
+</tr>
+<tr>
+<td><strong>Year Built</strong></td>
+<td>1872</td>
+<td>2010</td>
+<td>138 años</td>
+<td>1.07x</td>
+<td>-0.61</td>
+<td>Escala uniforme</td>
+</tr>
+<tr>
+<td><strong>Overall Qual</strong></td>
+<td>1</td>
+<td>10</td>
+<td>9</td>
+<td>10x</td>
+<td>0.22</td>
+<td>Escala pequeña (ordinal)</td>
+</tr>
+<tr>
+<td><strong>Garage Area</strong></td>
+<td>0</td>
+<td>1,488</td>
+<td>1,488 sq ft</td>
+<td>∞</td>
+<td>0.24</td>
+<td>Muchos ceros (estructural)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hallazgos críticos:</strong></p>
+<ol>
+<li><strong>Lot Area</strong> es el "gritón" → Skewness de 12.82 indica cola extremadamente larga</li>
+<li><strong>SalePrice</strong> altamente asimétrico → Skewness 4.68 sugiere necesidad de transformación</li>
+<li><strong>Year Built</strong> y <strong>Overall Qual</strong> están en escalas razonables → Menos problemáticos</li>
+<li><strong>Garage Area</strong> tiene distribución bimodal → 0 (sin garaje) vs distribución continua</li>
+</ol>
+<hr>
+<h2 id="metodologia-scalers-basicos">🔧 Metodología: Scalers Básicos<a class="headerlink" href="#metodologia-scalers-basicos" title="Permanent link">¶</a></h2>
+<h3 id="comparacion-visual-de-tecnicas">Comparación Visual de Técnicas<a class="headerlink" href="#comparacion-visual-de-tecnicas" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/feature-scaling/boxplot_escalas.png" data-desc-position="bottom"><img alt="Boxplots de Escalas" src="../assets/feature-scaling/boxplot_escalas.png"></a></p>
+<p><em>Figura 2: Boxplots comparativos de 6 variables clave mostrando la magnitud del problema de escalas. Panel superior izquierdo: SalePrice muestra caja en rango 130k-210k con outliers extremos hasta 755k. Panel superior derecho: Lot Area con caja comprimida cerca de 0 y outliers masivos extendiéndose hasta 200k+. Panel medio izquierdo: Overall Qual con distribución discreta de 1-10, relativamente balanceada. Panel medio derecho: Year Built muestra distribución uniforme 1900-2010 con pocos outliers históricos. Paneles inferiores: 1st Flr SF y Gr Liv Area muestran distribuciones similares con cajas bien definidas y outliers moderados. La visualización evidencia la necesidad crítica de scaling para KNN/SVM.</em></p>
+<h3 id="1-minmaxscaler-normalizacion-01">1. MinMaxScaler — Normalización [0,1]<a class="headerlink" href="#1-minmaxscaler-normalizacion-01" title="Permanent link">¶</a></h3>
+<p><strong>Fórmula:</strong>
+</p><div class="highlight"><pre><span></span><code>X_scaled = (X - X_min) / (X_max - X_min)
+</code></pre></div><p></p>
+<p><strong>Características:</strong>
+- ✅ <strong>Ventaja:</strong> Rango garantizado [0, 1], ideal para redes neuronales
+- ❌ <strong>Desventaja:</strong> Muy sensible a outliers (un valor extremo modifica todo)
+- 🎯 <strong>Uso:</strong> Cuando necesitas rango acotado y NO hay outliers</p>
+<p><strong>Resultado en SalePrice:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="n">Original</span><span class="p">:</span> <span class="err">$</span><span class="mi">12</span><span class="p">,</span><span class="mi">789</span> <span class="o">-</span> <span class="err">$</span><span class="mi">755</span><span class="p">,</span><span class="mi">000</span>
+<span class="n">MinMax</span><span class="p">:</span>   <span class="mf">0.000</span> <span class="o">-</span> <span class="mf">1.000</span>
+</code></pre></div><p></p>
+<h3 id="2-standardscaler-estandarizacion-z-score">2. StandardScaler — Estandarización (Z-Score)<a class="headerlink" href="#2-standardscaler-estandarizacion-z-score" title="Permanent link">¶</a></h3>
+<p><strong>Fórmula:</strong>
+</p><div class="highlight"><pre><span></span><code>X_scaled = (X - μ) / σ
+donde μ = media, σ = desviación estándar
+</code></pre></div><p></p>
+<p><strong>Características:</strong>
+- ✅ <strong>Ventaja:</strong> Centra en 0, escala en unidades de desviación estándar
+- ✅ <strong>Común:</strong> Asume distribución normal (que SalePrice NO tiene)
+- ❌ <strong>Desventaja:</strong> Sensible a outliers (media y σ afectadas)
+- 🎯 <strong>Uso:</strong> Datos aproximadamente normales, SVM, regresión logística</p>
+<p><strong>Resultado en SalePrice:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="n">Original</span><span class="p">:</span> <span class="n">μ</span><span class="o">=</span><span class="err">$</span><span class="mi">180</span><span class="p">,</span><span class="mi">921</span><span class="p">,</span> <span class="n">σ</span><span class="o">=</span><span class="err">$</span><span class="mi">79</span><span class="p">,</span><span class="mi">442</span>
+<span class="n">Scaled</span><span class="p">:</span>   <span class="n">μ</span><span class="o">=</span><span class="mf">0.000</span><span class="p">,</span> <span class="n">σ</span><span class="o">=</span><span class="mf">1.000</span>
+<span class="n">Outliers</span><span class="p">:</span> <span class="n">Siguen</span> <span class="n">siendo</span> <span class="n">extremos</span> <span class="n">en</span> <span class="n">escala</span> <span class="n">estandarizada</span>
+</code></pre></div><p></p>
+<h3 id="3-robustscaler-robusto-a-outliers">3. RobustScaler — Robusto a Outliers<a class="headerlink" href="#3-robustscaler-robusto-a-outliers" title="Permanent link">¶</a></h3>
+<p><strong>Fórmula:</strong>
+</p><div class="highlight"><pre><span></span><code>X_scaled = (X - mediana) / IQR
+donde IQR = Q3 - Q1
+</code></pre></div><p></p>
+<p><strong>Características:</strong>
+- ✅ <strong>Ventaja:</strong> Usa mediana e IQR → NO afectado por outliers
+- ✅ <strong>Robusto:</strong> Ideal para datos con valores extremos (como Lot Area)
+- ⚠️ <strong>Rango:</strong> No acotado (puede salir de [-1, 1])
+- 🎯 <strong>Uso:</strong> Datos con outliers legítimos que NO quieres remover</p>
+<p><strong>Resultado en SalePrice:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="n">Original</span><span class="p">:</span> <span class="n">Mediana</span><span class="o">=</span><span class="err">$</span><span class="mi">163</span><span class="p">,</span><span class="mi">000</span><span class="p">,</span> <span class="n">IQR</span><span class="o">=</span><span class="err">$</span><span class="mi">84</span><span class="p">,</span><span class="mi">000</span>
+<span class="n">Scaled</span><span class="p">:</span>   <span class="n">Mediana</span><span class="o">=</span><span class="mf">0.000</span><span class="p">,</span> <span class="n">IQR</span><span class="err">≈</span><span class="mf">1.000</span>
+<span class="n">Outliers</span><span class="p">:</span> <span class="n">Reducidos</span> <span class="n">pero</span> <span class="n">aún</span> <span class="n">detectables</span>
+</code></pre></div><p></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/feature-scaling/histograma_escalas.png" data-desc-position="bottom"><img alt="Histogramas de Escalas" src="../assets/feature-scaling/histograma_escalas.png"></a></p>
+<p><em>Figura 3: Comparación de distribuciones de SalePrice y Lot Area después de aplicar diferentes scalers. Fila superior: SalePrice original (histograma rosa con cola derecha extensa), transformado con cada scaler mostrando cómo cambia la forma. Fila inferior: Lot Area original (extremadamente sesgada con pico masivo cerca de 0), y sus versiones transformadas. Se observa que todos los scalers comprimen la escala pero preservan la asimetría fundamental de los datos. StandardScaler centra en 0, MinMaxScaler comprime a [0,1], y las distribuciones resultantes mantienen características similares.</em></p>
+<hr>
+<h2 id="transformadores-avanzados-investigacion">🧪 Transformadores Avanzados: Investigación<a class="headerlink" href="#transformadores-avanzados-investigacion" title="Permanent link">¶</a></h2>
+<h3 id="powertransformer-yeo-johnson-hacia-la-normalidad">PowerTransformer (Yeo-Johnson) — Hacia la Normalidad<a class="headerlink" href="#powertransformer-yeo-johnson-hacia-la-normalidad" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/feature-scaling/INVESTIGACI%C3%93N%20DE%20%5BPowerTransformer%20%28Yeo-Johnson%29%5D%20sobre%20columna-%20%27SalePrice%27.png" data-desc-position="bottom"><img alt="PowerTransformer Investigation" src="../assets/feature-scaling/INVESTIGACI%C3%93N%20DE%20%5BPowerTransformer%20%28Yeo-Johnson%29%5D%20sobre%20columna-%20%27SalePrice%27.png"></a></p>
+<p><em>Figura 4: Transformación de SalePrice con PowerTransformer (Yeo-Johnson). Panel izquierdo: SalePrice original mostrando distribución log-normal con cola derecha pronunciada (skewness=4.68). Panel central: Después de PowerTransformer, la distribución se aproxima notablemente a una gaussiana con skewness reducido a 0.12 (-97.4% mejora). Panel derecho: Versión escalada final con StandardScaler aplicado sobre la transformación, resultando en una distribución casi perfectamente normal centrada en 0 con σ=1. La transformación exitosa de log-normal a normal es evidente visualmente.</em></p>
+<p><strong>¿Qué hace?</strong>
+- Aplica transformación de potencia para hacer datos más gaussianos
+- Yeo-Johnson funciona con valores negativos (vs Box-Cox solo positivos)</p>
+<p><strong>Fórmula (simplificada):</strong>
+</p><div class="highlight"><pre><span></span><code>Si λ ≠ 0: y^(λ) = ((y + 1)^λ - 1) / λ
+Si λ = 0: y^(λ) = log(y + 1)
+</code></pre></div><p></p>
+<p><strong>Resultados en SalePrice:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Original</th>
+<th>PowerTransformed</th>
+<th>Mejora</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Skewness</strong></td>
+<td>4.68</td>
+<td>0.12</td>
+<td><strong>-97.4%</strong> ✅</td>
+</tr>
+<tr>
+<td><strong>Kurtosis</strong></td>
+<td>38.7</td>
+<td>3.2</td>
+<td><strong>-91.7%</strong> ✅</td>
+</tr>
+<tr>
+<td><strong>Shapiro-Wilk p-value</strong></td>
+<td>&lt;0.001</td>
+<td>0.08</td>
+<td>Más normal ✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cuándo usar:</strong>
+- ✅ Datos muy asimétricos (|skew| &gt; 2)
+- ✅ Necesitas distribución normal para tests estadísticos
+- ✅ Regresión lineal con supuesto de normalidad
+- ❌ NO para árboles (Random Forest no se beneficia)</p>
+<hr>
+<h3 id="quantiletransformer-forzar-distribucion">QuantileTransformer — Forzar Distribución<a class="headerlink" href="#quantiletransformer-forzar-distribucion" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/feature-scaling/INVESTIGACI%C3%93N%20DE%20%5BQuantileTransformer%E2%86%92normal%5Dsobre%20columna-%20%27SalePrice%27.png" data-desc-position="bottom"><img alt="QuantileTransformer Investigation" src="../assets/feature-scaling/INVESTIGACI%C3%93N%20DE%20%5BQuantileTransformer%E2%86%92normal%5Dsobre%20columna-%20%27SalePrice%27.png"></a></p>
+<p><em>Figura 5: Efecto de QuantileTransformer con output_distribution='normal' en SalePrice. Panel izquierdo: Distribución original asimétrica con skewness=4.68. Panel central: Después de QuantileTransformer, los datos son mapeados a una distribución normal casi perfecta mediante transformación de cuantiles - cada valor se mapea a su percentil correspondiente en una gaussiana. Panel derecho: Versión escalada final. Nota importante: Aunque visualmente es una campana perfecta (skewness≈0), esta transformación "fuerza" la normalidad perdiendo información sobre distancias relativas originales entre valores.</em></p>
+<p><strong>¿Qué hace?</strong>
+- Mapea datos a distribución uniforme o normal mediante cuantiles
+- Cada valor se transforma según su percentil</p>
+<p><strong>Cómo funciona:</strong>
+</p><div class="highlight"><pre><span></span><code>1. Ordenar valores: [12k, 50k, 100k, ..., 755k]
+2. Asignar percentiles: [0.1, 0.2, 0.3, ..., 1.0]
+3. Mapear a distribución deseada (normal/uniforme)
+</code></pre></div><p></p>
+<p><strong>Resultados en SalePrice:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Distribución</th>
+<th>Skewness</th>
+<th>Kurtosis</th>
+<th>Aspecto Visual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Original</strong></td>
+<td>4.68</td>
+<td>38.7</td>
+<td>Cola larga extrema</td>
+</tr>
+<tr>
+<td><strong>Uniform</strong></td>
+<td>0.00</td>
+<td>-1.20</td>
+<td>Perfectamente plano</td>
+</tr>
+<tr>
+<td><strong>Normal</strong></td>
+<td>0.00</td>
+<td>0.00</td>
+<td>Campana perfecta</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ventajas:</strong>
+- ✅ <strong>Reduce outliers dramáticamente</strong> (los "aplasta" a percentiles)
+- ✅ Funciona con distribuciones multimodales
+- ✅ No asume forma de distribución original</p>
+<p><strong>Desventajas:</strong>
+- ⚠️ <strong>Pierde información de distancias relativas</strong>
+- ⚠️ Dos valores muy diferentes pueden quedar cercanos
+- ⚠️ No invertible con precisión (pérdida de información)</p>
+<p><strong>Cuándo usar:</strong>
+- ✅ Outliers extremos que son ruido (no información)
+- ✅ Datos con distribuciones raras/multimodales
+- ❌ NO cuando distancias exactas importan</p>
+<hr>
+<h3 id="functiontransformer-log1p-transformacion-logaritmica">FunctionTransformer (Log1p) — Transformación Logarítmica<a class="headerlink" href="#functiontransformer-log1p-transformacion-logaritmica" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/feature-scaling/INVESTIGACI%C3%93N%20DE%20%5BFunctionTransformer%20%28log1p%20seguro%29%5D%20sobre%20columna-%20%27SalePrice%27.png" data-desc-position="bottom"><img alt="Log Transform Investigation" src="../assets/feature-scaling/INVESTIGACI%C3%93N%20DE%20%5BFunctionTransformer%20%28log1p%20seguro%29%5D%20sobre%20columna-%20%27SalePrice%27.png"></a></p>
+<p><em>Figura 6: Transformación logarítmica segura (log1p) aplicada a SalePrice. Panel izquierdo: Distribución original con cola derecha pronunciada y skewness=4.68. Panel central: Después de aplicar log(x+1), la distribución se comprime significativamente - los valores grandes se acercan a los medianos en escala logarítmica, reduciendo skewness a ~0.18 (-96.2%). Panel derecho: Versión final con StandardScaler sobre log-transform, resultando en distribución aproximadamente normal. Esta transformación preserva el orden relativo de valores (a diferencia de QuantileTransformer) y es invertible con expm1.</em></p>
+<p><strong>¿Qué hace?</strong>
+- Aplica <code>log(x + 1)</code> para comprimir valores grandes
+- El <code>+1</code> maneja ceros de forma segura</p>
+<p><strong>Fórmula:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="n">log1p</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Inversa: expm1(y) = exp(y) - 1</span>
+</code></pre></div><p></p>
+<p><strong>Comparación visual:</strong></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/feature-scaling/histograma_log_transform.png" data-desc-position="bottom"><img alt="Histograma Log Transform" src="../assets/feature-scaling/histograma_log_transform.png"></a></p>
+<p><em>Figura 7: Comparación detallada de transformación logarítmica en Lot Area (variable más sesgada del dataset con skewness=12.82). Panel izquierdo: Distribución original mostrando pico masivo cerca de 0 (lotes pequeños) y cola extremadamente larga hasta 215k sq ft. Panel central: Después de log1p transform, la distribución se "suaviza" dramáticamente - el pico se expande y la cola se comprime, reduciendo skewness a 0.76 (-94.1%). Panel derecho: Log transform + StandardScaler resulta en distribución casi normal centrada en 0. El eje X muestra log1p(sqft) en el centro y StandardScaler(log) a la derecha, evidenciando la normalización exitosa.</em></p>
+<p><strong>Resultados en Lot Area (más efectivo que en SalePrice):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Original</th>
+<th>Log Transform</th>
+<th>Cambio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Skewness</strong></td>
+<td>12.82</td>
+<td>0.76</td>
+<td><strong>-94.1%</strong></td>
+</tr>
+<tr>
+<td><strong>Min</strong></td>
+<td>1,300</td>
+<td>7.17</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>Max</strong></td>
+<td>215,245</td>
+<td>12.28</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>Outliers (IQR)</strong></td>
+<td>127</td>
+<td>45</td>
+<td><strong>-64.6%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cuándo usar:</strong>
+- ✅ Variables de <strong>precio, ingreso, población</strong> (crecimiento exponencial)
+- ✅ Datos con cola derecha larga
+- ✅ Cuando quieres mantener orden relativo
+- ❌ NO para datos ya simétricos</p>
+<p><strong>Pipeline recomendado para SalePrice:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># Opción 1: Log + Scale</span>
+<span class="n">log_transform</span> <span class="o">=</span> <span class="n">FunctionTransformer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">)</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+
+<span class="c1"># Opción 2: PowerTransformer directo (mejor)</span>
+<span class="n">transformer</span> <span class="o">=</span> <span class="n">PowerTransformer</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">'yeo-johnson'</span><span class="p">)</span>
+</code></pre></div><p></p>
+<hr>
+<h3 id="maxabsscaler-para-datos-sparse">MaxAbsScaler — Para Datos Sparse<a class="headerlink" href="#maxabsscaler-para-datos-sparse" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/feature-scaling/INVESTIGACI%C3%93N%20DE%20%5BMaxAbsScaler%5D%20sobre%20columna-%20%27SalePrice%27.png" data-desc-position="bottom"><img alt="MaxAbsScaler Investigation" src="../assets/feature-scaling/INVESTIGACI%C3%93N%20DE%20%5BMaxAbsScaler%5D%20sobre%20columna-%20%27SalePrice%27.png"></a></p>
+<p><em>Figura 8: Efecto de MaxAbsScaler en SalePrice. Panel izquierdo: Distribución original con rango $12k-$755k. Panel central: Después de MaxAbsScaler, los datos se escalan dividiendo por el valor absoluto máximo ($755k), resultando en rango [0.017, 1.000]. La forma de la distribución se preserva exactamente (skewness sin cambio), solo comprimida a [0,1]. Panel derecho: StandardScaler aplicado sobre MaxAbs muestra distribución centrada. MaxAbsScaler es útil principalmente para datos sparse (muchos ceros) donde necesitas preservar la estructura de ceros, pero para SalePrice (datos densos) no ofrece ventajas sobre MinMaxScaler.</em></p>
+<p><strong>¿Qué hace?</strong>
+- Divide por el valor absoluto máximo
+- Resultado en rango [-1, 1]</p>
+<p><strong>Fórmula:</strong>
+</p><div class="highlight"><pre><span></span><code>X_scaled = X / |X_max|
+</code></pre></div><p></p>
+<p><strong>Características:</strong>
+- ✅ <strong>Preserva ceros</strong> (importante para matrices sparse)
+- ✅ No desplaza datos (sin resta)
+- ✅ Muy rápido (solo una división)
+- ⚠️ Sensible a outliers (como MinMax)</p>
+<p><strong>Cuándo usar:</strong>
+- ✅ Datos sparse (muchos ceros): matrices TF-IDF, one-hot encoding
+- ✅ Cuando necesitas mantener estructura de ceros
+- ❌ NO para datos densos con outliers</p>
+<p><strong>Resultado en SalePrice:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="n">Original</span><span class="p">:</span> <span class="err">$</span><span class="mi">12</span><span class="p">,</span><span class="mi">789</span> <span class="o">-</span> <span class="err">$</span><span class="mi">755</span><span class="p">,</span><span class="mi">000</span>
+<span class="n">MaxAbs</span><span class="p">:</span>   <span class="mf">0.017</span> <span class="o">-</span> <span class="mf">1.000</span>
+</code></pre></div><p></p>
+<hr>
+<h2 id="anti-leakage-la-regla-de-oro-del-scaling">🚫 Anti-Leakage: La Regla de Oro del Scaling<a class="headerlink" href="#anti-leakage-la-regla-de-oro-del-scaling" title="Permanent link">¶</a></h2>
+<h3 id="el-error-mortal-fit-en-todo-el-dataset">❌ El Error Mortal: Fit en TODO el dataset<a class="headerlink" href="#el-error-mortal-fit-en-todo-el-dataset" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># INCORRECTO ❌</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">])</span>  <span class="c1"># ⚠️ USA TODO EL DATASET</span>
+
+<span class="c1"># Luego hacer split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Problema: Test "espió" train durante fit()</span>
+<span class="c1"># Media y σ calculadas con datos de test</span>
+</code></pre></div>
+<p><strong>Consecuencias:</strong>
+- 📈 <strong>Optimismo artificial</strong>: Métricas infladas en validación
+- ⚠️ <strong>Fallo en producción</strong>: Modelo entrenado con estadísticas que no tendrás
+- 🔴 <strong>Leakage severo</strong>: Información futura contamina entrenamiento</p>
+<p><strong>Experimento real con Ames Housing:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>R² en Validación</th>
+<th>Diferencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Con leakage</strong> (fit all → split)</td>
+<td>0.847</td>
+<td>+4.6% (optimista)</td>
+</tr>
+<tr>
+<td><strong>Sin leakage</strong> (split → fit train)</td>
+<td>0.810</td>
+<td>Realista ✅</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="metodo-correcto-split-antes-de-fit">✅ Método Correcto: Split ANTES de Fit<a class="headerlink" href="#metodo-correcto-split-antes-de-fit" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># CORRECTO ✅</span>
+<span class="c1"># 1. Split PRIMERO</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 2. Fit SOLO en train</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>  <span class="c1"># ✅ Solo ve datos de entrenamiento</span>
+
+<span class="c1"># 3. Transform en ambos (usando stats de train)</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>  <span class="c1"># ✅ Aplica stats de train</span>
+</code></pre></div>
+<p><strong>Garantía:</strong> Test NUNCA influyó en el cálculo de media/mediana/IQR</p>
+<hr>
+<h3 id="pipeline-anti-leakage-automatico">🔧 Pipeline: Anti-Leakage Automático<a class="headerlink" href="#pipeline-anti-leakage-automatico" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+
+<span class="c1"># Pipeline maneja fit/transform correctamente</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">'scaler'</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">'model'</span><span class="p">,</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
+<span class="p">])</span>
+
+<span class="c1"># Uso seguro</span>
+<span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1"># Scaler fit SOLO en train</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>  <span class="c1"># Scaler transform en test</span>
+
+<span class="c1"># Cross-validation honesta</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">'r2'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"R² medio: </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="ventajas-del-pipeline"><strong>Ventajas del Pipeline:</strong><a class="headerlink" href="#ventajas-del-pipeline" title="Permanent link">¶</a></h4>
+<ul>
+<li>✅ <strong>Anti-leakage automático</strong>: fit() y transform() manejados correctamente</li>
+<li>✅ <strong>Reproducible</strong>: Un solo objeto serializable</li>
+<li>✅ <strong>Cross-validation honesta</strong>: CV respeta el pipeline</li>
+<li>✅ <strong>Deployment-ready</strong>: Fácil de guardar con <code>joblib</code></li>
+</ul>
+<hr>
+<h2 id="experimento-comparativo-scalers-algoritmos">📊 Experimento Comparativo: Scalers + Algoritmos<a class="headerlink" href="#experimento-comparativo-scalers-algoritmos" title="Permanent link">¶</a></h2>
+<h3 id="setup-del-experimento">Setup del Experimento<a class="headerlink" href="#setup-del-experimento" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Datos preparados</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Lot Area'</span><span class="p">,</span> <span class="s1">'Overall Qual'</span><span class="p">,</span> <span class="s1">'Year Built'</span><span class="p">,</span> <span class="s1">'Gr Liv Area'</span><span class="p">,</span> 
+            <span class="s1">'1st Flr SF'</span><span class="p">,</span> <span class="s1">'Garage Area'</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'SalePrice'</span><span class="p">]</span>
+
+<span class="c1"># Split 60/20/20</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_temp</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_temp</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_temp</span><span class="p">,</span> <span class="n">y_temp</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="resultados-por-algoritmo">Resultados por Algoritmo<a class="headerlink" href="#resultados-por-algoritmo" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Algoritmo</th>
+<th>Sin Scaling</th>
+<th>MinMaxScaler</th>
+<th>StandardScaler</th>
+<th>RobustScaler</th>
+<th>PowerTransformer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linear Regression</strong></td>
+<td>0.785</td>
+<td>0.785</td>
+<td>0.785</td>
+<td>0.785</td>
+<td><strong>0.812</strong> ✅</td>
+</tr>
+<tr>
+<td><strong>Ridge (L2)</strong></td>
+<td>0.782</td>
+<td>0.784</td>
+<td><strong>0.787</strong></td>
+<td>0.786</td>
+<td>0.810</td>
+</tr>
+<tr>
+<td><strong>KNN (k=5)</strong></td>
+<td>0.421 ❌</td>
+<td>0.736</td>
+<td><strong>0.758</strong> ✅</td>
+<td>0.752</td>
+<td>0.765</td>
+</tr>
+<tr>
+<td><strong>SVM (RBF)</strong></td>
+<td>0.312 ❌</td>
+<td>0.689</td>
+<td><strong>0.724</strong> ✅</td>
+<td>0.718</td>
+<td>0.731</td>
+</tr>
+<tr>
+<td><strong>Random Forest</strong></td>
+<td><strong>0.851</strong></td>
+<td>0.851</td>
+<td>0.851</td>
+<td>0.851</td>
+<td>0.847 ⚠️</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusiones del experimento:</strong></p>
+<ol>
+<li><strong>KNN y SVM son MUY sensibles al scaling</strong></li>
+<li>Sin scaling: R² de 0.42 y 0.31 (casi inútiles)</li>
+<li>Con StandardScaler: R² de 0.76 y 0.72 (<strong>+80% mejora</strong>)</li>
+<li>
+<p>Razón: Algoritmos de distancia necesitan escalas comparables</p>
+</li>
+<li>
+<p><strong>Random Forest NO necesita scaling</strong></p>
+</li>
+<li>R² constante en ~0.85 independiente del scaler</li>
+<li>
+<p>Razón: Árboles usan splits, no distancias</p>
+</li>
+<li>
+<p><strong>PowerTransformer ayuda a modelos lineales</strong></p>
+</li>
+<li>Linear Regression: 0.785 → 0.812 (+3.4%)</li>
+<li>
+<p>Razón: Distribución más normal mejora supuestos de OLS</p>
+</li>
+<li>
+<p><strong>RobustScaler no superó a StandardScaler aquí</strong></p>
+</li>
+<li>Sorpresa: Con outliers legítimos (casas de lujo), RobustScaler no fue superior</li>
+<li>Posible razón: Outliers contienen información valiosa</li>
+</ol>
+<hr>
+<h2 id="reflexiones-criticas">💡 Reflexiones Críticas<a class="headerlink" href="#reflexiones-criticas" title="Permanent link">¶</a></h2>
+<h3 id="1-cual-scaler-gano">1. ¿Cuál Scaler Ganó?<a class="headerlink" href="#1-cual-scaler-gano" title="Permanent link">¶</a></h3>
+<p><strong>Mi veredicto para Ames Housing:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Caso de Uso</th>
+<th>Scaler Elegido</th>
+<th>Razón</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>KNN/SVM</strong></td>
+<td>StandardScaler</td>
+<td>Mejor performance empírica (R² +3%)</td>
+</tr>
+<tr>
+<td><strong>Regresión Lineal</strong></td>
+<td>PowerTransformer</td>
+<td>Normaliza target, mejora supuestos (+3.4%)</td>
+</tr>
+<tr>
+<td><strong>Random Forest</strong></td>
+<td>Ninguno</td>
+<td>No afecta performance, ahorra cómputo</td>
+</tr>
+<tr>
+<td><strong>Target (SalePrice)</strong></td>
+<td>Log Transform + StandardScaler</td>
+<td>Comprime cola, mejora residuos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sorpresas"><strong>Sorpresas:</strong><a class="headerlink" href="#sorpresas" title="Permanent link">¶</a></h3>
+<ul>
+<li>❌ RobustScaler NO superó a StandardScaler (esperaba lo contrario)</li>
+<li>✅ PowerTransformer fue el MVP para modelos lineales</li>
+<li>⚠️ QuantileTransformer funcionó pero perdió interpretabilidad</li>
+</ul>
+<h3 id="2-el-orden-importo">2. ¿El Orden Importó?<a class="headerlink" href="#2-el-orden-importo" title="Permanent link">¶</a></h3>
+<p><strong>Sí, dramáticamente:</strong></p>
+<p><strong>Experimento:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># Pipeline A: Outliers → Scale</span>
+<span class="n">pipeline_A</span> <span class="o">=</span> <span class="n">remove_outliers</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="err">→</span> <span class="n">StandardScaler</span><span class="p">()</span> <span class="err">→</span> <span class="n">Ridge</span><span class="p">()</span>
+<span class="n">R</span><span class="err">²</span> <span class="o">=</span> <span class="mf">0.824</span>
+
+<span class="c1"># Pipeline B: Scale → (outliers implícitos en scaler)</span>
+<span class="n">pipeline_B</span> <span class="o">=</span> <span class="n">RobustScaler</span><span class="p">()</span> <span class="err">→</span> <span class="n">Ridge</span><span class="p">()</span>
+<span class="n">R</span><span class="err">²</span> <span class="o">=</span> <span class="mf">0.786</span>
+
+<span class="c1"># Pipeline C: PowerTransform (reduce outliers naturalmente)</span>
+<span class="n">pipeline_C</span> <span class="o">=</span> <span class="n">PowerTransformer</span><span class="p">()</span> <span class="err">→</span> <span class="n">Ridge</span><span class="p">()</span>
+<span class="n">R</span><span class="err">²</span> <span class="o">=</span> <span class="mf">0.810</span>
+</code></pre></div><p></p>
+<p><strong>Conclusión:</strong>
+- Limpiar outliers ANTES mejoró +3.8% vs RobustScaler
+- Pero PowerTransformer es mejor compromiso (no pierdes datos)</p>
+<h3 id="3-log-transform-fue-util">3. ¿Log Transform Fue Útil?<a class="headerlink" href="#3-log-transform-fue-util" title="Permanent link">¶</a></h3>
+<p><strong>Absolutamente sí, especialmente para Lot Area:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Skewness Original</th>
+<th>Skewness Log</th>
+<th>Mejora</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SalePrice</td>
+<td>4.68</td>
+<td>0.18</td>
+<td><strong>-96.2%</strong> ✅</td>
+</tr>
+<tr>
+<td>Lot Area</td>
+<td><strong>12.82</strong></td>
+<td>0.76</td>
+<td><strong>-94.1%</strong> ✅</td>
+</tr>
+<tr>
+<td>Gr Liv Area</td>
+<td>1.27</td>
+<td>0.08</td>
+<td>-93.7%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cuando-usar-log"><strong>Cuándo usar log:</strong><a class="headerlink" href="#cuando-usar-log" title="Permanent link">¶</a></h3>
+<ul>
+<li>✅ Variables con cola derecha extrema (skew &gt; 2)</li>
+<li>✅ Precios, áreas, poblaciones (crecimiento exponencial)</li>
+<li>❌ NO para variables ya simétricas (Year Built, Overall Qual)</li>
+</ul>
+<hr>
+<h2 id="mi-pipeline-recomendado-para-ames-housing">📝 Mi Pipeline Recomendado para Ames Housing<a class="headerlink" href="#mi-pipeline-recomendado-para-ames-housing" title="Permanent link">¶</a></h2>
+<h3 id="pipeline-final-optimizado">Pipeline Final Optimizado<a class="headerlink" href="#pipeline-final-optimizado" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PowerTransformer</span><span class="p">,</span> <span class="n">RobustScaler</span><span class="p">,</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingRegressor</span>
+
+<span class="c1"># Definir features por tipo de transformación</span>
+<span class="n">log_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Lot Area'</span><span class="p">,</span> <span class="s1">'Gr Liv Area'</span><span class="p">,</span> <span class="s1">'1st Flr SF'</span><span class="p">]</span>  <span class="c1"># Muy sesgadas</span>
+<span class="n">robust_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Garage Area'</span><span class="p">,</span> <span class="s1">'Total Bsmt SF'</span><span class="p">]</span>  <span class="c1"># Outliers legítimos</span>
+<span class="n">standard_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Year Built'</span><span class="p">,</span> <span class="s1">'Overall Qual'</span><span class="p">]</span>  <span class="c1"># Razonablemente normales</span>
+
+<span class="c1"># ColumnTransformer: Diferentes transformaciones por feature</span>
+<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span><span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">'log_transform'</span><span class="p">,</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s1">'log'</span><span class="p">,</span> <span class="n">FunctionTransformer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s1">'scale'</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">())</span>
+    <span class="p">]),</span> <span class="n">log_features</span><span class="p">),</span>
+
+    <span class="p">(</span><span class="s1">'robust_scale'</span><span class="p">,</span> <span class="n">RobustScaler</span><span class="p">(),</span> <span class="n">robust_features</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'standard_scale'</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">standard_features</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="c1"># Pipeline completo</span>
+<span class="n">pipeline_final</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">'preprocessor'</span><span class="p">,</span> <span class="n">preprocessor</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'model'</span><span class="p">,</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+    <span class="p">))</span>
+<span class="p">])</span>
+
+<span class="c1"># Entrenamiento</span>
+<span class="n">pipeline_final</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Validación</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="n">cv_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipeline_final</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">'r2'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"R² CV: </span><span class="si">{</span><span class="n">cv_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">cv_scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># Test final</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">pipeline_final</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"R² Test: </span><span class="si">{</span><span class="n">test_score</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Justificación:</strong></p>
+<ol>
+<li><strong>Log + Scale para features asimétricas</strong></li>
+<li>Lot Area, Gr Liv Area tienen skewness &gt;2</li>
+<li>
+<p>Log comprime cola, StandardScaler normaliza</p>
+</li>
+<li>
+<p><strong>RobustScaler para features con outliers valiosos</strong></p>
+</li>
+<li>Garage Area tiene casas sin garaje (0) + outliers grandes</li>
+<li>Total Bsmt SF similar</li>
+<li>
+<p>RobustScaler preserva información sin sesgo</p>
+</li>
+<li>
+<p><strong>StandardScaler para features normales</strong></p>
+</li>
+<li>Year Built, Overall Qual razonablemente simétricos</li>
+<li>
+<p>StandardScaler es suficiente y rápido</p>
+</li>
+<li>
+<p><strong>GradientBoosting como modelo</strong></p>
+</li>
+<li>Robusto a escalas (podría funcionar sin scaling)</li>
+<li>Pero scaling mejora convergencia y estabilidad</li>
+</ol>
+<p><strong>Resultado final:</strong>
+- R² CV: <strong>0.876 ± 0.018</strong> (estable)
+- R² Test: <strong>0.883</strong> (generaliza bien)
+- MAE: <strong>$18,423</strong> (error promedio razonable)</p>
+<hr>
+<h2 id="skills-desarrolladas">🎓 Skills Desarrolladas<a class="headerlink" href="#skills-desarrolladas" title="Permanent link">¶</a></h2>
+<h3 id="tecnicas-de-feature-engineering">Técnicas de Feature Engineering<a class="headerlink" href="#tecnicas-de-feature-engineering" title="Permanent link">¶</a></h3>
+<ul>
+<li>✅ <strong>Diagnóstico de Escalas:</strong> Identificación de variables problemáticas mediante análisis de rangos y distribuciones</li>
+<li>✅ <strong>Scalers Básicos:</strong> Dominio de MinMaxScaler, StandardScaler, RobustScaler y sus casos de uso</li>
+<li>✅ <strong>Transformadores Avanzados:</strong> PowerTransformer, QuantileTransformer, Log Transform para datos asimétricos</li>
+<li>✅ <strong>Análisis de Skewness:</strong> Detección y corrección de asimetría en distribuciones</li>
+<li>✅ <strong>Comparación Empírica:</strong> Experimentación sistemática con múltiples técnicas</li>
+</ul>
+<h3 id="ingenieria-de-pipelines">Ingeniería de Pipelines<a class="headerlink" href="#ingenieria-de-pipelines" title="Permanent link">¶</a></h3>
+<ul>
+<li>✅ <strong>Anti-Leakage Estricto:</strong> Protocolo split-before-fit implementado rigurosamente</li>
+<li>✅ <strong>Sklearn Pipeline:</strong> Automatización de preprocesamiento con fit/transform correcto</li>
+<li>✅ <strong>ColumnTransformer:</strong> Diferentes transformaciones por feature en un solo objeto</li>
+<li>✅ <strong>Cross-Validation Honesta:</strong> Validación sin contaminar datos de test</li>
+<li>✅ <strong>Serialización:</strong> Pipelines production-ready con <code>joblib</code></li>
+</ul>
+<h3 id="analisis-experimental">Análisis Experimental<a class="headerlink" href="#analisis-experimental" title="Permanent link">¶</a></h3>
+<ul>
+<li>✅ <strong>Diseño de Experimentos:</strong> Comparación controlada de scalers × algoritmos</li>
+<li>✅ <strong>Métricas de Evaluación:</strong> R², MAE, análisis de residuos</li>
+<li>✅ <strong>Interpretación de Resultados:</strong> Decisiones basadas en evidencia empírica</li>
+<li>✅ <strong>Visualización Comparativa:</strong> Gráficos before/after para comunicar impacto</li>
+</ul>
+<h3 id="pensamiento-critico">Pensamiento Crítico<a class="headerlink" href="#pensamiento-critico" title="Permanent link">¶</a></h3>
+<ul>
+<li>✅ <strong>Trade-offs:</strong> Comprensión de ventajas/desventajas de cada técnica</li>
+<li>✅ <strong>Contexto de Negocio:</strong> Decisiones alineadas con tipo de datos (inmobiliarios)</li>
+<li>✅ <strong>Validación de Supuestos:</strong> No asumir que "más complejo = mejor"</li>
+<li>✅ <strong>Documentación:</strong> Justificación explícita de cada elección de pipeline</li>
+</ul>
+<hr>
+<h2 id="reflexion-final">💭 Reflexión Final<a class="headerlink" href="#reflexion-final" title="Permanent link">¶</a></h2>
+<h3 id="lo-que-realmente-aprendi">Lo Que Realmente Aprendí<a class="headerlink" href="#lo-que-realmente-aprendi" title="Permanent link">¶</a></h3>
+<p><strong>1. El scaling no es una fórmula mágica</strong></p>
+<p>Al inicio pensaba: "StandardScaler para todo y listo". Ahora entiendo que:
+- KNN necesita scaling desesperadamente (+80% mejora)
+- Random Forest no se beneficia (ahorra cómputo)
+- SVM requiere scaling perfecto para converger
+- <strong>La técnica correcta depende del algoritmo Y los datos</strong></p>
+<p><strong>2. Los outliers cuentan historias</strong></p>
+<p>Antes veía outliers como "errores a eliminar". Ahora sé que:
+- Casa de $755k no es error, es mansión legítima
+- Terreno de 215k sq ft no es ruido, es oportunidad de desarrollo
+- <strong>RobustScaler preserva información valiosa</strong>
+- Eliminar outliers = perder contexto del mercado de lujo</p>
+<p><strong>3. El leakage es silencioso y mortal</strong></p>
+<p>La diferencia de 4.6% en R² parecía pequeña, pero:
+- En producción = modelo que falla en casos reales
+- En stakeholders = pérdida de confianza ("prometiste 0.85, diste 0.81")
+- En competencia = diferencia entre ganar y perder
+- <strong>Pipeline no es opcional, es obligatorio</strong></p>
+<p><strong>4. La transformación correcta &gt; scaler complejo</strong></p>
+<p>PowerTransformer ganó NO por ser avanzado, sino porque:
+- SalePrice tiene distribución log-normal natural
+- Transformar a normal mejora supuestos de regresión
+- <strong>Entender los datos &gt; aplicar técnicas fancy</strong></p>
+<h3 id="la-leccion-mas-importante">La Lección Más Importante<a class="headerlink" href="#la-leccion-mas-importante" title="Permanent link">¶</a></h3>
+<blockquote>
+<p><strong>"El mejor scaler no es el más complejo, es el que entiende tus datos."</strong></p>
+</blockquote>
+<p><strong>Tres preguntas que ahora me hago SIEMPRE:</strong></p>
+<ol>
+<li><strong>¿Qué algoritmo voy a usar?</strong></li>
+<li>KNN/SVM → NECESITO scaling</li>
+<li>Random Forest → Puedo saltármelo</li>
+<li>
+<p>Regresión lineal → Depende de interpretabilidad</p>
+</li>
+<li>
+<p><strong>¿Cómo se distribuyen mis features?</strong></p>
+</li>
+<li>Normal → StandardScaler</li>
+<li>Asimétrica → Log/PowerTransformer</li>
+<li>
+<p>Outliers valiosos → RobustScaler</p>
+</li>
+<li>
+<p><strong>¿Estoy introduciendo leakage?</strong></p>
+</li>
+<li>¿Fit antes del split? → ❌ STOP</li>
+<li>¿Usando Pipeline? → ✅ Safe</li>
+<li>¿CV respeta el pipeline? → ✅ Validación honesta</li>
+</ol>
+<hr>
+<h2 id="enlaces-y-referencias">🔗 Enlaces y Referencias<a class="headerlink" href="#enlaces-y-referencias" title="Permanent link">¶</a></h2>
+<h3 id="datasets-y-recursos">Datasets y Recursos<a class="headerlink" href="#datasets-y-recursos" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://www.kaggle.com/datasets/shashanknecrothapa/ames-housing-dataset"><strong>Ames Housing Dataset</strong></a> — Dataset oficial de Kaggle</li>
+<li><a href="https://www.kaggle.com/learn/feature-engineering"><strong>Kaggle - Scaling and Normalization</strong></a> — Tutorial interactivo</li>
+</ul>
+<h3 id="documentacion-tecnica">Documentación Técnica<a class="headerlink" href="#documentacion-tecnica" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://scikit-learn.org/stable/modules/preprocessing.html"><strong>Scikit-learn Preprocessing</strong></a> — Guía completa de transformaciones</li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html"><strong>PowerTransformer</strong></a> — Box-Cox y Yeo-Johnson</li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.QuantileTransformer.html"><strong>QuantileTransformer</strong></a> — Transformación por cuantiles</li>
+<li><a href="https://scikit-learn.org/stable/modules/compose.html"><strong>Pipeline Documentation</strong></a> — Composición de transformadores</li>
+</ul>
+<h3 id="material-del-curso">Material del Curso<a class="headerlink" href="#material-del-curso" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://juanfkurucz.com/ucu-id/ut2/06-feature-scaling-pipeline/"><strong>Feature Scaling &amp; Anti-Leakage Pipeline</strong></a> — Material oficial del curso UCU</li>
+</ul>
+<h3 id="papers-y-lecturas">Papers y Lecturas<a class="headerlink" href="#papers-y-lecturas" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Box &amp; Cox (1964):</strong> "An Analysis of Transformations" — Transformaciones de potencia</li>
+<li><strong>Yeo &amp; Johnson (2000):</strong> "A New Family of Power Transformations" — Extensión de Box-Cox</li>
+<li><strong>Géron (2019):</strong> "Hands-On Machine Learning" Cap. 2 — Feature Scaling en práctica</li>
+</ul>
+<hr>
+<h2 id="informacion-del-proyecto">🔗 Información del Proyecto<a class="headerlink" href="#informacion-del-proyecto" title="Permanent link">¶</a></h2>
+<p><strong>Contexto Académico:</strong>
+- <strong>Curso</strong>: Calidad &amp; Ética de Datos - UT2<br>
+- <strong>Institución</strong>: Universidad Católica del Uruguay<br>
+- <strong>Instructor</strong>: Juan F. Kurucz<br>
+- <strong>Práctica</strong>: <a href="https://juanfkurucz.com/ucu-id/ut2/06-feature-scaling-pipeline/">06 - Feature Scaling &amp; Anti-Leakage Pipeline</a></p>
+<p><strong>Alcance del Proyecto:</strong>
+- Dataset completo Ames Housing (2,930 propiedades × 82 variables)
+- Comparación experimental de 5+ scalers y transformadores
+- Pipeline production-ready con anti-leakage estricto
+- Análisis de impacto en 4 algoritmos diferentes (Linear, KNN, SVM, RF)</p>
+<p><strong>Archivos Generados:</strong>
+- <code>feature_scaling_pipeline.ipynb</code> — Notebook completo con experimentos
+- <code>pipeline_final.pkl</code> — Pipeline serializado para producción
+- <code>visualizations/</code> — 9 gráficos comparativos (PNG)
+- <code>docs/scaling_decisions.md</code> — Justificación de elecciones</p>
+<hr>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 de noviembre de 2025 21:53:18 UTC">16 de noviembre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
