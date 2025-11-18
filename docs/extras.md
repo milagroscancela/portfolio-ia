@@ -40,15 +40,31 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 
 **Enfoque:** Análisis exploratorio completo aplicando técnicas EDA para identificar correlaciones entre patrones de uso de redes sociales y problemas de salud mental en jóvenes. Se investigaron diferencias por plataforma, grupos de edad y tiempo de exposición.
 
-**🎯 Objetivos:** Investigar correlaciones entre tiempo en redes sociales y salud mental | Identificar plataformas con mayor impacto | Detectar grupos de riesgo | Visualizar tendencias demográficas
+#### 🎯 Objetivos del Análisis
 
-**🔍 Hallazgos Clave:**
-- ✅ Correlaciones significativas entre uso intensivo y problemas de salud mental
-- ✅ Patrones diferenciados por plataforma: Instagram y TikTok muestran mayor impacto
-- ✅ Grupos de alto riesgo: Usuarios con >5 horas/día de exposición
-- ✅ Diferencias demográficas: Jóvenes 18-24 años más vulnerables
+- **Investigar** correlaciones entre tiempo en redes sociales y salud mental
+- **Identificar** plataformas con mayor impacto en bienestar psicológico
+- **Detectar** grupos de riesgo según patrones de uso
+- **Visualizar** tendencias y distribuciones demográficas
+- **Extraer** insights accionables sobre comportamiento digital
 
-**💻 Stack Tecnológico:**
+#### 📈 Aspectos Técnicos
+
+- **Análisis de correlaciones** entre variables continuas (tiempo de uso, scores de salud)
+- **Distribuciones demográficas** por edad, género y ocupación
+- **Comparaciones por plataforma** (Instagram, TikTok, Facebook, etc.)
+- **Identificación de outliers** en tiempo de uso extremo
+- **Visualizaciones avanzadas** con Seaborn y Matplotlib
+
+#### 🔍 Hallazgos Clave
+
+- ✅ Identificación de **correlaciones significativas** entre uso intensivo y problemas de salud mental
+- ✅ **Patrones diferenciados por plataforma**: Instagram y TikTok muestran mayor impacto
+- ✅ **Grupos de alto riesgo**: Usuarios con >5 horas/día de exposición
+- ✅ **Diferencias demográficas**: Jóvenes 18-24 años más vulnerables
+- ✅ **Insights para intervención**: Recomendaciones de uso saludable
+
+#### 💻 Stack Tecnológico
 
 <span class="skill-badge">Python 3.8+</span>
 <span class="skill-badge">Pandas</span>
@@ -59,7 +75,7 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 <span class="skill-badge">EDA</span>
 <span class="skill-badge">Kaggle Hub</span>
 
-**🔗 Recursos:**
+#### 🔗 Recursos
 
 **[📄 Ver Reporte Completo →](portfolio/extra-social-media.md)**  
 **[📓 Descargar Notebook →](portfolio/assets/social-media/Practica03_Social_Media_Mental_Health.ipynb)**
@@ -74,25 +90,47 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 
 **Dataset:** Credit Card Approval Dataset (Kaggle) - 438,857 solicitudes de crédito con datos demográficos (género, edad, nivel educativo, estado civil) y financieros (ingresos, empleo, historial crediticio). Dataset con desbalance significativo: 68% mujeres vs 32% hombres.
 
-**Enfoque:** Análisis ético de sistemas de aprobación de crédito aplicando técnicas de **fairness audit** con Fairlearn. Se detectó sesgo demográfico, se cuantificaron disparidades con métricas estándar (DPD, DPR, EOD) y se experimentó con mitigación usando ExponentiatedGradient.
+**Enfoque:** Análisis ético de sistemas de aprobación de crédito aplicando técnicas de **fairness audit** con Fairlearn. Se detectó sesgo demográfico, se cuantificaron disparidades con métricas estándar (DPD, DPR, EOD) y se experimentó con mitigación usando ExponentiatedGradient. Se comenzó con modelo baseline para establecer línea base, pero se descubrió sesgo significativo por género que requirió análisis profundo.
 
-**🎯 Objetivos:** Detectar sesgo demográfico | Cuantificar disparidades con métricas de fairness | Evaluar impacto en precisión del modelo | Experimentar con mitigación | Analizar trade-offs accuracy vs fairness
+#### 🎯 Objetivos del Análisis
 
-**🚨 Hallazgos Críticos:**
+- **Detectar** sesgo demográfico en decisiones de aprobación de crédito
+- **Cuantificar** disparidades entre grupos protegidos con métricas de fairness
+- **Evaluar** impacto del sesgo en precisión del modelo (accuracy, precision, recall)
+- **Experimentar** con técnicas de mitigación (ExponentiatedGradient + DemographicParity)
+- **Analizar** trade-offs entre accuracy y fairness en contexto regulatorio
 
-**Modelo Baseline:**
-- 🚨 Brecha de accuracy: 8.6 puntos (H: 89.9% vs M: 81.3%)
-- ⚠️ Brecha de selection rate: 5.1 puntos (H: 82.6% vs M: 77.5%)
-- 📊 DPD: 0.051 (límite aceptabilidad <0.05)
+#### 📈 Aspectos Técnicos
 
-**Modelo Mitigado:**
-- ✅ Fairness perfecta: DPD ≈ 0.00
-- ⚠️ Pérdida de accuracy: 85% → 70% (inaceptable)
-- 🚫 Overcompensation: Selection rate = 100% (no viable)
+- **Modelo baseline** sin correcciones: Random Forest (n_estimators=100, max_depth=10)
+- **Métricas de fairness**: Demographic Parity Difference (DPD), Demographic Parity Ratio (DPR), Equalized Odds Difference (EOD)
+- **Mitigación de sesgo**: ExponentiatedGradient con constraint DemographicParity
+- **Análisis de grupos protegidos**: Gender (F/M), Education Level (5 categorías)
+- **Marco regulatorio**: ECOA, Fair Lending Laws, EU AI Act, GDPR
 
-**💡 Lección Clave:** Trade-off inevitable entre fairness perfecta y alta accuracy cuando grupos tienen distribuciones diferentes.
+#### 🚨 Hallazgos Críticos
 
-**💻 Stack Tecnológico:**
+**Modelo Baseline (sin corrección):**
+- 🚨 **Brecha de accuracy**: 8.6 puntos porcentuales (H: 89.9% vs M: 81.3%)
+- ⚠️ **Brecha de selection rate**: 5.1 puntos porcentuales (H: 82.6% vs M: 77.5%)
+- 📊 **DPD (Demographic Parity Difference)**: 0.051 (justo en límite de aceptabilidad <0.05)
+- 📉 **Implicación legal**: Potencial violación de ECOA si no se justifica
+
+**Modelo Mitigado (con Fairlearn):**
+- ✅ **Fairness perfecta alcanzada**: DPD ≈ 0.00 (paridad demográfica lograda)
+- ✅ **Reducción de sesgo**: 100% de mejora en DPD
+- ⚠️ **Pérdida de accuracy**: 85% → 70% (caída de 17%, inaceptable para negocio)
+- 🚫 **Overcompensation detectada**: Selection rate = 100% (modelo aprueba a todos, no viable)
+
+#### 💡 Lecciones Aprendidas Sobre Trade-offs
+
+1. **Trade-off inevitable**: No es posible lograr fairness perfecta Y alta accuracy cuando los grupos tienen distribuciones reales diferentes
+2. **Overcompensation es real**: Constraints demasiado estrictas (DemographicParity absoluta) pueden romper completamente los modelos
+3. **Context matters**: La definición de "fairness" depende del dominio (crédito vs contratación vs justicia)
+4. **Auditoría continua necesaria**: El sesgo puede emerger con data drift incluso en modelos inicialmente justos
+5. **Solución pragmática**: Usar modelo baseline con monitoreo estricto + revisión humana + proceso de apelación
+
+#### 💻 Stack Tecnológico
 
 <span class="skill-badge">Fairlearn 0.10+</span>
 <span class="skill-badge">Scikit-learn 1.3+</span>
@@ -105,15 +143,24 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 <span class="skill-badge">Compliance Legal</span>
 <span class="skill-badge">Kaggle Hub</span>
 
-**📊 Visualizaciones:**
+#### ⚖️ Marco Legal y Regulatorio
 
-![Distribución de Aprobaciones](portfolio/assets/credit-card/distribucion-aprobaciones-y-prop-de-clases.png)
+- **ECOA (USA)**: Equal Credit Opportunity Act - Prohíbe discriminación en crédito por raza, sexo, edad, estado civil
+- **Fair Lending Laws**: Regulación federal de prácticas justas en préstamos hipotecarios y de consumo
+- **EU AI Act**: Clasificación de sistemas de crédito como "alto riesgo" que requieren auditorías obligatorias
+- **GDPR (EU)**: Derecho a explicación de decisiones automatizadas (Art. 22) - Transparencia algorítmica
 
-![Análisis de Fairness](portfolio/assets/credit-card/analisi-fairlearn-por-code-gender.png)
+#### 📊 Visualizaciones Generadas
 
-![Comparación Modelos](portfolio/assets/credit-card/comparacion-modelo-baseline-y-modelo-mitigado.png)
+![Distribución de Aprobaciones por Estado Civil](portfolio/assets/credit-card/distribucion-aprobaciones-y-prop-de-clases.png)
 
-**🔗 Recursos:**
+![Variables Demográficas de Grupos Protegidos](portfolio/assets/credit-card/variables-demograficas-grupos-protegidos.png)
+
+![Análisis de Fairness por Género](portfolio/assets/credit-card/analisi-fairlearn-por-code-gender.png)
+
+![Comparación Modelo Baseline vs Mitigado](portfolio/assets/credit-card/comparacion-modelo-baseline-y-modelo-mitigado.png)
+
+#### 🔗 Recursos
 
 **[📄 Ver Reporte Completo →](portfolio/extra-credit-card.md)**  
 **[📓 Descargar Notebook →](portfolio/assets/credit-card/Practica_Extra_UT2_Credit_Fairness.ipynb)**
@@ -121,3 +168,63 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 </div>
 
 ---
+
+## 🎓 Relación con el Curso
+
+Estas exploraciones se alinean directamente con las unidades temáticas del curso de **Ingeniería de Datos** de la Universidad Católica del Uruguay:
+
+| Exploración | Unidad Relacionada | Temas Aplicados | Habilidades Demostradas |
+|-------------|-------------------|-----------------|------------------------|
+| **Social Media & Mental Health** | UT1 - Análisis Exploratorio | EDA, Visualización, Estadística Descriptiva, Correlaciones, Detección de Outliers | Análisis de datos, storytelling con visualizaciones, interpretación estadística |
+| **Credit Card Fairness** | UT2 - Calidad & Ética | Fairness Audit, Bias Detection, Ethical AI, Regulatory Compliance, Trade-off Analysis | Machine Learning ético, métricas de fairness, conocimiento regulatorio, pensamiento crítico |
+
+---
+
+## 📚 Habilidades Técnicas Consolidadas
+
+### Análisis de Datos
+
+- ✅ **EDA exhaustivo**: Análisis exploratorio completo con múltiples visualizaciones
+- ✅ **Estadística descriptiva e inferencial**: Medidas de tendencia central, dispersión, correlaciones
+- ✅ **Detección de patrones**: Identificación de tendencias, outliers, anomalías
+- ✅ **Manejo de grandes volúmenes**: Procesamiento eficiente de 440K+ registros
+- ✅ **Interpretación contextual**: Traducción de resultados técnicos a insights de negocio
+
+### Machine Learning Ético
+
+- ⚖️ **Auditoría de fairness**: Cálculo de métricas DPD, DPR, EOD, TPR, FPR
+- ⚖️ **Detección de sesgo**: Identificación de disparidades por grupos protegidos
+- ⚖️ **Mitigación de sesgo**: Aplicación de ExponentiatedGradient, DemographicParity
+- ⚖️ **Análisis de trade-offs**: Evaluación crítica accuracy vs fairness
+- ⚖️ **Conocimiento regulatorio**: ECOA, Fair Lending, EU AI Act, GDPR
+- ⚖️ **Evaluación ética**: Consideración de implicaciones sociales y legales
+
+---
+
+## 🔗 Navegación
+
+[← Volver a Inicio](index.md) | [Ver UT1 →](ut1-apuntes.md) | [Ver UT2 →](ut2-apuntes.md) | [Ver Proyectos →](portfolio/index.md)
+
+---
+
+## 📅 Información del Proyecto
+
+> **Fecha de realización:** Noviembre 2025  
+> **Autora:** Milagros Cancela  
+> **Institución:** Universidad Católica del Uruguay  
+> **Curso:** Ingeniería de Datos  
+> **Profesor:** Juan F. Kurucz
+
+---
+
+<div align="center">
+
+**💡 "El aprendizaje va más allá de las prácticas obligatorias"**
+
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org)
+[![Pandas](https://img.shields.io/badge/pandas-2.0+-150458.svg?style=flat-square&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![Scikit-learn](https://img.shields.io/badge/scikit--learn-1.3+-F7931E.svg?style=flat-square&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+[![Fairlearn](https://img.shields.io/badge/Fairlearn-0.10+-green.svg?style=flat-square)](https://fairlearn.org/)
+[![Kaggle](https://img.shields.io/badge/Kaggle-Datasets-20BEFF.svg?style=flat-square&logo=kaggle&logoColor=white)](https://www.kaggle.com/)
+
+</div>
