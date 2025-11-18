@@ -3,6 +3,10 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Portfolio académico de Ingeniería en Inteligencia Artificial y Ciencia de Datos - Milagros Cancela">
+      
+      
+        <meta name="author" content="Milagros Cancela">
       
       
       
@@ -17,11 +21,14 @@
     
     
       
-        <title>🔍 De 79 Features a Lo Esencial: PCA y Feature Selection en el Mercado Inmobiliario - Portfolio</title>
+        <title>🔍 De 79 Features a Lo Esencial: PCA y Feature Selection en el Mercado Inmobiliario - 🧠 Portfolio: Ing en IA y CD</title>
       
     
     
       <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -39,6 +46,8 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../../css/extra.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -60,7 +69,14 @@
         </style></head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -83,12 +99,12 @@
 
   
 
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="../.." title="Portfolio" class="md-header__button md-logo" aria-label="Portfolio" data-md-component="logo">
+    <a href="../.." title="🧠 Portfolio: Ing en IA y CD" class="md-header__button md-logo" aria-label="🧠 Portfolio: Ing en IA y CD" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -99,7 +115,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Portfolio
+            🧠 Portfolio: Ing en IA y CD
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -111,6 +127,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="deep-purple" aria-label="Cambiar a modo oscuro" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="deep-purple" aria-label="Cambiar a modo claro" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -142,6 +184,8 @@
         </button>
       </nav>
       
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
@@ -160,13 +204,155 @@
     
   </nav>
   
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../acerca/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Acerca de mí
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Portfolio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../recursos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Recursos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../extras/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Exploraciones Extra
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../visualizaciones/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Visualizaciones
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../apuntes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Apuntes
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
-        
-          
         
       
       <main class="md-main" data-md-component="main">
@@ -180,16 +366,18 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Portfolio" class="md-nav__button md-logo" aria-label="Portfolio" data-md-component="logo">
+    <a href="../.." title="🧠 Portfolio: Ing en IA y CD" class="md-nav__button md-logo" aria-label="🧠 Portfolio: Ing en IA y CD" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"></path></svg>
 
     </a>
-    Portfolio
+    🧠 Portfolio: Ing en IA y CD
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -361,7 +549,9 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="En esta página">
   
   
   
@@ -370,7 +560,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
+      En esta página
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -926,7 +1116,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Dataset</strong></td>
-<td style="text-align: left;">Ames Housing - 2,919 casas en Iowa, $\sim$180k precio promedio</td>
+<td style="text-align: left;">Ames Housing - 2,919 casas en Iowa, <span class="arithmatex">\(\sim\)</span>180k precio promedio</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Técnicas</strong></td>
@@ -941,56 +1131,56 @@
 <hr>
 <h2 id="metodologia-dos-filosofias-de-reduccion">📘 Metodología: Dos Filosofías de Reducción<a class="headerlink" href="#metodologia-dos-filosofias-de-reduccion" title="Permanent link">¶</a></h2>
 <h3 id="pca-vs-feature-selection">PCA vs Feature Selection<a class="headerlink" href="#pca-vs-feature-selection" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────┐
-│  PCA (Principal Component Analysis)        │
-├─────────────────────────────────────────────┤
-│                                             │
-│  🔄 TRANSFORMACIÓN                         │
-│     • Crea NUEVAS variables (PC1, PC2...)  │
-│     • Combinaciones lineales de originales │
-│     • Ejemplo: PC1 = 0.5*GrLivArea +       │
-│               0.3*OverallQual + ...        │
-│                                             │
-│  ✅ VENTAJAS:                              │
-│     • Captura máxima varianza posible      │
-│     • Decorrelaciona features              │
-│     • Óptimo matemáticamente               │
-│                                             │
-│  ❌ DESVENTAJAS:                           │
-│     • NO interpretable (¿qué es PC1?)      │
-│     • Pierde conexión con features reales  │
-│     • Difícil explicar a stakeholders      │
-│                                             │
-└─────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────┐
-│  FEATURE SELECTION                          │
-├─────────────────────────────────────────────┤
-│                                             │
-│  ✂️ SELECCIÓN                              │
-│     • Mantiene variables ORIGINALES        │
-│     • Ejemplo: Selecciona GrLivArea,       │
-│               OverallQual, YearBuilt       │
-│                                             │
-│  ✅ VENTAJAS:                              │
-│     • Interpretable ("GrLivArea importa")  │
-│     • Features conocidas por el negocio    │
-│     • Facilita monitoreo y mantenimiento   │
-│                                             │
-│  ❌ DESVENTAJAS:                           │
-│     • Puede descartar información útil     │
-│     • Features correlacionadas problemáticas│
-│     • No siempre óptimo matemáticamente    │
-│                                             │
-└─────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│  PCA (Principal Component Analysis)        │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├─────────────────────────────────────────────┤
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│                                             │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  🔄 TRANSFORMACIÓN                         │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│     • Crea NUEVAS variables (PC1, PC2...)  │
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│     • Combinaciones lineales de originales │
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│     • Ejemplo: PC1 = 0.5*GrLivArea +       │
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│               0.3*OverallQual + ...        │
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│                                             │
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│  ✅ VENTAJAS:                              │
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│     • Captura máxima varianza posible      │
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│     • Decorrelaciona features              │
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│     • Óptimo matemáticamente               │
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│                                             │
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│  ❌ DESVENTAJAS:                           │
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│     • NO interpretable (¿qué es PC1?)      │
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│     • Pierde conexión con features reales  │
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│     • Difícil explicar a stakeholders      │
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│                                             │
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>└─────────────────────────────────────────────┘
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>┌─────────────────────────────────────────────┐
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>│  FEATURE SELECTION                          │
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>├─────────────────────────────────────────────┤
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>│                                             │
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>│  ✂️ SELECCIÓN                              │
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>│     • Mantiene variables ORIGINALES        │
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>│     • Ejemplo: Selecciona GrLivArea,       │
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>│               OverallQual, YearBuilt       │
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>│                                             │
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>│  ✅ VENTAJAS:                              │
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>│     • Interpretable ("GrLivArea importa")  │
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>│     • Features conocidas por el negocio    │
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>│     • Facilita monitoreo y mantenimiento   │
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>│                                             │
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>│  ❌ DESVENTAJAS:                           │
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>│     • Puede descartar información útil     │
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>│     • Features correlacionadas problemáticas│
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>│     • No siempre óptimo matemáticamente    │
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>│                                             │
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>└─────────────────────────────────────────────┘
+</span></code></pre></div>
 <hr>
 <h2 id="dataset-ames-housing">📊 Dataset: Ames Housing<a class="headerlink" href="#dataset-ames-housing" title="Permanent link">¶</a></h2>
 <h3 id="caracteristicas-principales">Características Principales<a class="headerlink" href="#caracteristicas-principales" title="Permanent link">¶</a></h3>
 <p><strong>Contexto:</strong>
 - 2,919 casas vendidas en Ames, Iowa (2006-2010)
 - 79 features: dimensiones, calidad, temporales, categóricas
-- Target: <code>SalePrice</code> ($\sim$180k promedio)</p>
+- Target: <code>SalePrice</code> (<span class="arithmatex">\(\sim\)</span>180k promedio)</p>
 <p><strong>Distribución de variables:</strong></p>
 <table>
 <thead>
@@ -1031,21 +1221,21 @@
 <h2 id="parte-1-pca-analisis-de-componentes-principales">🔄 Parte 1: PCA - Análisis de Componentes Principales<a class="headerlink" href="#parte-1-pca-analisis-de-componentes-principales" title="Permanent link">¶</a></h2>
 <h3 id="11-estandarizacion-critica">1.1. Estandarización Crítica<a class="headerlink" href="#11-estandarizacion-critica" title="Permanent link">¶</a></h3>
 <p><strong>¿Por qué estandarizar SIEMPRE antes de PCA?</strong>
-</p><div class="highlight"><pre><span></span><code><span class="c1"># ANTES de estandarizar</span>
-<span class="n">GrLivArea</span><span class="p">:</span> <span class="n">mean</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">515</span> <span class="n">pies</span><span class="err">²</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mi">525</span>
-<span class="n">LotArea</span><span class="p">:</span>   <span class="n">mean</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="mi">148</span> <span class="n">pies</span><span class="err">²</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="mi">887</span>
-
-<span class="c1"># PCA sin estandarizar → LotArea dominaría PC1 por su escala</span>
-<span class="c1"># Todas las features "pequeñas" serían ignoradas</span>
-</code></pre></div><p></p>
+</p><div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ANTES de estandarizar</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">GrLivArea</span><span class="p">:</span> <span class="n">mean</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">515</span> <span class="n">pies</span><span class="err">²</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mi">525</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">LotArea</span><span class="p">:</span>   <span class="n">mean</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="mi">148</span> <span class="n">pies</span><span class="err">²</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="mi">887</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># PCA sin estandarizar → LotArea dominaría PC1 por su escala</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Todas las features "pequeñas" serían ignoradas</span>
+</span></code></pre></div><p></p>
 <p><strong>Después de estandarización:</strong>
-</p><div class="highlight"><pre><span></span><code><span class="n">Mean</span> <span class="n">de</span> <span class="n">todas</span> <span class="n">las</span> <span class="n">features</span><span class="p">:</span> <span class="o">~</span><span class="mf">0.0</span>
-<span class="n">Std</span> <span class="n">de</span> <span class="n">todas</span> <span class="n">las</span> <span class="n">features</span><span class="p">:</span>  <span class="o">~</span><span class="mf">1.0</span>
-</code></pre></div><p></p>
+</p><div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">Mean</span> <span class="n">de</span> <span class="n">todas</span> <span class="n">las</span> <span class="n">features</span><span class="p">:</span> <span class="o">~</span><span class="mf">0.0</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">Std</span> <span class="n">de</span> <span class="n">todas</span> <span class="n">las</span> <span class="n">features</span><span class="p">:</span>  <span class="o">~</span><span class="mf">1.0</span>
+</span></code></pre></div><p></p>
 <p><strong>Conclusión:</strong> Sin estandarizar, features con mayor escala (LotArea) dominarían componentes principales independientemente de su relevancia real para predecir precio.</p>
 <hr>
 <h3 id="12-scree-plot-cuantos-componentes-necesitamos">1.2. Scree Plot: ¿Cuántos Componentes Necesitamos?<a class="headerlink" href="#12-scree-plot-cuantos-componentes-necesitamos" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/pca-feature-selection/ames-pca-scree-plot.png" data-desc-position="bottom"><img alt="Scree Plot y Varianza Acumulada" src="../assets/pca-feature-selection/ames-pca-scree-plot.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/pca-feature-selection/ames-pca-scree-plot.png" data-desc-position="bottom"><img alt="Scree Plot y Varianza Acumulada" src="../assets/pca-feature-selection/ames-pca-scree-plot.png"></a></p>
 <p><em>Figura 1: Análisis de varianza explicada por componentes principales. </em><em>Panel izquierdo:</em><em> Scree plot de primeros 30 componentes - PC1 domina con 13.9% de varianza, seguido por caída pronunciada (PC2: 5.1%, PC3: 4.9%). Patrón típico de "elbow" se observa alrededor de PC10. </em><em>Panel derecho:</em><em> Varianza acumulada completa - para 80% varianza se requieren 39 componentes (línea roja), 90% necesita 59 componentes (verde), 95% requiere 68 componentes (naranja). </em><em>Hallazgo clave:</em><em> Reducción de 79→39 componentes (50.6% reducción) mantiene 80% de información, representando excelente trade-off para aplicaciones prácticas.</em></p>
 <p><strong>Análisis cuantitativo:</strong></p>
 <table>
@@ -1084,7 +1274,7 @@
 - Balance perfecto para modelos productivos</p>
 <hr>
 <h3 id="13-interpretacion-de-loadings-que-captura-pc1">1.3. Interpretación de Loadings: ¿Qué Captura PC1?<a class="headerlink" href="#13-interpretacion-de-loadings-que-captura-pc1" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/pca-feature-selection/ames-pca-loadings-plot.png" data-desc-position="bottom"><img alt="Loadings Plot PC1 vs PC2" src="../assets/pca-feature-selection/ames-pca-loadings-plot.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/pca-feature-selection/ames-pca-loadings-plot.png" data-desc-position="bottom"><img alt="Loadings Plot PC1 vs PC2" src="../assets/pca-feature-selection/ames-pca-loadings-plot.png"></a></p>
 <p><em>Figura 2: Loadings plot mostrando contribución de top features a PC1 (eje X, 13.9% varianza) y PC2 (eje Y, 5.1% varianza). </em><em>Cuadrante derecho (PC1 positivo):</em><em> Variables de tamaño dominan - GrLivArea, GarageCars, GarageArea, TotRmsAbvGrd, FullBath, YearBuilt agrupadas con loadings +0.6 a +0.8. </em><em>Interpretación:</em><em> PC1 = "Dimensión de Tamaño/Modernidad General" de la casa. </em><em>PC2 (vertical):</em><em> 2ndFlr SF alto (+0.7) vs BsmtFin SF 1 bajo (-0.6) sugiere "Tipo de Distribución Vertical" - casas con segundo piso vs casas con sótano terminado. </em><em>Insight de negocio:</em><em> PC1 captura el concepto intuitivo de "casa grande y moderna = más cara", mientras PC2 diferencia estilos arquitectónicos.</em></p>
 <p><strong>Top 10 Features en PC1:</strong></p>
 <table>
@@ -1180,21 +1370,21 @@
 <hr>
 <h3 id="14-feature-selection-basada-en-pca-loadings">1.4. Feature Selection Basada en PCA Loadings<a class="headerlink" href="#14-feature-selection-basada-en-pca-loadings" title="Permanent link">¶</a></h3>
 <p><strong>Estrategia innovadora:</strong> En lugar de usar PC1, PC2... (abstractos), seleccionar las <strong>features ORIGINALES</strong> con mayor contribución a componentes principales.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/pca-feature-selection/ames-pca-feature-importance.png" data-desc-position="bottom"><img alt="Feature Importance por PCA" src="../assets/pca-feature-selection/ames-pca-feature-importance.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/pca-feature-selection/ames-pca-feature-importance.png" data-desc-position="bottom"><img alt="Feature Importance por PCA" src="../assets/pca-feature-selection/ames-pca-feature-importance.png"></a></p>
 <p><em>Figura 3: Selección de features originales basada en PCA loadings. </em><em>Panel izquierdo:</em><em> Top 20 features por importancia total (suma de loadings absolutos en primeros 39 componentes). Roof Matl, Functional, Mo Sold lideran con importancia ~4.5-5.0, seguidas por Low Qual Fin SF, Bsmt Half Bath, Utilities. </em><em>Panel derecho:</em><em> Distribución de importancias muestra mayoría de features con valores 2.5-3.0 (pico del histograma verde), línea roja punteada marca umbral de selección en 3.0 para top 39 features. </em><em>Insight técnico:</em><em> Features que contribuyen consistentemente a MÚLTIPLES componentes (no solo PC1) tienen mayor importancia total, capturando información ortogonal.</em></p>
 <p><strong>Top 20 Features Seleccionadas:</strong>
-</p><div class="highlight"><pre><span></span><code> 1. Roof Matl              5.012  (Material del techo - variabilidad alta)
- 2. Functional             4.987  (Funcionalidad de la casa)
- 3. Mo Sold                4.756  (Mes de venta - estacionalidad)
- 4. Low Qual Fin SF        4.652  (Superficie de baja calidad)
- 5. Bsmt Half Bath         4.543  (Medios baños en sótano)
- 6. Utilities              4.489  (Servicios públicos disponibles)
- 7. Alley                  4.321  (Acceso por callejón)
- 8. Condition 2            4.298  (Condición de proximidad 2)
- 9. Open Porch SF          4.187  (Superficie de porche abierto)
-10. Screen Porch          4.165  (Porche con mosquitero)
-[...]
-</code></pre></div><p></p>
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a> 1. Roof Matl              5.012  (Material del techo - variabilidad alta)
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a> 2. Functional             4.987  (Funcionalidad de la casa)
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a> 3. Mo Sold                4.756  (Mes de venta - estacionalidad)
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a> 4. Low Qual Fin SF        4.652  (Superficie de baja calidad)
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a> 5. Bsmt Half Bath         4.543  (Medios baños en sótano)
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a> 6. Utilities              4.489  (Servicios públicos disponibles)
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a> 7. Alley                  4.321  (Acceso por callejón)
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a> 8. Condition 2            4.298  (Condición de proximidad 2)
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a> 9. Open Porch SF          4.187  (Superficie de porche abierto)
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>10. Screen Porch          4.165  (Porche con mosquitero)
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>[...]
+</span></code></pre></div><p></p>
 <p><strong>Ventaja sobre PCA puro:</strong>
 - ✅ Mantiene interpretabilidad (agentes inmobiliarios entienden "Roof Matl")
 - ✅ 39 features originales vs 39 componentes abstractos
@@ -1413,34 +1603,34 @@
 <h3 id="estrategia-two-stage-para-eficiencia">Estrategia Two-Stage para Eficiencia<a class="headerlink" href="#estrategia-two-stage-para-eficiencia" title="Permanent link">¶</a></h3>
 <p><strong>Problema:</strong> Wrapper methods (Forward, Backward, RFE) sobre 79 features → <strong>2-3 minutos cada uno</strong></p>
 <p><strong>Solución:</strong> Two-Stage Selection
-</p><div class="highlight"><pre><span></span><code>Stage 1: PCA Loadings (rápido)
-79 features → 39 features top importantes
-
-Stage 2: Wrapper Methods (sobre 39 features)
-39 features → 15-20 features refinadas
-
-Tiempo: 30-60 segundos (vs 2-3 min)
-</code></pre></div><p></p>
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Stage 1: PCA Loadings (rápido)
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>79 features → 39 features top importantes
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Stage 2: Wrapper Methods (sobre 39 features)
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>39 features → 15-20 features refinadas
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>Tiempo: 30-60 segundos (vs 2-3 min)
+</span></code></pre></div><p></p>
 <hr>
 <h3 id="31-recursive-feature-elimination-rfe">3.1. Recursive Feature Elimination (RFE)<a class="headerlink" href="#31-recursive-feature-elimination-rfe" title="Permanent link">¶</a></h3>
 <p><strong>Concepto:</strong> Entrena modelo, elimina features menos importantes iterativamente.</p>
 <p><strong>Top 15 Features por RFE:</strong>
-</p><div class="highlight"><pre><span></span><code> 1. OverallQual       (Ranking: 1 - seleccionada)
- 2. GrLivArea         (Ranking: 1 - seleccionada)
- 3. Neighborhood      (Ranking: 1 - seleccionada)
- 4. YearBuilt         (Ranking: 1 - seleccionada)
- 5. BsmtQual          (Ranking: 1 - seleccionada)
- 6. KitchenQual       (Ranking: 1 - seleccionada)
- 7. GarageCars        (Ranking: 1 - seleccionada)
- 8. ExterQual         (Ranking: 1 - seleccionada)
- 9. FullBath          (Ranking: 1 - seleccionada)
-10. TotalBsmtSF       (Ranking: 1 - seleccionada)
-11. 1stFlrSF          (Ranking: 1 - seleccionada)
-12. GarageArea        (Ranking: 1 - seleccionada)
-13. LotArea           (Ranking: 1 - seleccionada)
-14. YearRemodAdd      (Ranking: 1 - seleccionada)
-15. Fireplaces        (Ranking: 1 - seleccionada)
-</code></pre></div><p></p>
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a> 1. OverallQual       (Ranking: 1 - seleccionada)
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a> 2. GrLivArea         (Ranking: 1 - seleccionada)
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a> 3. Neighborhood      (Ranking: 1 - seleccionada)
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a> 4. YearBuilt         (Ranking: 1 - seleccionada)
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a> 5. BsmtQual          (Ranking: 1 - seleccionada)
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a> 6. KitchenQual       (Ranking: 1 - seleccionada)
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a> 7. GarageCars        (Ranking: 1 - seleccionada)
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a> 8. ExterQual         (Ranking: 1 - seleccionada)
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a> 9. FullBath          (Ranking: 1 - seleccionada)
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>10. TotalBsmtSF       (Ranking: 1 - seleccionada)
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>11. 1stFlrSF          (Ranking: 1 - seleccionada)
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>12. GarageArea        (Ranking: 1 - seleccionada)
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>13. LotArea           (Ranking: 1 - seleccionada)
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>14. YearRemodAdd      (Ranking: 1 - seleccionada)
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>15. Fireplaces        (Ranking: 1 - seleccionada)
+</span></code></pre></div><p></p>
 <p><strong>Ventaja de RFE:</strong>
 - Considera <strong>interacciones entre features</strong> (no solo importancia individual)
 - Features eliminadas: 2, 3, 4... hasta 24 (peores primero)
@@ -1548,38 +1738,38 @@ Tiempo: 30-60 segundos (vs 2-3 min)
 ⚖️ <strong>Mejor balance:</strong> RFE con 15 features - 81% reducción, +2.4% RMSE</p>
 <hr>
 <h3 id="visualizacion-de-trade-offs">Visualización de Trade-offs<a class="headerlink" href="#visualizacion-de-trade-offs" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/pca-feature-selection/ames-pca-projection.png" data-desc-position="bottom"><img alt="Proyección PCA de Datos" src="../assets/pca-feature-selection/ames-pca-projection.png"></a></p>
-<p><em>Figura 4: Proyección de 2,919 casas en espacio de PC1 y PC2. Puntos coloreados por SalePrice (escala de $\sim$50k violeta a $\sim$750k amarillo). </em><em>Patrón visible:</em><em> Casas caras (amarillo/verde) agrupadas en cuadrante derecho superior (PC1 alto, PC2 positivo) → casas grandes y modernas. Casas económicas (violeta) dispersas en cuadrante izquierdo inferior → casas pequeñas/antiguas. </em><em>Outliers:</em><em> 3-4 puntos extremos en bordes (casas con características únicas). </em><em>Insight:</em><em> PC1 y PC2 juntos (19% varianza total) ya separan visualmente el mercado en segmentos de precio, validando efectividad de PCA para capturar estructura principal del dataset.</em></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/pca-feature-selection/ames-pca-projection.png" data-desc-position="bottom"><img alt="Proyección PCA de Datos" src="../assets/pca-feature-selection/ames-pca-projection.png"></a></p>
+<p><em>Figura 4: Proyección de 2,919 casas en espacio de PC1 y PC2. Puntos coloreados por SalePrice (escala de <span class="arithmatex">\(\sim\)</span>50k violeta a <span class="arithmatex">\(\sim\)</span>750k amarillo). </em><em>Patrón visible:</em><em> Casas caras (amarillo/verde) agrupadas en cuadrante derecho superior (PC1 alto, PC2 positivo) → casas grandes y modernas. Casas económicas (violeta) dispersas en cuadrante izquierdo inferior → casas pequeñas/antiguas. </em><em>Outliers:</em><em> 3-4 puntos extremos en bordes (casas con características únicas). </em><em>Insight:</em><em> PC1 y PC2 juntos (19% varianza total) ya separan visualmente el mercado en segmentos de precio, validando efectividad de PCA para capturar estructura principal del dataset.</em></p>
 <hr>
 <h2 id="analisis-de-trade-offs-y-decisiones">💡 Análisis de Trade-offs y Decisiones<a class="headerlink" href="#analisis-de-trade-offs-y-decisiones" title="Permanent link">¶</a></h2>
 <h3 id="trade-off-1-reduccion-vs-performance">Trade-off #1: Reducción vs Performance<a class="headerlink" href="#trade-off-1-reduccion-vs-performance" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────┐
-│  ZONA ÓPTIMA DE OPERACIÓN               │
-├─────────────────────────────────────────┤
-│                                         │
-│  79 features → $27,345 RMSE (100%)     │
-│  39 features → $27,621 RMSE (+1.0%)    │  ✅ SWEET SPOT
-│  15 features → $27,998 RMSE (+2.4%)    │  ✅ ULTRA-COMPACTO
-│   5 features → $32,451 RMSE (+18.7%)   │  ❌ DEMASIADO AGRESIVO
-│                                         │
-│  Recomendación:                         │
-│  - Producción standard: 39 features     │
-│  - Mobile/Edge: 15 features             │
-│  - Never: &lt;10 features                  │
-│                                         │
-└─────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>┌─────────────────────────────────────────┐
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>│  ZONA ÓPTIMA DE OPERACIÓN               │
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>├─────────────────────────────────────────┤
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>│                                         │
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>│  79 features → $27,345 RMSE (100%)     │
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>│  39 features → $27,621 RMSE (+1.0%)    │  ✅ SWEET SPOT
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>│  15 features → $27,998 RMSE (+2.4%)    │  ✅ ULTRA-COMPACTO
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>│   5 features → $32,451 RMSE (+18.7%)   │  ❌ DEMASIADO AGRESIVO
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>│                                         │
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>│  Recomendación:                         │
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>│  - Producción standard: 39 features     │
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>│  - Mobile/Edge: 15 features             │
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>│  - Never: &lt;10 features                  │
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>│                                         │
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>└─────────────────────────────────────────┘
+</span></code></pre></div>
 <hr>
 <h3 id="trade-off-2-interpretabilidad-vs-optimalidad">Trade-off #2: Interpretabilidad vs Optimalidad<a class="headerlink" href="#trade-off-2-interpretabilidad-vs-optimalidad" title="Permanent link">¶</a></h3>
 <p><strong>PCA Componentes (abstracto):</strong>
-</p><div class="highlight"><pre><span></span><code><span class="n">PC1</span> <span class="o">=</span> <span class="mf">0.15</span><span class="o">*</span><span class="n">OverallQual</span> <span class="o">+</span> <span class="mf">0.13</span><span class="o">*</span><span class="n">GrLivArea</span> <span class="o">+</span> <span class="mf">0.12</span><span class="o">*</span><span class="n">GarageCars</span> <span class="o">+</span> <span class="o">...</span>
-</code></pre></div>
+</p><div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">PC1</span> <span class="o">=</span> <span class="mf">0.15</span><span class="o">*</span><span class="n">OverallQual</span> <span class="o">+</span> <span class="mf">0.13</span><span class="o">*</span><span class="n">GrLivArea</span> <span class="o">+</span> <span class="mf">0.12</span><span class="o">*</span><span class="n">GarageCars</span> <span class="o">+</span> <span class="o">...</span>
+</span></code></pre></div>
 - ✅ Óptimo matemáticamente (maximiza varianza)
 - ❌ "PC1" no significa nada para agente inmobiliario
 - ❌ No se puede monitorear feature drift directamente<p></p>
 <p><strong>Feature Selection (interpretable):</strong>
-</p><div class="highlight"><pre><span></span><code><span class="n">Modelo</span> <span class="n">usa</span><span class="p">:</span> <span class="n">OverallQual</span><span class="p">,</span> <span class="n">GrLivArea</span><span class="p">,</span> <span class="n">Neighborhood</span><span class="p">,</span> <span class="n">YearBuilt</span>
-</code></pre></div>
+</p><div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">Modelo</span> <span class="n">usa</span><span class="p">:</span> <span class="n">OverallQual</span><span class="p">,</span> <span class="n">GrLivArea</span><span class="p">,</span> <span class="n">Neighborhood</span><span class="p">,</span> <span class="n">YearBuilt</span>
+</span></code></pre></div>
 - ✅ Agente entiende "Calidad y tamaño importan más"
 - ✅ Monitoreo: "¿Cambió distribución de OverallQual este mes?"
 - ⚠️ Subóptimo (pierde 2-3% RMSE vs PCA)<p></p>
@@ -1711,51 +1901,51 @@ Tiempo: 30-60 segundos (vs 2-3 min)
 <hr>
 <h4 id="4-como-decidir-entre-f-test-mi-rfe-lasso">4. ¿Cómo decidir entre F-test, MI, RFE, Lasso?<a class="headerlink" href="#4-como-decidir-entre-f-test-mi-rfe-lasso" title="Permanent link">¶</a></h4>
 <p><strong>Framework de decisión:</strong>
-</p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">recomendar_feature_selection</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">contexto</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">"No necesitas feature selection, usa todas"</span>
-
-    <span class="k">if</span> <span class="n">contexto</span> <span class="o">==</span> <span class="s2">"exploración_rápida"</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">"F-test (0.3s) - rápido para entender variables"</span>
-
-    <span class="k">if</span> <span class="n">sospecha_relaciones_nolineales</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">"Mutual Information - captura complejidad"</span>
-
-    <span class="k">if</span> <span class="n">contexto</span> <span class="o">==</span> <span class="s2">"modelo_producción"</span> <span class="ow">and</span> <span class="n">tenemos_tiempo</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">"RFE - mejor performance, vale espera de 1-2 min"</span>
-
-    <span class="k">if</span> <span class="n">features_correlacionadas_alta</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">"Lasso - shrinkage maneja multicolinealidad"</span>
-
-    <span class="c1"># Por defecto</span>
-    <span class="k">return</span> <span class="s2">"Usar F-test + MI, seleccionar features en consenso"</span>
-</code></pre></div><p></p>
+</p><div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span> <span class="nf">recomendar_feature_selection</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">contexto</span><span class="p">):</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>        <span class="k">return</span> <span class="s2">"No necesitas feature selection, usa todas"</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="k">if</span> <span class="n">contexto</span> <span class="o">==</span> <span class="s2">"exploración_rápida"</span><span class="p">:</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        <span class="k">return</span> <span class="s2">"F-test (0.3s) - rápido para entender variables"</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="k">if</span> <span class="n">sospecha_relaciones_nolineales</span><span class="p">:</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="k">return</span> <span class="s2">"Mutual Information - captura complejidad"</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="k">if</span> <span class="n">contexto</span> <span class="o">==</span> <span class="s2">"modelo_producción"</span> <span class="ow">and</span> <span class="n">tenemos_tiempo</span><span class="p">:</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>        <span class="k">return</span> <span class="s2">"RFE - mejor performance, vale espera de 1-2 min"</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>    <span class="k">if</span> <span class="n">features_correlacionadas_alta</span><span class="p">:</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>        <span class="k">return</span> <span class="s2">"Lasso - shrinkage maneja multicolinealidad"</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>    <span class="c1"># Por defecto</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>    <span class="k">return</span> <span class="s2">"Usar F-test + MI, seleccionar features en consenso"</span>
+</span></code></pre></div><p></p>
 <hr>
 <h4 id="5-que-estrategia-aplicarias-si-metodos-no-concuerdan">5. ¿Qué estrategia aplicarías si métodos no concuerdan?<a class="headerlink" href="#5-que-estrategia-aplicarias-si-metodos-no-concuerdan" title="Permanent link">¶</a></h4>
 <p><strong>Estrategia Multi-Método (Ensemble de Feature Selection):</strong>
-</p><div class="highlight"><pre><span></span><code><span class="c1"># 1. Ejecutar múltiples métodos</span>
-<span class="n">features_f_test</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">top_39_f_test</span><span class="p">)</span>
-<span class="n">features_mi</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">top_39_mi</span><span class="p">)</span>
-<span class="n">features_rfe</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">top_15_rfe</span><span class="p">)</span>
-
-<span class="c1"># 2. Identificar features robustas (consenso)</span>
-<span class="n">features_robustas</span> <span class="o">=</span> <span class="n">features_f_test</span> <span class="o">&amp;</span> <span class="n">features_mi</span> <span class="o">&amp;</span> <span class="n">features_rfe</span>
-<span class="c1"># → 12 features en las 3 listas</span>
-
-<span class="c1"># 3. Agregar features con "mayoría" (2 de 3)</span>
-<span class="n">features_mayoria</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">all_features</span> 
-    <span class="k">if</span> <span class="nb">sum</span><span class="p">([</span><span class="n">f</span> <span class="ow">in</span> <span class="n">features_f_test</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features_mi</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features_rfe</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">2</span>
-<span class="p">]</span>
-<span class="c1"># → 25 features adicionales</span>
-
-<span class="c1"># 4. Evaluar y decidir</span>
-<span class="n">X_robusto</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">features_robustas</span><span class="p">]</span>  <span class="c1"># Ultra-conservador (12 feat)</span>
-<span class="n">X_mayoria</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">features_mayoria</span><span class="p">]</span>   <span class="c1"># Balanceado (25 feat)</span>
-
-<span class="c1"># Cross-validation en ambos</span>
-<span class="c1"># Elegir el que maximiza R² con menos features</span>
-</code></pre></div><p></p>
+</p><div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># 1. Ejecutar múltiples métodos</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">features_f_test</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">top_39_f_test</span><span class="p">)</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">features_mi</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">top_39_mi</span><span class="p">)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">features_rfe</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">top_15_rfe</span><span class="p">)</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># 2. Identificar features robustas (consenso)</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">features_robustas</span> <span class="o">=</span> <span class="n">features_f_test</span> <span class="o">&amp;</span> <span class="n">features_mi</span> <span class="o">&amp;</span> <span class="n">features_rfe</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1"># → 12 features en las 3 listas</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># 3. Agregar features con "mayoría" (2 de 3)</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="n">features_mayoria</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">all_features</span> 
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>    <span class="k">if</span> <span class="nb">sum</span><span class="p">([</span><span class="n">f</span> <span class="ow">in</span> <span class="n">features_f_test</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features_mi</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features_rfe</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="p">]</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="c1"># → 25 features adicionales</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="c1"># 4. Evaluar y decidir</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="n">X_robusto</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">features_robustas</span><span class="p">]</span>  <span class="c1"># Ultra-conservador (12 feat)</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="n">X_mayoria</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">features_mayoria</span><span class="p">]</span>   <span class="c1"># Balanceado (25 feat)</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="c1"># Cross-validation en ambos</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="c1"># Elegir el que maximiza R² con menos features</span>
+</span></code></pre></div><p></p>
 <p><strong>Resultado en Ames:</strong>
 - Features robustas (3 métodos): OverallQual, GrLivArea, Neighborhood, YearBuilt
 - Features mayoría (2+ métodos): +21 adicionales
@@ -1763,16 +1953,16 @@ Tiempo: 30-60 segundos (vs 2-3 min)
 <hr>
 <h3 id="lecciones-aprendidas">Lecciones Aprendidas<a class="headerlink" href="#lecciones-aprendidas" title="Permanent link">¶</a></h3>
 <h4 id="leccion-1-reduccion-dimensional-no-es-gratis">Lección 1: Reducción dimensional NO es gratis<a class="headerlink" href="#leccion-1-reduccion-dimensional-no-es-gratis" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code>Reducción 79→39 features:
-- Ganas: 50% menos complejidad, 2x velocidad
-- Pierdes: 1-2% RMSE, sutilezas de features específicas
-
-Reducción 79→15 features:
-- Ganas: 81% menos complejidad, 2.4x velocidad
-- Pierdes: 2-3% RMSE, capacidad de capturar casos edge
-
-NO HAY FREE LUNCH - Siempre hay trade-off
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Reducción 79→39 features:
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>- Ganas: 50% menos complejidad, 2x velocidad
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>- Pierdes: 1-2% RMSE, sutilezas de features específicas
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>Reducción 79→15 features:
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>- Ganas: 81% menos complejidad, 2.4x velocidad
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>- Pierdes: 2-3% RMSE, capacidad de capturar casos edge
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>NO HAY FREE LUNCH - Siempre hay trade-off
+</span></code></pre></div>
 <p><strong>Decisión informada:</strong>
 - Producción standard: 39 features (pérdida mínima)
 - Apps móviles: 15 features (velocidad crítica)
@@ -1794,16 +1984,16 @@ NO HAY FREE LUNCH - Siempre hay trade-off
 <hr>
 <h4 id="leccion-3-two-stage-selection-es-gold-standard">Lección 3: Two-Stage Selection es gold standard<a class="headerlink" href="#leccion-3-two-stage-selection-es-gold-standard" title="Permanent link">¶</a></h4>
 <p><strong>Innovación del proyecto:</strong>
-</p><div class="highlight"><pre><span></span><code>Estrategia tradicional (naive):
-Forward Selection en 79 features → 3-4 minutos
-
-Estrategia two-stage (inteligente):
-1. PCA Loadings: 79→39 features (5 segundos)
-2. Forward Selection: 39→15 features (30 segundos)
-Total: 35 segundos (6x más rápido)
-
-Performance: IDÉNTICO (mismo subset final)
-</code></pre></div><p></p>
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Estrategia tradicional (naive):
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Forward Selection en 79 features → 3-4 minutos
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>Estrategia two-stage (inteligente):
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>1. PCA Loadings: 79→39 features (5 segundos)
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>2. Forward Selection: 39→15 features (30 segundos)
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>Total: 35 segundos (6x más rápido)
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>Performance: IDÉNTICO (mismo subset final)
+</span></code></pre></div><p></p>
 <p><strong>Aplicabilidad:</strong> Esta técnica escala a datasets masivos (1000+ features)</p>
 <hr>
 <h2 id="referencias-y-recursos">📚 Referencias y Recursos<a class="headerlink" href="#referencias-y-recursos" title="Permanent link">¶</a></h2>
@@ -1928,9 +2118,55 @@ Performance: IDÉNTICO (mismo subset final)
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Volver al principio
+</button>
+        
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie">
+        
+          
+          <a href="../09-encoding/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 🎯 Del Caos Categórico al Orden Predictivo: Encoding Avanzado y Target Encoding">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                🎯 Del Caos Categórico al Orden Predictivo: Encoding Avanzado y Target Encoding
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../11-future_temp/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: ⏰ Del Caos Temporal al Orden Predictivo: Feature Engineering Temporal en E-Commerce">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                ⏰ Del Caos Temporal al Orden Predictivo: Feature Engineering Temporal en E-Commerce
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1940,6 +2176,35 @@ Performance: IDÉNTICO (mismo subset final)
     Made with
     <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
       Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/milagroscancela" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://linkedin.com/in/milagroscancela" target="_blank" rel="noopener" title="LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:milagros.cancela@correo.ucu.edu.uy" target="_blank" rel="noopener" title="Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"></path></svg>
     </a>
   
 </div>
@@ -1956,7 +2221,7 @@ Performance: IDÉNTICO (mismo subset final)
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
