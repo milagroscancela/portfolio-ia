@@ -4,26 +4,28 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 
 ---
 
-<div class="flex flex-wrap gap-2" style="justify-content: center; margin: 2rem 0;">
+## 📊 Resumen de Exploraciones
 
-<div class="metric-card" style="text-align: center;">
-<div class="metric-value">2</div>
-<h4>Exploraciones Completadas</h4>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+
+<div style="background: linear-gradient(135deg, #9B6BB4 0%, #7B4B94 100%); padding: 2rem; border-radius: 16px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(123, 75, 148, 0.3);">
+<div style="font-size: 4rem; font-weight: 700; margin-bottom: 0.5rem;">2</div>
+<div style="font-size: 1.2rem; opacity: 0.95;">Exploraciones<br/>Completadas</div>
 </div>
 
-<div class="metric-card" style="text-align: center;">
-<div class="metric-value">440K+</div>
-<h4>Registros Analizados</h4>
+<div style="background: linear-gradient(135deg, #B08BC8 0%, #9B6BB4 100%); padding: 2rem; border-radius: 16px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(155, 107, 180, 0.3);">
+<div style="font-size: 4rem; font-weight: 700; margin-bottom: 0.5rem;">440K+</div>
+<div style="font-size: 1.2rem; opacity: 0.95;">Registros<br/>Analizados</div>
 </div>
 
-<div class="metric-card" style="text-align: center;">
-<div class="metric-value">15+</div>
-<h4>Visualizaciones Generadas</h4>
+<div style="background: linear-gradient(135deg, #7B4B94 0%, #5B2B74 100%); padding: 2rem; border-radius: 16px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(91, 43, 116, 0.3);">
+<div style="font-size: 4rem; font-weight: 700; margin-bottom: 0.5rem;">15+</div>
+<div style="font-size: 1.2rem; opacity: 0.95;">Visualizaciones<br/>Generadas</div>
 </div>
 
-<div class="metric-card" style="text-align: center;">
-<div class="metric-value">20+</div>
-<h4>Métricas Calculadas</h4>
+<div style="background: linear-gradient(135deg, #9C27B0 0%, #7B4B94 100%); padding: 2rem; border-radius: 16px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);">
+<div style="font-size: 4rem; font-weight: 700; margin-bottom: 0.5rem;">20+</div>
+<div style="font-size: 1.2rem; opacity: 0.95;">Métricas<br/>Calculadas</div>
 </div>
 
 </div>
@@ -175,56 +177,11 @@ Estas exploraciones se alinean directamente con las unidades temáticas del curs
 
 | Exploración | Unidad Relacionada | Temas Aplicados | Habilidades Demostradas |
 |-------------|-------------------|-----------------|------------------------|
-| **Social Media & Mental Health** | UT1 - Análisis Exploratorio | EDA, Visualización, Estadística Descriptiva, Correlaciones, Detección de Outliers | Análisis de datos, storytelling con visualizaciones, interpretación estadística |
-| **Credit Card Fairness** | UT2 - Calidad & Ética | Fairness Audit, Bias Detection, Ethical AI, Regulatory Compliance, Trade-off Analysis | Machine Learning ético, métricas de fairness, conocimiento regulatorio, pensamiento crítico |
+| **Social Media & Mental Health** | UT1 - Análisis Exploratorio | EDA, Visualización, Estadística Descriptiva, Correlaciones | Análisis de datos, storytelling con visualizaciones |
+| **Credit Card Fairness** | UT2 - Calidad & Ética | Fairness Audit, Bias Detection, Ethical AI, Compliance | Machine Learning ético, métricas de fairness, regulación |
 
 ---
 
-## 📚 Habilidades Técnicas Consolidadas
-
-### Análisis de Datos
-
-- ✅ **EDA exhaustivo**: Análisis exploratorio completo con múltiples visualizaciones
-- ✅ **Estadística descriptiva e inferencial**: Medidas de tendencia central, dispersión, correlaciones
-- ✅ **Detección de patrones**: Identificación de tendencias, outliers, anomalías
-- ✅ **Manejo de grandes volúmenes**: Procesamiento eficiente de 440K+ registros
-- ✅ **Interpretación contextual**: Traducción de resultados técnicos a insights de negocio
-
-### Machine Learning Ético
-
-- ⚖️ **Auditoría de fairness**: Cálculo de métricas DPD, DPR, EOD, TPR, FPR
-- ⚖️ **Detección de sesgo**: Identificación de disparidades por grupos protegidos
-- ⚖️ **Mitigación de sesgo**: Aplicación de ExponentiatedGradient, DemographicParity
-- ⚖️ **Análisis de trade-offs**: Evaluación crítica accuracy vs fairness
-- ⚖️ **Conocimiento regulatorio**: ECOA, Fair Lending, EU AI Act, GDPR
-- ⚖️ **Evaluación ética**: Consideración de implicaciones sociales y legales
-
----
-
-## 🔗 Navegación
+## 🔗 Navegación Rápida
 
 [← Volver a Inicio](index.md) | [Ver UT1 →](ut1-apuntes.md) | [Ver UT2 →](ut2-apuntes.md) | [Ver Proyectos →](portfolio/index.md)
-
----
-
-## 📅 Información del Proyecto
-
-> **Fecha de realización:** Noviembre 2025  
-> **Autora:** Milagros Cancela  
-> **Institución:** Universidad Católica del Uruguay  
-> **Curso:** Ingeniería de Datos  
-> **Profesor:** Juan F. Kurucz
-
----
-
-<div align="center">
-
-**💡 "El aprendizaje va más allá de las prácticas obligatorias"**
-
-[![Python](https://img.shields.io/badge/python-3.8+-blue.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org)
-[![Pandas](https://img.shields.io/badge/pandas-2.0+-150458.svg?style=flat-square&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
-[![Scikit-learn](https://img.shields.io/badge/scikit--learn-1.3+-F7931E.svg?style=flat-square&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
-[![Fairlearn](https://img.shields.io/badge/Fairlearn-0.10+-green.svg?style=flat-square)](https://fairlearn.org/)
-[![Kaggle](https://img.shields.io/badge/Kaggle-Datasets-20BEFF.svg?style=flat-square&logo=kaggle&logoColor=white)](https://www.kaggle.com/)
-
-</div>
