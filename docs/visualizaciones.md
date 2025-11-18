@@ -1,10 +1,3 @@
-## 📊 Visualizaciones
-
-Esta sección reúne todas las visualizaciones creadas a lo largo de mis prácticas académicas del curso de Ingeniería de Datos, organizadas por proyecto y tipo de gráfico.
-
-> 💡 **Actualización continua:** Esta galería refleja mi progreso en el curso con análisis y visualizaciones profesionales.
-
----
 
 ## 📈 Estadísticas del Portfolio
 
