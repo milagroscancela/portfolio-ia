@@ -1,16 +1,67 @@
-site_name: "Portfolio"
+site_name: "🧠 Portfolio: Ing en IA y CD"
+site_description: Portfolio académico de Ingeniería en Inteligencia Artificial y Ciencia de Datos - Milagros Cancela
+site_author: Milagros Cancela
+
 theme:
   name: material
   language: es
+  
+  # Color Palette - Pantone Violet V2 U con modo claro/oscuro
+  palette:
+    # Light mode (Modo Claro)
+    - scheme: default
+      primary: custom  # Color personalizado en CSS
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo oscuro
+    
+    # Dark mode (Modo Oscuro)
+    - scheme: slate
+      primary: custom  # Color personalizado en CSS
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Cambiar a modo claro
+  
+  # Features
   features:
     - navigation.sections
     - navigation.indexes
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+  
+  # Icons
+  icon:
+    logo: material/brain
+    repo: fontawesome/brands/github
+
+# Plugins
 plugins:
   - search
   - awesome-pages
   - git-revision-date-localized:
       fallback_to_build_date: true
-  - glightbox
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+
+# Markdown Extensions
 markdown_extensions:
   - admonition
   - attr_list
@@ -18,9 +69,41 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
+      title: En esta página
   - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.highlight
-  - pymdownx.emoji
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+
+# Custom CSS para Pantone Violet V2 U
+extra_css:
+  - css/extra.css
+
+# Social y otros extras
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/milagroscancela
+      name: GitHub
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/milagroscancela
+      name: LinkedIn
+    - icon: fontawesome/solid/envelope
+      link: mailto:milagros.cancela@correo.ucu.edu.uy
+      name: Email
