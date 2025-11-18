@@ -168,15 +168,3 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 </div>
 
 ---
-
-## 🔗 Navegación
-
-<div class="flex flex-between" style="margin: 2rem 0;">
-
-[← Volver a Inicio](index.md)
-
-[Ver UT1 →](ut1-apuntes.md) | [Ver UT2 →](ut2-apuntes.md) | [Ver Proyectos →](portfolio/index.md)
-
-</div>
-
----
