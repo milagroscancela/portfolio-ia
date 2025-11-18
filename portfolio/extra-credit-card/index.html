@@ -1,0 +1,1522 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../11-future_temp/">
+      
+      
+        <link rel="next" href="../extra-social-media/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>💳 Detección de Sesgo en Aprobación de Créditos con Fairlearn - Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deteccion-de-sesgo-en-aprobacion-de-creditos-con-fairlearn" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Portfolio" class="md-header__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              💳 Detección de Sesgo en Aprobación de Créditos con Fairlearn
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Portfolio" class="md-nav__button md-logo" aria-label="Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acerca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Acerca de mí
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Portfolio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exploraciones Extra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualizaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visualizaciones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apuntes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apuntes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-informacion-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      ℹ️ Información General
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descripcion-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Descripción del Proyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Descripción del Proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contexto-de-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏦 Contexto de Negocio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivos-del-analisis" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Objetivos del Análisis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stack-tecnologico" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Stack Tecnológico
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataset-credit-card-approval-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Dataset: Credit Card Approval Prediction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Dataset: Credit Card Approval Prediction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-del-dataset-analizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características del Dataset Analizado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-de-aprobaciones-y-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Distribución de Aprobaciones y Clases
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analisis-de-variables-demograficas-grupos-protegidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      👥 Análisis de Variables Demográficas (Grupos Protegidos)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="👥 Análisis de Variables Demográficas (Grupos Protegidos)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distribucion-de-grupos-protegidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribución de Grupos Protegidos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Distribución de Grupos Protegidos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genero-code_gender" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Género (CODE_GENDER)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nivel-educativo-name_education_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎓 Nivel Educativo (NAME_EDUCATION_TYPE)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analisis-de-fairness-modelo-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Análisis de Fairness: Modelo Baseline
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 Análisis de Fairness: Modelo Baseline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metricas-de-fairness-por-genero-code_gender" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métricas de Fairness por Género (CODE_GENDER)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Métricas de Fairness por Género (CODE_GENDER)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resultados-del-modelo-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Resultados del Modelo Baseline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hallazgos-criticos-de-sesgo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨 Hallazgos Críticos de Sesgo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metricas-de-fairness-calculadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚖️ Métricas de Fairness Calculadas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mitigacion-de-sesgo-con-fairlearn" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Mitigación de Sesgo con Fairlearn
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Mitigación de Sesgo con Fairlearn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparacion-modelo-baseline-vs-modelo-mitigado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparación: Modelo Baseline vs Modelo Mitigado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resultados-de-la-mitigacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Resultados de la Mitigación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Resultados de la Mitigación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-accuracy-por-grupo" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Accuracy por Grupo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-tasa-de-aprobacion-selection-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Tasa de Aprobación (Selection Rate)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-metricas-de-fairness" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Métricas de Fairness
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpretacion-de-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Interpretación de Resultados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Interpretación de Resultados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problema-identificado-overcompensation" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔴 Problema Identificado: Overcompensation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-salio-mal" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 ¿Qué salió mal?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recomendaciones-de-mitigacion-mejorada" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Recomendaciones de Mitigación Mejorada
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Recomendaciones de Mitigación Mejorada">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ajustar-parametros-de-exponentiatedgradient" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Ajustar Parámetros de ExponentiatedGradient
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-probar-equalizedodds-en-lugar-de-demographicparity" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Probar EqualizedOdds en lugar de DemographicParity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-usar-gridsearch-con-umbrales-de-fairness" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Usar GridSearch con umbrales de fairness
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-balanceo-de-datos-previo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Balanceo de Datos Previo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#framework-de-decision-para-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Framework de Decisión para Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Framework de Decisión para Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matriz-de-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matriz de Decisión
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendacion-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendación Final
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consideraciones-legales-y-eticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚖️ Consideraciones Legales y Éticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚖️ Consideraciones Legales y Éticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#marco-regulatorio-aplicable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Marco Regulatorio Aplicable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principios-eticos-aplicados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principios Éticos Aplicados
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Referencias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Referencias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataset-y-herramientas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset y Herramientas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="deteccion-de-sesgo-en-aprobacion-de-creditos-con-fairlearn">💳 Detección de Sesgo en Aprobación de Créditos con Fairlearn<a class="headerlink" href="#deteccion-de-sesgo-en-aprobacion-de-creditos-con-fairlearn" title="Permanent link">¶</a></h1>
+<p><strong>Práctica Extra - Unidad Temática 2 (UT2)</strong><br>
+<strong>Calidad &amp; Ética de Datos | Análisis de Fairness en Servicios Financieros</strong></p>
+<hr>
+<h2 id="i-informacion-general">ℹ️ Información General<a class="headerlink" href="#i-informacion-general" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Característica</strong></th>
+<th><strong>Detalles</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⏱️ <strong>Tiempo estimado</strong></td>
+<td>3-4 horas</td>
+</tr>
+<tr>
+<td>📊 <strong>Dataset</strong></td>
+<td><a href="https://www.kaggle.com/datasets/rikdifos/credit-card-approval-prediction">Credit Card Approval Prediction - Kaggle</a></td>
+</tr>
+<tr>
+<td>🎯 <strong>Objetivo</strong></td>
+<td>Detectar y mitigar sesgo demográfico en decisiones de crédito</td>
+</tr>
+<tr>
+<td>🛠️ <strong>Herramientas</strong></td>
+<td>Python, Scikit-learn, Fairlearn, Pandas, Matplotlib</td>
+</tr>
+<tr>
+<td>📁 <strong>Tipo de análisis</strong></td>
+<td>Fairness audit + bias mitigation con ML</td>
+</tr>
+<tr>
+<td>👤 <strong>Autora</strong></td>
+<td>Milagros Cancela</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="descripcion-del-proyecto">📋 Descripción del Proyecto<a class="headerlink" href="#descripcion-del-proyecto" title="Permanent link">¶</a></h2>
+<p>Este proyecto aplica técnicas de <strong>fairness</strong> en Machine Learning para detectar y mitigar sesgos demográficos en un sistema de aprobación de créditos. Utilizando <strong>Fairlearn</strong>, se cuantifican disparidades entre grupos protegidos (género, nivel educativo) y se implementan estrategias de corrección para garantizar decisiones más equitativas.</p>
+<h3 id="contexto-de-negocio">🏦 Contexto de Negocio<a class="headerlink" href="#contexto-de-negocio" title="Permanent link">¶</a></h3>
+<p>Las instituciones financieras utilizan modelos de ML para automatizar decisiones crediticias. Sin embargo, estos modelos pueden perpetuar sesgos históricos que discriminan contra grupos protegidos, violando regulaciones como:</p>
+<ul>
+<li><strong>Equal Credit Opportunity Act (ECOA)</strong>: Prohíbe discriminación por raza, color, religión, origen nacional, sexo, estado civil o edad</li>
+<li><strong>Fair Lending Laws</strong>: Regulan prácticas justas en préstamos</li>
+<li><strong>EU AI Act</strong>: Requiere auditorías de fairness en sistemas de IA de alto riesgo</li>
+</ul>
+<h3 id="objetivos-del-analisis">🎯 Objetivos del Análisis<a class="headerlink" href="#objetivos-del-analisis" title="Permanent link">¶</a></h3>
+<ol>
+<li>✅ <strong>Detectar sesgo demográfico</strong> en aprobaciones de crédito por género</li>
+<li>✅ <strong>Cuantificar disparidades</strong> con métricas estándar de Fairlearn</li>
+<li>✅ <strong>Entrenar modelo baseline</strong> sin correcciones (Random Forest)</li>
+<li>✅ <strong>Aplicar mitigación</strong> con ExponentiatedGradient + DemographicParity</li>
+<li>✅ <strong>Evaluar trade-offs</strong> entre accuracy y fairness</li>
+<li>✅ <strong>Generar recomendaciones</strong> éticas para deployment</li>
+</ol>
+<hr>
+<h2 id="stack-tecnologico">🛠️ Stack Tecnológico<a class="headerlink" href="#stack-tecnologico" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Machine Learning &amp; Fairness</span>
+<span class="n">scikit</span><span class="o">-</span><span class="n">learn</span><span class="o">==</span><span class="mf">1.3</span><span class="o">+</span>       <span class="c1"># Modelos baseline</span>
+<span class="n">fairlearn</span><span class="o">==</span><span class="mf">0.10</span><span class="o">+</span>         <span class="c1"># Métricas y mitigación de sesgo</span>
+
+<span class="c1"># Manejo de datos</span>
+<span class="n">pandas</span><span class="o">==</span><span class="mf">2.0</span><span class="o">+</span>
+<span class="n">numpy</span><span class="o">==</span><span class="mf">1.24</span><span class="o">+</span>
+
+<span class="c1"># Visualización</span>
+<span class="n">matplotlib</span><span class="o">==</span><span class="mf">3.7</span><span class="o">+</span>
+<span class="n">seaborn</span><span class="o">==</span><span class="mf">0.12</span><span class="o">+</span>
+
+<span class="c1"># Descarga de datasets</span>
+<span class="n">kagglehub</span><span class="o">==</span><span class="mf">0.2</span><span class="o">+</span>
+</code></pre></div>
+<p><strong>Instalación de dependencias:</strong>
+</p><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pandas<span class="w"> </span>numpy<span class="w"> </span>scikit-learn<span class="w"> </span>fairlearn<span class="w"> </span>matplotlib<span class="w"> </span>seaborn<span class="w"> </span>kagglehub<span class="w"> </span>jupyter
+</code></pre></div><p></p>
+<hr>
+<h2 id="dataset-credit-card-approval-prediction">📊 Dataset: Credit Card Approval Prediction<a class="headerlink" href="#dataset-credit-card-approval-prediction" title="Permanent link">¶</a></h2>
+<h3 id="caracteristicas-del-dataset-analizado">Características del Dataset Analizado<a class="headerlink" href="#caracteristicas-del-dataset-analizado" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Atributo</strong></th>
+<th><strong>Valor</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fuente</strong></td>
+<td>Kaggle - Credit Card Approval</td>
+</tr>
+<tr>
+<td><strong>Registros totales</strong></td>
+<td>~438,857 solicitudes de crédito</td>
+</tr>
+<tr>
+<td><strong>Variables</strong></td>
+<td>18 features (demográficas + financieras)</td>
+</tr>
+<tr>
+<td><strong>Target</strong></td>
+<td>Aprobación de crédito (binario: 0/1)</td>
+</tr>
+<tr>
+<td><strong>Grupos protegidos</strong></td>
+<td>Género (F/M), Nivel educativo</td>
+</tr>
+<tr>
+<td><strong>Balance de clases</strong></td>
+<td>Ver distribución abajo</td>
+</tr>
+</tbody>
+</table>
+<h3 id="distribucion-de-aprobaciones-y-clases">📈 Distribución de Aprobaciones y Clases<a class="headerlink" href="#distribucion-de-aprobaciones-y-clases" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/credit-card/distribucion-aprobaciones-y-prop-de-clases.png" data-desc-position="bottom"><img alt="Distribución de Aprobaciones" src="../assets/credit-card/distribucion-aprobaciones-y-prop-de-clases.png"></a></p>
+<p><strong>Análisis de la distribución:</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Métrica</strong></th>
+<th><strong>Valor</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Total de aprobaciones (Married)</strong></td>
+<td>~300,000 (68.4%)</td>
+</tr>
+<tr>
+<td><strong>Single/not married</strong></td>
+<td>~55,000 (12.6%)</td>
+</tr>
+<tr>
+<td><strong>Civil marriage</strong></td>
+<td>~36,000 (8.3%)</td>
+</tr>
+<tr>
+<td><strong>Separated</strong></td>
+<td>~27,000 (6.2%)</td>
+</tr>
+<tr>
+<td><strong>Widow</strong></td>
+<td>~20,000 (4.5%)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observaciones clave:</strong>
+- 📊 <strong>Clase mayoritaria</strong>: Personas casadas representan casi 70% del dataset
+- ⚠️ <strong>Desbalance significativo</strong>: Grupos minoritarios (widow, separated) &lt;10%
+- 🎯 <strong>Implicación</strong>: Modelo puede tener sesgo hacia patrones de clase mayoritaria</p>
+<hr>
+<h2 id="analisis-de-variables-demograficas-grupos-protegidos">👥 Análisis de Variables Demográficas (Grupos Protegidos)<a class="headerlink" href="#analisis-de-variables-demograficas-grupos-protegidos" title="Permanent link">¶</a></h2>
+<h3 id="distribucion-de-grupos-protegidos">Distribución de Grupos Protegidos<a class="headerlink" href="#distribucion-de-grupos-protegidos" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/credit-card/variables-demograficas-grupos-protegidos.png" data-desc-position="bottom"><img alt="Variables Demográficas" src="../assets/credit-card/variables-demograficas-grupos-protegidos.png"></a></p>
+<h4 id="genero-code_gender">📊 Género (CODE_GENDER)<a class="headerlink" href="#genero-code_gender" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Grupo</strong></th>
+<th><strong>Frecuencia</strong></th>
+<th><strong>Porcentaje</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Femenino (F)</td>
+<td>~297,000</td>
+<td>67.7%</td>
+</tr>
+<tr>
+<td>Masculino (M)</td>
+<td>~142,000</td>
+<td>32.3%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observación:</strong>
+- 🚺 <strong>Sesgo de muestra</strong>: Mujeres representan 2x más solicitudes que hombres
+- 💡 <strong>Implicación para fairness</strong>: Modelo puede estar mejor entrenado para perfil femenino</p>
+<h4 id="nivel-educativo-name_education_type">🎓 Nivel Educativo (NAME_EDUCATION_TYPE)<a class="headerlink" href="#nivel-educativo-name_education_type" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Nivel</strong></th>
+<th><strong>Frecuencia aprox.</strong></th>
+<th><strong>Porcentaje</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Secondary/secondary special</td>
+<td>~305,000</td>
+<td>69.5%</td>
+</tr>
+<tr>
+<td>Higher education</td>
+<td>~119,000</td>
+<td>27.1%</td>
+</tr>
+<tr>
+<td>Incomplete higher</td>
+<td>~15,000</td>
+<td>3.4%</td>
+</tr>
+<tr>
+<td>Lower secondary</td>
+<td>&lt;5,000</td>
+<td>&lt;1%</td>
+</tr>
+<tr>
+<td>Academic degree</td>
+<td>&lt;2,000</td>
+<td>&lt;0.5%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observación:</strong>
+- 📚 <strong>Concentración educativa</strong>: 96%+ tiene educación secundaria o superior
+- ⚠️ <strong>Grupos marginales</strong>: Educación incompleta y grados académicos muy subrepresentados</p>
+<hr>
+<h2 id="analisis-de-fairness-modelo-baseline">🔍 Análisis de Fairness: Modelo Baseline<a class="headerlink" href="#analisis-de-fairness-modelo-baseline" title="Permanent link">¶</a></h2>
+<h3 id="metricas-de-fairness-por-genero-code_gender">Métricas de Fairness por Género (CODE_GENDER)<a class="headerlink" href="#metricas-de-fairness-por-genero-code_gender" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/credit-card/analisi-fairlearn-por-code-gender.png" data-desc-position="bottom"><img alt="Análisis de Fairness por Género" src="../assets/credit-card/analisi-fairlearn-por-code-gender.png"></a></p>
+<h4 id="resultados-del-modelo-baseline">📊 Resultados del Modelo Baseline<a class="headerlink" href="#resultados-del-modelo-baseline" title="Permanent link">¶</a></h4>
+<p><strong>Métricas por Grupo:</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Métrica</strong></th>
+<th><strong>Femenino (0)</strong></th>
+<th><strong>Masculino (1)</strong></th>
+<th><strong>Overall</strong></th>
+<th><strong>Diferencia</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Accuracy</strong></td>
+<td>0.813</td>
+<td>0.899</td>
+<td>0.845</td>
+<td>+0.086 (M)</td>
+</tr>
+<tr>
+<td><strong>Precision</strong></td>
+<td>0.844</td>
+<td>0.908</td>
+<td>0.866</td>
+<td>+0.064 (M)</td>
+</tr>
+<tr>
+<td><strong>Recall</strong></td>
+<td>0.813</td>
+<td>0.899</td>
+<td>0.845</td>
+<td>+0.086 (M)</td>
+</tr>
+<tr>
+<td><strong>Selection Rate</strong></td>
+<td>0.775</td>
+<td>0.826</td>
+<td>0.794</td>
+<td>+0.051 (M)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="hallazgos-criticos-de-sesgo">🚨 Hallazgos Críticos de Sesgo<a class="headerlink" href="#hallazgos-criticos-de-sesgo" title="Permanent link">¶</a></h4>
+<ol>
+<li><strong>Disparidad en Accuracy</strong> 📈</li>
+<li>Hombres: <strong>89.9%</strong> de accuracy</li>
+<li>Mujeres: <strong>81.3%</strong> de accuracy</li>
+<li><strong>Brecha: 8.6 puntos porcentuales</strong> 🚨</li>
+</ol>
+<p><strong>Interpretación:</strong> El modelo predice correctamente casos de hombres con 8.6% más de precisión que mujeres.</p>
+<ol>
+<li><strong>Disparidad en Selection Rate (Tasa de Aprobación)</strong> 💳</li>
+<li>Hombres: <strong>82.6%</strong> de aprobación</li>
+<li>Mujeres: <strong>77.5%</strong> de aprobación</li>
+<li><strong>Brecha: 5.1 puntos porcentuales</strong> ⚠️</li>
+</ol>
+<p><strong>Interpretación:</strong> Los hombres tienen 5.1% más probabilidad de ser aprobados que las mujeres, controlando por otros factores.</p>
+<ol>
+<li><strong>Disparidad en Precision</strong> ✅</li>
+<li>Hombres: <strong>90.8%</strong> de precision</li>
+<li>Mujeres: <strong>84.4%</strong> de precision</li>
+<li><strong>Brecha: 6.4 puntos porcentuales</strong> ⚠️</li>
+</ol>
+<h4 id="metricas-de-fairness-calculadas">⚖️ Métricas de Fairness Calculadas<a class="headerlink" href="#metricas-de-fairness-calculadas" title="Permanent link">¶</a></h4>
+<p><strong>Demographic Parity Difference (DPD):</strong>
+- <strong>Valor no mostrado explícitamente</strong> pero estimable desde Selection Rate
+- Diferencia en tasa de aprobación: <strong>~5.1%</strong>
+- <strong>Umbral aceptable:</strong> &lt;5% según estándares de la industria
+- <strong>Status:</strong> ⚠️ En el límite / Requiere atención</p>
+<p><strong>Equalized Odds:</strong>
+- No se observan diferencias dramáticas en TPR/FPR pero la brecha en recall (8.6%) sugiere disparidad</p>
+<hr>
+<h2 id="mitigacion-de-sesgo-con-fairlearn">🛠️ Mitigación de Sesgo con Fairlearn<a class="headerlink" href="#mitigacion-de-sesgo-con-fairlearn" title="Permanent link">¶</a></h2>
+<h3 id="comparacion-modelo-baseline-vs-modelo-mitigado">Comparación: Modelo Baseline vs Modelo Mitigado<a class="headerlink" href="#comparacion-modelo-baseline-vs-modelo-mitigado" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/credit-card/comparacion-modelo-baseline-y-modelo-mitigado.png" data-desc-position="bottom"><img alt="Comparación Baseline vs Mitigado" src="../assets/credit-card/comparacion-modelo-baseline-y-modelo-mitigado.png"></a></p>
+<h3 id="resultados-de-la-mitigacion">📊 Resultados de la Mitigación<a class="headerlink" href="#resultados-de-la-mitigacion" title="Permanent link">¶</a></h3>
+<h4 id="1-accuracy-por-grupo">1. Accuracy por Grupo<a class="headerlink" href="#1-accuracy-por-grupo" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Grupo</strong></th>
+<th><strong>Baseline</strong></th>
+<th><strong>Mitigated</strong></th>
+<th><strong>Cambio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Femenino (0)</td>
+<td>0.81</td>
+<td>0.67</td>
+<td>-17.3% 🔻</td>
+</tr>
+<tr>
+<td>Masculino (1)</td>
+<td>0.90</td>
+<td>0.74</td>
+<td>-17.8% 🔻</td>
+</tr>
+<tr>
+<td><strong>Brecha</strong></td>
+<td><strong>0.09</strong></td>
+<td><strong>0.07</strong></td>
+<td><strong>-22.2%</strong> ✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Análisis:</strong>
+- ✅ <strong>Reducción de brecha</strong>: De 9 a 7 puntos (mejora del 22%)
+- ⚠️ <strong>Trade-off severo</strong>: Pérdida promedio de accuracy del 17%
+- 🤔 <strong>Evaluación crítica</strong>: ¿Es aceptable perder 17% de accuracy?</p>
+<h4 id="2-tasa-de-aprobacion-selection-rate">2. Tasa de Aprobación (Selection Rate)<a class="headerlink" href="#2-tasa-de-aprobacion-selection-rate" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Grupo</strong></th>
+<th><strong>Baseline</strong></th>
+<th><strong>Mitigated</strong></th>
+<th><strong>Cambio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Femenino (0)</td>
+<td>0.78</td>
+<td>1.00</td>
+<td>+28.2% ⬆️</td>
+</tr>
+<tr>
+<td>Masculino (1)</td>
+<td>0.83</td>
+<td>1.00</td>
+<td>+20.5% ⬆️</td>
+</tr>
+<tr>
+<td><strong>Brecha</strong></td>
+<td><strong>0.05</strong></td>
+<td><strong>0.00</strong></td>
+<td><strong>-100%</strong> ✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Análisis:</strong>
+- ✅ <strong>Paridad perfecta alcanzada</strong>: Ambos grupos con 100% de selection rate
+- 🚨 <strong>Efecto secundario</strong>: Modelo aprueba a TODOS (overfitting a fairness constraint)
+- ⚠️ <strong>No viable en producción</strong>: Aprobar a todos no es sostenible para negocio</p>
+<h4 id="3-metricas-de-fairness">3. Métricas de Fairness<a class="headerlink" href="#3-metricas-de-fairness" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Métrica</strong></th>
+<th><strong>Baseline</strong></th>
+<th><strong>Mitigated</strong></th>
+<th><strong>Cambio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DPD</strong> (estimado)</td>
+<td>0.051</td>
+<td>~0.00</td>
+<td>-100% ✅</td>
+</tr>
+<tr>
+<td><strong>DPR</strong> (estimado)</td>
+<td>0.94</td>
+<td>1.00</td>
+<td>+6.4% ✅</td>
+</tr>
+<tr>
+<td><strong>EOD</strong> (estimado)</td>
+<td>0.086</td>
+<td>~0.04</td>
+<td>-53% ✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Análisis:</strong>
+- ✅ <strong>Mejora dramática en fairness</strong>: Todas las métricas mejoradas
+- 🎯 <strong>Demographic Parity alcanzada</strong>: DPD prácticamente 0
+- ⚠️ <strong>Pero a costa de</strong>: Accuracy catastrófica y selection rate = 100%</p>
+<hr>
+<h2 id="interpretacion-de-resultados">💡 Interpretación de Resultados<a class="headerlink" href="#interpretacion-de-resultados" title="Permanent link">¶</a></h2>
+<h3 id="problema-identificado-overcompensation">🔴 Problema Identificado: Overcompensation<a class="headerlink" href="#problema-identificado-overcompensation" title="Permanent link">¶</a></h3>
+<p>El modelo mitigado exhibe <strong>overcompensation</strong> (sobrecompensación):</p>
+<div class="highlight"><pre><span></span><code>BASELINE:
+✅ Alta accuracy (~85%)
+⚠️ Sesgo moderado (DPD=0.05)
+✅ Selection rate realista (78-83%)
+
+MITIGATED (con DemographicParity):
+❌ Baja accuracy (~70%)
+✅ Sesgo eliminado (DPD=0.00)
+❌ Selection rate irreal (100% aprueban)
+</code></pre></div>
+<h3 id="que-salio-mal">🎯 ¿Qué salió mal?<a class="headerlink" href="#que-salio-mal" title="Permanent link">¶</a></h3>
+<p><strong>Causa raíz:</strong>
+- <strong>Constraint muy estricta</strong>: DemographicParity fuerza igualdad absoluta en selection rate
+- <strong>Dataset desbalanceado</strong>: 68% mujeres vs 32% hombres
+- <strong>Solución del algoritmo</strong>: Aprobar a todos para igualar tasas</p>
+<p><strong>Problema fundamental:</strong></p>
+<blockquote>
+<p>"No se puede tener fairness perfecta Y alta accuracy cuando los grupos tienen distribuciones reales diferentes"</p>
+</blockquote>
+<hr>
+<h2 id="recomendaciones-de-mitigacion-mejorada">🔧 Recomendaciones de Mitigación Mejorada<a class="headerlink" href="#recomendaciones-de-mitigacion-mejorada" title="Permanent link">¶</a></h2>
+<h3 id="1-ajustar-parametros-de-exponentiatedgradient">1. Ajustar Parámetros de ExponentiatedGradient<a class="headerlink" href="#1-ajustar-parametros-de-exponentiatedgradient" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Versión más flexible</span>
+<span class="n">mitigator</span> <span class="o">=</span> <span class="n">ExponentiatedGradient</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">LogisticRegression</span><span class="p">(),</span>
+    <span class="n">constraints</span><span class="o">=</span><span class="n">DemographicParity</span><span class="p">(</span><span class="n">difference_bound</span><span class="o">=</span><span class="mf">0.05</span><span class="p">),</span>  <span class="c1"># Permitir 5% de diferencia</span>
+    <span class="n">max_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">nu</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span>  <span class="c1"># Aumentar para más flexibilidad</span>
+    <span class="n">eta0</span><span class="o">=</span><span class="mf">1.0</span>  <span class="c1"># Reducir para steps más conservadores</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="2-probar-equalizedodds-en-lugar-de-demographicparity">2. Probar EqualizedOdds en lugar de DemographicParity<a class="headerlink" href="#2-probar-equalizedodds-en-lugar-de-demographicparity" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fairlearn.reductions</span> <span class="kn">import</span> <span class="n">EqualizedOdds</span>
+
+<span class="c1"># Más balanceado para clasificación</span>
+<span class="n">mitigator</span> <span class="o">=</span> <span class="n">ExponentiatedGradient</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">base_model</span><span class="p">,</span>
+    <span class="n">constraints</span><span class="o">=</span><span class="n">EqualizedOdds</span><span class="p">(),</span>  <span class="c1"># Iguala TPR y FPR, no solo selection rate</span>
+    <span class="n">max_iter</span><span class="o">=</span><span class="mi">50</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>Ventaja:</strong> EqualizedOdds considera la calidad real (Y=1 vs Y=0), no solo decisiones del modelo.</p>
+<h3 id="3-usar-gridsearch-con-umbrales-de-fairness">3. Usar GridSearch con umbrales de fairness<a class="headerlink" href="#3-usar-gridsearch-con-umbrales-de-fairness" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fairlearn.postprocessing</span> <span class="kn">import</span> <span class="n">ThresholdOptimizer</span>
+
+<span class="c1"># Post-processing: ajustar thresholds por grupo</span>
+<span class="n">postprocessor</span> <span class="o">=</span> <span class="n">ThresholdOptimizer</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">baseline_model</span><span class="p">,</span>
+    <span class="n">constraints</span><span class="o">=</span><span class="s2">"demographic_parity"</span><span class="p">,</span>
+    <span class="n">objective</span><span class="o">=</span><span class="s2">"balanced_accuracy_score"</span><span class="p">,</span>
+    <span class="n">grid_size</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+
+<span class="n">postprocessor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">gender_train</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Ventaja:</strong> Mantiene modelo base intacto, solo ajusta decisión final.</p>
+<h3 id="4-balanceo-de-datos-previo">4. Balanceo de Datos Previo<a class="headerlink" href="#4-balanceo-de-datos-previo" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
+
+<span class="c1"># Balancear clases antes de entrenar</span>
+<span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_balanced</span><span class="p">,</span> <span class="n">y_balanced</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Luego entrenar con más balance</span>
+<span class="n">baseline_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_balanced</span><span class="p">,</span> <span class="n">y_balanced</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h2 id="framework-de-decision-para-deployment">📊 Framework de Decisión para Deployment<a class="headerlink" href="#framework-de-decision-para-deployment" title="Permanent link">¶</a></h2>
+<h3 id="matriz-de-decision">Matriz de Decisión<a class="headerlink" href="#matriz-de-decision" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Accuracy</strong></th>
+<th><strong>DPD</strong></th>
+<th><strong>Selection Rate</strong></th>
+<th><strong>Decisión</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt;80%</td>
+<td>&lt;0.05</td>
+<td>70-90%</td>
+<td>✅ <strong>DEPLOY</strong></td>
+</tr>
+<tr>
+<td>70-80%</td>
+<td>&lt;0.08</td>
+<td>60-90%</td>
+<td>⚠️ <strong>REVISAR</strong> con stakeholders</td>
+</tr>
+<tr>
+<td>&lt;70%</td>
+<td>&lt;0.10</td>
+<td>&lt;60% o &gt;95%</td>
+<td>🔴 <strong>NO DEPLOY</strong> - Reentrenar</td>
+</tr>
+<tr>
+<td>&gt;80%</td>
+<td>&gt;0.10</td>
+<td>-</td>
+<td>🔴 <strong>NO DEPLOY</strong> - Alto sesgo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nuestro caso:</strong>
+- Baseline: Accuracy=85%, DPD=0.05, SR=78-83% → ✅ <strong>BORDERLINE ACEPTABLE</strong>
+- Mitigated: Accuracy=70%, DPD=0.00, SR=100% → 🔴 <strong>NO VIABLE</strong></p>
+<h3 id="recomendacion-final">Recomendación Final<a class="headerlink" href="#recomendacion-final" title="Permanent link">¶</a></h3>
+<p><strong>Para este dataset:</strong></p>
+<ol>
+<li><strong>Corto plazo</strong>: Usar <strong>modelo baseline</strong> con monitoreo estricto</li>
+<li>Implementar revisión humana para casos border</li>
+<li>Documentar decisiones para compliance</li>
+<li>
+<p>Establecer proceso de apelación</p>
+</li>
+<li>
+<p><strong>Mediano plazo</strong>: Reentrenar con técnicas mejoradas</p>
+</li>
+<li>Aplicar SMOTE para balanceo</li>
+<li>Probar EqualizedOdds</li>
+<li>
+<p>Usar ThresholdOptimizer post-processing</p>
+</li>
+<li>
+<p><strong>Largo plazo</strong>: Recolección de datos más balanceada</p>
+</li>
+<li>Incrementar muestras de hombres</li>
+<li>Diversificar perfiles educativos</li>
+<li>Auditorías trimestrales de fairness</li>
+</ol>
+<hr>
+<h2 id="consideraciones-legales-y-eticas">⚖️ Consideraciones Legales y Éticas<a class="headerlink" href="#consideraciones-legales-y-eticas" title="Permanent link">¶</a></h2>
+<h3 id="marco-regulatorio-aplicable">Marco Regulatorio Aplicable<a class="headerlink" href="#marco-regulatorio-aplicable" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Regulación</strong></th>
+<th><strong>Requisito</strong></th>
+<th><strong>Cumplimiento Actual</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ECOA (USA)</strong></td>
+<td>No discriminar por sexo</td>
+<td>⚠️ Brecha de 5.1% en selection rate</td>
+</tr>
+<tr>
+<td><strong>Fair Lending</strong></td>
+<td>Justificar diferencias</td>
+<td>✅ Documentado en análisis</td>
+</tr>
+<tr>
+<td><strong>EU AI Act</strong></td>
+<td>Auditoría de sesgo</td>
+<td>✅ Fairlearn metrics implementadas</td>
+</tr>
+<tr>
+<td><strong>GDPR</strong></td>
+<td>Explicabilidad</td>
+<td>⚠️ Pendiente: Integrar SHAP/LIME</td>
+</tr>
+</tbody>
+</table>
+<h3 id="principios-eticos-aplicados">Principios Éticos Aplicados<a class="headerlink" href="#principios-eticos-aplicados" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Transparencia</strong> ✅</li>
+<li>Métricas de fairness públicamente documentadas</li>
+<li>
+<p>Código y metodología reproducibles</p>
+</li>
+<li>
+<p><strong>Accountability</strong> ✅</p>
+</li>
+<li>Análisis cuantitativo de disparidades</li>
+<li>
+<p>Framework de decisión explícito</p>
+</li>
+<li>
+<p><strong>Equidad</strong> ⚠️</p>
+</li>
+<li>Sesgo detectado pero no eliminado completamente</li>
+<li>
+<p>Trade-off accuracy-fairness pendiente de resolver</p>
+</li>
+<li>
+<p><strong>No maleficencia</strong> ✅</p>
+</li>
+<li>Modelo mitigado rechazado por inapropiado</li>
+<li>Prevención de deployment irresponsable</li>
+</ol>
+<hr>
+<h2 id="referencias">📚 Referencias<a class="headerlink" href="#referencias" title="Permanent link">¶</a></h2>
+<h3 id="dataset-y-herramientas">Dataset y Herramientas<a class="headerlink" href="#dataset-y-herramientas" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Credit Card Approval Prediction - Kaggle</strong><br>
+   🔗 <a href="https://www.kaggle.com/datasets/rikdifos/credit-card-approval-prediction">kaggle.com/datasets/rikdifos/credit-card-approval-prediction</a></p>
+</li>
+<li>
+<p><strong>Fairlearn Documentation</strong><br>
+   🔗 <a href="https://fairlearn.org/">fairlearn.org</a><br>
+   📘 User Guide completa de métricas y mitigadores</p>
+</li>
+<li>
+<p><strong>Scikit-learn Documentation</strong><br>
+   🔗 <a href="https://scikit-learn.org/stable/">scikit-learn.org</a></p>
+</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="18 de noviembre de 2025 16:44:58 UTC">18 de noviembre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
