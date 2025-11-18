@@ -10,16 +10,16 @@ theme:
   palette:
     # Light mode (Modo Claro)
     - scheme: default
-      primary: custom  # Color personalizado en CSS
-      accent: deep purple
+      primary: deep purple  # Color violeta/morado base
+      accent: purple
       toggle:
         icon: material/brightness-7
         name: Cambiar a modo oscuro
     
     # Dark mode (Modo Oscuro)
     - scheme: slate
-      primary: custom  # Color personalizado en CSS
-      accent: deep purple
+      primary: deep purple  # Color violeta/morado base
+      accent: purple
       toggle:
         icon: material/brightness-4
         name: Cambiar a modo claro

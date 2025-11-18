@@ -1,0 +1,632 @@
+/* ============================================
+   CUSTOM THEME: PANTONE VIOLET V2 U
+   Portfolio de Ingeniería en IA y Ciencia de Datos
+   Milagros Cancela - UCU
+   ============================================ */
+
+/* ============================================
+   COLOR PALETTE - PANTONE VIOLET V2 U
+   Primary: #7B4B94 (Pantone Violet V2 U equivalente)
+   Variations for better UI
+   ============================================ */
+
+   :root {
+    /* Primary Colors - Violet - FORZAR COLOR VIOLETA */
+    --md-primary-fg-color: #7B4B94 !important;
+    --md-primary-fg-color--light: #9B6BB4 !important;
+    --md-primary-fg-color--dark: #5B2B74 !important;
+    --md-primary-bg-color: #ffffff;
+    
+    /* Accent Colors - Deep Purple */
+    --md-accent-fg-color: #9C27B0 !important;
+    --md-accent-fg-color--transparent: rgba(156, 39, 176, 0.1);
+    
+    /* Custom violet variations */
+    --violet-light: #B08BC8;
+    --violet-medium: #7B4B94;
+    --violet-dark: #4A2D5A;
+    --violet-darker: #2E1A38;
+    
+    /* Shadows and overlays */
+    --violet-shadow: rgba(123, 75, 148, 0.2);
+    --violet-overlay: rgba(123, 75, 148, 0.05);
+  }
+  
+  /* Dark mode colors - FORZAR VIOLETA */
+  [data-md-color-scheme="slate"] {
+    --md-primary-fg-color: #9B6BB4 !important;
+    --md-primary-fg-color--light: #B08BC8 !important;
+    --md-primary-fg-color--dark: #7B4B94 !important;
+    
+    --md-accent-fg-color: #B08BC8 !important;
+    
+    /* Dark mode specific */
+    --violet-shadow: rgba(155, 107, 180, 0.3);
+    --violet-overlay: rgba(155, 107, 180, 0.08);
+  }
+  
+  [data-md-color-scheme="slate"] .md-header {
+    background-color: #9B6BB4 !important;
+  }
+  
+  [data-md-color-scheme="slate"] .md-tabs {
+    background-color: #7B4B94 !important;
+  }
+  
+  /* ============================================
+     HEADER & NAVIGATION
+     ============================================ */
+  
+  /* Header background - FORZAR VIOLETA */
+  .md-header {
+    background-color: #7B4B94 !important;
+    box-shadow: 0 2px 8px var(--violet-shadow);
+  }
+  
+  .md-header__button {
+    color: white !important;
+  }
+  
+  /* Navigation tabs - FORZAR VIOLETA */
+  .md-tabs {
+    background-color: #5B2B74 !important;
+  }
+  
+  .md-tabs__link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  
+  .md-tabs__link:hover {
+    opacity: 1;
+    color: white !important;
+  }
+  
+  .md-tabs__link--active {
+    color: white !important;
+    border-bottom-color: #B08BC8 !important;
+    opacity: 1;
+    font-weight: 600;
+  }
+  
+  /* Navigation sections - FORZAR VIOLETA */
+  .md-nav__link--active {
+    color: #7B4B94 !important;
+    font-weight: 600;
+  }
+  
+  .md-nav__link:hover {
+    color: #7B4B94 !important;
+  }
+  
+  /* Sidebar navigation */
+  .md-nav__item .md-nav__link--active {
+    color: #7B4B94 !important;
+  }
+  
+  /* Logo and title */
+  .md-header__title {
+    color: white !important;
+  }
+  
+  /* Search button */
+  .md-search__form {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  .md-search__input {
+    color: white !important;
+  }
+  
+  .md-search__input::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+  
+  /* ============================================
+     BUTTONS & INTERACTIVE ELEMENTS
+     ============================================ */
+  
+  /* Primary buttons - FORZAR VIOLETA */
+  .md-button--primary {
+    background-color: #7B4B94 !important;
+    border-color: #7B4B94 !important;
+    color: white !important;
+    transition: all 0.3s ease;
+  }
+  
+  .md-button--primary:hover {
+    background-color: #5B2B74 !important;
+    border-color: #5B2B74 !important;
+    box-shadow: 0 4px 12px var(--violet-shadow);
+    transform: translateY(-2px);
+  }
+  
+  /* Regular buttons */
+  .md-button {
+    color: #7B4B94 !important;
+    border-color: #7B4B94 !important;
+  }
+  
+  .md-button:hover {
+    background-color: #7B4B94 !important;
+    color: white !important;
+  }
+  
+  /* Links - FORZAR VIOLETA */
+  a {
+    color: #7B4B94 !important;
+    transition: color 0.2s;
+  }
+  
+  a:hover {
+    color: #5B2B74 !important;
+    text-decoration: underline;
+  }
+  
+  /* Code links */
+  .md-typeset a code {
+    color: #7B4B94 !important;
+  }
+  
+  /* External links */
+  .md-typeset a[href^="http"] {
+    color: #7B4B94 !important;
+  }
+  
+  .md-typeset a[href^="http"]:hover {
+    color: #5B2B74 !important;
+  }
+  
+  /* ============================================
+     CONTENT ELEMENTS
+     ============================================ */
+  
+  /* Headings with gradient effect - FORZAR VIOLETA */
+  .md-typeset h1 {
+    color: #4A2D5A !important;
+    font-weight: 700;
+    border-bottom: 3px solid #7B4B94 !important;
+    padding-bottom: 0.5rem;
+  }
+  
+  .md-typeset h2 {
+    color: #7B4B94 !important;
+    font-weight: 600;
+    border-bottom: 2px solid #B08BC8 !important;
+    padding-bottom: 0.3rem;
+  }
+  
+  .md-typeset h3 {
+    color: #5B2B74 !important;
+    font-weight: 600;
+  }
+  
+  .md-typeset h4 {
+    color: #7B4B94 !important;
+  }
+  
+  /* Dark mode headings - FORZAR VIOLETA */
+  [data-md-color-scheme="slate"] .md-typeset h1 {
+    color: #B08BC8 !important;
+    border-bottom-color: #9B6BB4 !important;
+  }
+  
+  [data-md-color-scheme="slate"] .md-typeset h2 {
+    color: #B08BC8 !important;
+    border-bottom-color: #9B6BB4 !important;
+  }
+  
+  [data-md-color-scheme="slate"] .md-typeset h3 {
+    color: #9B6BB4 !important;
+  }
+  
+  [data-md-color-scheme="slate"] .md-typeset h4 {
+    color: #B08BC8 !important;
+  }
+  
+  [data-md-color-scheme="slate"] a {
+    color: #B08BC8 !important;
+  }
+  
+  [data-md-color-scheme="slate"] a:hover {
+    color: #9B6BB4 !important;
+  }
+  
+  /* Tables */
+  .md-typeset table:not([class]) {
+    border: 1px solid var(--violet-light);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .md-typeset table:not([class]) th {
+    background-color: #7B4B94 !important;
+    color: white !important;
+    font-weight: 600;
+  }
+  
+  .md-typeset table:not([class]) tr:hover {
+    background-color: var(--violet-overlay);
+  }
+  
+  /* Code blocks */
+  .md-typeset code {
+    background-color: var(--violet-overlay);
+    border-radius: 4px;
+    padding: 0.2em 0.4em;
+  }
+  
+  .md-typeset pre > code {
+    background-color: transparent;
+  }
+  
+  /* Inline code in headers */
+  .md-typeset h1 code,
+  .md-typeset h2 code,
+  .md-typeset h3 code {
+    background-color: var(--violet-overlay);
+    color: var(--md-primary-fg-color--dark);
+  }
+  
+  /* ============================================
+     ADMONITIONS (CALL-OUTS)
+     ============================================ */
+  
+  /* Custom note admonition */
+  .md-typeset .admonition.note,
+  .md-typeset details.note {
+    border-left-color: var(--md-primary-fg-color);
+  }
+  
+  .md-typeset .note > .admonition-title,
+  .md-typeset .note > summary {
+    background-color: var(--violet-overlay);
+    border-left-color: var(--md-primary-fg-color);
+  }
+  
+  .md-typeset .note > .admonition-title::before,
+  .md-typeset .note > summary::before {
+    background-color: var(--md-primary-fg-color);
+  }
+  
+  /* Tip admonition */
+  .md-typeset .admonition.tip,
+  .md-typeset details.tip {
+    border-left-color: var(--violet-light);
+  }
+  
+  .md-typeset .tip > .admonition-title,
+  .md-typeset .tip > summary {
+    background-color: var(--violet-overlay);
+  }
+  
+  /* ============================================
+     SEARCH
+     ============================================ */
+  
+  .md-search__input {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+  }
+  
+  .md-search__input:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+  
+  .md-search__input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  /* Search results */
+  .md-search-result__link:hover {
+    background-color: var(--violet-overlay);
+  }
+  
+  .md-search-result__link--active {
+    background-color: var(--violet-overlay);
+    border-left: 3px solid var(--md-primary-fg-color);
+  }
+  
+  /* ============================================
+     FOOTER
+     ============================================ */
+  
+  .md-footer {
+    background-color: var(--violet-darker);
+  }
+  
+  .md-footer-meta {
+    background-color: var(--violet-dark);
+  }
+  
+  /* ============================================
+     CUSTOM COMPONENTS
+     ============================================ */
+  
+  /* Hero section for homepage */
+  .hero-section {
+    background: linear-gradient(135deg, var(--violet-light) 0%, var(--md-primary-fg-color) 100%);
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 8px 24px var(--violet-shadow);
+  }
+  
+  .hero-section h1 {
+    color: white;
+    border-bottom: none;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-section p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+  }
+  
+  /* Project cards */
+  .project-card {
+    border: 2px solid var(--violet-light);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+    background-color: var(--violet-overlay);
+  }
+  
+  .project-card:hover {
+    border-color: var(--md-primary-fg-color);
+    box-shadow: 0 8px 24px var(--violet-shadow);
+    transform: translateY(-4px);
+  }
+  
+  .project-card h3 {
+    color: var(--md-primary-fg-color);
+    margin-top: 0;
+  }
+  
+  /* Skill badges */
+  .skill-badge {
+    display: inline-block;
+    background-color: var(--md-primary-fg-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0.2rem;
+    transition: all 0.2s;
+  }
+  
+  .skill-badge:hover {
+    background-color: var(--md-primary-fg-color--dark);
+    transform: scale(1.05);
+  }
+  
+  /* Timeline for CV/experience */
+  .timeline-item {
+    border-left: 3px solid var(--md-primary-fg-color);
+    padding-left: 1.5rem;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--md-primary-fg-color);
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px var(--violet-overlay);
+  }
+  
+  .timeline-item h4 {
+    color: var(--md-primary-fg-color);
+    margin-top: 0;
+  }
+  
+  /* Stats/metrics cards */
+  .metric-card {
+    background: linear-gradient(135deg, var(--violet-overlay) 0%, rgba(123, 75, 148, 0.02) 100%);
+    border-left: 4px solid var(--md-primary-fg-color);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+  
+  .metric-card h4 {
+    color: var(--md-primary-fg-color);
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--md-primary-fg-color--dark);
+  }
+  
+  /* ============================================
+     PROGRESS BARS
+     ============================================ */
+  
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: var(--violet-overlay);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+  }
+  
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--violet-light) 0%, var(--md-primary-fg-color) 100%);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+  
+  /* ============================================
+     RESPONSIVE ADJUSTMENTS
+     ============================================ */
+  
+  @media screen and (max-width: 768px) {
+    .hero-section {
+      padding: 2rem 1rem;
+    }
+    
+    .hero-section h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero-section p {
+      font-size: 1rem;
+    }
+    
+    .project-card {
+      padding: 1rem;
+    }
+  }
+  
+  /* ============================================
+     ANIMATIONS
+     ============================================ */
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* ============================================
+     PRINT STYLES
+     ============================================ */
+  
+  @media print {
+    .md-header,
+    .md-tabs,
+    .md-sidebar,
+    .md-footer {
+      display: none;
+    }
+    
+    .md-content {
+      max-width: 100%;
+    }
+  }
+  
+  /* ============================================
+     ACCESSIBILITY IMPROVEMENTS
+     ============================================ */
+  
+  /* Focus indicators */
+  a:focus,
+  button:focus,
+  input:focus {
+    outline: 2px solid var(--md-primary-fg-color);
+    outline-offset: 2px;
+  }
+  
+  /* Skip to content link */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--md-primary-fg-color);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+  }
+  
+  .skip-link:focus {
+    top: 0;
+  }
+  
+  /* ============================================
+     DARK MODE SPECIFIC ADJUSTMENTS
+     ============================================ */
+  
+  [data-md-color-scheme="slate"] {
+    /* Enhanced contrast for dark mode */
+    --violet-overlay: rgba(155, 107, 180, 0.1);
+  }
+  
+  [data-md-color-scheme="slate"] .hero-section {
+    background: linear-gradient(135deg, var(--violet-dark) 0%, var(--violet-darker) 100%);
+  }
+  
+  [data-md-color-scheme="slate"] .project-card {
+    background-color: rgba(155, 107, 180, 0.05);
+    border-color: var(--violet-light);
+  }
+  
+  [data-md-color-scheme="slate"] .skill-badge {
+    background-color: var(--violet-light);
+    color: var(--violet-darker);
+  }
+  
+  /* ============================================
+     UTILITY CLASSES
+     ============================================ */
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-violet {
+    color: var(--md-primary-fg-color);
+  }
+  
+  .bg-violet-light {
+    background-color: var(--violet-overlay);
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .mt-2 { margin-top: 2rem; }
+  .mb-2 { margin-bottom: 2rem; }
+  .p-2 { padding: 2rem; }
+  
+  /* Flex utilities */
+  .flex {
+    display: flex;
+  }
+  
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  
+  .gap-1 { gap: 1rem; }
+  .gap-2 { gap: 2rem; }
