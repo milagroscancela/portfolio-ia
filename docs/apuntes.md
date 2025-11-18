@@ -26,7 +26,7 @@ Esta sección centraliza todos los apuntes teóricos, conceptos fundamentales y 
 **Período:** Agosto - Septiembre 2024  
 **Evaluación:** Septiembre 2024
 
-**[🔗 Ver Apuntes Completos de UT1](./ut1-apuntes.md)**
+**[🔗 Ver Apuntes Completos de UT1](ut1-apuntes.md)**
 
 ---
 
@@ -36,7 +36,7 @@ Esta sección centraliza todos los apuntes teóricos, conceptos fundamentales y 
 **Evaluación:** Octubre 2024
 
 
-**[🔗 Ver Apuntes Completos de UT2](./ut2-apuntes.md)**
+**[🔗 Ver Apuntes Completos de UT2](ut2-apuntes.md)**
 
 ---
 
@@ -46,7 +46,7 @@ Esta sección centraliza todos los apuntes teóricos, conceptos fundamentales y 
 **Evaluación:** 01/10/2024
 
 
-**[🔗 Ver Apuntes Completos de UT3](./ut3-apuntes.md)**
+**[🔗 Ver Apuntes Completos de UT3](ut3-apuntes.md)**
 
 ---
 
@@ -134,51 +134,7 @@ df['income_was_missing'] = df['income'].isna().astype(int)
 df['income'] = df['income'].fillna(df['income'].median())
 ```
 
----
 
-## 📚 Recursos Transversales
 
-### Libros de Referencia del Curso
-
-1. **Thakur, A.** *Approaching (Almost) Any Machine Learning Problem*
-   - Usado en: UT1, UT2
-   - Enfoque práctico y pragmático
-
-2. **Huyen, C.** *Designing Machine Learning Systems*
-   - Usado en: UT2
-   - Perspectiva de sistemas en producción
-
-3. **Zheng, A., & Casari, A.** *Feature Engineering for Machine Learning*
-   - Usado en: UT3
-   - Guía definitiva de feature engineering
-
----
-
-### Documentación Técnica Esencial
-
-- **Scikit-learn Documentation** (todas las unidades)
-  - [Preprocessing & Pipelines](https://scikit-learn.org/stable/modules/preprocessing.html)
-  - [Pipeline API](https://scikit-learn.org/stable/modules/compose.html)
-  - [User Guide](https://scikit-learn.org/stable/user_guide.html)
-
-- **Prefect Documentation** (UT2)
-  - [Core Concepts](https://docs.prefect.io/core/)
-  - [Orchestration](https://docs.prefect.io/)
-
-- **Pandas Documentation** (todas las unidades)
-  - [Working with Missing Data](https://pandas.pydata.org/docs/user_guide/missing_data.html)
-
----
-
-### Recursos de Kaggle
-
-- **Cursos Interactivos:**
-  - [Intro to Machine Learning](https://www.kaggle.com/learn/intro-to-machine-learning)
-  - [Intermediate Machine Learning](https://www.kaggle.com/learn/intermediate-machine-learning)
-  - [Feature Engineering](https://www.kaggle.com/learn/feature-engineering) ⭐ UT3
-
-- **Notebooks de la Comunidad:**
-  - [Missing Data Handling](https://www.kaggle.com/search?q=missing+data)
-  - [Pipeline Examples](https://www.kaggle.com/search?q=pipeline)
 
 
