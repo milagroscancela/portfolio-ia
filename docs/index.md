@@ -52,7 +52,7 @@ Este portfolio documenta mi proceso en la materia  **Ingeniería de Datos**, des
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 2rem 0;">
 
-  <a href="acerca/" style="text-decoration: none;">
+  <a href="./acerca.md" style="text-decoration: none;">
     <div style="background: white; padding: 1.2rem; border-radius: 10px; border: 2px solid #B08BC8; transition: all 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center;">
       <div style="font-size: 2rem; margin-bottom: 0.3rem;">👤</div>
       <h3 style="margin: 0.3rem 0; color: #7B4B94; font-size: 1.1rem;">Acerca de Mí</h3>
@@ -60,7 +60,7 @@ Este portfolio documenta mi proceso en la materia  **Ingeniería de Datos**, des
     </div>
   </a>
 
-  <a href="portfolio/" style="text-decoration: none;">
+  <a href="./portfolio/index.md" style="text-decoration: none;">
     <div style="background: white; padding: 1.2rem; border-radius: 10px; border: 2px solid #B08BC8; transition: all 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center;">
       <div style="font-size: 2rem; margin-bottom: 0.3rem;">📁</div>
       <h3 style="margin: 0.3rem 0; color: #7B4B94; font-size: 1.1rem;">Portfolio</h3>
@@ -68,7 +68,7 @@ Este portfolio documenta mi proceso en la materia  **Ingeniería de Datos**, des
     </div>
   </a>
 
-  <a href="recursos/" style="text-decoration: none;">
+  <a href="./recursos.md" style="text-decoration: none;">
     <div style="background: white; padding: 1.2rem; border-radius: 10px; border: 2px solid #B08BC8; transition: all 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center;">
       <div style="font-size: 2rem; margin-bottom: 0.3rem;">📚</div>
       <h3 style="margin: 0.3rem 0; color: #7B4B94; font-size: 1.1rem;">Recursos</h3>
@@ -76,7 +76,7 @@ Este portfolio documenta mi proceso en la materia  **Ingeniería de Datos**, des
     </div>
   </a>
 
-  <a href="extras/" style="text-decoration: none;">
+  <a href="./extras.md" style="text-decoration: none;">
     <div style="background: white; padding: 1.2rem; border-radius: 10px; border: 2px solid #B08BC8; transition: all 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center;">
       <div style="font-size: 2rem; margin-bottom: 0.3rem;">🔬</div>
       <h3 style="margin: 0.3rem 0; color: #7B4B94; font-size: 1.1rem;">Exploraciones Extra</h3>
@@ -84,7 +84,7 @@ Este portfolio documenta mi proceso en la materia  **Ingeniería de Datos**, des
     </div>
   </a>
 
-  <a href="visualizaciones/" style="text-decoration: none;">
+  <a href="./visualizaciones.md" style="text-decoration: none;">
     <div style="background: white; padding: 1.2rem; border-radius: 10px; border: 2px solid #B08BC8; transition: all 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center;">
       <div style="font-size: 2rem; margin-bottom: 0.3rem;">📊</div>
       <h3 style="margin: 0.3rem 0; color: #7B4B94; font-size: 1.1rem;">Visualizaciones</h3>
@@ -92,7 +92,7 @@ Este portfolio documenta mi proceso en la materia  **Ingeniería de Datos**, des
     </div>
   </a>
 
-  <a href="apuntes/" style="text-decoration: none;">
+  <a href="./apuntes.md" style="text-decoration: none;">
     <div style="background: white; padding: 1.2rem; border-radius: 10px; border: 2px solid #B08BC8; transition: all 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center;">
       <div style="font-size: 2rem; margin-bottom: 0.3rem;">📝</div>
       <h3 style="margin: 0.3rem 0; color: #7B4B94; font-size: 1.1rem;">Apuntes</h3>
@@ -108,21 +108,21 @@ Este portfolio documenta mi proceso en la materia  **Ingeniería de Datos**, des
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin: 2rem 0;">
 
-  <a href="portfolio/10-pca/" style="text-decoration: none;">
+  <a href="./portfolio/10-pca.md" style="text-decoration: none;">
     <div style="background: linear-gradient(135deg, #9B6BB4 0%, #7B4B94 100%); padding: 1.3rem; border-radius: 12px; color: white; box-shadow: 0 4px 6px rgba(123, 75, 148, 0.3); transition: transform 0.3s;">
       <h3 style="margin-top: 0; color: white; font-size: 1.1rem;">🔍 PCA y Feature Selection</h3>
       <p style="opacity: 0.95; margin-bottom: 0; font-size: 0.9rem;">Reducción de 79→15 features con 13.8% mejora en AUC</p>
     </div>
   </a>
 
-  <a href="portfolio/11-future_temp/" style="text-decoration: none;">
+  <a href="./portfolio/11-future_temp.md" style="text-decoration: none;">
     <div style="background: linear-gradient(135deg, #B08BC8 0%, #9B6BB4 100%); padding: 1.3rem; border-radius: 12px; color: white; box-shadow: 0 4px 6px rgba(176, 139, 200, 0.3); transition: transform 0.3s;">
       <h3 style="margin-top: 0; color: white; font-size: 1.1rem;">⏰ Feature Engineering Temporal</h3>
       <p style="opacity: 0.95; margin-bottom: 0; font-size: 0.9rem;">Lag features, rolling windows y RFM en e-commerce</p>
     </div>
   </a>
 
-  <a href="portfolio/07-fairlearn/" style="text-decoration: none;">
+  <a href="./portfolio/07-fairlearn.md" style="text-decoration: none;">
     <div style="background: linear-gradient(135deg, #7B4B94 0%, #5B2B74 100%); padding: 1.3rem; border-radius: 12px; color: white; box-shadow: 0 4px 6px rgba(91, 43, 116, 0.3); transition: transform 0.3s;">
       <h3 style="margin-top: 0; color: white; font-size: 1.1rem;">⚖️ Bias Detection con Fairlearn</h3>
       <p style="opacity: 0.95; margin-bottom: 0; font-size: 0.9rem;">Análisis ético de fairness en modelos de ML</p>
