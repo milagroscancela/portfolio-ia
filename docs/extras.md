@@ -6,26 +6,26 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 
 ## 📊 Resumen de Exploraciones
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0; max-width: 100%;">
 
-<div style="background: linear-gradient(135deg, #9B6BB4 0%, #7B4B94 100%); padding: 2rem; border-radius: 16px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(123, 75, 148, 0.3);">
-<div style="font-size: 4rem; font-weight: 700; margin-bottom: 0.5rem;">2</div>
-<div style="font-size: 1.2rem; opacity: 0.95;">Exploraciones<br/>Completadas</div>
+<div style="background: linear-gradient(135deg, #9B6BB4 0%, #7B4B94 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(123, 75, 148, 0.3);">
+<div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.3rem;">2</div>
+<div style="font-size: 1rem; opacity: 0.95;">Exploraciones<br/>Completadas</div>
 </div>
 
-<div style="background: linear-gradient(135deg, #B08BC8 0%, #9B6BB4 100%); padding: 2rem; border-radius: 16px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(155, 107, 180, 0.3);">
-<div style="font-size: 4rem; font-weight: 700; margin-bottom: 0.5rem;">440K+</div>
-<div style="font-size: 1.2rem; opacity: 0.95;">Registros<br/>Analizados</div>
+<div style="background: linear-gradient(135deg, #B08BC8 0%, #9B6BB4 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(155, 107, 180, 0.3);">
+<div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.3rem;">440K+</div>
+<div style="font-size: 1rem; opacity: 0.95;">Registros<br/>Analizados</div>
 </div>
 
-<div style="background: linear-gradient(135deg, #7B4B94 0%, #5B2B74 100%); padding: 2rem; border-radius: 16px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(91, 43, 116, 0.3);">
-<div style="font-size: 4rem; font-weight: 700; margin-bottom: 0.5rem;">15+</div>
-<div style="font-size: 1.2rem; opacity: 0.95;">Visualizaciones<br/>Generadas</div>
+<div style="background: linear-gradient(135deg, #7B4B94 0%, #5B2B74 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(91, 43, 116, 0.3);">
+<div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.3rem;">10+</div>
+<div style="font-size: 1rem; opacity: 0.95;">Técnicas<br/>Aplicadas</div>
 </div>
 
-<div style="background: linear-gradient(135deg, #9C27B0 0%, #7B4B94 100%); padding: 2rem; border-radius: 16px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);">
-<div style="font-size: 4rem; font-weight: 700; margin-bottom: 0.5rem;">20+</div>
-<div style="font-size: 1.2rem; opacity: 0.95;">Métricas<br/>Calculadas</div>
+<div style="background: linear-gradient(135deg, #9C27B0 0%, #7B4B94 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);">
+<div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.3rem;">15+</div>
+<div style="font-size: 1rem; opacity: 0.95;">Visualizaciones<br/>Generadas</div>
 </div>
 
 </div>

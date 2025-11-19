@@ -241,46 +241,6 @@ En esta unidad trabajé en:
 | **P10: PCA** | Zheng Cap 6, Sklearn PCA, StatQuest PCA videos |
 | **P11: Temporal Features** | Pandas Time Series, Sklearn TimeSeriesSplit |
 
----
 
-## 📝 Mi Flujo de Trabajo con los Recursos
-
-!!! tip "Así trabajé con cada práctica"
-    
-    **Antes de cada práctica:**
-    
-    1. 📖 Leí el capítulo correspondiente del libro (30-45 min)
-    2. 🎥 Vi video tutorial si había disponible (15-20 min)
-    3. 💻 Completé módulo de Kaggle Learn (1-2 horas)
-    
-    **Durante la práctica:**
-    
-    - 🔍 Consulté documentación oficial ante dudas
-    - 📋 Usé notebooks de ejemplo como referencia
-    - 🤝 Colaboré con mi grupo cuando fue necesario
-    
-    **Después de la práctica:**
-    
-    - ✍️ Documenté aprendizajes en este portfolio
-    - 🔗 Subí código al repositorio de GitHub
-    - 💬 Participé en discusiones del foro del curso
-
----
-
-## 🎓 Notas Personales
-
-### Recursos que me resultaron más útiles
-
-- ⭐ **Zheng & Casari** - Explicaciones claras con ejemplos prácticos
-- ⭐ **Kaggle Learn** - Ejercicios hands-on que refuerzan conceptos
-- ⭐ **Scikit-learn docs** - Ejemplos de código reproducibles
-
-### Desafíos superados
-
-- 🧠 Entender la diferencia entre MAR y MNAR (UT2)
-- 🎯 Implementar target encoding sin data leakage (UT3)
-- 📊 Interpretar loadings de PCA en contexto de negocio (UT3)
-
----
 
 > 📅 **Última actualización:** 16 de Noviembre de 2025  

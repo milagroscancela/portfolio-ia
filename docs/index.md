@@ -1,6 +1,6 @@
 <div style="text-align: center; margin: 3rem 0;">
   <h1 style="font-size: 3rem; background: linear-gradient(135deg, #9B6BB4 0%, #7B4B94 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">
-    Portfolio: Ing en IA y CD - Milagros Cancela 💻
+    Portfolio: Ing en IA y CD - Milagros Cancela 
   </h1>
   <p style="font-size: 1.3rem; color: #7f8c8d; margin-top: 0;">
     Transformando datos en decisiones 

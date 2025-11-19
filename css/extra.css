@@ -11,14 +11,14 @@
    ============================================ */
 
    :root {
-    /* Primary Colors - Violet - FORZAR COLOR VIOLETA */
-    --md-primary-fg-color: #7B4B94 !important;
-    --md-primary-fg-color--light: #9B6BB4 !important;
-    --md-primary-fg-color--dark: #5B2B74 !important;
+    /* Primary Colors - Violet */
+    --md-primary-fg-color: #7B4B94;
+    --md-primary-fg-color--light: #9B6BB4;
+    --md-primary-fg-color--dark: #5B2B74;
     --md-primary-bg-color: #ffffff;
     
     /* Accent Colors - Deep Purple */
-    --md-accent-fg-color: #9C27B0 !important;
+    --md-accent-fg-color: #9C27B0;
     --md-accent-fg-color--transparent: rgba(156, 39, 176, 0.1);
     
     /* Custom violet variations */
@@ -32,205 +32,124 @@
     --violet-overlay: rgba(123, 75, 148, 0.05);
   }
   
-  /* Dark mode colors - FORZAR VIOLETA */
+  /* Dark mode colors */
   [data-md-color-scheme="slate"] {
-    --md-primary-fg-color: #9B6BB4 !important;
-    --md-primary-fg-color--light: #B08BC8 !important;
-    --md-primary-fg-color--dark: #7B4B94 !important;
+    --md-primary-fg-color: #9B6BB4;
+    --md-primary-fg-color--light: #B08BC8;
+    --md-primary-fg-color--dark: #7B4B94;
     
-    --md-accent-fg-color: #B08BC8 !important;
+    --md-accent-fg-color: #B08BC8;
     
     /* Dark mode specific */
     --violet-shadow: rgba(155, 107, 180, 0.3);
     --violet-overlay: rgba(155, 107, 180, 0.08);
   }
   
-  [data-md-color-scheme="slate"] .md-header {
-    background-color: #9B6BB4 !important;
-  }
-  
-  [data-md-color-scheme="slate"] .md-tabs {
-    background-color: #7B4B94 !important;
-  }
-  
   /* ============================================
      HEADER & NAVIGATION
      ============================================ */
   
-  /* Header background - FORZAR VIOLETA */
+  /* Header background */
   .md-header {
-    background-color: #7B4B94 !important;
+    background-color: var(--md-primary-fg-color);
     box-shadow: 0 2px 8px var(--violet-shadow);
   }
   
-  .md-header__button {
-    color: white !important;
-  }
-  
-  /* Navigation tabs - FORZAR VIOLETA */
+  /* Navigation tabs */
   .md-tabs {
-    background-color: #5B2B74 !important;
+    background-color: var(--md-primary-fg-color--dark);
   }
   
   .md-tabs__link {
-    color: rgba(255, 255, 255, 0.9) !important;
     opacity: 0.8;
     transition: opacity 0.2s;
   }
   
   .md-tabs__link:hover {
     opacity: 1;
-    color: white !important;
   }
   
   .md-tabs__link--active {
-    color: white !important;
-    border-bottom-color: #B08BC8 !important;
     opacity: 1;
     font-weight: 600;
   }
   
-  /* Navigation sections - FORZAR VIOLETA */
+  /* Navigation sections */
   .md-nav__link--active {
-    color: #7B4B94 !important;
+    color: var(--md-primary-fg-color);
     font-weight: 600;
   }
   
   .md-nav__link:hover {
-    color: #7B4B94 !important;
-  }
-  
-  /* Sidebar navigation */
-  .md-nav__item .md-nav__link--active {
-    color: #7B4B94 !important;
-  }
-  
-  /* Logo and title */
-  .md-header__title {
-    color: white !important;
-  }
-  
-  /* Search button */
-  .md-search__form {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-  }
-  
-  .md-search__input {
-    color: white !important;
-  }
-  
-  .md-search__input::placeholder {
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: var(--md-primary-fg-color);
   }
   
   /* ============================================
      BUTTONS & INTERACTIVE ELEMENTS
      ============================================ */
   
-  /* Primary buttons - FORZAR VIOLETA */
+  /* Primary buttons */
   .md-button--primary {
-    background-color: #7B4B94 !important;
-    border-color: #7B4B94 !important;
-    color: white !important;
+    background-color: var(--md-primary-fg-color);
+    border-color: var(--md-primary-fg-color);
+    color: white;
     transition: all 0.3s ease;
   }
   
   .md-button--primary:hover {
-    background-color: #5B2B74 !important;
-    border-color: #5B2B74 !important;
+    background-color: var(--md-primary-fg-color--dark);
+    border-color: var(--md-primary-fg-color--dark);
     box-shadow: 0 4px 12px var(--violet-shadow);
     transform: translateY(-2px);
   }
   
-  /* Regular buttons */
-  .md-button {
-    color: #7B4B94 !important;
-    border-color: #7B4B94 !important;
-  }
-  
-  .md-button:hover {
-    background-color: #7B4B94 !important;
-    color: white !important;
-  }
-  
-  /* Links - FORZAR VIOLETA */
+  /* Links */
   a {
-    color: #7B4B94 !important;
+    color: var(--md-primary-fg-color);
     transition: color 0.2s;
   }
   
   a:hover {
-    color: #5B2B74 !important;
+    color: var(--md-primary-fg-color--dark);
     text-decoration: underline;
   }
   
   /* Code links */
   .md-typeset a code {
-    color: #7B4B94 !important;
-  }
-  
-  /* External links */
-  .md-typeset a[href^="http"] {
-    color: #7B4B94 !important;
-  }
-  
-  .md-typeset a[href^="http"]:hover {
-    color: #5B2B74 !important;
+    color: var(--md-primary-fg-color);
   }
   
   /* ============================================
      CONTENT ELEMENTS
      ============================================ */
   
-  /* Headings with gradient effect - FORZAR VIOLETA */
+  /* Headings with gradient effect */
   .md-typeset h1 {
-    color: #4A2D5A !important;
+    color: var(--violet-dark);
     font-weight: 700;
-    border-bottom: 3px solid #7B4B94 !important;
+    border-bottom: 3px solid var(--md-primary-fg-color);
     padding-bottom: 0.5rem;
   }
   
   .md-typeset h2 {
-    color: #7B4B94 !important;
+    color: var(--md-primary-fg-color);
     font-weight: 600;
-    border-bottom: 2px solid #B08BC8 !important;
+    border-bottom: 2px solid var(--violet-light);
     padding-bottom: 0.3rem;
   }
   
   .md-typeset h3 {
-    color: #5B2B74 !important;
+    color: var(--md-primary-fg-color--dark);
     font-weight: 600;
   }
   
-  .md-typeset h4 {
-    color: #7B4B94 !important;
-  }
-  
-  /* Dark mode headings - FORZAR VIOLETA */
+  /* Dark mode headings */
   [data-md-color-scheme="slate"] .md-typeset h1 {
-    color: #B08BC8 !important;
-    border-bottom-color: #9B6BB4 !important;
+    color: var(--violet-light);
   }
   
   [data-md-color-scheme="slate"] .md-typeset h2 {
-    color: #B08BC8 !important;
-    border-bottom-color: #9B6BB4 !important;
-  }
-  
-  [data-md-color-scheme="slate"] .md-typeset h3 {
-    color: #9B6BB4 !important;
-  }
-  
-  [data-md-color-scheme="slate"] .md-typeset h4 {
-    color: #B08BC8 !important;
-  }
-  
-  [data-md-color-scheme="slate"] a {
-    color: #B08BC8 !important;
-  }
-  
-  [data-md-color-scheme="slate"] a:hover {
-    color: #9B6BB4 !important;
+    color: var(--violet-light);
   }
   
   /* Tables */
@@ -241,8 +160,8 @@
   }
   
   .md-typeset table:not([class]) th {
-    background-color: #7B4B94 !important;
-    color: white !important;
+    background-color: var(--md-primary-fg-color);
+    color: white;
     font-weight: 600;
   }
   
