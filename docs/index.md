@@ -11,11 +11,10 @@
 
 ## 👋 Bienvenid@
 
-Este portfolio documenta mi viaje en **Ingeniería de Datos**, desde análisis exploratorio hasta modelado predictivo avanzado. Cada proyecto refleja un compromiso con la **excelencia técnica**, **reproducibilidad** y **ética en IA**.
-
+Este portfolio documenta mi proceso en la materia  **Ingeniería de Datos**, desde análisis exploratorio hasta modelado predictivo avanzado. 
 <div style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #7B4B94;">
   <p style="margin: 0; color: #4a148c; font-size: 1.05rem; line-height: 1.7;">
-    💡 <strong>Filosofía:</strong> Los datos cuentan historias. El objetivo es contarlas de manera <strong>clara</strong>, <strong>ética</strong> y con <strong>impacto medible</strong>.
+    Los datos cuentan historias. El objetivo es contarlas de manera <strong>clara</strong>, <strong>ética</strong> y con <strong>impacto medible</strong>.
   </p>
 </div>
 
@@ -61,7 +60,7 @@ Este portfolio documenta mi viaje en **Ingeniería de Datos**, desde análisis e
     </div>
   </a>
 
-  <a href="portfolio/" style="text-decoration: none;">
+  <a href="portfolio/index.md" style="text-decoration: none;">
     <div style="background: white; padding: 1.2rem; border-radius: 10px; border: 2px solid #B08BC8; transition: all 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center;">
       <div style="font-size: 2rem; margin-bottom: 0.3rem;">📁</div>
       <h3 style="margin: 0.3rem 0; color: #7B4B94; font-size: 1.1rem;">Portfolio</h3>
@@ -130,19 +129,6 @@ Este portfolio documenta mi viaje en **Ingeniería de Datos**, desde análisis e
     </div>
   </a>
 
-</div>
-
----
-
-<div style="text-align: center; margin: 2rem 0;">
-  <p style="font-size: 1.1rem; color: #7f8c8d; margin-bottom: 1rem;">
-  Mi correo 💬 
-  </p>
-  <a href="acerca.md" style="text-decoration: none;">
-    <button style="background: linear-gradient(135deg, #9B6BB4 0%, #7B4B94 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; box-shadow: 0 4px 6px rgba(123, 75, 148, 0.3); transition: all 0.3s;">
-      📧 Contacto
-    </button>
-  </a>
 </div>
 
 ---
