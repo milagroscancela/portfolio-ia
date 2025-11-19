@@ -10,7 +10,7 @@
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 ```bash
 # Clonar repositorio
 git clone https://github.com/milagroscancela/portfolio-ing-datos.git
@@ -26,7 +26,7 @@ mkdocs serve
 
 ---
 
-## 📁 Estructura de Archivos
+## Estructura de Archivos
 ```
 portfolio-ing-datos/
 │
@@ -66,7 +66,7 @@ portfolio-ing-datos/
 
 ---
 
-## 📝 Cómo Usar
+## Cómo Usar
 
 ### 1. Escribir contenido
 
@@ -107,14 +107,14 @@ Usa rutas relativas para imágenes y notebooks:
 Edita `mkdocs.yml` para agregar la práctica al menú:
 ```yaml
 nav:
-  - 📁 Portfolio:
+  -  Portfolio:
       - portfolio/index.md
       - portfolio/12-nueva-practica.md  # ← Agregar aquí
 ```
 
 ---
 
-## 🛠️ Comandos
+## Comandos
 ```bash
 # Desarrollo local con hot-reload
 mkdocs serve
@@ -131,15 +131,15 @@ rm -rf site/
 
 ---
 
-## 🚀 Despliegue
+## Despliegue
 
 ### Despliegue Automático
 
 Cada **push a `main`** ejecuta automáticamente:
 
-1. ✅ Build con `mkdocs build --strict`
-2. ✅ Deploy a GitHub Pages
-3. ✅ Sitio disponible en 2-3 minutos
+1. Build con `mkdocs build --strict`
+2. Deploy a GitHub Pages
+3. Sitio disponible en 2-3 minutos
 
 **Configurado en:** `.github/workflows/deploy.yml`
 
@@ -160,11 +160,11 @@ Esto hace:
 1. Ve a **Settings** → **Pages** en tu repositorio
 2. Source: **Deploy from a branch**
 3. Branch: **gh-pages** (se crea automáticamente)
-4. Listo ✅
+4. Listo 
 
 ---
 
-## 📦 Dependencias
+## Dependencias
 
 ### `requirements.txt`
 ```txt
