@@ -100,20 +100,6 @@ Este portfolio documenta mi viaje de aprendizaje en ingeniería de datos, desde 
   <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">MkDocs</span>
   <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Kaggle</span>
 </div>
-### Herramientas & Librerías
-
-<div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0;">
-  <span style="background: #e3f2fd; color: #1976d2; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Pandas</span>
-  <span style="background: #f3e5f5; color: #7b1fa2; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">NumPy</span>
-  <span style="background: #e8f5e9; color: #388e3c; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Scikit-learn</span>
-  <span style="background: #fff3e0; color: #f57c00; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Matplotlib</span>
-  <span style="background: #fce4ec; color: #c2185b; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Seaborn</span>
-  <span style="background: #e0f2f1; color: #00796b; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Plotly</span>
-  <span style="background: #f1f8e9; color: #689f38; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Jupyter</span>
-  <span style="background: #e8eaf6; color: #3f51b5; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Git</span>
-  <span style="background: #fbe9e7; color: #d84315; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">MkDocs</span>
-  <span style="background: #e1f5fe; color: #0277bd; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Kaggle</span>
-</div>
 
 ---
 

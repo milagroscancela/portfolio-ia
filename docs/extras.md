@@ -48,22 +48,20 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 
 #### 💻 Stack Tecnológico
 
-<div>
-<span class="skill-badge">Fairlearn 0.10+</span>
-<span class="skill-badge">Scikit-learn 1.3+</span>
-<span class="skill-badge">Python 3.8+</span>
-<span class="skill-badge">Pandas</span>
-<span class="skill-badge">NumPy</span>
-<span class="skill-badge">Random Forest</span>
-<span class="skill-badge">ExponentiatedGradient</span>
-<span class="skill-badge">Ética en IA</span>
-<span class="skill-badge">Compliance Legal</span>
-<span class="skill-badge">Kaggle Hub</span>
+<div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0;">
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Python 3.8+</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Pandas</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">NumPy</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Seaborn</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Matplotlib</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Análisis Estadístico</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">EDA</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Kaggle Hub</span>
 </div>
 
 #### 🔗 Recursos
 
-**[📄 Ver Reporte Completo →](./portfolio/extra-credit-card.md)**  
+**[📄 Ver Reporte Completo →](./portfolio/extra-social-media.md)**  
 **[📓 Descargar Notebook →](./portfolio/assets/social-media/Practica03_Social_Media_Mental_Health.ipynb)**
 
 
@@ -84,17 +82,17 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 
 #### 💻 Stack Tecnológico
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin: 1rem 0;">
-<span class="skill-badge">Fairlearn 0.10+</span>
-<span class="skill-badge">Scikit-learn 1.3+</span>
-<span class="skill-badge">Python 3.8+</span>
-<span class="skill-badge">Pandas</span>
-<span class="skill-badge">NumPy</span>
-<span class="skill-badge">Random Forest</span>
-<span class="skill-badge">ExponentiatedGradient</span>
-<span class="skill-badge">Ética en IA</span>
-<span class="skill-badge">Compliance Legal</span>
-<span class="skill-badge">Kaggle Hub</span>
+<div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0;">
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Fairlearn 0.10+</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Scikit-learn 1.3+</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Python 3.8+</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Pandas</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">NumPy</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Random Forest</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">ExponentiatedGradient</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Ética en IA</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Compliance Legal</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Kaggle Hub</span>
 </div>
 
 #### 🔗 Recursos
@@ -117,4 +115,4 @@ Estas exploraciones se alinean directamente con las unidades temáticas del curs
 
 ## 🔗 Navegación Rápida
 
-[← Volver a Inicio](/) | [Ver UT1 →](./ut1-apuntes.md) | [Ver UT2 →](./ut2-apuntes.md) | [Ver Proyectos →](./portfolio/index.md)
+[← Volver a Inicio](./index.md) | [Ver UT1 →](./ut1-apuntes.md) | [Ver UT2 →](./ut2-apuntes.md) | [Ver Proyectos →](./portfolio/index.md)
