@@ -141,10 +141,10 @@ Este portfolio documenta mi viaje de aprendizaje en ingeniería de datos, desde 
 
 | Proyecto | Tecnologías | Descripción |
 |----------|-------------|-------------|
-| **[Feature Engineering Avanzado](portfolio/08-future/)** | Pandas, Scikit-learn | Features derivadas, ratios y transformaciones en Ames Housing |
-| **[PCA y Feature Selection](portfolio/10-pca/)** | PCA, RFE, Filter Methods | Reducción de 79→15 features con 13.8% mejora en AUC |
-| **[Temporal Features](portfolio/11-future_temp/)** | Time Series, RFM | Lag features, rolling windows en e-commerce UK |
-| **[Bias Detection](portfolio/07-fairlearn/)** | Fairlearn, Aequitas | Análisis de fairness en Adult Income dataset |
+| **[Feature Engineering Avanzado](portfolio/08-future.md)** | Pandas, Scikit-learn | Features derivadas, ratios y transformaciones en Ames Housing |
+| **[PCA y Feature Selection](portfolio/10-pca.md)** | PCA, RFE, Filter Methods | Reducción de 79→15 features con 13.8% mejora en AUC |
+| **[Temporal Features](portfolio/11-future_temp.md)** | Time Series, RFM | Lag features, rolling windows en e-commerce UK |
+| **[Bias Detection](portfolio/07-fairlearn.md)** | Fairlearn, Aequitas | Análisis de fairness en Adult Income dataset |
 
 ---
 
