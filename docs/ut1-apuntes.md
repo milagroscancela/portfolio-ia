@@ -1,30 +1,30 @@
-# 📚 Apuntes de Estudio: UT1 - EDA & Fuentes de Datos
+#  Apuntes de Estudio: UT1 - EDA & Fuentes de Datos
 
 **Unidad Temática 1: Análisis Exploratorio de Datos y Fuentes**  
 **Curso:** Ingeniería de Datos - UCU 2025  
 **Evaluación:** 20 de Agosto
 
-> 💡 **Objetivo:** Dominar técnicas de carga, exploración y visualización de datos con Python, aplicando mejores prácticas de análisis exploratorio.
+>  **Objetivo:** Dominar técnicas de carga, exploración y visualización de datos con Python, aplicando mejores prácticas de análisis exploratorio.
 
 ---
 
-## 🎯 Competencias a Desarrollar
+##  Competencias a Desarrollar
 
-- ✅ Cargar y explorar datasets de diferentes formatos (CSV, JSON, SQLite)
-- ✅ Aplicar técnicas básicas de EDA con pandas
-- ✅ Crear visualizaciones informativas con matplotlib/seaborn
-- ✅ Documentar hallazgos usando MkDocs y mejores prácticas
-- ✅ Interpretar resultados de análisis exploratorio
-- ✅ Configurar entornos de desarrollo colaborativo con GitHub
+-  Cargar y explorar datasets de diferentes formatos (CSV, JSON, SQLite)
+-  Aplicar técnicas básicas de EDA con pandas
+-  Crear visualizaciones informativas con matplotlib/seaborn
+-  Documentar hallazgos usando MkDocs y mejores prácticas
+-  Interpretar resultados de análisis exploratorio
+-  Configurar entornos de desarrollo colaborativo con GitHub
 
 ---
 
-## 📖 Parte 1: Ciencia de Datos para Gente Sociable (Cap. 1-4)
+##  Parte 1: Ciencia de Datos para Gente Sociable (Cap. 1-4)
 
 **Autor:** Antonio Vazquez Brust  
 **Fuente:** https://bitsandbricks.github.io/ciencia_de_datos_gente_sociable/
 
-### 🔑 Conceptos Fundamentales
+###  Conceptos Fundamentales
 
 #### ¿Qué es la Ciencia de Datos?
 
@@ -64,14 +64,14 @@
 Este libro fue escrito con una audiencia en mente formada por urbanistas, sociólogos, politólogas y otros entusiastas que se acercan al tema desde las Ciencias Sociales 
 
 **Características del enfoque:**
-- 🎓 No requiere conocimiento previo de programación
-- 📊 Énfasis en exploración, análisis y visualización
-- 🗣️ Tono introductorio y explicaciones simplificadas
-- 🤝 Orientado a trabajo colaborativo e interdisciplinario
+-  No requiere conocimiento previo de programación
+-  Énfasis en exploración, análisis y visualización
+- ️ Tono introductorio y explicaciones simplificadas
+-  Orientado a trabajo colaborativo e interdisciplinario
 
 ---
 
-### 📐 Metodología: Del Problema al Insight
+###  Metodología: Del Problema al Insight
 ```
 FLUJO DE TRABAJO EN CIENCIA DE DATOS:
 
@@ -99,12 +99,12 @@ FLUJO DE TRABAJO EN CIENCIA DE DATOS:
 
 ---
 
-### 💡 Lecciones Clave del Libro
+###  Lecciones Clave del Libro
 
 #### 1. El Análisis Siempre Empieza con Preguntas
 
-❌ **Mal enfoque:** "Tengo estos datos, ¿qué puedo hacer con ellos?"  
-✅ **Buen enfoque:** "¿Cómo puedo responder [pregunta específica] con datos?"
+ **Mal enfoque:** "Tengo estos datos, ¿qué puedo hacer con ellos?"  
+ **Buen enfoque:** "¿Cómo puedo responder [pregunta específica] con datos?"
 
 #### 2. La Comunicación es Tan Importante como el Código
 
@@ -128,12 +128,12 @@ El conocimiento de dominio es la experiencia acumulada en un campo particular de
 
 ---
 
-## 📖 Parte 2: Google Good Data Analysis
+##  Parte 2: Google Good Data Analysis
 
 **Fuente:** https://developers.google.com/machine-learning/guides/good-data-analysis  
 **Autor:** Patrick Riley (Google)
 
-### 🌟 Visión General
+###  Visión General
 
 Deriving truth and insight from a pile of data is a powerful but error-prone job. The best data analysts and data-minded engineers develop a reputation for making credible pronouncements from data 
 
@@ -145,22 +145,22 @@ Deriving truth and insight from a pile of data is a powerful but error-prone job
 
 ---
 
-### 🛠️ SECCIÓN 1: Technical (Técnicas de Manipulación)
+### ️ SECCIÓN 1: Technical (Técnicas de Manipulación)
 
 #### 1.1. Examina Distribuciones Completas
 
-❌ **Mal hábito:** Reportar solo media, mediana, desviación estándar  
-✅ **Mejor práctica:** Generate histograms, cumulative distribution functions (CDFs), Quantile-Quantile (Q-Q) plots 
+ **Mal hábito:** Reportar solo media, mediana, desviación estándar  
+ **Mejor práctica:** Generate histograms, cumulative distribution functions (CDFs), Quantile-Quantile (Q-Q) plots 
 
 **Por qué:**
 - Detectar comportamiento multimodal
 - Identificar clases de outliers
 - Ver la "forma" real de tus datos
 ```python
-# ❌ Insuficiente
+#  Insuficiente
 df['age'].describe()
 
-# ✅ Completo
+#  Completo
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -191,9 +191,9 @@ plt.show()
 Examine outliers carefully because they can be canaries in the coal mine that indicate more fundamental problems with your analysis 
 
 **Estrategia:**
-1. ✅ Está bien excluir outliers O agruparlos en categoría "unusual"
-2. ⚠️ **PERO:** Debes saber **POR QUÉ** terminaron ahí
-3. 🔍 Investiga: ¿Error de medición? ¿Caso legítimo extremo? ¿Bug en código?
+1.  Está bien excluir outliers O agruparlos en categoría "unusual"
+2. ️ **PERO:** Debes saber **POR QUÉ** terminaron ahí
+3.  Investiga: ¿Error de medición? ¿Caso legítimo extremo? ¿Bug en código?
 
 **Ejemplos de insights de outliers:**
 - Queries con menos clicks → Elementos que no estás contando
@@ -208,10 +208,10 @@ Randomness exists and will fool us. Some people think, "Google has so much data;
 **Regla de oro:**
 > Cada número o resumen de datos que produzcas DEBE tener una noción de confianza (confidence intervals, p-values)
 ```python
-# ❌ Sin contexto de confianza
+#  Sin contexto de confianza
 mean_conversion_rate = 0.035  # 3.5%
 
-# ✅ Con intervalo de confianza
+#  Con intervalo de confianza
 from scipy import stats
 
 mean = 0.035
@@ -246,10 +246,10 @@ Anytime you are producing new analysis code, you need to look at examples from t
 Slicing means separating your data into subgroups and looking at metric values for each subgroup separately 
 
 **Dimensiones comunes de segmentación:**
-- 🌐 Browser (Chrome, Firefox, Safari)
-- 🌍 Locale (país, idioma)
-- 📱 Device type (desktop, mobile, tablet)
-- 🏢 Domain
+-  Browser (Chrome, Firefox, Safari)
+-  Locale (país, idioma)
+-  Device type (desktop, mobile, tablet)
+-  Domain
 - ⏰ Time (día de semana, hora del día)
 
 **Cuándo segmentar:**
@@ -257,7 +257,7 @@ Slicing means separating your data into subgroups and looking at metric values f
 2. Incluso si NO esperas diferencias → Segmentar da mayor confianza
 3. A veces un slice específico tiene datos malos o es fundamentalmente diferente
 
-⚠️ **Cuidado con Mix Shifts:**
+️ **Cuidado con Mix Shifts:**
 A mix shift is when the amount of data in the slices for each group is different 
 
 Puede llevar a **Paradoja de Simpson** y otras confusiones.
@@ -272,9 +272,9 @@ With a large volume of data, it can be tempting to focus solely on statistical s
 
 | Escenario | Significancia Estadística | Significancia Práctica | Acción |
 |-----------|---------------------------|------------------------|--------|
-| Aumento de 0.01% en conversión con p<0.001 | ✅ Sí | ❌ No | No implementar cambio (costo > beneficio) |
-| Aumento de 15% en conversión con p=0.06 | ❌ No | ✅ Sí | Investigar más (muestra pequeña) |
-| Disminución de 5% en churn con p<0.001 | ✅ Sí | ✅ Sí | 🎯 Implementar inmediatamente |
+| Aumento de 0.01% en conversión con p<0.001 |  Sí |  No | No implementar cambio (costo > beneficio) |
+| Aumento de 15% en conversión con p=0.06 |  No |  Sí | Investigar más (muestra pequeña) |
+| Disminución de 5% en churn con p<0.001 |  Sí |  Sí |  Implementar inmediatamente |
 
 ---
 
@@ -319,7 +319,7 @@ Almost every large data analysis starts by filtering data in various stages. You
 
 **Mejores prácticas:**
 ```python
-# ✅ Filtrado documentado y contabilizado
+#  Filtrado documentado y contabilizado
 print(f"Total de registros: {len(df):,}")
 
 # Filtro 1: Solo usuarios de USA
@@ -361,14 +361,14 @@ Most interesting metrics are ratios of underlying measures. Oftentimes, interest
 - Definición 2 → Tasa de conversión (visitante → búsqueda)
 - Definición 3 → Actividad general de la base de usuarios
 
-⚠️ **Caso especial:** Métricas calculadas solo en subconjunto
+️ **Caso especial:** Métricas calculadas solo en subconjunto
 - "Time to Click" = "Time to Click **given that there was a click**"
 - Siempre reconocer el filtro implícito
 - Buscar shifts en ese filtro entre grupos comparados
 
 ---
 
-### 🔄 SECCIÓN 2: Process (Proceso de Análisis)
+###  SECCIÓN 2: Process (Proceso de Análisis)
 
 #### 2.1. Separa: Validación, Descripción y Evaluación
 
@@ -379,18 +379,18 @@ I think of data analysis as having three interrelated stages: Validation, Descri
 ├────────────────────────────────────────────────────┤
 │                                                    │
 │  1️⃣ VALIDACIÓN                                     │
-│     ❓ ¿Creo que los datos son auto-consistentes?│
-│     ❓ ¿Fueron recolectados correctamente?        │
-│     ❓ ¿Representan lo que creo que representan?  │
+│      ¿Creo que los datos son auto-consistentes?│
+│      ¿Fueron recolectados correctamente?        │
+│      ¿Representan lo que creo que representan?  │
 │                                                    │
 │  2️⃣ DESCRIPCIÓN                                    │
-│     📊 Interpretación objetiva de los datos       │
+│      Interpretación objetiva de los datos       │
 │     Ej: "Usuarios hacen menos queries tipo X"    │
 │     Ej: "Tiempo entre X e Y es 1% mayor"         │
 │     → Todo el mundo debería estar de acuerdo     │
 │                                                    │
 │  3️⃣ EVALUACIÓN                                     │
-│     ⚖️ ¿Los datos indican que algo bueno pasa?   │
+│     ️ ¿Los datos indican que algo bueno pasa?   │
 │     → Para usuario / Para empresa / Para mundo   │
 │     → Aquí habrá más debate                      │
 │                                                    │
@@ -403,7 +403,7 @@ I think of data analysis as having three interrelated stages: Validation, Descri
 - Evaluación → Debate natural
 - Si no separas → Solo verás la interpretación que esperas ver
 
-⚠️ **Nota:** Estas etapas NO son lineales. Saltarás entre ellas, pero siempre debes estar claro en qué etapa estás.
+️ **Nota:** Estas etapas NO son lineales. Saltarás entre ellas, pero siempre debes estar claro en qué etapa estás.
 
 ---
 
@@ -413,12 +413,12 @@ Before looking at any data, make sure you understand the context in which the da
 
 **Checklist antes de ver datos:**
 ```
-☐ Entender configuración del experimento
-☐ Entender cómo se recolectan los datos
-☐ Revisar restricciones de población (ej: solo Chrome)
-☐ Si el experimento está corriendo → PROBARLO TÚ MISMO
-☐ Revisar fechas: ¿Hubo holidays, launches grandes, etc.?
-☐ Determinar qué poblaciones de usuarios fueron afectadas
+ Entender configuración del experimento
+ Entender cómo se recolectan los datos
+ Revisar restricciones de población (ej: solo Chrome)
+ Si el experimento está corriendo → PROBARLO TÚ MISMO
+ Revisar fechas: ¿Hubo holidays, launches grandes, etc.?
+ Determinar qué poblaciones de usuarios fueron afectadas
 ```
 
 ---
@@ -429,18 +429,18 @@ As part of the "Validation" stage, before actually answering the question you ar
 
 **Preguntas de sanity check:**
 ```python
-# ❓ ¿Cambió el número de usuarios?
+#  ¿Cambió el número de usuarios?
 control_users = experiment_df[experiment_df['group'] == 'control']['user_id'].nunique()
 treatment_users = experiment_df[experiment_df['group'] == 'treatment']['user_id'].nunique()
 
 assert abs(control_users - treatment_users) / control_users < 0.05, \
-    "⚠️ Desbalance significativo en usuarios entre grupos"
+    "️ Desbalance significativo en usuarios entre grupos"
 
-# ❓ ¿Aparecieron las queries afectadas en todos los subgrupos?
+#  ¿Aparecieron las queries afectadas en todos los subgrupos?
 affected_queries_by_group = experiment_df.groupby('group')['affected_query'].sum()
 print(affected_queries_by_group)
 
-# ❓ ¿Cambiaron los error rates?
+#  ¿Cambiaron los error rates?
 error_rate_by_group = experiment_df.groupby('group')['has_error'].mean()
 print(f"Control error rate: {error_rate_by_group['control']:.2%}")
 print(f"Treatment error rate: {error_rate_by_group['treatment']:.2%}")
@@ -565,7 +565,7 @@ Often you will be calculating a metric that is similar to things that have been 
 
 **Tu número puede estar correcto para esta población, pero ahora tienes que validarlo más**
 
-⚠️ **Regla de oro:**
+️ **Regla de oro:**
 > No necesitas acuerdo exacto, pero deberías estar en el mismo ballpark. Si no lo estás, **asume que estás mal** hasta que puedas convencerte completamente.
 
 ---
@@ -581,8 +581,8 @@ If you create new metrics and try to learn something new, you won't know if your
 2. Aplicar a feature/data CONOCIDO
    ↓
 3. ¿La métrica confirma lo que ya sabemos?
-   ├── ✅ Sí → Métrica validada, usar para aprender algo nuevo
-   └── ❌ No → Métrica errónea, revisar definición/implementación
+   ├──  Sí → Métrica validada, usar para aprender algo nuevo
+   └──  No → Métrica errónea, revisar definición/implementación
 ```
 
 **Ejemplos:**
@@ -616,9 +616,9 @@ When doing exploratory analysis, perform as many iterations of the whole analysi
 
 **Estrategia:**
 
-❌ **Mal enfoque:** Pasar mucho tiempo perfeccionando la primera etapa
+ **Mal enfoque:** Pasar mucho tiempo perfeccionando la primera etapa
 
-✅ **Buen enfoque:** 
+ **Buen enfoque:** 
 - Get algo razonable end-to-end lo más rápido posible
 - Hacer múltiples iteraciones completas
 - Dejar notas para ti mismo sobre:
@@ -648,12 +648,12 @@ We typically define various metrics around user success. If you then feed that d
 - NO puedes usar "more clicks" para decidir que usuarios son más felices
 - Aunque "more clicks" típicamente significa "happier"
 
-⚠️ **Advertencia adicional:**
+️ **Advertencia adicional:**
 You should not even do slicing on the variables that you fed back and manipulated, as that will result in mix shifts that will be difficult or impossible to understand 
 
 ---
 
-### 🧠 SECCIÓN 3: Mindset (Mentalidad del Analista)
+###  SECCIÓN 3: Mindset (Mentalidad del Analista)
 
 #### 3.1. El Análisis Empieza con Preguntas, No con Datos
 
@@ -675,8 +675,8 @@ As you work with data, you must become both the champion of the insights you are
 
 **Al detectar fenómeno interesante, pregúntate:**
 
-1. 🏆 **Como campeón:** "¿Qué otros datos podría reunir que muestren qué tan awesome es esto?"
-2. 🤔 **Como escéptico:** "¿Qué podría encontrar que invalidaría esto?"
+1.  **Como campeón:** "¿Qué otros datos podría reunir que muestren qué tan awesome es esto?"
+2.  **Como escéptico:** "¿Qué podría encontrar que invalidaría esto?"
 
 **Especialmente crítico cuando:**
 - Analizas para alguien que realmente quiere cierta respuesta
@@ -696,7 +696,7 @@ When making theories about data, we often want to assert that "X causes Y". You 
 **Trampa adicional:**
 > "Incluso si no hay relación causal entre A y B, debe haber algo subyacente que haga que una señal sea buen indicador de la otra"
 
-⚠️ **Peligro:** Multiple hypothesis testing
+️ **Peligro:** Multiple hypothesis testing
 - Given enough experiments and enough dimensions, some of the signals will align for a specific experiment. This does not imply that the same signals will align in the future 
 
 **Responsabilidad del analista:**
@@ -746,7 +746,7 @@ There are many limits to what we can learn from data. Only by admitting the limi
 
 
 
-## 📚 Recursos Adicionales 
+##  Recursos Adicionales 
 
 ### Lecturas Complementarias
 

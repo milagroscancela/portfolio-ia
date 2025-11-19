@@ -1,22 +1,22 @@
-# ⚙️ UT3: Feature Engineering
+# ️ UT3: Feature Engineering
 
 !!! info "Información del Curso"
     **Docente:** Prof. Juan F. Kurucz  
     **Institución:** Universidad Católica del Uruguay  
 
-## 🎯 Objetivos de Aprendizaje
+##  Objetivos de Aprendizaje
 
 
-- ✅ Crear features derivadas relevantes según el dominio
-- ✅ Aplicar técnicas avanzadas de encoding categórico
-- ✅ Manejar variables de alta cardinalidad efectivamente
-- ✅ Implementar PCA para reducción dimensional
-- ✅ Interpretar componentes principales y varianza explicada
-- ✅ Construir pipelines de feature engineering escalables
+-  Crear features derivadas relevantes según el dominio
+-  Aplicar técnicas avanzadas de encoding categórico
+-  Manejar variables de alta cardinalidad efectivamente
+-  Implementar PCA para reducción dimensional
+-  Interpretar componentes principales y varianza explicada
+-  Construir pipelines de feature engineering escalables
 
 ---
 
-## 📚 Libro Principal: Feature Engineering for Machine Learning
+##  Libro Principal: Feature Engineering for Machine Learning
 
 !!! quote "Referencia Completa"
     **Zheng, A., & Casari, A. (2018).** *Feature Engineering for Machine Learning: Principles and Techniques for Data Scientists*. **O'Reilly Media, Inc.**
@@ -25,7 +25,7 @@
     - **Páginas:** 218
     - **Nivel:** Intermedio-Avanzado
 
-### 👥 Sobre las Autoras
+###  Sobre las Autoras
 
 **Alice Zheng** - Data Scientist con experiencia en Microsoft, Amazon y varios startups de ML. Especializada en sistemas de recomendación y feature engineering a escala.
 
@@ -33,14 +33,14 @@
 
 ---
 
-## 📖 Capítulo 2: Fancy Tricks with Simple Numbers
+##  Capítulo 2: Fancy Tricks with Simple Numbers
 
 !!! warning "Lectura Obligatoria - Evaluación: 01/10"
 
-### 🎯 Objetivos del Capítulo
+###  Objetivos del Capítulo
 Dominar las transformaciones numéricas fundamentales que preparan los datos para algoritmos de machine learning, entendiendo cuándo y por qué aplicar cada técnica.
 
-### 📋 Contenido Detallado
+###  Contenido Detallado
 
 #### 2.1 Escalado y Normalización
 
@@ -220,7 +220,7 @@ squared_feature = x ** 2
 
 ---
 
-### 🔑 Conceptos Clave del Capítulo 2
+###  Conceptos Clave del Capítulo 2
 
 !!! tip "Insights Principales"
     
@@ -238,7 +238,7 @@ squared_feature = x ** 2
 
 ---
 
-### 💡 Casos de Uso por Algoritmo
+###  Casos de Uso por Algoritmo
 
 | Algoritmo | Transformaciones Críticas | Razón |
 |-----------|---------------------------|-------|
@@ -251,7 +251,7 @@ squared_feature = x ** 2
 
 ---
 
-### 📊 Flujo de Decisión para Transformaciones Numéricas
+###  Flujo de Decisión para Transformaciones Numéricas
 ```
 ¿Outliers extremos?
 ├─ SÍ → Log transform o Robust Scaler
@@ -264,7 +264,7 @@ squared_feature = x ** 2
 
 ---
 
-### 🧪 Ejercicio Práctico del Libro
+###  Ejercicio Práctico del Libro
 
 **Dataset:** Bike Sharing (usado en el cap. 2)
 ```python
@@ -281,14 +281,14 @@ pipeline = Pipeline([
 
 ---
 
-## 📖 Capítulo 5: Categorical Variables
+##  Capítulo 5: Categorical Variables
 
 !!! warning "Lectura Obligatoria - Evaluación: 01/10"
 
-### 🎯 Objetivos del Capítulo
+###  Objetivos del Capítulo
 Dominar las técnicas de encoding categórico, entendiendo las trade-offs entre interpretabilidad, dimensionalidad y información preservada.
 
-### 📋 Contenido Detallado
+###  Contenido Detallado
 
 #### 5.1 El Problema con Variables Categóricas
 
@@ -332,16 +332,16 @@ encoded = encoder.fit_transform(df[['color']])
 ```
 
 **Ventajas según el libro:**
-- ✅ No asume orden entre categorías
-- ✅ Interpretable: cada columna = presencia de categoría
-- ✅ Funciona bien con regresión lineal
-- ✅ Compatible con regularización
+-  No asume orden entre categorías
+-  Interpretable: cada columna = presencia de categoría
+-  Funciona bien con regresión lineal
+-  Compatible con regularización
 
 **Desventajas críticas:**
-- ❌ **Explosión dimensional con alta cardinalidad**
-- ❌ Matrices sparse (muchos ceros)
-- ❌ Colinealidad perfecta (dummy variable trap)
-- ❌ No captura similitud entre categorías
+-  **Explosión dimensional con alta cardinalidad**
+-  Matrices sparse (muchos ceros)
+-  Colinealidad perfecta (dummy variable trap)
+-  No captura similitud entre categorías
 
 **Regla del libro:** One-Hot funciona bien hasta ~50 categorías. Más allá, considerar alternativas.
 
@@ -366,19 +366,19 @@ le = LabelEncoder()
 df['size_encoded'] = le.fit_transform(df['size'])
 ```
 
-**⚠️ ADVERTENCIA CRÍTICA DEL LIBRO:**
+**️ ADVERTENCIA CRÍTICA DEL LIBRO:**
 
 > "Label Encoding NO es apropiado para categorías sin orden natural. El modelo interpretará que 'large' (2) es 'el doble' que 'small' (1), lo cual es matemáticamente absurdo."
 
 **Cuándo usar:**
-- ✅ Variables target en clasificación
-- ✅ Como paso intermedio para otros encodings
-- ✅ Con árboles de decisión (que pueden manejar el ordinalismo artificial)
+-  Variables target en clasificación
+-  Como paso intermedio para otros encodings
+-  Con árboles de decisión (que pueden manejar el ordinalismo artificial)
 
 **Cuándo NO usar:**
-- ❌ Features categóricas nominales en regresión lineal
-- ❌ Cuando las categorías no tienen orden natural
-- ❌ Con algoritmos basados en distancia (KNN, SVM)
+-  Features categóricas nominales en regresión lineal
+-  Cuando las categorías no tienen orden natural
+-  Con algoritmos basados en distancia (KNN, SVM)
 
 ---
 
@@ -434,10 +434,10 @@ df['city_encoded'] = encoder.fit_transform(df['city'], df['price'])
 ```
 
 **Ventajas poderosas:**
-- ✅ Alta cardinalidad → 1 columna
-- ✅ Captura relación con target
-- ✅ Funciona excepcionalmente bien en práctica
-- ✅ Usado en muchas soluciones ganadoras de Kaggle
+-  Alta cardinalidad → 1 columna
+-  Captura relación con target
+-  Funciona excepcionalmente bien en práctica
+-  Usado en muchas soluciones ganadoras de Kaggle
 
 **PELIGRO: Overfitting según el libro**
 
@@ -496,13 +496,13 @@ df['city_freq'] = df['city'].map(freq)
 - Ejemplo: Palabras raras en texto pueden ser spam
 
 **Ventajas:**
-- ✅ Reduce alta cardinalidad a 1 columna
-- ✅ No requiere validación cruzada
-- ✅ Captura información estadística valiosa
+-  Reduce alta cardinalidad a 1 columna
+-  No requiere validación cruzada
+-  Captura información estadística valiosa
 
 **Limitaciones:**
-- ❌ Categorías diferentes con misma frecuencia → mismo encoding
-- ❌ No captura relación con target
+-  Categorías diferentes con misma frecuencia → mismo encoding
+-  No captura relación con target
 
 ---
 
@@ -524,14 +524,14 @@ Purple → 100 → [1, 0, 0]
 - Binary: 7 columnas (2^7 = 128 > 100)
 
 **Ventajas del libro:**
-- ✅ Más compacto que One-Hot
-- ✅ Menos sparse
-- ✅ Útil para cardinalidad media-alta (50-1000)
+-  Más compacto que One-Hot
+-  Menos sparse
+-  Útil para cardinalidad media-alta (50-1000)
 
 **Desventajas:**
-- ❌ Introduce ordinalismo artificial
-- ❌ Menos interpretable
-- ❌ En práctica, no siempre supera One-Hot
+-  Introduce ordinalismo artificial
+-  Menos interpretable
+-  En práctica, no siempre supera One-Hot
 
 ---
 
@@ -554,16 +554,16 @@ hash('Austin') % 100      → 42  # ¡Colisión!
 ```
 
 **Cuándo usar:**
-- ✅ Cardinalidad extremadamente alta (>1000)
-- ✅ Nuevas categorías en producción (online learning)
-- ✅ Memoria limitada
-- ✅ Procesamiento de texto
+-  Cardinalidad extremadamente alta (>1000)
+-  Nuevas categorías en producción (online learning)
+-  Memoria limitada
+-  Procesamiento de texto
 
 **Trade-offs críticos:**
-- ✅ Espacio fijo garantizado
-- ❌ **Colisiones** (múltiples categorías → mismo hash)
-- ❌ No reversible (no puedes recuperar categoría original)
-- ❌ Pérdida de interpretabilidad
+-  Espacio fijo garantizado
+-  **Colisiones** (múltiples categorías → mismo hash)
+-  No reversible (no puedes recuperar categoría original)
+-  Pérdida de interpretabilidad
 
 **Consejo del libro:** Usar hash space grande (~10x número de categorías) para minimizar colisiones.
 
@@ -589,12 +589,12 @@ def leave_one_out(df, cat_col, target_col):
 ```
 
 **Ventaja sobre target encoding estándar:**
-- ✅ Elimina leakage en training set
-- ✅ Mejores garantías de generalización
+-  Elimina leakage en training set
+-  Mejores garantías de generalización
 
 ---
 
-### 🗺️ Guía de Decisión: ¿Qué Encoding Usar?
+### ️ Guía de Decisión: ¿Qué Encoding Usar?
 
 **El libro proporciona este framework:**
 ```
@@ -630,7 +630,7 @@ def leave_one_out(df, cat_col, target_col):
 
 ---
 
-### 🎯 Casos de Estudio del Libro
+###  Casos de Estudio del Libro
 
 #### Caso 1: Predicción de Precios de Casas (Ames Housing)
 
@@ -658,7 +658,7 @@ def leave_one_out(df, cat_col, target_col):
 
 ---
 
-### 🔑 Insights Clave del Capítulo 5
+###  Insights Clave del Capítulo 5
 
 !!! tip "Lecciones Principales"
     
@@ -679,33 +679,33 @@ def leave_one_out(df, cat_col, target_col):
 
 ---
 
-### ⚠️ Errores Comunes (Capítulo 5)
+### ️ Errores Comunes (Capítulo 5)
 
 **1. Dummy Variable Trap**
 ```python
-# ❌ MALO: n categorías → n columnas (colinealidad perfecta)
+#  MALO: n categorías → n columnas (colinealidad perfecta)
 pd.get_dummies(df, drop_first=False)
 
-# ✅ BUENO: n categorías → n-1 columnas
+#  BUENO: n categorías → n-1 columnas
 pd.get_dummies(df, drop_first=True)
 ```
 
 **2. Data Leakage en Target Encoding**
 ```python
-# ❌ MALO: Calcular target means con todo el dataset
+#  MALO: Calcular target means con todo el dataset
 means = df.groupby('category')['target'].mean()
 
-# ✅ BUENO: Solo con training set, aplicar a test
+#  BUENO: Solo con training set, aplicar a test
 train_means = train.groupby('category')['target'].mean()
 test['encoded'] = test['category'].map(train_means)
 ```
 
 **3. No manejar categorías desconocidas**
 ```python
-# ❌ MALO: Producción ve categoría nueva → crash
+#  MALO: Producción ve categoría nueva → crash
 encoder.fit(train['city'])
 
-# ✅ BUENO: Estrategia para unknowns
+#  BUENO: Estrategia para unknowns
 encoder = OneHotEncoder(handle_unknown='ignore')
 # O mapear a mean global en target encoding
 ```
@@ -719,14 +719,14 @@ encoder = OneHotEncoder(handle_unknown='ignore')
 
 ---
 
-## 📖 Capítulo 6: Dimensionality Reduction
+##  Capítulo 6: Dimensionality Reduction
 
 !!! warning "Lectura Obligatoria - Evaluación: 01/10"
 
-### 🎯 Objetivos del Capítulo
+###  Objetivos del Capítulo
 Entender profundamente la maldición de la dimensionalidad y dominar técnicas de reducción, especialmente PCA, con énfasis en interpretación y aplicación correcta.
 
-### 📋 Contenido Detallado
+###  Contenido Detallado
 
 #### 6.1 The Curse of Dimensionality
 
@@ -919,41 +919,41 @@ optimal_n = np.argmax(scores) + 1
 
 **Ventajas según Zheng & Casari:**
 
-✅ **Reducción dimensional automática**
+ **Reducción dimensional automática**
 - De 1000 features a 50 sin selección manual
 
-✅ **Decorrelación de features**
+ **Decorrelación de features**
 - Componentes principales son ortogonales
 - Útil para algoritmos que asumen independencia
 
-✅ **Mejora computational**
+ **Mejora computational**
 - Modelos entrenan más rápido con menos features
 - Reduce overfitting
 
-✅ **Visualización de alta dimensión**
+ **Visualización de alta dimensión**
 - Proyectar a 2D/3D para exploración
 
-✅ **Ruido reduction**
+ **Ruido reduction**
 - Componentes menores suelen ser ruido
 
 ---
 
 **Limitaciones críticas:**
 
-❌ **Pérdida de interpretabilidad**
+ **Pérdida de interpretabilidad**
 > "PC1 es 0.3*edad + 0.5*ingreso - 0.2*deuda... ¿Qué significa esto en términos de negocio?"
 
-❌ **Asume relaciones lineales**
+ **Asume relaciones lineales**
 - PCA no captura manifolds no lineales
 - Para eso existen kernel PCA, t-SNE, UMAP
 
-❌ **Sensible a escala (¡CRÍTICO!)**
+ **Sensible a escala (¡CRÍTICO!)**
 ```python
-# ❌ Sin standardization: features en diferentes unidades
+#  Sin standardization: features en diferentes unidades
 # Edad (0-100) vs Ingreso (0-1,000,000)
 # PCA dominated por ingreso
 
-# ✅ Con standardization
+#  Con standardization
 from sklearn.pipeline import Pipeline
 pipe = Pipeline([
     ('scaler', StandardScaler()),
@@ -961,11 +961,11 @@ pipe = Pipeline([
 ])
 ```
 
-❌ **Sensible a outliers**
+ **Sensible a outliers**
 - Outliers distorsionan dirección de máxima varianza
 - Solución: Robust PCA o eliminar outliers primero
 
-❌ **No usa información del target**
+ **No usa información del target**
 - Componentes maximizan varianza, no predictive power
 - Posible que elimine features valiosas con baja varianza
 
@@ -1020,9 +1020,9 @@ X_spca = spca.fit_transform(X_scaled)
 - Feature Selection: Elige subset de features originales
 
 **Ventajas de feature selection:**
-- ✅ Interpretabilidad preservada
-- ✅ Puede usar información del target
-- ✅ Dominio knowledge aplicable
+-  Interpretabilidad preservada
+-  Puede usar información del target
+-  Dominio knowledge aplicable
 
 ---
 
@@ -1129,13 +1129,13 @@ top_features = importances.nlargest(10)
 
 | Criterio | PCA | Feature Selection |
 |----------|-----|-------------------|
-| **Interpretabilidad** | Baja | Alta ✓ |
-| **Reducción dimensional** | Excelente ✓ | Buena |
-| **Preserva features originales** | No | Sí ✓ |
-| **Usa información de target** | No | Sí (algunos métodos) ✓ |
-| **Speed** | Muy rápido ✓ | Variable |
-| **Multicolinealidad** | Elimina completamente ✓ | Puede retener correlaciones |
-| **Dominio knowledge** | Difícil aplicar | Fácil aplicar ✓ |
+| **Interpretabilidad** | Baja | Alta  |
+| **Reducción dimensional** | Excelente  | Buena |
+| **Preserva features originales** | No | Sí  |
+| **Usa información de target** | No | Sí (algunos métodos)  |
+| **Speed** | Muy rápido  | Variable |
+| **Multicolinealidad** | Elimina completamente  | Puede retener correlaciones |
+| **Dominio knowledge** | Difícil aplicar | Fácil aplicar  |
 
 **Recomendación del libro:**
 
@@ -1219,7 +1219,7 @@ X_tsne = tsne.fit_transform(X_scaled)  # Solo para visualización
 
 ---
 
-### 🔑 Insights Clave del Capítulo 6
+###  Insights Clave del Capítulo 6
 
 !!! tip "Lecciones Principales"
     
@@ -1240,7 +1240,7 @@ X_tsne = tsne.fit_transform(X_scaled)  # Solo para visualización
 
 ---
 
-### 📊 Receta Completa: Pipeline de Reducción Dimensional
+###  Receta Completa: Pipeline de Reducción Dimensional
 ```python
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
@@ -1283,15 +1283,15 @@ print(f"Varianza explicada: {pca_step.explained_variance_ratio_.sum():.2%}")
 
 ---
 
-### ⚠️ Errores Comunes del Capítulo 6
+### ️ Errores Comunes del Capítulo 6
 
 **1. Olvidar standardization**
 ```python
-# ❌ DESASTROSO
+#  DESASTROSO
 pca = PCA(n_components=10)
 X_pca = pca.fit_transform(X)  # Features en diferentes escalas
 
-# ✅ CORRECTO
+#  CORRECTO
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 pca = PCA(n_components=10)
@@ -1300,11 +1300,11 @@ X_pca = pca.fit_transform(X_scaled)
 
 **2. Aplicar PCA a train y test separadamente**
 ```python
-# ❌ MALO: PCA aprende diferentes transformaciones
+#  MALO: PCA aprende diferentes transformaciones
 pca_train = PCA().fit_transform(X_train)
 pca_test = PCA().fit_transform(X_test)
 
-# ✅ BUENO: Fit en train, transform en test
+#  BUENO: Fit en train, transform en test
 pca = PCA()
 pca.fit(X_train)
 X_train_pca = pca.transform(X_train)
@@ -1313,11 +1313,11 @@ X_test_pca = pca.transform(X_test)
 
 **3. Usar PCA antes de train/test split**
 ```python
-# ❌ DATA LEAKAGE
+#  DATA LEAKAGE
 X_pca = PCA().fit_transform(X)
 X_train, X_test = train_test_split(X_pca)
 
-# ✅ CORRECTO
+#  CORRECTO
 X_train, X_test = train_test_split(X)
 pca = PCA().fit(X_train)
 X_train_pca = pca.transform(X_train)
@@ -1331,7 +1331,7 @@ X_test_pca = pca.transform(X_test)
 
 ---
 
-## 🎓 Curso Kaggle: Feature Engineering
+##  Curso Kaggle: Feature Engineering
 
 !!! info "Recurso Complementario Obligatorio"
     **[Kaggle Feature Engineering - Curso Completo](https://www.kaggle.com/learn/feature-engineering)**
@@ -1366,16 +1366,16 @@ X_test_pca = pca.transform(X_test)
 
 ### Ventajas del Curso Kaggle
 
-✅ **Hands-on:** Notebooks ejecutables
-✅ **Datasets reales:** Competiciones de Kaggle
-✅ **Iterativo:** Build conocimiento progresivamente
-✅ **Certificado:** Validación oficial de Kaggle
+ **Hands-on:** Notebooks ejecutables
+ **Datasets reales:** Competiciones de Kaggle
+ **Iterativo:** Build conocimiento progresivamente
+ **Certificado:** Validación oficial de Kaggle
 
 ---
 
-## 📚 Recursos Complementarios
+##  Recursos Complementarios
 
-### 📘 Documentación Scikit-learn (lectura complementaria)
+###  Documentación Scikit-learn (lectura complementaria)
 
 #### Preprocessing & Encoders
 [Encoding Categorical Features](https://scikit-learn.org/stable/modules/preprocessing.html#encoding-categorical-features)
@@ -1406,7 +1406,7 @@ X_test_pca = pca.transform(X_test)
 
 ---
 
-## 💻 Código de Referencia Completo
+##  Código de Referencia Completo
 ```python
 """
 Pipeline completo de Feature Engineering
@@ -1591,7 +1591,7 @@ print(f"\nCV Score: {cv_scores.mean():.4f} (+/- {cv_scores.std():.4f})")
 
 ---
 
-## 🎯 Puntos Clave para la Evaluación
+##  Puntos Clave para la Evaluación
 
 !!! danger "CRÍTICOS - No olvidar"
     
@@ -1612,7 +1612,7 @@ print(f"\nCV Score: {cv_scores.mean():.4f} (+/- {cv_scores.std():.4f})")
 
 ---
 
-## 📊 Resumen Visual
+##  Resumen Visual
 ```
 FEATURE ENGINEERING WORKFLOW
 ═══════════════════════════════════════
@@ -1640,7 +1640,7 @@ Raw Data
 
 ---
 
-## 📚 Referencias Completas
+##  Referencias Completas
 
 1. **Zheng, A., & Casari, A. (2018).** *Feature Engineering for Machine Learning: Principles and Techniques for Data Scientists*. O'Reilly Media, Inc. ISBN: 978-1491953242.
 
