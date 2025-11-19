@@ -1,30 +1,30 @@
-#  Apuntes de Estudio: UT1 - EDA & Fuentes de Datos
+# Apuntes de Estudio: UT1 - EDA & Fuentes de Datos
 
 **Unidad Temática 1: Análisis Exploratorio de Datos y Fuentes**  
 **Curso:** Ingeniería de Datos - UCU 2025  
 **Evaluación:** 20 de Agosto
 
->  **Objetivo:** Dominar técnicas de carga, exploración y visualización de datos con Python, aplicando mejores prácticas de análisis exploratorio.
+> **Objetivo:** Dominar técnicas de carga, exploración y visualización de datos con Python, aplicando mejores prácticas de análisis exploratorio.
 
 ---
 
-##  Competencias a Desarrollar
+## Competencias a Desarrollar
 
--  Cargar y explorar datasets de diferentes formatos (CSV, JSON, SQLite)
--  Aplicar técnicas básicas de EDA con pandas
--  Crear visualizaciones informativas con matplotlib/seaborn
--  Documentar hallazgos usando MkDocs y mejores prácticas
--  Interpretar resultados de análisis exploratorio
--  Configurar entornos de desarrollo colaborativo con GitHub
+- Cargar y explorar datasets de diferentes formatos (CSV, JSON, SQLite)
+- Aplicar técnicas básicas de EDA con pandas
+- Crear visualizaciones informativas con matplotlib/seaborn
+- Documentar hallazgos usando MkDocs y mejores prácticas
+- Interpretar resultados de análisis exploratorio
+- Configurar entornos de desarrollo colaborativo con GitHub
 
 ---
 
-##  Parte 1: Ciencia de Datos para Gente Sociable (Cap. 1-4)
+## Parte 1: Ciencia de Datos para Gente Sociable (Cap. 1-4)
 
 **Autor:** Antonio Vazquez Brust  
 **Fuente:** https://bitsandbricks.github.io/ciencia_de_datos_gente_sociable/
 
-###  Conceptos Fundamentales
+### Conceptos Fundamentales
 
 #### ¿Qué es la Ciencia de Datos?
 
@@ -64,14 +64,14 @@
 Este libro fue escrito con una audiencia en mente formada por urbanistas, sociólogos, politólogas y otros entusiastas que se acercan al tema desde las Ciencias Sociales 
 
 **Características del enfoque:**
--  No requiere conocimiento previo de programación
--  Énfasis en exploración, análisis y visualización
+- No requiere conocimiento previo de programación
+- Énfasis en exploración, análisis y visualización
 - ️ Tono introductorio y explicaciones simplificadas
--  Orientado a trabajo colaborativo e interdisciplinario
+- Orientado a trabajo colaborativo e interdisciplinario
 
 ---
 
-###  Metodología: Del Problema al Insight
+### Metodología: Del Problema al Insight
 ```
 FLUJO DE TRABAJO EN CIENCIA DE DATOS:
 
@@ -99,7 +99,7 @@ FLUJO DE TRABAJO EN CIENCIA DE DATOS:
 
 ---
 
-###  Lecciones Clave del Libro
+### Lecciones Clave del Libro
 
 #### 1. El Análisis Siempre Empieza con Preguntas
 
@@ -128,12 +128,12 @@ El conocimiento de dominio es la experiencia acumulada en un campo particular de
 
 ---
 
-##  Parte 2: Google Good Data Analysis
+## Parte 2: Google Good Data Analysis
 
 **Fuente:** https://developers.google.com/machine-learning/guides/good-data-analysis  
 **Autor:** Patrick Riley (Google)
 
-###  Visión General
+### Visión General
 
 Deriving truth and insight from a pile of data is a powerful but error-prone job. The best data analysts and data-minded engineers develop a reputation for making credible pronouncements from data 
 
@@ -157,10 +157,10 @@ Deriving truth and insight from a pile of data is a powerful but error-prone job
 - Identificar clases de outliers
 - Ver la "forma" real de tus datos
 ```python
-#  Insuficiente
+# Insuficiente
 df['age'].describe()
 
-#  Completo
+# Completo
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -208,10 +208,10 @@ Randomness exists and will fool us. Some people think, "Google has so much data;
 **Regla de oro:**
 > Cada número o resumen de datos que produzcas DEBE tener una noción de confianza (confidence intervals, p-values)
 ```python
-#  Sin contexto de confianza
+# Sin contexto de confianza
 mean_conversion_rate = 0.035  # 3.5%
 
-#  Con intervalo de confianza
+# Con intervalo de confianza
 from scipy import stats
 
 mean = 0.035
@@ -246,10 +246,10 @@ Anytime you are producing new analysis code, you need to look at examples from t
 Slicing means separating your data into subgroups and looking at metric values for each subgroup separately 
 
 **Dimensiones comunes de segmentación:**
--  Browser (Chrome, Firefox, Safari)
--  Locale (país, idioma)
--  Device type (desktop, mobile, tablet)
--  Domain
+- Browser (Chrome, Firefox, Safari)
+- Locale (país, idioma)
+- Device type (desktop, mobile, tablet)
+- Domain
 - ⏰ Time (día de semana, hora del día)
 
 **Cuándo segmentar:**
@@ -319,7 +319,7 @@ Almost every large data analysis starts by filtering data in various stages. You
 
 **Mejores prácticas:**
 ```python
-#  Filtrado documentado y contabilizado
+# Filtrado documentado y contabilizado
 print(f"Total de registros: {len(df):,}")
 
 # Filtro 1: Solo usuarios de USA
@@ -368,7 +368,7 @@ Most interesting metrics are ratios of underlying measures. Oftentimes, interest
 
 ---
 
-###  SECCIÓN 2: Process (Proceso de Análisis)
+### SECCIÓN 2: Process (Proceso de Análisis)
 
 #### 2.1. Separa: Validación, Descripción y Evaluación
 
@@ -429,18 +429,18 @@ As part of the "Validation" stage, before actually answering the question you ar
 
 **Preguntas de sanity check:**
 ```python
-#  ¿Cambió el número de usuarios?
+# ¿Cambió el número de usuarios?
 control_users = experiment_df[experiment_df['group'] == 'control']['user_id'].nunique()
 treatment_users = experiment_df[experiment_df['group'] == 'treatment']['user_id'].nunique()
 
 assert abs(control_users - treatment_users) / control_users < 0.05, \
     "️ Desbalance significativo en usuarios entre grupos"
 
-#  ¿Aparecieron las queries afectadas en todos los subgrupos?
+# ¿Aparecieron las queries afectadas en todos los subgrupos?
 affected_queries_by_group = experiment_df.groupby('group')['affected_query'].sum()
 print(affected_queries_by_group)
 
-#  ¿Cambiaron los error rates?
+# ¿Cambiaron los error rates?
 error_rate_by_group = experiment_df.groupby('group')['has_error'].mean()
 print(f"Control error rate: {error_rate_by_group['control']:.2%}")
 print(f"Treatment error rate: {error_rate_by_group['treatment']:.2%}")
@@ -653,7 +653,7 @@ You should not even do slicing on the variables that you fed back and manipulate
 
 ---
 
-###  SECCIÓN 3: Mindset (Mentalidad del Analista)
+### SECCIÓN 3: Mindset (Mentalidad del Analista)
 
 #### 3.1. El Análisis Empieza con Preguntas, No con Datos
 
@@ -746,7 +746,7 @@ There are many limits to what we can learn from data. Only by admitting the limi
 
 
 
-##  Recursos Adicionales 
+## Recursos Adicionales 
 
 ### Lecturas Complementarias
 

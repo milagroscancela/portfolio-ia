@@ -1,39 +1,39 @@
-#  Apuntes de Estudio: UT2 - Calidad de Datos y Ética en ML
+# Apuntes de Estudio: UT2 - Calidad de Datos y Ética en ML
 
 **Unidad Temática 2: Calidad de Datos, Feature Engineering y Ética**  
 **Curso:** Ingeniería de Datos - UCU 2025  
 **Evaluación:** 3 de Septiembre
 
->  **Objetivo:** Dominar técnicas de limpieza de datos, feature engineering y evaluación de fairness, implementando pipelines reproducibles y éticamente responsables.
+> **Objetivo:** Dominar técnicas de limpieza de datos, feature engineering y evaluación de fairness, implementando pipelines reproducibles y éticamente responsables.
 
 ---
 
-##  Competencias a Desarrollar
+## Competencias a Desarrollar
 
--  Distinguir entre MCAR, MAR y MNAR en datasets reales
--  Detectar patrones de missing data y outliers
--  Aplicar estrategias de imputación apropiadas según el contexto
--  Implementar pipelines de limpieza reproducibles
--  Prevenir data leakage usando validación cruzada apropiada
--  Identificar y mitigar sesgo en datasets históricos
--  Evaluar fairness usando métricas estándar
--  Documentar decisiones éticas en el tratamiento de datos
+- Distinguir entre MCAR, MAR y MNAR en datasets reales
+- Detectar patrones de missing data y outliers
+- Aplicar estrategias de imputación apropiadas según el contexto
+- Implementar pipelines de limpieza reproducibles
+- Prevenir data leakage usando validación cruzada apropiada
+- Identificar y mitigar sesgo en datasets históricos
+- Evaluar fairness usando métricas estándar
+- Documentar decisiones éticas en el tratamiento de datos
 
 ---
 
-##  PARTE 1: Feature Engineering for Machine Learning (Zheng & Casari)
+## PARTE 1: Feature Engineering for Machine Learning (Zheng & Casari)
 
 **Autoras:** Alice Zheng (Amazon), Amanda Casari (Google)  
 **Editorial:** O'Reilly Media, 2018
 
 > Feature engineering is a crucial step in the machine-learning pipeline, yet this topic is rarely examined on its own. Practitioners agree that the vast majority of time in building a machine learning pipeline is spent on feature engineering and data cleaning
 
-###  Principio Fundamental
+### Principio Fundamental
 
 It is a crucial step in the machine learning pipeline, because the right features can ease the difficulty of modeling, and therefore enable the pipeline to output results of higher quality
 
 **Estadística clave:**
->  **80% del tiempo** en proyectos de ML se dedica a:
+> **80% del tiempo** en proyectos de ML se dedica a:
 > - Feature engineering
 > - Data cleaning
 > 
@@ -43,7 +43,7 @@ It is a crucial step in the machine learning pipeline, because the right feature
 
 ---
 
-##  CAPÍTULO 1: The Machine Learning Pipeline
+## CAPÍTULO 1: The Machine Learning Pipeline
 
 ### 1.1. Componentes del Pipeline
 
@@ -156,20 +156,20 @@ The right features can only be defined in the context of both the model and the 
 **Ejemplo: Representar "Color"**
 
 ```python
-#  Raw data (no numérico)
+# Raw data (no numérico)
 color = "red"
 
-#  One-Hot Encoding
+# One-Hot Encoding
 color_red = 1
 color_blue = 0
 color_green = 0
 
-#  RGB Values
+# RGB Values
 red = 255
 green = 0
 blue = 0
 
-#  HSV Values
+# HSV Values
 hue = 0
 saturation = 100
 value = 100
@@ -184,7 +184,7 @@ value = 100
 
 ---
 
-##  CAPÍTULO 2: Fancy Tricks with Simple Numbers
+## CAPÍTULO 2: Fancy Tricks with Simple Numbers
 
 > In Chapter 2, we explore basic feature engineering for numeric data: filtering, binning, scaling, log transforms and power transforms, and interaction features
 
@@ -262,13 +262,13 @@ print(X_binary)
 ```
 
 **Ventajas:**
--  Robusto a outliers
--  Fácil de interpretar
--  Reduce dimensionalidad
+- Robusto a outliers
+- Fácil de interpretar
+- Reduce dimensionalidad
 
 **Desventajas:**
--  Pierde información de magnitud
--  Threshold arbitrario
+- Pierde información de magnitud
+- Threshold arbitrario
 
 ### 2.4. Quantization or Binning (Cuantización)
 
@@ -442,7 +442,7 @@ transformed = pt_yj.fit_transform(data_with_negatives)
 
 ---
 
-##  CAPÍTULO 4: Effects of Feature Scaling
+## CAPÍTULO 4: Effects of Feature Scaling
 
 > Chapter 4 examines tf-idf (term frequency–inverse document frequency) as an example of feature scaling and discusses why it works
 
@@ -502,13 +502,13 @@ print(X_scaled)
 ```
 
 **Pros:**
--  Interpretación intuitiva (0 = mínimo, 1 = máximo)
--  Preserva relaciones de distancia relativa
--  Útil cuando conoces bounds naturales
+- Interpretación intuitiva (0 = mínimo, 1 = máximo)
+- Preserva relaciones de distancia relativa
+- Útil cuando conoces bounds naturales
 
 **Cons:**
--  Sensible a outliers extremos
--  Min/Max pueden cambiar con nuevos datos
+- Sensible a outliers extremos
+- Min/Max pueden cambiar con nuevos datos
 
 ### 4.3. Standardization (Z-score Normalization)
 
@@ -539,13 +539,13 @@ print(f"Std: {X_scaled.std():.2f}")     # ~1.0
 ```
 
 **Pros:**
--  Menos sensible a outliers que Min-Max
--  No bounded (puede tener valores < 0 o > 1)
--  Interpretación en términos de desviaciones estándar
+- Menos sensible a outliers que Min-Max
+- No bounded (puede tener valores < 0 o > 1)
+- Interpretación en términos de desviaciones estándar
 
 **Cons:**
--  Pierde interpretación absoluta
--  Asume distribución aproximadamente normal
+- Pierde interpretación absoluta
+- Asume distribución aproximadamente normal
 
 ### 4.4. ℓ² Normalization (L2 Norm)
 
@@ -576,9 +576,9 @@ for row in X_normalized:
 ```
 
 **Cuándo usar:**
--  Text data (TF-IDF vectors)
+- Text data (TF-IDF vectors)
 - ️ Image embeddings
--  Audio features
+- Audio features
 - Cualquier caso donde la **dirección** importa más que la magnitud
 
 **Ejemplo: Text Similarity**
@@ -656,7 +656,7 @@ plt.tight_layout()
 
 ---
 
-##  PARTE 2: Data Cleaning (Kaggle + Pandas)
+## PARTE 2: Data Cleaning (Kaggle + Pandas)
 
 ### 2.1. Missing Data Mechanisms (Mecanismos de Datos Faltantes)
 
@@ -893,15 +893,15 @@ df_clean = df.dropna(subset=['critical_column_1', 'critical_column_2'])
 ```
 
 **Cuándo usar:**
--  MCAR y < 5% missing
--  Dataset grande
--  Variables no críticas
+- MCAR y < 5% missing
+- Dataset grande
+- Variables no críticas
 
 **Cuándo NO usar:**
--  MAR o MNAR
--  > 10% missing
--  Dataset pequeño
--  Pérdida de información valiosa
+- MAR o MNAR
+- > 10% missing
+- Dataset pequeño
+- Pérdida de información valiosa
 
 ---
 
@@ -934,13 +934,13 @@ df['temperature'].fillna(method='bfill', inplace=True)
 ```
 
 **Pros:**
--  Rápido y simple
--  Mantiene tamaño de dataset
+- Rápido y simple
+- Mantiene tamaño de dataset
 
 **Cons:**
--  Ignora relaciones entre variables
--  Reduce varianza
--  Puede introducir sesgo
+- Ignora relaciones entre variables
+- Reduce varianza
+- Puede introducir sesgo
 
 ---
 
@@ -959,14 +959,14 @@ df_imputed = imputer.fit_transform(df)
 ```
 
 **Ventajas:**
--  Considera relaciones multivariadas
--  No asume distribución
--  Mejor que mean/median para MAR
+- Considera relaciones multivariadas
+- No asume distribución
+- Mejor que mean/median para MAR
 
 **Desventajas:**
--  Computacionalmente costoso
--  Sensible a escala (requiere normalización)
--  No funciona bien con alta dimensionalidad
+- Computacionalmente costoso
+- Sensible a escala (requiere normalización)
+- No funciona bien con alta dimensionalidad
 
 **Ejemplo completo:**
 
@@ -1039,14 +1039,14 @@ df_imputed = pd.DataFrame(
 ```
 
 **Ventajas:**
--  Captura incertidumbre de imputación
--  Funciona bien con MAR
--  Estadísticamente robusto
+- Captura incertidumbre de imputación
+- Funciona bien con MAR
+- Estadísticamente robusto
 
 **Desventajas:**
--  Computacionalmente costoso
--  Complejo de implementar correctamente
--  Requiere múltiples análisis
+- Computacionalmente costoso
+- Complejo de implementar correctamente
+- Requiere múltiples análisis
 
 ---
 
@@ -1067,7 +1067,7 @@ df['income_was_missing'] = df['income'].isna().astype(int)
 df['income'].fillna(df['income'].median(), inplace=True)
 
 print(df)
-#    income  income_was_missing
+#  income  income_was_missing
 # 0   50000                   0
 # 1   60000                   1  <- Imputed
 # 2   60000                   0
@@ -1076,9 +1076,9 @@ print(df)
 ```
 
 **Cuándo usar:**
--  Cuando missingness tiene valor predictivo
--  MNAR sospechado
--  No queremos perder información de patrón de missingness
+- Cuando missingness tiene valor predictivo
+- MNAR sospechado
+- No queremos perder información de patrón de missingness
 
 ---
 
@@ -1183,9 +1183,9 @@ df['is_outlier_iforest'] = df['is_outlier_iforest'] == -1
 ```
 
 **Ventajas:**
--  No asume distribución
--  Detecta outliers multivariados
--  Escalable a alta dimensionalidad
+- No asume distribución
+- Detecta outliers multivariados
+- Escalable a alta dimensionalidad
 
 ---
 
@@ -1320,14 +1320,14 @@ predictions = full_pipeline.predict(X_test)
 ```
 
 **Ventajas del Pipeline:**
--  Reproducible
--  Previene data leakage
--  Fácil de serializar (joblib.dump)
--  Código limpio y mantenible
+- Reproducible
+- Previene data leakage
+- Fácil de serializar (joblib.dump)
+- Código limpio y mantenible
 
 ---
 
-##  PARTE 3: Data Leakage
+## PARTE 3: Data Leakage
 
 > Data leakage is one of the most important issues for a data scientist to understand
 
@@ -1336,9 +1336,9 @@ predictions = full_pipeline.predict(X_test)
 **Definición:** Cuando información del conjunto de validación/test "se filtra" al conjunto de entrenamiento
 
 **Resultado:** 
--  Performance irr realmente alta en validación
--  Performance terrible en producción
--  Falsa sensación de confianza
+- Performance irr realmente alta en validación
+- Performance terrible en producción
+- Falsa sensación de confianza
 
 ### 3.2. Tipos de Data Leakage
 
@@ -1349,7 +1349,7 @@ predictions = full_pipeline.predict(X_test)
 **Ejemplo 1: Predecir abandono de clientes**
 
 ```python
-#  MAL: 'days_since_cancellation' es consecuencia del churn
+# MAL: 'days_since_cancellation' es consecuencia del churn
 df = pd.DataFrame({
     'customer_id': [1, 2, 3],
     'days_since_cancellation': [30, 0, 15],  # Solo existe DESPUÉS de churn
@@ -1363,10 +1363,10 @@ df = pd.DataFrame({
 **Ejemplo 2: Predecir default de loan**
 
 ```python
-#  MAL: 'took_debt_consolidation_loan' es RESULTADO del default
+# MAL: 'took_debt_consolidation_loan' es RESULTADO del default
 features = ['income', 'credit_score', 'took_debt_consolidation_loan']
 
-#  BIEN: Solo features disponibles ANTES de aprobar el loan
+# BIEN: Solo features disponibles ANTES de aprobar el loan
 features = ['income', 'credit_score', 'employment_history']
 ```
 
@@ -1397,7 +1397,7 @@ print(importances)
 **Ejemplo 1: Scaling con todos los datos**
 
 ```python
-#  MAL: Scaler ve estadísticas del test set
+# MAL: Scaler ve estadísticas del test set
 scaler = StandardScaler()
 scaler.fit(pd.concat([X_train, X_test]))  # ¡LEAKAGE!
 
@@ -1406,7 +1406,7 @@ X_test_scaled = scaler.transform(X_test)
 ```
 
 ```python
-#  BIEN: Scaler solo ve train set
+# BIEN: Scaler solo ve train set
 scaler = StandardScaler()
 scaler.fit(X_train)  # Solo train
 
@@ -1419,11 +1419,11 @@ X_test_scaled = scaler.transform(X_test)
 ```python
 from sklearn.feature_selection import SelectKBest
 
-#  MAL
+# MAL
 selector = SelectKBest(k=10)
 selector.fit(pd.concat([X_train, X_test]), pd.concat([y_train, y_test]))
 
-#  BIEN
+# BIEN
 selector = SelectKBest(k=10)
 selector.fit(X_train, y_train)  # Solo train
 ```
@@ -1431,11 +1431,11 @@ selector.fit(X_train, y_train)  # Solo train
 **Ejemplo 3: Imputación con estadísticas globales**
 
 ```python
-#  MAL: Mean incluye test set
+# MAL: Mean incluye test set
 overall_mean = df['age'].mean()  # Todo el dataset
 df['age'].fillna(overall_mean, inplace=True)
 
-#  BIEN: Mean solo del train set
+# BIEN: Mean solo del train set
 train_mean = X_train['age'].mean()
 X_train['age'].fillna(train_mean, inplace=True)
 X_test['age'].fillna(train_mean, inplace=True)  # Usar mean del train
@@ -1450,7 +1450,7 @@ X_test['age'].fillna(train_mean, inplace=True)  # Usar mean del train
 **Ejemplo: Predecir ventas de hoy con datos de mañana**
 
 ```python
-#  MAL: Features creados con datos futuros
+# MAL: Features creados con datos futuros
 df = pd.DataFrame({
     'date': pd.date_range('2024-01-01', periods=100),
     'sales': np.random.randint(100, 200, 100)
@@ -1460,7 +1460,7 @@ df = pd.DataFrame({
 df['sales_7day_avg'] = df['sales'].rolling(window=7, center=True).mean()
 # center=True usa 3 días pasados + hoy + 3 días futuros
 
-#  BIEN: Solo usar pasado
+# BIEN: Solo usar pasado
 df['sales_7day_avg'] = df['sales'].rolling(window=7, center=False).mean()
 # Solo usa últimos 7 días (incluyendo hoy)
 ```
@@ -1518,14 +1518,14 @@ score = pipeline.score(X_test, y_test)
 ```python
 from sklearn.model_selection import cross_val_score
 
-#  BIEN: Pipeline dentro de CV
+# BIEN: Pipeline dentro de CV
 scores = cross_val_score(
     pipeline,  # Todo el pipeline
     X_train, y_train,
     cv=5
 )
 
-#  MAL: Transformar antes de CV
+# MAL: Transformar antes de CV
 X_scaled = scaler.fit_transform(X)  # Leakage!
 scores = cross_val_score(model, X_scaled, y, cv=5)
 ```
@@ -1616,7 +1616,7 @@ Los modelos de ML pueden perpetuar y amplificar sesgos existentes en datos hist�
 **️ Problema:** Eliminar directamente no es suficiente
 
 ```python
-#  Insuficiente
+# Insuficiente
 X_train = X_train.drop(columns=['gender', 'race'])
 
 # ️ Problema: Proxy variables
@@ -1826,13 +1826,13 @@ if di_ratio < 0.8:
 
 # Si optimizamos para:
 # 1. Demographic Parity → Aprobar igual % en ambos grupos
-#    Resultado: Más defaults en Grupo A (sacrifica accuracy)
+#  Resultado: Más defaults en Grupo A (sacrifica accuracy)
 
 # 2. Equal Opportunity → Aprobar mismo % de "good borrowers"
-#    Resultado: Diferente tasa de aprobación general (viola DP)
+#  Resultado: Diferente tasa de aprobación general (viola DP)
 
 # 3. Calibration → P(default | score=x) igual entre grupos
-#    Resultado: Diferentes umbrales de decisión (viola EO)
+#  Resultado: Diferentes umbrales de decisión (viola EO)
 ```
 
 **Decisión depende de contexto:**
@@ -1901,7 +1901,7 @@ mitigator.fit(X_train, y_train, sensitive_features=sensitive_train)
 # 2. Adversary (predice atributo protegido)
 
 # Objetivo: Maximizar accuracy del predictor
-#           Minimizar accuracy del adversary
+#      Minimizar accuracy del adversary
 # Resultado: Representaciones que no codifican sensitive attribute
 ```
 
@@ -2033,7 +2033,7 @@ audit_results = fairness_audit(
 
 ---
 
-##  Recursos Adicionales
+## Recursos Adicionales
 
 ### Lecturas Complementarias
 
