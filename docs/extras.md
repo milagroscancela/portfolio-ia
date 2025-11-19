@@ -6,25 +6,27 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 
 ## 📊 Resumen de Exploraciones
 
-<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0; max-width: 100%;">
+## 📊 Resumen de Exploraciones
+
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0;">
 
 <div style="background: linear-gradient(135deg, #9B6BB4 0%, #7B4B94 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(123, 75, 148, 0.3);">
-<div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.3rem;">2</div>
+<div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.3rem;">2</div>
 <div style="font-size: 1rem; opacity: 0.95;">Exploraciones<br/>Completadas</div>
 </div>
 
 <div style="background: linear-gradient(135deg, #B08BC8 0%, #9B6BB4 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(155, 107, 180, 0.3);">
-<div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.3rem;">440K+</div>
-<div style="font-size: 1rem; opacity: 0.95;">Registros<br/>Analizados</div>
+<div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.3rem;">2</div>
+<div style="font-size: 1rem; opacity: 0.95;">Datasets<br/>Analizados</div>
 </div>
 
 <div style="background: linear-gradient(135deg, #7B4B94 0%, #5B2B74 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(91, 43, 116, 0.3);">
-<div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.3rem;">10+</div>
+<div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.3rem;">10+</div>
 <div style="font-size: 1rem; opacity: 0.95;">Técnicas<br/>Aplicadas</div>
 </div>
 
 <div style="background: linear-gradient(135deg, #9C27B0 0%, #7B4B94 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);">
-<div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.3rem;">15+</div>
+<div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.3rem;">15+</div>
 <div style="font-size: 1rem; opacity: 0.95;">Visualizaciones<br/>Generadas</div>
 </div>
 
@@ -35,8 +37,6 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 ## 📊 Proyectos de Exploración
 
 ### 📱 Social Media & Mental Health - Análisis Exploratorio de Comportamiento Digital
-
-<div class="project-card">
 
 **Dataset:** Social Media and Mental Health Dataset (Kaggle) - Datos de estudiantes universitarios sobre uso de redes sociales y salud mental. Incluye tiempo de uso diario, plataformas preferidas (Instagram, TikTok, Facebook, Twitter, Snapchat), indicadores de bienestar psicológico (depresión, ansiedad, autoestima) y datos demográficos.
 
@@ -68,6 +68,7 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 
 #### 💻 Stack Tecnológico
 
+<div>
 <span class="skill-badge">Python 3.8+</span>
 <span class="skill-badge">Pandas</span>
 <span class="skill-badge">NumPy</span>
@@ -76,19 +77,18 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 <span class="skill-badge">Análisis Estadístico</span>
 <span class="skill-badge">EDA</span>
 <span class="skill-badge">Kaggle Hub</span>
+</div>
 
 #### 🔗 Recursos
 
-**[📄 Ver Reporte Completo →](portfolio/extra-social-media.md)**  
+**[📄 Ver Reporte Completo →](portfolio/extra-social-media/)**  
 **[📓 Descargar Notebook →](portfolio/assets/social-media/Practica03_Social_Media_Mental_Health.ipynb)**
 
-</div>
 
 ---
 
 ### 💳 Credit Card Fairness - Detección y Mitigación de Sesgo en Aprobaciones Crediticias
 
-<div class="project-card">
 
 **Dataset:** Credit Card Approval Dataset (Kaggle) - 438,857 solicitudes de crédito con datos demográficos (género, edad, nivel educativo, estado civil) y financieros (ingresos, empleo, historial crediticio). Dataset con desbalance significativo: 68% mujeres vs 32% hombres.
 
@@ -134,6 +134,7 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 
 #### 💻 Stack Tecnológico
 
+<div>
 <span class="skill-badge">Fairlearn 0.10+</span>
 <span class="skill-badge">Scikit-learn 1.3+</span>
 <span class="skill-badge">Python 3.8+</span>
@@ -144,6 +145,7 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 <span class="skill-badge">Ética en IA</span>
 <span class="skill-badge">Compliance Legal</span>
 <span class="skill-badge">Kaggle Hub</span>
+</div>
 
 #### ⚖️ Marco Legal y Regulatorio
 
@@ -164,10 +166,10 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 
 #### 🔗 Recursos
 
-**[📄 Ver Reporte Completo →](portfolio/extra-credit-card.md)**  
+**[📄 Ver Reporte Completo →](portfolio/extra-credit-card/)**  
 **[📓 Descargar Notebook →](portfolio/assets/credit-card/Practica_Extra_UT2_Credit_Fairness.ipynb)**
 
-</div>
+
 
 ---
 
@@ -184,4 +186,4 @@ Estas exploraciones se alinean directamente con las unidades temáticas del curs
 
 ## 🔗 Navegación Rápida
 
-[← Volver a Inicio](index.md) | [Ver UT1 →](ut1-apuntes.md) | [Ver UT2 →](ut2-apuntes.md) | [Ver Proyectos →](portfolio/index.md)
+[← Volver a Inicio](/) | [Ver UT1 →](ut1-apuntes/) | [Ver UT2 →](ut2-apuntes/) | [Ver Proyectos →](portfolio/)
