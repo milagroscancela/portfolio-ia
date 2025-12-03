@@ -9,8 +9,6 @@
 
 ---
 
-## 👋 Bienvenid@
-
 Este portfolio documenta mi proceso en la materia  **Ingeniería de Datos**, desde análisis exploratorio hasta modelado predictivo avanzado. 
 <div style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #7B4B94;">
   <p style="margin: 0; color: #4a148c; font-size: 1.05rem; line-height: 1.7;">

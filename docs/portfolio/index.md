@@ -2,9 +2,6 @@
 title: "Índice del Portafolio"
 date: 2025-08-19
 ---
-
-# 💼 Portfolio de Ingeniería de Datos
-
 Bienvenida a mi portafolio académico de **Ingeniería de Datos**.  
 Este espacio reúne las prácticas y proyectos desarrollados a lo largo del curso, documentadas con un enfoque técnico, reproducible y visual.  
 Cada unidad refleja un conjunto de competencias: desde la exploración y calidad de datos hasta la automatización de pipelines y el análisis ético de modelos.
