@@ -3,7 +3,7 @@ title: "Índice del Portafolio"
 date: 2025-08-19
 ---
 
-# 💼 Portafolio de Ingeniería de Datos
+# 💼 Portfolio de Ingeniería de Datos
 
 Bienvenida a mi portafolio académico de **Ingeniería de Datos**.  
 Este espacio reúne las prácticas y proyectos desarrollados a lo largo del curso, documentadas con un enfoque técnico, reproducible y visual.  
@@ -11,7 +11,6 @@ Cada unidad refleja un conjunto de competencias: desde la exploración y calidad
 
 ---
 
-## 📚 Estructura
 
 El portafolio se organiza por **unidades temáticas (UT1–UT5)**, siguiendo el cronograma del curso:
 
@@ -56,8 +55,13 @@ El portafolio se organiza por **unidades temáticas (UT1–UT5)**, siguiendo el 
 - [11 - Feature Engineering Temporal en E-Commerce - Técnicas avanzadas con datos transaccionales](./11-future_temp.md)
   *Implementación de lag features, rolling/expanding windows, RFM analysis, time windows, encoding cíclico y validación temporal con dataset Online Retail*
 
-*(Las siguientes unidades se irán publicando progresivamente.)*
-
+### **UT4: Datos Especiales**
+- [12 - Geoanálisis con GeoPandas en CABA](./12-geoanalisis.md)
+  *Análisis de la densidad poblacional y servicio ciudadano en CABA usando Pipeline geoespacial end-to-end con CRS estandarizado, uniones y agregaciones zonales, y visualizaciones con tiles de contexto*
+- [13 - Preprocesamiento avanzado de imágenes](./13-prepocesamiento.md)
+  *Para el análisis combinamos métricas de QA con pipelines de computer vision.*
+- [14 - PCA y Feature Selection en el Mercado Inmobiliario - Reducción dimensional y selección estratégica en Ames Housing](./14-audio.md)
+  *Implementación de PCA, Filter Methods (F-test, MI), Wrapper Methods (Forward, Backward, RFE) con dataset Ames Housing*
 
 ---
 
@@ -72,4 +76,4 @@ Cada práctica incluye:
 ---
 
 !!! info "Última actualización"
-    📅 16 de Noviembre de 2025
+    📅 01 de Diciembre de 2025
