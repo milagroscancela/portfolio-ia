@@ -60,8 +60,14 @@ El portafolio se organiza por **unidades temáticas (UT1–UT5)**, siguiendo el 
   *Análisis de la densidad poblacional y servicio ciudadano en CABA usando Pipeline geoespacial end-to-end con CRS estandarizado, uniones y agregaciones zonales, y visualizaciones con tiles de contexto*
 - [13 - Preprocesamiento avanzado de imágenes](./13-prepocesamiento.md)
   *Para el análisis combinamos métricas de QA con pipelines de computer vision.*
-- [14 - PCA y Feature Selection en el Mercado Inmobiliario - Reducción dimensional y selección estratégica en Ames Housing](./14-audio.md)
-  *Implementación de PCA, Filter Methods (F-test, MI), Wrapper Methods (Forward, Backward, RFE) con dataset Ames Housing*
+- [14 - Pipeline de preprocesamiento para datos de audio](./14-audio.md)
+  *Pipeline completo de audio desde carga hasta exportación de features MFCC*
+
+### **UT5: Pipelines ETL en la Nube**
+- [15 - Primeros Pasos en Google Cloud Platform](./15-gcp-intro.md)
+  *Introducción a la consola GCP, proyectos, IAM y habilitación de APIs para pipelines de datos*
+- [16 - Cloud Dataprep: Transformación Visual de Datos](./16-dataprep.md)
+  *Pipeline ETL completo con Alteryx Designer Cloud: limpieza, filtrado y enriquecimiento de datos de ecommerce*
 
 ---
 
