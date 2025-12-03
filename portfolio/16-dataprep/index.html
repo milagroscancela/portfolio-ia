@@ -1,0 +1,2031 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Portfolio académico de Ingeniería en Inteligencia Artificial y Ciencia de Datos - Milagros Cancela">
+      
+      
+        <meta name="author" content="Milagros Cancela">
+      
+      
+      
+        <link rel="prev" href="../15-gcp-intro/">
+      
+      
+        <link rel="next" href="../extra-credit-card/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Cloud Dataprep: Transformación Visual de Datos - Portfolio: Ing en IA y CD 💻</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cloud-dataprep-transformacion-visual-de-datos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Portfolio: Ing en IA y CD 💻" class="md-header__button md-logo" aria-label="Portfolio: Ing en IA y CD 💻" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portfolio: Ing en IA y CD 💻
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cloud Dataprep: Transformación Visual de Datos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple" aria-label="Cambiar a modo oscuro" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple" aria-label="Cambiar a modo claro" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../acerca/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Acerca de mí
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Portfolio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../recursos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Recursos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../extras/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Exploraciones Extra
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../visualizaciones/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Visualizaciones
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../apuntes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Apuntes
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Portfolio: Ing en IA y CD 💻" class="md-nav__button md-logo" aria-label="Portfolio: Ing en IA y CD 💻" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.33 12.91c.09 1.55-.62 3.04-1.89 3.95l.77 1.49c.23.45.26.98.06 1.45-.19.47-.58.84-1.06 1l-.79.25a1.687 1.687 0 0 1-1.86-.55L14.44 18c-.89-.15-1.73-.53-2.44-1.1-.5.15-1 .23-1.5.23-.88 0-1.76-.27-2.5-.79-.53.16-1.07.23-1.62.22-.79.01-1.57-.15-2.3-.45a4.1 4.1 0 0 1-2.43-3.61c-.08-.72.04-1.45.35-2.11-.29-.75-.32-1.57-.07-2.33C2.3 7.11 3 6.32 3.87 5.82c.58-1.69 2.21-2.82 4-2.7 1.6-1.5 4.05-1.66 5.83-.37.42-.11.86-.17 1.3-.17 1.36-.03 2.65.57 3.5 1.64 2.04.53 3.5 2.35 3.58 4.47.05 1.11-.25 2.2-.86 3.13.07.36.11.72.11 1.09m-5-1.41c.57.07 1.02.5 1.02 1.07a1 1 0 0 1-1 1h-.63c-.32.9-.88 1.69-1.62 2.29.25.09.51.14.77.21 5.13-.07 4.53-3.2 4.53-3.25a2.59 2.59 0 0 0-2.69-2.49 1 1 0 0 1-1-1 1 1 0 0 1 1-1c1.23.03 2.41.49 3.33 1.3.05-.29.08-.59.08-.89-.06-1.24-.62-2.32-2.87-2.53-1.25-2.96-4.4-1.32-4.4-.4-.03.23.21.72.25.75a1 1 0 0 1 1 1c0 .55-.45 1-1 1-.53-.02-1.03-.22-1.43-.56-.48.31-1.03.5-1.6.56-.57.05-1.04-.35-1.07-.9a.97.97 0 0 1 .88-1.1c.16-.02.94-.14.94-.77 0-.66.25-1.29.68-1.79-.92-.25-1.91.08-2.91 1.29C6.75 5 6 5.25 5.45 7.2 4.5 7.67 4 8 3.78 9c1.08-.22 2.19-.13 3.22.25.5.19.78.75.59 1.29-.19.52-.77.78-1.29.59-.73-.32-1.55-.34-2.3-.06-.32.27-.32.83-.32 1.27 0 .74.37 1.43 1 1.83.53.27 1.12.41 1.71.4q-.225-.39-.39-.81a1.038 1.038 0 0 1 1.96-.68c.4 1.14 1.42 1.92 2.62 2.05 1.37-.07 2.59-.88 3.19-2.13.23-1.38 1.34-1.5 2.56-1.5m2 7.47-.62-1.3-.71.16 1 1.25zm-4.65-8.61a1 1 0 0 0-.91-1.03c-.71-.04-1.4.2-1.93.67-.57.58-.87 1.38-.84 2.19a1 1 0 0 0 1 1c.57 0 1-.45 1-1 0-.27.07-.54.23-.76.12-.1.27-.15.43-.15.55.03 1.02-.38 1.02-.92"></path></svg>
+
+    </a>
+    Portfolio: Ing en IA y CD 💻
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acerca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Acerca de mí
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Portfolio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exploraciones Extra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualizaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visualizaciones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apuntes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apuntes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="En esta página">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      En esta página
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-del-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Objetivos del Lab
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contexto-y-caso-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Contexto y Caso de Uso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 Contexto y Caso de Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataset-google-analytics-ecommerce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset: Google Analytics Ecommerce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-del-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura del Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-tecnicos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Conceptos Técnicos Clave
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Conceptos Técnicos Clave">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cloud-dataprep-alteryx-designer-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Cloud Dataprep (Alteryx Designer Cloud)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-componentes-de-dataprep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Componentes de Dataprep
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tipos-de-transformaciones-aplicadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Tipos de Transformaciones Aplicadas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proceso-de-implementacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Proceso de Implementación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 Proceso de Implementación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-1-configuracion-inicial-de-dataprep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 1: Configuración Inicial de Dataprep
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-2-preparacion-de-dataset-en-bigquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 2: Preparación de Dataset en BigQuery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-3-conexion-bigquery-dataprep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 3: Conexión BigQuery → Dataprep
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-4-exploracion-de-datos-data-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔬 Task 4: Exploración de Datos (Data Profiling)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔬 Task 4: Exploración de Datos (Data Profiling)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analisis-estructural" class="md-nav__link">
+    <span class="md-ellipsis">
+      Análisis Estructural
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analisis-de-campos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      Análisis de Campos Clave
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Análisis de Campos Clave">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-channelgrouping" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. channelGrouping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-country" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. country
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-totaltransactionrevenue" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. totalTransactionRevenue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-timeonsite" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. timeOnSite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-pageviews" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. pageviews
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-sessionqualitydim" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. sessionQualityDim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-date" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. date
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-productsku" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. productSKU
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-v2productname" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. v2ProductName
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-v2productcategory" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. v2ProductCategory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-productquantity" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. productQuantity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-currencycode" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. currencyCode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-itemquantity-itemrevenue" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. itemQuantity &amp; itemRevenue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-transactionid" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. transactionId
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-ecommerceaction_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. eCommerceAction_type
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-5-limpieza-de-datos-data-cleaning" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧹 Task 5: Limpieza de Datos (Data Cleaning)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧹 Task 5: Limpieza de Datos (Data Cleaning)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transformacion-1-correccion-de-tipo-de-productsku" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transformación 1: Corrección de Tipo de productSKU
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformacion-2-eliminacion-de-columnas-deprecadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transformación 2: Eliminación de Columnas Deprecadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformacion-3-deduplicacion-de-registros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transformación 3: Deduplicación de Registros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformacion-4-filtrado-de-sesiones-sin-revenue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transformación 4: Filtrado de Sesiones sin Revenue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformacion-5-filtrado-por-tipo-de-hit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transformación 5: Filtrado por Tipo de Hit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-6-enriquecimiento-de-datos-data-enrichment" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Task 6: Enriquecimiento de Datos (Data Enrichment)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📈 Task 6: Enriquecimiento de Datos (Data Enrichment)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enriquecimiento-1-creacion-de-id-unico-de-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enriquecimiento 1: Creación de ID Único de Sesión
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enriquecimiento-2-case-statement-para-ecommerce-action-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enriquecimiento 2: Case Statement para eCommerce Action Label
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enriquecimiento-3-ajuste-de-escala-en-revenue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enriquecimiento 3: Ajuste de Escala en Revenue
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-7-ejecucion-del-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Task 7: Ejecución del Pipeline
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Task 7: Ejecución del Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#revision-final-del-recipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Revisión Final del Recipe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-de-ejecucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración de Ejecución
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validacion-de-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validación de Resultados
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insights-y-mejores-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Insights y Mejores Prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Insights y Mejores Prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-de-cloud-dataprep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas de Cloud Dataprep
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principios-de-data-quality-aplicados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principios de Data Quality Aplicados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patron-etl-implementado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patrón ETL Implementado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎓 Conclusiones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎓 Conclusiones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#competencias-desarrolladas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Competencias Desarrolladas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicabilidad-en-proyectos-reales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicabilidad en Proyectos Reales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lecciones-clave-para-data-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecciones Clave para Data Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos Pasos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias-tecnicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Referencias Técnicas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-de-transformaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Resumen de Transformaciones
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="cloud-dataprep-transformacion-visual-de-datos">Cloud Dataprep: Transformación Visual de Datos<a class="headerlink" href="#cloud-dataprep-transformacion-visual-de-datos" title="Permanent link">¶</a></h1>
+<p><strong>Práctica 16 - Pipeline ETL con Alteryx Designer Cloud</strong><br>
+<strong>UT5: Pipelines ETL en la Nube | Google Cloud Skills Boost</strong></p>
+<blockquote>
+<p>📚 <strong>Tiempo estimado de lectura:</strong> ~25 min<br>
+- <strong>Autora:</strong> Milagros Cancela<br>
+- <strong>Fecha:</strong> Diciembre 2024<br>
+- <strong>Código del Lab:</strong> GSP430<br>
+- <strong>Nivel:</strong> Intermedio<br>
+- <strong>Duración del Lab:</strong> ~60 minutos<br>
+- <strong>Partner:</strong> Alteryx Designer Cloud (Trifacta)</p>
+</blockquote>
+<hr>
+<h2 id="objetivos-del-lab">🎯 Objetivos del Lab<a class="headerlink" href="#objetivos-del-lab" title="Permanent link">¶</a></h2>
+<p>Este laboratorio proporciona experiencia práctica con Cloud Dataprep (Alteryx Designer Cloud), una herramienta de preparación visual de datos que permite limpiar, transformar y enriquecer datos sin programación como parte de pipelines ETL automatizados.</p>
+<p><strong>Objetivos específicos</strong>:</p>
+<ul>
+<li>Conectar datasets de BigQuery a Cloud Dataprep</li>
+<li>Explorar calidad y estructura de datos mediante interfaz visual</li>
+<li>Crear pipelines de transformación de datos estructurados</li>
+<li>Ejecutar jobs de transformación con salida a BigQuery</li>
+<li>Aplicar técnicas de limpieza, filtrado y enriquecimiento de datos</li>
+</ul>
+<hr>
+<h2 id="contexto-y-caso-de-uso">🔍 Contexto y Caso de Uso<a class="headerlink" href="#contexto-y-caso-de-uso" title="Permanent link">¶</a></h2>
+<h3 id="dataset-google-analytics-ecommerce">Dataset: Google Analytics Ecommerce<a class="headerlink" href="#dataset-google-analytics-ecommerce" title="Permanent link">¶</a></h3>
+<p>El laboratorio utiliza un dataset real de Google Analytics del <a href="https://shop.googlemerchandisestore.com/">Google Merchandise Store</a>, conteniendo millones de registros de sesiones de usuarios. Para este lab se trabaja con aproximadamente 56,000 registros correspondientes a un día de datos (1 de agosto de 2017).</p>
+<p><strong>Objetivo de negocio</strong>: Crear una tabla de reporting que contenga únicamente sesiones que generaron ingresos, con campos limpios, enriquecidos y listos para análisis.</p>
+<h3 id="arquitectura-del-pipeline">Arquitectura del Pipeline<a class="headerlink" href="#arquitectura-del-pipeline" title="Permanent link">¶</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│   BigQuery Source   │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│ (all_sessions_raw)  │
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>└──────────┬──────────┘
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>           │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>           ▼
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>┌─────────────────────┐
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│  Cloud Dataprep     │
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│  Transformations    │
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│  - Cleaning         │
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│  - Filtering        │
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│  - Enrichment       │
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>└──────────┬──────────┘
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>           │
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>           ▼
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>┌─────────────────────┐
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│ BigQuery Output     │
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│ (revenue_reporting) │
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>└─────────────────────┘
+</span></code></pre></div>
+<p><strong>Relevancia para Data Engineering</strong>: Cloud Dataprep permite a analistas de datos realizar transformaciones complejas sin código, democratizando la preparación de datos y reduciendo la dependencia de equipos de ingeniería para tareas exploratorias y de limpieza.</p>
+<hr>
+<h2 id="conceptos-tecnicos-clave">🛠️ Conceptos Técnicos Clave<a class="headerlink" href="#conceptos-tecnicos-clave" title="Permanent link">¶</a></h2>
+<h3 id="1-cloud-dataprep-alteryx-designer-cloud">1. Cloud Dataprep (Alteryx Designer Cloud)<a class="headerlink" href="#1-cloud-dataprep-alteryx-designer-cloud" title="Permanent link">¶</a></h3>
+<p><strong>Características principales</strong>:</p>
+<ul>
+<li><strong>Interfaz visual</strong>: Transformaciones mediante UI drag-and-drop</li>
+<li><strong>Inferencia automática de tipos</strong>: Detección inteligente de tipos de datos</li>
+<li><strong>Sugerencias contextuales</strong>: Recomendaciones basadas en patrones detectados</li>
+<li><strong>Perfilado de datos</strong>: Análisis estadístico y de calidad automático</li>
+<li><strong>Escalabilidad</strong>: Ejecución en Dataflow (Apache Beam) para datasets grandes</li>
+</ul>
+<h3 id="2-componentes-de-dataprep">2. Componentes de Dataprep<a class="headerlink" href="#2-componentes-de-dataprep" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Flow</strong></td>
+<td>Contenedor organizacional de datasets y transformaciones</td>
+</tr>
+<tr>
+<td><strong>Dataset</strong></td>
+<td>Fuente de datos (BigQuery, Cloud Storage, etc.)</td>
+</tr>
+<tr>
+<td><strong>Recipe</strong></td>
+<td>Secuencia ordenada de pasos de transformación</td>
+</tr>
+<tr>
+<td><strong>Job</strong></td>
+<td>Ejecución del recipe sobre el dataset completo</td>
+</tr>
+<tr>
+<td><strong>Sample</strong></td>
+<td>Subconjunto de datos para diseño y preview de transformaciones</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-tipos-de-transformaciones-aplicadas">3. Tipos de Transformaciones Aplicadas<a class="headerlink" href="#3-tipos-de-transformaciones-aplicadas" title="Permanent link">¶</a></h3>
+<p>En este lab se implementan las siguientes categorías de transformaciones:</p>
+<ul>
+<li><strong>Type conversion</strong>: Cambio de tipos de datos (String, Integer, Decimal)</li>
+<li><strong>Column operations</strong>: Delete, merge, calculate</li>
+<li><strong>Row filtering</strong>: Keep/delete rows basado en condiciones</li>
+<li><strong>Deduplication</strong>: Eliminación de registros duplicados</li>
+<li><strong>Calculated fields</strong>: Creación de nuevas columnas mediante fórmulas</li>
+<li><strong>Conditional logic</strong>: Case statements para enriquecimiento de datos</li>
+</ul>
+<hr>
+<h2 id="proceso-de-implementacion">📝 Proceso de Implementación<a class="headerlink" href="#proceso-de-implementacion" title="Permanent link">¶</a></h2>
+<h3 id="task-1-configuracion-inicial-de-dataprep">Task 1: Configuración Inicial de Dataprep<a class="headerlink" href="#task-1-configuracion-inicial-de-dataprep" title="Permanent link">¶</a></h3>
+<p><strong>1. Activación del servicio</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>gcloud<span class="w"> </span>beta<span class="w"> </span>services<span class="w"> </span>identity<span class="w"> </span>create<span class="w"> </span>--service<span class="o">=</span>dataprep.googleapis.com
+</span></code></pre></div>
+<p>Esta configuración crea una identidad de servicio necesaria para que Dataprep acceda a recursos de GCP.</p>
+<p><strong>2. Acceso a Dataprep</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Navigation menu → View All Products → Analytics → Alteryx Designer Cloud
+</span></code></pre></div>
+<p><strong>3. Aceptación de términos</strong></p>
+<ul>
+<li>Google Dataprep Terms of Service</li>
+<li>Compartir información de cuenta con Alteryx</li>
+<li>Autorizar acceso de Alteryx al proyecto</li>
+<li>Alteryx Terms of Service</li>
+</ul>
+<p><strong>Implicación de seguridad</strong>: Dataprep requiere permisos amplios (acceso a BigQuery, Cloud Storage) por lo que es importante entender las políticas de datos de Alteryx en ambientes productivos.</p>
+<h3 id="task-2-preparacion-de-dataset-en-bigquery">Task 2: Preparación de Dataset en BigQuery<a class="headerlink" href="#task-2-preparacion-de-dataset-en-bigquery" title="Permanent link">¶</a></h3>
+<p><strong>1. Creación de dataset</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">-- Crear dataset para alojar datos</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="n">DATASET</span><span class="w"> </span><span class="n">ecommerce</span><span class="p">;</span>
+</span></code></pre></div>
+<p><strong>2. Importación de datos</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">#</span><span class="n">standardSQL</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">ecommerce</span><span class="p">.</span><span class="n">all_sessions_raw_dataprep</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">OPTIONS</span><span class="p">(</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="n">description</span><span class="o">=</span><span class="ss">"Raw data from analyst team to ingest into Cloud Dataprep"</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span><span class="w"> </span><span class="k">AS</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">`</span><span class="k">data</span><span class="o">-</span><span class="k">to</span><span class="o">-</span><span class="n">insights</span><span class="p">.</span><span class="n">ecommerce</span><span class="p">.</span><span class="n">all_sessions_raw</span><span class="o">`</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">WHERE</span><span class="w"> </span><span class="nb">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'20170801'</span><span class="p">;</span><span class="w"> </span><span class="c1">-- limitado a 1 día: ~56k rows</span>
+</span></code></pre></div>
+<p><strong>Decisión de diseño</strong>: Se limita a un día de datos para facilitar la exploración y reducir tiempos de procesamiento en el lab. En producción, se procesarían datasets completos con particionamiento por fecha.</p>
+<h3 id="task-3-conexion-bigquery-dataprep">Task 3: Conexión BigQuery → Dataprep<a class="headerlink" href="#task-3-conexion-bigquery-dataprep" title="Permanent link">¶</a></h3>
+<p><strong>1. Creación de Flow</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Name: Ecommerce Analytics Pipeline
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Description: Revenue reporting table
+</span></code></pre></div>
+<p>Un Flow actúa como contenedor organizacional, similar a un proyecto o workspace.</p>
+<p><strong>2. Importación de dataset</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Add Dataset → Import Datasets → BigQuery
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>→ Select: ecommerce dataset
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>→ Select table: all_sessions_raw_dataprep
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>→ Import &amp; Add to Flow
+</span></code></pre></div>
+<p><strong>3. Inicio de Recipe</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Click Recipe icon → Edit Recipe
+</span></code></pre></div>
+<p>Dataprep carga un <strong>sample</strong> del dataset (~12,000 rows de 56,000 totales) para diseñar transformaciones de forma interactiva.</p>
+<hr>
+<h2 id="task-4-exploracion-de-datos-data-profiling">🔬 Task 4: Exploración de Datos (Data Profiling)<a class="headerlink" href="#task-4-exploracion-de-datos-data-profiling" title="Permanent link">¶</a></h2>
+<h3 id="analisis-estructural">Análisis Estructural<a class="headerlink" href="#analisis-estructural" title="Permanent link">¶</a></h3>
+<p><strong>Dimensiones del dataset</strong>:</p>
+<ul>
+<li><strong>Columnas</strong>: 32 campos</li>
+<li><strong>Filas (sample)</strong>: ~12,000 registros</li>
+<li><strong>Filas (total)</strong>: ~56,000 registros</li>
+</ul>
+<h3 id="analisis-de-campos-clave">Análisis de Campos Clave<a class="headerlink" href="#analisis-de-campos-clave" title="Permanent link">¶</a></h3>
+<h4 id="1-channelgrouping">1. <strong>channelGrouping</strong><a class="headerlink" href="#1-channelgrouping" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Valor más común</strong>: Referral</li>
+<li><strong>Interpretación</strong>: La mayoría de tráfico proviene de sitios referentes (otros sitios que enlazan al ecommerce)</li>
+<li><strong>Tipos de canales</strong>: Organic Search, Direct, Social, Paid Search, Referral, Display</li>
+</ul>
+<h4 id="2-country">2. <strong>country</strong><a class="headerlink" href="#2-country" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Top 3 países</strong>: United States, India, United Kingdom</li>
+<li><strong>Implicación</strong>: Audiencia principalmente angloparlante</li>
+</ul>
+<h4 id="3-totaltransactionrevenue">3. <strong>totalTransactionRevenue</strong><a class="headerlink" href="#3-totaltransactionrevenue" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Observación crítica</strong>: Amplia barra gris en histograma</li>
+<li><strong>Significado</strong>: Alta proporción de valores NULL/missing</li>
+<li><strong>Interpretación de negocio</strong>: La mayoría de sesiones no generan revenue (usuarios navegando sin comprar)</li>
+</ul>
+<h4 id="4-timeonsite">4. <strong>timeOnSite</strong><a class="headerlink" href="#4-timeonsite" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Máximo</strong>: 5,561 segundos (~92 minutos)</li>
+<li><strong>Distribución</strong>: Sesgada hacia valores bajos</li>
+<li><strong>Nota</strong>: Precaución al calcular promedios (posible doble conteo por sesión)</li>
+</ul>
+<h4 id="5-pageviews">5. <strong>pageviews</strong><a class="headerlink" href="#5-pageviews" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Máximo</strong>: 155 páginas</li>
+<li><strong>Distribución</strong>: Mayoría de sesiones con pocas páginas vistas</li>
+</ul>
+<h4 id="6-sessionqualitydim">6. <strong>sessionQualityDim</strong><a class="headerlink" href="#6-sessionqualitydim" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Rango</strong>: 0-97</li>
+<li><strong>Máximo</strong>: 97</li>
+<li><strong>Distribución</strong>: Sesgada hacia valores bajos (sesiones de baja calidad)</li>
+<li><strong>Interpretación</strong>: Métrica de Google Analytics sobre probabilidad de conversión</li>
+</ul>
+<h4 id="7-date">7. <strong>date</strong><a class="headerlink" href="#7-date" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Rango</strong>: 8/1/2017 (un solo día)</li>
+<li><strong>Formato</strong>: YYYYMMDD</li>
+</ul>
+<h4 id="8-productsku">8. <strong>productSKU</strong><a class="headerlink" href="#8-productsku" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Issue detectado</strong>: Barra roja en histograma</li>
+<li><strong>Problema</strong>: Type mismatch - Dataprep infirió Integer pero hay valores String</li>
+<li><strong>Realidad</strong>: SKUs son identificadores que pueden contener letras (e.g., "GGOEGOCD078399")</li>
+<li><strong>Solución</strong>: Convertir columna a String type</li>
+</ul>
+<h4 id="9-v2productname">9. <strong>v2ProductName</strong><a class="headerlink" href="#9-v2productname" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Productos populares</strong>: Nest products (termostatos, cámaras)</li>
+</ul>
+<h4 id="10-v2productcategory">10. <strong>v2ProductCategory</strong><a class="headerlink" href="#10-v2productcategory" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Categoría más común</strong>: "(not set)" - 80%+ de productos sin categoría definida</li>
+<li><strong>Implicación</strong>: Problema de calidad de datos en tracking</li>
+</ul>
+<h4 id="11-type">11. <strong>type</strong><a class="headerlink" href="#11-type" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Valores</strong>: PAGE, EVENT</li>
+<li><strong>Distribución</strong>: Mayoría PAGE</li>
+<li><strong>Interpretación</strong>: </li>
+<li>PAGE: Visualización de página</li>
+<li>EVENT: Eventos específicos (click producto, add to cart)</li>
+<li><strong>Implicación para análisis</strong>: Filtrar por tipo para evitar doble conteo</li>
+</ul>
+<h4 id="12-productquantity">12. <strong>productQuantity</strong><a class="headerlink" href="#12-productquantity" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Máximo</strong>: 100 unidades</li>
+<li><strong>Significado</strong>: Cantidad de producto añadido al carrito en una acción</li>
+</ul>
+<h4 id="13-currencycode">13. <strong>currencyCode</strong><a class="headerlink" href="#13-currencycode" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Valor dominante</strong>: USD (United States Dollar)</li>
+</ul>
+<h4 id="14-itemquantity-itemrevenue">14. <strong>itemQuantity &amp; itemRevenue</strong><a class="headerlink" href="#14-itemquantity-itemrevenue" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Observación</strong>: Todos los valores son NULL</li>
+<li><strong>Decisión</strong>: Columnas deprecadas, se eliminarán</li>
+<li><strong>Alternativas</strong>: Usar <code>productQuantity</code> y <code>productRevenue</code></li>
+</ul>
+<h4 id="15-transactionid">15. <strong>transactionId</strong><a class="headerlink" href="#15-transactionid" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Valores válidos</strong>: ~4.6%</li>
+<li><strong>Interpretación de negocio</strong>: <strong>Tasa de conversión del sitio = 4.6%</strong></li>
+<li><strong>Insight clave</strong>: Solo 4.6% de visitantes completan una transacción</li>
+</ul>
+<h4 id="16-ecommerceaction_type">16. <strong>eCommerceAction_type</strong><a class="headerlink" href="#16-ecommerceaction_type" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Valores</strong>: 7 tipos encontrados (0-8)</li>
+<li><strong>Valor más común</strong>: 0 (Unknown)</li>
+<li><strong>Mapeo</strong> (según <a href="https://support.google.com/analytics/answer/3437719">schema de GA</a>):</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Click through of product lists</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Product detail views</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Add product(s) to cart</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Remove product(s) from cart</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Check out</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Completed purchase</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Refund of purchase</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Checkout options</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Insight</strong>: La mayoría de acciones son "Unknown" porque los usuarios solo navegan sin interacciones específicas.</p>
+<hr>
+<h2 id="task-5-limpieza-de-datos-data-cleaning">🧹 Task 5: Limpieza de Datos (Data Cleaning)<a class="headerlink" href="#task-5-limpieza-de-datos-data-cleaning" title="Permanent link">¶</a></h2>
+<h3 id="transformacion-1-correccion-de-tipo-de-productsku">Transformación 1: Corrección de Tipo de <code>productSKU</code><a class="headerlink" href="#transformacion-1-correccion-de-tipo-de-productsku" title="Permanent link">¶</a></h3>
+<p><strong>Problema detectado</strong>: Type mismatch - algunos SKUs contienen letras</p>
+<p><strong>Solución implementada</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Column menu (⋮) → Change type → String
+</span></code></pre></div>
+<p><strong>Verificación en Recipe</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Change column type to String (productSKU)
+</span></code></pre></div>
+<h3 id="transformacion-2-eliminacion-de-columnas-deprecadas">Transformación 2: Eliminación de Columnas Deprecadas<a class="headerlink" href="#transformacion-2-eliminacion-de-columnas-deprecadas" title="Permanent link">¶</a></h3>
+<p><strong>Columnas a eliminar</strong>: <code>itemQuantity</code>, <code>itemRevenue</code> (100% NULL values)</p>
+<p><strong>Proceso</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>itemQuantity column menu → Delete
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>itemRevenue column menu → Delete
+</span></code></pre></div>
+<p><strong>Recipe steps</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Delete column itemQuantity
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Delete column itemRevenue
+</span></code></pre></div>
+<p><strong>Justificación</strong>: Prevenir confusión para usuarios del reporte. Usar alternativas válidas (<code>productQuantity</code>, <code>productRevenue</code>).</p>
+<h3 id="transformacion-3-deduplicacion-de-registros">Transformación 3: Deduplicación de Registros<a class="headerlink" href="#transformacion-3-deduplicacion-de-registros" title="Permanent link">¶</a></h3>
+<p><strong>Problema reportado</strong>: Posibles duplicados en fuente</p>
+<p><strong>Solución</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Filter rows icon → Remove duplicate rows → Add
+</span></code></pre></div>
+<p><strong>Recipe step</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Remove duplicate rows
+</span></code></pre></div>
+<p><strong>Nota técnica</strong>: Esta operación identifica y elimina filas completamente idénticas basándose en todas las columnas.</p>
+<h3 id="transformacion-4-filtrado-de-sesiones-sin-revenue">Transformación 4: Filtrado de Sesiones sin Revenue<a class="headerlink" href="#transformacion-4-filtrado-de-sesiones-sin-revenue" title="Permanent link">¶</a></h3>
+<p><strong>Objetivo de negocio</strong>: Tabla final debe contener SOLO sesiones que generaron ingresos</p>
+<p><strong>Proceso visual</strong>:</p>
+<ol>
+<li>Click en barra gris (missing values) de <code>totalTransactionRevenue</code></li>
+<li>Todas las filas sin revenue se destacan en rojo</li>
+<li>En panel de Suggestions: "Delete rows" → Add</li>
+</ol>
+<p><strong>Recipe step</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Delete rows where totalTransactionRevenue is NULL
+</span></code></pre></div>
+<p><strong>Impacto</strong>: Dataset se reduce drásticamente (~95.4% de filas eliminadas) quedando solo sesiones con transacciones.</p>
+<h3 id="transformacion-5-filtrado-por-tipo-de-hit">Transformación 5: Filtrado por Tipo de Hit<a class="headerlink" href="#transformacion-5-filtrado-por-tipo-de-hit" title="Permanent link">¶</a></h3>
+<p><strong>Objetivo</strong>: Mantener solo hits de tipo PAGE para evitar doble conteo</p>
+<p><strong>Proceso visual</strong>:</p>
+<ol>
+<li>Click en barra "PAGE" del histograma de columna <code>type</code></li>
+<li>Filas de tipo PAGE se destacan en verde</li>
+<li>En panel de Suggestions: "Keep rows" → Add</li>
+</ol>
+<p><strong>Recipe step</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Keep rows where type == 'PAGE'
+</span></code></pre></div>
+<p><strong>Justificación técnica</strong>: Un usuario puede tener múltiples tipos de hits en la misma sesión (PAGE + múltiples EVENTs). Filtrar por PAGE evita contar la misma sesión múltiples veces.</p>
+<hr>
+<h2 id="task-6-enriquecimiento-de-datos-data-enrichment">📈 Task 6: Enriquecimiento de Datos (Data Enrichment)<a class="headerlink" href="#task-6-enriquecimiento-de-datos-data-enrichment" title="Permanent link">¶</a></h2>
+<h3 id="enriquecimiento-1-creacion-de-id-unico-de-sesion">Enriquecimiento 1: Creación de ID Único de Sesión<a class="headerlink" href="#enriquecimiento-1-creacion-de-id-unico-de-sesion" title="Permanent link">¶</a></h3>
+<p><strong>Problema identificado</strong>: No existe campo único para identificar sesiones</p>
+<p><strong>Análisis del schema</strong>:</p>
+<ul>
+<li><code>visitId</code>: Único POR usuario, NO globalmente único</li>
+<li><code>fullVisitorId</code>: Identifica al usuario</li>
+<li><strong>Solución</strong>: Combinar ambos para crear ID único global</li>
+</ul>
+<p><strong>Implementación</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Toolbar → Merge columns
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>Columns: fullVisitorId, visitId
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>Separator: -
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>New column name: unique_session_id
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>→ Add
+</span></code></pre></div>
+<p><strong>Recipe step</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Merge columns fullVisitorId and visitId 
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>  with separator '-' 
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>  into unique_session_id
+</span></code></pre></div>
+<p><strong>Resultado</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>unique_session_id = "1234567890.9876543210-1501596000"
+</span></code></pre></div>
+<p><strong>Implicación</strong>: En labs posteriores se verificará si cada fila representa una sesión única o granularidad mayor.</p>
+<h3 id="enriquecimiento-2-case-statement-para-ecommerce-action-label">Enriquecimiento 2: Case Statement para eCommerce Action Label<a class="headerlink" href="#enriquecimiento-2-case-statement-para-ecommerce-action-label" title="Permanent link">¶</a></h3>
+<p><strong>Problema</strong>: Códigos numéricos (0-8) no son interpretables por usuarios finales</p>
+<p><strong>Solución</strong>: Crear columna descriptiva con nombres de acciones</p>
+<p><strong>Implementación</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Toolbar → Conditions → Case on single column
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>Column to evaluate: eCommerceAction_type
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>Add 8 cases (total 9 including default)
+</span></code></pre></div>
+<p><strong>Mapeo completo</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Comparison (type)</th>
+<th>New value (label)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>'Unknown'</td>
+</tr>
+<tr>
+<td>1</td>
+<td>'Click through of product lists'</td>
+</tr>
+<tr>
+<td>2</td>
+<td>'Product detail views'</td>
+</tr>
+<tr>
+<td>3</td>
+<td>'Add product(s) to cart'</td>
+</tr>
+<tr>
+<td>4</td>
+<td>'Remove product(s) from cart'</td>
+</tr>
+<tr>
+<td>5</td>
+<td>'Check out'</td>
+</tr>
+<tr>
+<td>6</td>
+<td>'Completed purchase'</td>
+</tr>
+<tr>
+<td>7</td>
+<td>'Refund of purchase'</td>
+</tr>
+<tr>
+<td>8</td>
+<td>'Checkout options'</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nueva columna</strong>: <code>eCommerceAction_label</code></p>
+<p><strong>Recipe step</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Create new column eCommerceAction_label:
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>  CASE
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    WHEN eCommerceAction_type == 0 THEN 'Unknown'
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    WHEN eCommerceAction_type == 1 THEN 'Click through of product lists'
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    ...
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>  END
+</span></code></pre></div>
+<p><strong>Beneficio</strong>: Usuarios del reporte pueden entender directamente qué acción realizó el usuario sin consultar documentación.</p>
+<h3 id="enriquecimiento-3-ajuste-de-escala-en-revenue">Enriquecimiento 3: Ajuste de Escala en Revenue<a class="headerlink" href="#enriquecimiento-3-ajuste-de-escala-en-revenue" title="Permanent link">¶</a></h3>
+<p><strong>Problema detectado</strong>: Según <a href="https://support.google.com/analytics/answer/3437719">schema de Google Analytics</a>, <code>totalTransactionRevenue</code> está multiplicado por 10^6</p>
+<p><strong>Ejemplo</strong>:</p>
+<ul>
+<li>Valor real: $2.40</li>
+<li>Valor en dataset: 2,400,000</li>
+</ul>
+<p><strong>Solución</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>totalTransactionRevenue column menu (⋮) 
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>→ Calculate → Custom formula
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>Formula: DIVIDE(totalTransactionRevenue, 1000000)
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>New column name: totalTransactionRevenue1
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>→ Add
+</span></code></pre></div>
+<p><strong>Recipe steps</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>1. Create column totalTransactionRevenue1:
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>   DIVIDE(totalTransactionRevenue, 1000000)
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>2. Change type to Decimal (totalTransactionRevenue1)
+</span></code></pre></div>
+<p><strong>Resultado</strong>:</p>
+<ul>
+<li><code>totalTransactionRevenue</code> = 2400000 (valor original)</li>
+<li><code>totalTransactionRevenue1</code> = 2.40 (valor ajustado)</li>
+</ul>
+<p><strong>Nota</strong>: Se mantiene columna original por trazabilidad, en producción se podría reemplazar.</p>
+<hr>
+<h2 id="task-7-ejecucion-del-pipeline">🎯 Task 7: Ejecución del Pipeline<a class="headerlink" href="#task-7-ejecucion-del-pipeline" title="Permanent link">¶</a></h2>
+<h3 id="revision-final-del-recipe">Revisión Final del Recipe<a class="headerlink" href="#revision-final-del-recipe" title="Permanent link">¶</a></h3>
+<p>El recipe completo incluye los siguientes pasos en orden:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>1. Change type to String (productSKU)
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>2. Delete column (itemQuantity)
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>3. Delete column (itemRevenue)
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>4. Remove duplicate rows
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>5. Delete rows where totalTransactionRevenue is NULL
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>6. Keep rows where type == 'PAGE'
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>7. Merge columns (fullVisitorId + visitId → unique_session_id)
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>8. Create eCommerceAction_label (CASE statement)
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>9. Calculate totalTransactionRevenue1 (DIVIDE by 1000000)
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>10. Change type to Decimal (totalTransactionRevenue1)
+</span></code></pre></div>
+<h3 id="configuracion-de-ejecucion">Configuración de Ejecución<a class="headerlink" href="#configuracion-de-ejecucion" title="Permanent link">¶</a></h3>
+<p><strong>1. Inicio de Job</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>Click: Run
+</span></code></pre></div>
+<p><strong>2. Configuración de Ambiente</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>Running Environment: Dataflow + BigQuery
+</span></code></pre></div>
+<p><strong>Nota técnica</strong>: Cloud Dataprep usa <strong>Cloud Dataflow</strong> (implementación de Apache Beam) como motor de ejecución para procesar datasets a escala.</p>
+<p><strong>3. Configuración de Output</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>Publishing Actions → Edit (Create-CSV)
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>→ Change to: BigQuery
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>→ Select dataset: ecommerce
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>→ Create new table: revenue_reporting
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>→ Drop the table every run (para idempotencia)
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>→ Update
+</span></code></pre></div>
+<p><strong>4. Ejecución</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Click: RUN
+</span></code></pre></div>
+<h3 id="validacion-de-resultados">Validación de Resultados<a class="headerlink" href="#validacion-de-resultados" title="Permanent link">¶</a></h3>
+<p><strong>En BigQuery</strong>:</p>
+<ol>
+<li>Refresh página de BigQuery</li>
+<li>Verificar existencia de tabla <code>ecommerce.revenue_reporting</code></li>
+<li>Validar schema y primeras filas</li>
+<li>Confirmar conteo de registros</li>
+</ol>
+<p><strong>Datos esperados</strong>:</p>
+<ul>
+<li>Registros: ~2,600 (4.6% de 56,000 original)</li>
+<li>Solo sesiones con transacciones completas</li>
+<li>Campos limpios y enriquecidos</li>
+<li>Revenue en escala correcta</li>
+</ul>
+<hr>
+<h2 id="insights-y-mejores-practicas">💡 Insights y Mejores Prácticas<a class="headerlink" href="#insights-y-mejores-practicas" title="Permanent link">¶</a></h2>
+<h3 id="ventajas-de-cloud-dataprep">Ventajas de Cloud Dataprep<a class="headerlink" href="#ventajas-de-cloud-dataprep" title="Permanent link">¶</a></h3>
+<p><strong>Pros</strong>:</p>
+<ul>
+<li><strong>No-code/Low-code</strong>: Accesible para analistas sin experiencia en programación</li>
+<li><strong>Exploración visual</strong>: Histogramas y estadísticas automáticas</li>
+<li><strong>Sugerencias inteligentes</strong>: Recomendaciones contextuales de transformaciones</li>
+<li><strong>Escalabilidad</strong>: Dataflow maneja millones/billones de registros</li>
+<li><strong>Iterativo</strong>: Diseño rápido con samples, ejecución sobre datos completos después</li>
+<li><strong>Auditable</strong>: Recipe documenta todas las transformaciones aplicadas</li>
+</ul>
+<p><strong>Consideraciones</strong>:</p>
+<ul>
+<li>Dependencia de tercero (Alteryx) - implicaciones de seguridad/privacidad</li>
+<li>Menos flexible que código Python/SQL para lógica muy compleja</li>
+<li>Costo adicional por encima de BigQuery + Dataflow</li>
+</ul>
+<h3 id="principios-de-data-quality-aplicados">Principios de Data Quality Aplicados<a class="headerlink" href="#principios-de-data-quality-aplicados" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Consistency</strong>: Corrección de tipos de datos (productSKU → String)</li>
+<li><strong>Completeness</strong>: Filtrado de registros con campos críticos NULL</li>
+<li><strong>Uniqueness</strong>: Deduplicación de registros y creación de unique ID</li>
+<li><strong>Validity</strong>: Filtrado de tipo de hit correcto (PAGE vs EVENT)</li>
+<li><strong>Accuracy</strong>: Ajuste de escala de revenue a valores reales</li>
+<li><strong>Interpretability</strong>: Enriquecimiento con labels descriptivos</li>
+</ol>
+<h3 id="patron-etl-implementado">Patrón ETL Implementado<a class="headerlink" href="#patron-etl-implementado" title="Permanent link">¶</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>EXTRACT:
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>  - Source: BigQuery (data-to-insights.ecommerce.all_sessions_raw)
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>  - Scope: Single day (20170801) → 56k records
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>TRANSFORM (Cloud Dataprep):
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>  - Type corrections
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>  - Column deletions
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>  - Deduplication
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>  - Row filtering (NULL revenue, PAGE type)
+</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>  - Field enrichment (unique_session_id, action_label)
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>  - Calculated fields (revenue scaling)
+</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>
+</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>LOAD:
+</span><span id="__span-28-14"><a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>  - Target: BigQuery (ecommerce.revenue_reporting)
+</span><span id="__span-28-15"><a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>  - Mode: Overwrite (drop and recreate)
+</span><span id="__span-28-16"><a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a>  - Records: ~2,600 (transactional sessions only)
+</span></code></pre></div>
+<hr>
+<h2 id="conclusiones">🎓 Conclusiones<a class="headerlink" href="#conclusiones" title="Permanent link">¶</a></h2>
+<h3 id="competencias-desarrolladas">Competencias Desarrolladas<a class="headerlink" href="#competencias-desarrolladas" title="Permanent link">¶</a></h3>
+<p>Este lab proporciona experiencia práctica en:</p>
+<ul>
+<li><strong>Integración BigQuery ↔ Dataprep</strong>: Ingesta y output en data warehouse</li>
+<li><strong>Data profiling</strong>: Análisis exploratorio de calidad y estructura</li>
+<li><strong>Data cleaning</strong>: Limpieza sistemática de inconsistencias</li>
+<li><strong>Data transformation</strong>: Filtrado, enriquecimiento y cálculos</li>
+<li><strong>Pipeline orchestration</strong>: Diseño y ejecución de flujos ETL</li>
+<li><strong>Business logic</strong>: Traducción de requerimientos a transformaciones</li>
+</ul>
+<h3 id="aplicabilidad-en-proyectos-reales">Aplicabilidad en Proyectos Reales<a class="headerlink" href="#aplicabilidad-en-proyectos-reales" title="Permanent link">¶</a></h3>
+<p><strong>Casos de uso similares</strong>:</p>
+<ul>
+<li>Preparación de datos de analytics para dashboards</li>
+<li>Limpieza de datasets de CRM para modelos ML</li>
+<li>Enriquecimiento de logs de aplicación para análisis</li>
+<li>Consolidación de múltiples fuentes para reporting</li>
+</ul>
+<p><strong>Escalamiento a producción</strong>:</p>
+<ul>
+<li>Automatización: Dataprep puede programar ejecuciones periódicas</li>
+<li>Parametrización: Filtros de fecha y condiciones configurables</li>
+<li>Monitoreo: Logs de Dataflow para troubleshooting</li>
+<li>Validación: Data quality checks post-transformación</li>
+</ul>
+<h3 id="lecciones-clave-para-data-engineering">Lecciones Clave para Data Engineering<a class="headerlink" href="#lecciones-clave-para-data-engineering" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Visual tools democratizan data prep</strong>: Analistas pueden ser autoservicio sin depender de ingeniería para cada transformación</li>
+<li><strong>Schema understanding is critical</strong>: Conocer metadatos (como la multiplicación x10^6 del revenue) previene errores graves</li>
+<li><strong>Sampling accelera iteración</strong>: Diseñar con subsets permite probar rápido, ejecutar sobre datos completos después</li>
+<li><strong>Documentation via recipes</strong>: El recipe auto-documenta la lógica de transformación, facilitando revisión y reproducibilidad</li>
+<li><strong>Trade-offs</strong>: Simplicidad/velocidad vs. costo/dependencia de terceros</li>
+</ol>
+<h3 id="proximos-pasos">Próximos Pasos<a class="headerlink" href="#proximos-pasos" title="Permanent link">¶</a></h3>
+<p>Para expandir este conocimiento:</p>
+<ul>
+<li><strong>Profundizar en Dataflow</strong>: Entender Apache Beam para pipelines más complejos</li>
+<li><strong>Comparar con alternativas</strong>: dbt, Dataform, Apache Spark para mismo caso de uso</li>
+<li><strong>Implementar en Python</strong>: Replicar transformaciones con pandas/BigQuery SQL</li>
+<li><strong>Productionize</strong>: Configurar scheduling, alerting, data quality tests</li>
+<li><strong>Explorar ML</strong>: Usar <code>revenue_reporting</code> table para modelos de propensión a compra</li>
+</ul>
+<hr>
+<h2 id="referencias-tecnicas">📚 Referencias Técnicas<a class="headerlink" href="#referencias-tecnicas" title="Permanent link">¶</a></h2>
+<p><strong>Documentación</strong>:</p>
+<ul>
+<li><a href="https://cloud.google.com/dataprep/docs">Cloud Dataprep Documentation</a></li>
+<li><a href="https://www.alteryx.com/products/designer-cloud">Alteryx Designer Cloud</a></li>
+<li><a href="https://support.google.com/analytics/answer/3437719">Google Analytics Schema Reference</a></li>
+<li><a href="https://cloud.google.com/bigquery/docs">BigQuery Documentation</a></li>
+<li><a href="https://cloud.google.com/dataflow/docs">Cloud Dataflow (Apache Beam)</a></li>
+</ul>
+<p><strong>Dataset</strong>:</p>
+<ul>
+<li><a href="https://www.en.advertisercommunity.com/t5/Articles/Introducing-the-Google-Analytics-Sample-Dataset-for-BigQuery/ba-p/1676331">Google Analytics Sample Dataset for BigQuery</a></li>
+<li><a href="https://shop.googlemerchandisestore.com/">Google Merchandise Store</a></li>
+</ul>
+<p><strong>Conceptos relacionados</strong>:</p>
+<ul>
+<li>ETL vs ELT patterns</li>
+<li>Data quality frameworks</li>
+<li>Apache Beam programming model</li>
+<li>Schema-on-read vs schema-on-write</li>
+</ul>
+<hr>
+<h2 id="resumen-de-transformaciones">📊 Resumen de Transformaciones<a class="headerlink" href="#resumen-de-transformaciones" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Tipo</th>
+<th>Operación</th>
+<th>Input</th>
+<th>Output</th>
+<th>Justificación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Type</td>
+<td>String conversion</td>
+<td>productSKU (mixed)</td>
+<td>productSKU (String)</td>
+<td>SKUs contienen letras</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Clean</td>
+<td>Delete column</td>
+<td>itemQuantity</td>
+<td>-</td>
+<td>100% NULL values</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Clean</td>
+<td>Delete column</td>
+<td>itemRevenue</td>
+<td>-</td>
+<td>100% NULL values</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Clean</td>
+<td>Deduplicate</td>
+<td>All columns</td>
+<td>Unique rows</td>
+<td>Eliminar duplicados</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Filter</td>
+<td>Delete NULL rows</td>
+<td>totalTransactionRevenue</td>
+<td>Only valid revenue</td>
+<td>Solo sesiones con venta</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Filter</td>
+<td>Keep rows</td>
+<td>type == 'PAGE'</td>
+<td>Only PAGE hits</td>
+<td>Evitar doble conteo</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Enrich</td>
+<td>Merge columns</td>
+<td>fullVisitorId + visitId</td>
+<td>unique_session_id</td>
+<td>Crear ID único global</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Enrich</td>
+<td>Case statement</td>
+<td>eCommerceAction_type</td>
+<td>eCommerceAction_label</td>
+<td>Descriptive labels</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Calculate</td>
+<td>Division</td>
+<td>totalTransactionRevenue / 1M</td>
+<td>totalTransactionRevenue1</td>
+<td>Escala correcta</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Type</td>
+<td>Decimal conversion</td>
+<td>totalTransactionRevenue1</td>
+<td>Decimal type</td>
+<td>Precisión numérica</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>Fecha de realización:</strong> Diciembre 2025<br>
+<strong>Programa:</strong> Ingeniería en IA y Ciencia de Datos<br>
+<strong>Curso:</strong> UT5 - Pipelines ETL en la Nube<br>
+<strong>Institución:</strong> Universidad Católica del Uruguay</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 de diciembre de 2025 09:48:51 UTC">3 de diciembre de 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie">
+        
+          
+          <a href="../15-gcp-intro/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Primeros Pasos en Google Cloud Platform">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Primeros Pasos en Google Cloud Platform
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../extra-credit-card/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 💳 Detección de Sesgo en Aprobación de Créditos con Fairlearn">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                💳 Detección de Sesgo en Aprobación de Créditos con Fairlearn
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/milagroscancela" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://linkedin.com/in/milagroscancela" target="_blank" rel="noopener" title="LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:milagros.cancela@correo.ucu.edu.uy" target="_blank" rel="noopener" title="Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
