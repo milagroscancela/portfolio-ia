@@ -9,22 +9,22 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0;">
 
 <div style="background: linear-gradient(135deg, #9B6BB4 0%, #7B4B94 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(123, 75, 148, 0.3);">
-<div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.3rem;">2</div>
+<div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.3rem;">3</div>
 <div style="font-size: 1rem; opacity: 0.95;">Exploraciones<br/>Completadas</div>
 </div>
 
 <div style="background: linear-gradient(135deg, #B08BC8 0%, #9B6BB4 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(155, 107, 180, 0.3);">
-<div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.3rem;">2</div>
+<div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.3rem;">3</div>
 <div style="font-size: 1rem; opacity: 0.95;">Datasets<br/>Analizados</div>
 </div>
 
 <div style="background: linear-gradient(135deg, #7B4B94 0%, #5B2B74 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(91, 43, 116, 0.3);">
-<div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.3rem;">10+</div>
+<div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.3rem;">15+</div>
 <div style="font-size: 1rem; opacity: 0.95;">Técnicas<br/>Aplicadas</div>
 </div>
 
 <div style="background: linear-gradient(135deg, #9C27B0 0%, #7B4B94 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);">
-<div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.3rem;">15+</div>
+<div style="font-size: 3rem; font-weight: bold; margin-bottom: 0.3rem;">20+</div>
 <div style="font-size: 1rem; opacity: 0.95;">Gráficos<br/>Creados</div>
 </div>
 
@@ -102,6 +102,38 @@ Esta sección presenta exploraciones adicionales realizadas de forma autónoma p
 
 ---
 
+### 🛒 Retail Rocket - PCA y Feature Selection en E-Commerce
+
+**Dataset:** Retail Rocket E-commerce Dataset (Kaggle) - 2.7M+ eventos de comportamiento de usuarios en una plataforma de e-commerce durante 4.5 meses. Incluye views, add-to-cart y transactions de 1.4M usuarios únicos sobre 235K productos.
+
+#### 🎯 Objetivos del Análisis
+
+- **Transformar** eventos granulares en features agregadas por usuario
+- **Aplicar** PCA para reducción dimensional y análisis de varianza
+- **Comparar** Filter Methods (F-test, Mutual Information) vs Wrapper Methods (RFE)
+- **Evaluar** trade-off entre complejidad del modelo y performance predictiva
+- **Identificar** features más predictivas para conversión en e-commerce
+
+#### 💻 Stack Tecnológico
+
+<div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0;">
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Python 3.8+</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Scikit-learn</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">PCA</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">RFE</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Random Forest</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Pandas</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Feature Engineering</span>
+  <span style="background: #f3e5f5; color: #7B4B94; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Kaggle Hub</span>
+</div>
+
+#### 🔗 Recursos
+
+**[📄 Ver Reporte Completo →](./portfolio/extra-retail-rocket.md)**  
+**[📓 Descargar Notebook →](./portfolio/assets/retail-rocket/retail_rocket_pca_feature_selection.ipynb)**
+
+---
+
 ## 🎓 Relación con el Curso
 
 Estas exploraciones se alinean directamente con las unidades temáticas del curso de **Ingeniería de Datos** de la Universidad Católica del Uruguay:
@@ -110,6 +142,7 @@ Estas exploraciones se alinean directamente con las unidades temáticas del curs
 |-------------|-------------------|-----------------|------------------------|
 | **Social Media & Mental Health** | UT1 - Análisis Exploratorio | EDA, Visualización, Estadística Descriptiva, Correlaciones | Análisis de datos, storytelling con visualizaciones |
 | **Credit Card Fairness** | UT2 - Calidad & Ética | Fairness Audit, Bias Detection, Ethical AI, Compliance | Machine Learning ético, métricas de fairness, regulación |
+| **Retail Rocket PCA** | UT3 - Feature Engineering | PCA, Feature Selection, RFE, Filter Methods | Reducción dimensional, selección de variables, modelado predictivo |
 
 ---
 
