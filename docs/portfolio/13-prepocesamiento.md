@@ -254,7 +254,7 @@ axes[1].set_ylabel('Frecuencia')
 axes[1].grid(alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('../../actividades/act13/ut5_histograma_camera.png', dpi=300)
+plt.savefig('./assets/image-processing/ut5_histograma_camera.png', dpi=300)
 plt.show()
 ```
 
@@ -262,7 +262,7 @@ plt.show()
 
 ### 1.3. Histogramas RGB
 
-![Histogramas RGB](../../actividades/act13/ut5_hist_rgb.png)
+![Histogramas RGB](./assets/image-processing/ut5_hist_rgb.png)
 
 *Figura 1: Histogramas separados por canal RGB para astronaut.png. **Canales:** Rojo (curva roja), Verde (curva verde), Azul (curva azul) superpuestos con transparencia. **Patrón observado:** (1) Pico pronunciado en ~25-50 para todos los canales → fondo oscuro dominante (traje espacial negro de la astronauta). (2) Canal rojo tiene segundo pico en ~180-220 → tono cálido de piel e insignias naranjas del traje. (3) Canal azul más concentrado en bajos → imagen con tinte cálido general (poco azul). (4) Canal verde intermedio → balance entre rojos y azules. **Interpretación:** Imagen con bajo contraste (histogramas concentrados, no esparcidos) y dominancia de tonos cálidos (canal rojo desplazado hacia altas intensidades vs azul hacia bajas). Candidata ideal para mejora de contraste con CLAHE.*
 
@@ -418,7 +418,7 @@ print(f"STD contraste — original/equalize/clahe: "
 
 ### 2.3. Visualización: Comparación de Contraste
 
-![Comparación Contraste](../../actividades/act13/ut5_contraste_comparacion.png)
+![Comparación Contraste](./assets/image-processing/ut5_contraste_comparacion.png)
 
 *Figura 2: Comparación de tres métodos de mejora de contraste. **Panel izquierdo (Original):** Imagen camera.png sin procesar, STD=75.12 indica contraste moderado. Rostro de la fotógrafa tiene detalles visibles pero sombras/luces podrían mejorarse. **Panel central (Ecualización Global):** STD aumenta a 80.25 (+6.8%) → contraste mejorado globalmente. PERO: (1) Cielo sobreexpuesto (casi blanco puro). (2) Sombras en traje quedan planas. (3) Transformación uniforme no respeta contenido local. **Panel derecho (CLAHE Adaptativo):** STD=75.87 (+1.0%) → mejora modesta en métrica global, PERO visualmente superior: (1) Detalles en rostro más nítidos (ecualización local en skin tones). (2) Cielo preserva gradiente (no sobresaturado). (3) Sombras en traje mantienen estructura (clipLimit evita amplificación excesiva). **Conclusión:** CLAHE balancea mejora local sin sacrificar calidad global - métrica STD no captura ventaja perceptual.*
 
@@ -505,7 +505,7 @@ print(f"Edge ratio — original/gaussian/bilateral: "
 
 ### 3.3. Visualización: Suavizado vs Bordes
 
-![Suavizado y Bordes](../../actividades/act13/ut5_suavizado_bordes.png)
+![Suavizado y Bordes](./assets/image-processing/ut5_suavizado_bordes.png)
 
 *Figura 3: Comparación de filtros de suavizado y su impacto en detección de bordes. **Panel 1 (Original):** Imagen sin filtrar, edge ratio=0.0784 (7.84% píxeles detectados como bordes por Canny). Textura de piel y detalles finos visibles pero con ruido residual. **Panel 2 (Gaussian):** Suavizado uniforme, edge ratio=0.0751 (-4.2%) → MENOR detección de bordes porque Gaussian borra gradientes sutiles. Rostro más suave pero detalles como arrugas/pestañas menos definidos. **Panel 3 (Bilateral):** Suavizado selectivo, edge ratio=0.0848 (+8.2%) → MAYOR detección de bordes porque bilateral PRESERVA gradientes fuertes mientras reduce ruido en áreas planas. Rostro suave + bordes nítidos (ej: contorno facial, ojos). **Panel 4 (Bordes Canny):** Mapa de bordes después de bilateral muestra estructura limpia sin fragmentación por ruido. **Conclusión:** Bilateral es óptimo para preprocesamiento antes de feature detection - elimina ruido sin sacrificar información de bordes crítica para keypoints.*
 
@@ -548,7 +548,7 @@ print(f"  Noisy + Bilateral: {edge_ratio(edges_bilat_noisy):.4f}")
 #   Noisy + Bilateral: 0.0891 (+13.7%)
 ```
 
-![Sensibilidad al Ruido](../../actividades/act13/ut5_sensibilidad_ruido.png)
+![Sensibilidad al Ruido](./assets/image-processing/ut5_sensibilidad_ruido.png)
 
 *Figura 4: Impacto del ruido gaussiano (σ=10) en detección de bordes. **Fila superior:** Imágenes suavizadas. Original con ruido muestra grano visible en áreas uniformes. Gaussian suaviza pero desenfoca. Bilateral mantiene nitidez en bordes. **Fila inferior:** Mapas de bordes Canny revelan problema: (1) Original con ruido: edge ratio=0.1456 (+85.7% vs sin ruido) - FALSOS POSITIVOS masivos, ruido interpretado como bordes. (2) Gaussian: edge ratio=0.1123 - mejora vs original pero aún 49.5% más bordes que imagen limpia. (3) Bilateral: edge ratio=0.0891 - solo 13.7% más que ideal, mayoría son bordes legítimos. **Conclusión práctica:** En imágenes ruidosas (ej: cámaras low-light, compresión JPEG), bilateral es CRÍTICO antes de Canny/feature detection para evitar inundación de falsos positivos.*
 
@@ -628,7 +628,7 @@ print(f"  Original:  {len(kp_sift_orig)}")
 
 ### 4.3. Visualización: Keypoints en Variantes
 
-![ORB Keypoints](../../actividades/act13/ut5_orb_keypoints.png)
+![ORB Keypoints](./assets/image-processing/ut5_orb_keypoints.png)
 
 *Figura 5: Comparación de detección de keypoints ORB en tres variantes de astronaut.png. **Keypoints** visualizados como círculos verdes con línea indicando orientación. Tamaño del círculo ∝ escala del keypoint. **Panel izquierdo (Original):** 1,000 keypoints detectados (límite de nfeatures). Concentración en bordes de traje espacial (blanco sobre negro = alto contraste), insignias, y contorno facial. Área de fondo oscuro (traje negro) tiene pocos keypoints (región homogénea). **Panel central (Gaussian):** 976 keypoints (-2.4%) - suavizado eliminó algunos keypoints en texturas finas (ej: arrugas faciales, costuras del traje). Keypoints restantes están en features "fuertes" (alto contraste, resistentes a suavizado). **Panel derecho (CLAHE L*):** 1,000 keypoints (máximo) - CLAHE mejoró contraste local en zonas antes oscuras → nuevos keypoints detectados en sombras del traje y detalles del casco. Distribución más uniforme vs original (menos concentración en bordes extremos). **Conclusión:** CLAHE aumenta detectabilidad en regiones de bajo contraste sin degradar keypoints existentes - óptimo para feature detection robusta.*
 
@@ -667,7 +667,7 @@ print(f"  Original vs CLAHE:    {len(matches_orb_clahe)}")
 #   Original vs CLAHE:    687 (68.7% match rate)
 ```
 
-![ORB Matches](../../actividades/act13/ut5_orb_matches.png)
+![ORB Matches](./assets/image-processing/ut5_orb_matches.png)
 
 *Figura 6: Matching de keypoints ORB entre imágenes. **Líneas** conectan keypoints correspondientes (verde = match válido, rojo = outlier). **Panel superior (Original vs Gaussian):** 612 matches (62.7% de 976 keypoints gaussianos). Líneas mayormente horizontales/paralelas indican correspondencias correctas (sin transformación geométrica). Algunos outliers visibles (líneas cruzadas) - posiblemente keypoints espurios creados por suavizado. **Panel inferior (Original vs CLAHE):** 687 matches (68.7%) - MAYOR match rate vs Gaussian. Distribución de líneas más densa y uniforme. Menos outliers (CLAHE preserva geometría de features mejor que Gaussian). **Interpretación:** CLAHE + ORB genera más matches correctos porque: (1) Aumenta contraste sin alterar estructura espacial. (2) Keypoints en zonas antes oscuras son detectados consistentemente. (3) Descriptores ORB son más estables bajo CLAHE vs suavizado que altera gradientes locales. **Aplicación:** Para image stitching/tracking, preprocesar con CLAHE → +10% match rate → menos errores de alineación.*
 
@@ -710,7 +710,7 @@ print(f"                  {time_sift_match/time_orb_match:.2f}x matching")
 #                   9.90x matching
 ```
 
-![Benchmark ORB vs SIFT](../../actividades/act13/ut5_benchmark_orb_sift.png)
+![Benchmark ORB vs SIFT](./assets/image-processing/ut5_benchmark_orb_sift.png)
 
 *Figura 7: Comparación de performance ORB vs SIFT en 4 métricas. **Panel superior izquierdo (Tiempo total):** ORB completa pipeline (detección + matching) en 0.009s vs SIFT 0.033s → ORB 3.6x MÁS RÁPIDO. Crítico para aplicaciones real-time (>30 FPS requiere <33ms por frame). **Panel superior derecho (Matches válidos):** ORB: 612 matches vs SIFT: 687 (+12.3%) - SIFT genera más correspondencias. PERO: Ambos >600 matches es suficiente para tareas como SLAM/stitching (típicamente requieren >50 matches). **Panel inferior izquierdo (Ratio de matches):** ORB: 61.2% vs SIFT: 68.7% - SIFT tiene mayor tasa de éxito en matching. Interpretación: Descriptores SIFT son más distintivos (128-dim floats vs 256-bit binary). **Panel inferior derecho (Speedup):** SIFT es 3.6x más lento en detección, 9.9x en matching. Matching es bottleneck para SIFT (comparación de vectores 128-dim vs operaciones bit-wise ORB). **Conclusión:** Trade-off velocidad vs calidad: ORB para real-time (drones, AR), SIFT para offline/alta precisión (fotogrametría, SfM).*
 
@@ -796,7 +796,7 @@ df_qa = analyzer.analyze_batch('data/raw')
 
 ### 5.2. Dashboard Visual
 
-![Dashboard QA](../../actividades/act13/ut5_dashboard_qa.png)
+![Dashboard QA](./assets/image-processing/ut5_dashboard_qa.png)
 
 *Figura 8: Dashboard automatizado de control de calidad para 7 imágenes. **Tabla superior:** KPIs por imagen con coloración condicional (rojo claro = alerta). Observaciones: (1) checkerboard.png tiene solo 380 features (alerta, <threshold de 100) - patrón regular tiene pocas esquinas. (2) rocket.png tiene 719 features y bajo contraste (30.64) - candidato para CLAHE. (3) camera.png tiene repetibilidad 0.237 (alerta, <0.3) - posible ruido o textura muy fina. **Panel inferior izquierdo (Features por imagen):** Barras azules muestran rango 380-1000 features. Líneas naranjas (warning=200) y rojas (critical=100) indican thresholds. Solo checkerboard cruza warning - su patrón geométrico simple no genera muchos keypoints. **Panel central (Contraste medio):** checkerboard destaca con STD=121.89 (máximo) - blanco/negro puro. coffee/coins/rocket tienen contraste bajo (<60) - CLAHE beneficiaría. **Panel derecho (% Bordes):** coins tiene 0.1043 edge ratio (10.43%) - objetos con contornos circulares fuertes. page tiene 0.1209 (12.09%) - texto tiene muchos bordes finos. **Panel inferior (Repetibilidad):** 6 de 7 imágenes <0.3 (crítico) - astronaut es única sin valor (NaN por falta de rotación en test). Conclusión: Dataset tiene imágenes con baja repetibilidad inherente (texturas, no objetos rígidos). **Alertas generadas:** Sistema identifica 4 imágenes críticas y 1 con edge ratio fuera de rango - triggers para revisión manual o reprocesamiento.*
 

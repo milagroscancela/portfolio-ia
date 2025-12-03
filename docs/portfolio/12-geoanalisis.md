@@ -328,7 +328,7 @@ print(barrios_m[['BARRIO', 'POBLACION', 'area_km2', 'densidad_hab_km2']]
 
 ### 2.2. Visualización: Mapa de Densidad
 
-![Densidad de Población](../../actividades/act12/ut4_densidad_hab_km2.png)
+![Densidad de Población](./assets/geospatial/ut4_densidad_hab_km2.png)
 
 *Figura 1: Mapa coroplético de densidad poblacional (hab/km²) en CABA. **Leyenda:** Paleta viridis de amarillo (baja densidad, ~2k hab/km²) a violeta oscuro (alta densidad, >100k hab/km²). **Patrón espacial:** (1) Núcleo central (Constitución, San Nicolás, Retiro) presenta máxima densidad (>50k hab/km²) - color violeta oscuro. (2) Primera corona (Palermo, Recoleta, Caballito) densidad media-alta (~20-40k hab/km²) - tono magenta. (3) Periferia sur (Villa Soldati, Lugano) baja densidad relativa (<10k hab/km²) - tono verde/amarillo. **Insight urbano:** Patrón de densidad refleja desarrollo histórico concéntrico desde el puerto (centro denso) hacia expansión periférica (menos densa). Excepción notable: Puerto Madero (zona portuaria renovada) tiene densidad muy baja por ser desarrollo reciente con edificios premium de baja ocupación.*
 
@@ -513,7 +513,7 @@ print(ranking_per_capita)
 
 ### 4.3. Visualización: Contactos Per Cápita
 
-![Contactos SUACI per Cápita](../../actividades/act12/ut4_suaci_contactos_pc.png)
+![Contactos SUACI per Cápita](./assets/geospatial/ut4_suaci_contactos_pc.png)
 
 *Figura 2: Mapa coroplético de contactos SUACI normalizados per cápita (por 1000 habitantes). **Paleta:** Amarillo claro (bajo, <5 contactos/1000 hab) a rojo oscuro (alto, >20 contactos/1000 hab). **Hallazgo sorprendente:** (1) Ranking cambia drásticamente vs métricas absolutas - barrios con alta población absoluta NO necesariamente tienen alta demanda per cápita. (2) Zona céntrica (Retiro, San Nicolás) presenta máxima intensidad per cápita (>15 contactos/1000 hab) - posiblemente por población flotante (oficinas, turismo) no capturada en censo residencial. (3) Zona residencial sur (Lugano, Soldati) muestra demanda moderada per cápita (~8-12 contactos/1000 hab) - contrasta con baja densidad absoluta. **Implicancia para políticas:** Métrica per cápita revela barrios con desproporción entre residentes censados y usuarios reales de servicios - indicador de población flotante o subdeclaración censal.*
 
@@ -702,7 +702,7 @@ hex_gdf['contactos_km2'] = hex_gdf['n_contactos'] / 0.74
 
 ### 6.3. Visualización: Heatmap Hexagonal
 
-![Heatmap Hexagonal](../../actividades/act12/ut4_hex_heatmap.png)
+![Heatmap Hexagonal](./assets/geospatial/ut4_hex_heatmap.png)
 
 *Figura 3: Heatmap hexagonal (H3 resolución 8, ~0.74 km² por celda) de contactos SUACI. **Base:** Contornos de barrios en blanco sobre fondo oscuro. **Hexágonos:** Paleta plasma (negro = 0 contactos, amarillo = >500 contactos/km²). **Patrón revelado:** (1) Hotspots claramente definidos en Palermo (centro-norte) y Caballito (centro) - hexágonos amarillo brillante indican >400 contactos. (2) Granularidad fina: Dentro de barrios grandes (ej: Palermo), se identifican sub-zonas con alta vs baja actividad - algo imposible con agregación por barrio completo. (3) Corredor de alta densidad: Línea diagonal de hexágonos activos desde Retiro (norte) hacia Constitución (sur) - coincide con eje de transporte principal (av. 9 de Julio). **Superioridad vs barrios:** Hexágonos detectan micro-zonas problemáticas (ej: 3-4 hexágonos críticos en esquina de Flores) que se "promedian" cuando se agrega por barrio entero.*
 
