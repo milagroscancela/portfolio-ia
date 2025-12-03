@@ -10,19 +10,17 @@
 
 ---
 
-## 👋 Bienvenid@
-
-Este portfolio documenta mi viaje en **Ingeniería de Datos**, desde análisis exploratorio hasta modelado predictivo avanzado. Cada proyecto refleja un compromiso con la **excelencia técnica**, **reproducibilidad** y **ética en IA**.
+Este portfolio documenta mi proceso en **Ingeniería de Datos**, desde análisis exploratorio hasta modelado predictivo avanzado. Cada proyecto refleja un compromiso con la **excelencia técnica**, **reproducibilidad** y **ética en IA**.
 
 <div style="background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%); padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #00796b;">
   <p style="margin: 0; color: #004d40; font-size: 1.05rem; line-height: 1.7;">
-    💡 <strong>Filosofía:</strong> Los datos cuentan historias. Mi objetivo es contarlas de manera <strong>clara</strong>, <strong>ética</strong> y con <strong>impacto medible</strong>.
+    <strong>Filosofía:</strong> Los datos cuentan historias. Mi objetivo es contarlas de manera <strong>clara</strong>, <strong>ética</strong> y con <strong>impacto medible</strong>.
   </p>
 </div>
 
 ---
 
-## 📊 Estadísticas del Portfolio
+## Estadísticas del Portfolio
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
 

@@ -1,4 +1,4 @@
-# 👋 Sobre Mí
+
 
 <div style="text-align: center; margin: 2rem 0;">
   <img src="../assets/profile/milagros-cancela.jpg" alt="Milagros Cancela" style="border-radius: 50%; width: 200px; height: 200px; object-fit: cover; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
@@ -8,9 +8,7 @@
 
 ---
 
-## 🎓 Bio
-
-¡Hola! Soy Milagros, estudiante de Ing. IA y Ciencia de Datos en la Universidad Católica del Uruguay. Me apasiona transformar datos en insights accionables y construir modelos que generen impacto real.
+Soy Milagros, estudiante de Ing. IA y Ciencia de Datos en la Universidad Católica del Uruguay. Me apasiona transformar datos en insights accionables y construir modelos que generen impacto real.
 
 Actualmente estoy enfocada en **feature engineering**, **análisis exploratorio de datos** y **machine learning aplicado**, con especial interés en proyectos que combinen rigor técnico con impacto social.
 
@@ -18,7 +16,7 @@ Este portfolio documenta mi viaje de aprendizaje en ingeniería de datos, desde 
 
 ---
 
-## 💼 Información de Contacto
+## Información de Contacto
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0;">
   <a href="https://www.linkedin.com/in/milagros-cancela-cano-56035331b/" target="_blank" style="text-decoration: none;">
@@ -152,10 +150,10 @@ Este portfolio documenta mi viaje de aprendizaje en ingeniería de datos, desde 
 
 Actualmente estoy:
 
-- 📖 Profundizando en **MLOps** y deployment de modelos
-- 🧠 Explorando **Deep Learning** con PyTorch
-- 🤝 Participando en competencias de **Kaggle**
-- 📝 Documentando mi proceso de aprendizaje en este portfolio
+- Profundizando en **MLOps** y deployment de modelos
+- Explorando **Deep Learning** con PyTorch
+- Participando en competencias de **Kaggle**
+- Documentando mi proceso de aprendizaje en este portfolio
 
 
 
