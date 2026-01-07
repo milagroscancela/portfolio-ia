@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Trivia Data Engineer: Elige tu Aventura</title>
+    <link rel="stylesheet" href="css/trivia.css">
+    <style>
+        /* Reset y estilos base para standalone */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #9B6BB4 0%, #7B4B94 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+        
+        .intro-box {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #7B4B94;
+        }
+        
+        .intro-box p {
+            color: #4a148c;
+            margin: 0;
+        }
+        
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .topic-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 2px solid #B08BC8;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .topic-card .emoji {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .topic-card h3 {
+            color: #7B4B94;
+            font-size: 1rem;
+            margin: 0.3rem 0;
+        }
+        
+        .topic-card p {
+            color: #7f8c8d;
+            font-size: 0.8rem;
+            margin: 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+        
+        .footer a {
+            color: #7B4B94;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1 class="page-title">🎮 Trivia Data Engineer</h1>
+        <p class="page-subtitle">¡Elige tu Aventura!</p>
+    </div>
+    
+    <div class="intro-box">
+        <p>
+            🚀 <strong>¿Cómo funciona?</strong> Esta trivia interactiva combina preguntas técnicas sobre 
+            <strong>SQL</strong>, <strong>ETL</strong>, <strong>Big Data</strong> y <strong>Cloud</strong> 
+            con información sobre proyectos reales. Cada decisión te llevará por un camino diferente. 
+            ¡Descubre cuánto sabes sobre ingeniería de datos!
+        </p>
+    </div>
+    
+    <div class="topic-grid">
+        <div class="topic-card">
+            <div class="emoji">🗄️</div>
+            <h3>SQL</h3>
+            <p>Queries, JOINs, agregaciones</p>
+        </div>
+        <div class="topic-card">
+            <div class="emoji">🔄</div>
+            <h3>ETL</h3>
+            <p>Pipelines de datos</p>
+        </div>
+        <div class="topic-card">
+            <div class="emoji">🌐</div>
+            <h3>Big Data</h3>
+            <p>Spark, procesamiento</p>
+        </div>
+        <div class="topic-card">
+            <div class="emoji">☁️</div>
+            <h3>Cloud</h3>
+            <p>BigQuery, GCP</p>
+        </div>
+        <div class="topic-card">
+            <div class="emoji">🔧</div>
+            <h3>Feature Eng.</h3>
+            <p>PCA, RFM, lag</p>
+        </div>
+        <div class="topic-card">
+            <div class="emoji">💼</div>
+            <h3>Portfolio</h3>
+            <p>Proyectos reales</p>
+        </div>
+    </div>
+    
+    <!-- Contenedor de la Trivia -->
+    <div id="trivia-container">
+        <div style="text-align: center; padding: 3rem;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">⏳</div>
+            <p style="color: #7f8c8d;">Cargando trivia...</p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>
+            💡 Cada respuesta incorrecta incluye una explicación técnica.<br>
+            🔄 Puedes reiniciar la trivia en cualquier momento.
+        </p>
+        <p style="margin-top: 1rem;">
+            🎮 Trivia creada con JavaScript vanilla • 100% sin dependencias externas
+        </p>
+    </div>
+    
+    <!-- Script de la Trivia -->
+    <script src="js/trivia.js"></script>
+</body>
+</html>

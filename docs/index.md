@@ -98,6 +98,14 @@ Este portfolio documenta mi proceso en la materia  **Ingeniería de Datos**, des
     </div>
   </a>
 
+  <a href="./trivia.md" style="text-decoration: none;">
+    <div style="background: linear-gradient(135deg, #9B6BB4 0%, #7B4B94 100%); padding: 1.2rem; border-radius: 10px; border: 2px solid #7B4B94; transition: all 0.3s; box-shadow: 0 4px 8px rgba(123, 75, 148, 0.3); text-align: center;">
+      <div style="font-size: 2rem; margin-bottom: 0.3rem;">🎮</div>
+      <h3 style="margin: 0.3rem 0; color: white; font-size: 1.1rem;">Trivia</h3>
+      <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 0.85rem;">¡Elige tu aventura!</p>
+    </div>
+  </a>
+
 </div>
 
 ---
